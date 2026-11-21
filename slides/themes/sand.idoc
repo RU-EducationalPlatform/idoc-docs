@@ -1,5 +1,5 @@
 @deck(theme=sand, transition=zoom, ratio=4:3, size=xlarge)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: sand)
 
 @titleslide

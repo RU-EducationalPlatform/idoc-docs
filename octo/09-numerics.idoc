@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 9: polynomials, roots, integrals, ODEs, optimisation and interpolation)
 
 The numerical toolbox: each function takes a function handle or data and returns a number you can check.

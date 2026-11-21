@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 19: grading Octo answers)
 
 An @@octo block with `id=` and `pts=` becomes a studio question. The student edits the code; Check gives feedback in the browser, and the mark comes from the server, which re-runs the program with the student's seed and the same time limit.

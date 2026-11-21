@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Variables and expressions)
 
 Set a value once and print it anywhere; evaluate expressions; read values from a profile.
@@ -96,4 +96,4 @@ Name the profile a bare getvar(key) reads from.
 A parameter passed into an included document or stylesheet, readable as a variable.
 
 @param(topic)
-@style(IDocDemo, topic="DC")
+@style(../styles/IDocDemo.style, topic="DC")

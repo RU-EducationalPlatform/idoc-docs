@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 17: signals, images and sound)
 
 Signal processing works on vectors of samples; images are matrices of pixels.

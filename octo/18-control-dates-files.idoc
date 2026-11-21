@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 18: control systems, dates and files)
 
 Three smaller families: transfer functions, calendar arithmetic, and reading and writing files.

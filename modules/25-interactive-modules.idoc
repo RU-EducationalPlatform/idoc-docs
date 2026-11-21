@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Interactive modules)
 
 @@module embeds one self-contained interactive lesson by its id. There are fifty, grouped below by subject.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 8: linear algebra)
 
 Matrices are the native type, so the standard decompositions are one call each.

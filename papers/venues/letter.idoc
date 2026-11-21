@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=letter, font=serif, studio-output=right, studio-look=light, studio-code=hide, octo-run=visible)
 @title(Venue: letter)
 

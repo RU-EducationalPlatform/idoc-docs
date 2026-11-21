@@ -1,5 +1,5 @@
 @deck(theme=ember, transition=cover, ratio=16:9, size=xlarge, narrate)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: ember)
 
 @titleslide

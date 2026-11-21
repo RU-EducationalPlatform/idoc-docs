@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Question kinds)
 
 Every @@q kind, each one live. Answers are checked in the browser for feedback and again on the server for marks.

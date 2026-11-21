@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 13: clustering and multivariate methods)
 
 Unsupervised tools find structure in data that has no labels. The points below are invented.

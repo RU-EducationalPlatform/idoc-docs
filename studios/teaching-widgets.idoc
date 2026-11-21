@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Small teaching widgets and Knowsy modules)
 
 @box(w=100%, style=offline)

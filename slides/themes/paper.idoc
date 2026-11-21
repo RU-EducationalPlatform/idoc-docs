@@ -1,5 +1,5 @@
 @deck(theme=paper, transition=reveal, ratio=4:3, size=huge, autoadvance=8s)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: paper)
 
 @titleslide

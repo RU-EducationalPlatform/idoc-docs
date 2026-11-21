@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 16: symbolic maths)
 
 `syms` declares symbols; expressions built from them stay exact until you ask for numbers.

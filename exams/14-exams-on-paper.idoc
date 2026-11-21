@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Exams on paper)
 
 A quiz becomes a printable scan sheet; the scanned copies are marked against an answer key.

@@ -1,5 +1,5 @@
 @deck(theme=dark, transition=fade, ratio=16:9, size=small, author=Sam Okafor, autoplay=6s)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: dark)
 
 @titleslide

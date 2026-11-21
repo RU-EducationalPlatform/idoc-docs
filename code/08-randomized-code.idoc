@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Code 8: randomized code)
 
 `@@codegen` is a program template: setup lines draw values from the student's seed, the program is run on the server, and the key is what it really printed. `@@gencode` places it on the paper.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Theorems and proofs)
 
 Numbered theorem-like blocks and proofs, and new kinds of your own.

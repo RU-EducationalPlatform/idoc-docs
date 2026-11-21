@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Citations, glossary and index)
 
 Cite sources, define terms, and build an index.

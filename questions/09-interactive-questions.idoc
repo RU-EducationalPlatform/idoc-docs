@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Interactive questions)
 
 Drag and drop, hotspots, connections, grouped blocks, option sets and answer exceptions.

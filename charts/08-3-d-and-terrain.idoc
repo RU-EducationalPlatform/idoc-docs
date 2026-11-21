@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Charts: 3-D and terrain)
 
 Terrain, flyovers, 3-D meshes, surfaces and contours. Each chart is followed by the source that drew it, and every example carries its own data.

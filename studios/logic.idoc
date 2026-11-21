@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Digital logic and quantum circuits: the complete @@logic and @@quantum tour)
 
 This page is a tour of @@logic. Every block is live: flip the input switches, press Pulse CLK, open a component to see inside it, drag a gate to move it. Each block has tabs: the Simulate diagram, the Truth table (a State table once the circuit remembers), the K-map with its minimized form, and Timing for circuits with a clock. Ctrl or ⌘ + wheel zooms a big drawing; Fit brings it back. The same block prints in the PDF, and can be a graded question.

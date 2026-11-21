@@ -1,5 +1,5 @@
 @deck(theme=light, transition=slide, ratio=4:3, size=normal, speak, background=circuit.svg)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: light)
 
 @titleslide

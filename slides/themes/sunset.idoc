@@ -1,5 +1,5 @@
 @deck(theme=sunset, transition=push, ratio=4:3, size=small)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: sunset)
 
 @titleslide

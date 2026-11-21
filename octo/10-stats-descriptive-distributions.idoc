@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 10: descriptive statistics and distributions)
 
 All data here is invented. Random draws are seeded, so a reader sees the same numbers every time.

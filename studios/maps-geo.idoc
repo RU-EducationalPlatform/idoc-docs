@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Maps, terrain and the @@geo panel)
 
 @@geo downloads an area, compresses it into our block format beside the document and writes a ready @@graph for it.

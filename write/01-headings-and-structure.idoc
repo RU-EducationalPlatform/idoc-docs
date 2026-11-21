@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Headings and document structure)
 
 Titles, numbered headings, a table of contents and appendices. Each heading below is a live example.

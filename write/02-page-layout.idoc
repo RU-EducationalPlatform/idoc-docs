@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Page layout)
 
 Columns, boxes, spacing, page breaks, headers, footers and fixed pages.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 1: language basics)
 
 Octo is IDoc's own compute engine. An @@octo block runs in the reader's browser; leave the semicolon off a line to print its value.

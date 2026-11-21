@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Every question widget, one example each)
 
 Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.

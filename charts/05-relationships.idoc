@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Charts: Relationships)
 
 Scatter, error bars, bubbles, heatmaps, radar, polar and networks. Each chart is followed by the source that drew it, and every example carries its own data.

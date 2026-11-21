@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 2: arrays and indexing)
 
 Everything in Octo is an array. These blocks show how to build, reshape and index them.

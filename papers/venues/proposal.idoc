@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=proposal, font=Calibri, fontsize=11pt, margin=1in, pagenumbers=Page 1 of N, a11y=dyslexia, pdfua)
 @title(Venue: proposal)
 

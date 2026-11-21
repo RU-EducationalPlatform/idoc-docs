@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Units, chemistry and algorithms)
 
 Numbers with units, chemical formulas, commutative diagrams and pseudocode.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Randomisation)
 
 Each student can get a different paper. The seed decides the values, so a paper can always be printed again exactly.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(The editor, workspaces and collaboration)
 
 Every command the editor has, with its shortcut, and where documents live. Mod is Cmd on macOS and Ctrl elsewhere. Mod+K opens the command palette and Mod+/ opens help.

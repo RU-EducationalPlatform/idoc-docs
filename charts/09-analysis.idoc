@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Charts: Analysis)
 
 Correlation matrices, PCA and k-means. Each chart is followed by the source that drew it, and every example carries its own data.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Charts: Parts of a whole)
 
 Pies and donuts: how a total splits into shares. Each chart is followed by the source that drew it, and every example carries its own data.

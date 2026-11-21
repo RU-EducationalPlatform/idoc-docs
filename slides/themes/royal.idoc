@@ -1,5 +1,5 @@
 @deck(theme=royal, transition=reveal, ratio=16:9, size=large)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: royal)
 
 @titleslide

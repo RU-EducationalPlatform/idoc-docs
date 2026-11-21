@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Code 3: code from files, includes and snippets)
 
 Code can live in its own files beside the document, in this document's sidecar folder.

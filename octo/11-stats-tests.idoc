@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 11: hypothesis tests)
 
 Each test returns `h` (1 means reject at the 5 % level), the p-value and usually a confidence interval and statistics.

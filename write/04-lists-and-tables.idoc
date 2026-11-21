@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Lists and tables)
 
 Bulleted, numbered and definition lists, tables, interlinear glosses and paragraph settings.

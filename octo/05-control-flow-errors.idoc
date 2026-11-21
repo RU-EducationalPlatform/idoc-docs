@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 5: control flow and errors)
 
 Loops, branches and error handling, with the timing tools that tell you whether to vectorise.

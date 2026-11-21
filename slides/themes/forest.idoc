@@ -1,5 +1,5 @@
 @deck(theme=forest, transition=slide, ratio=16:9, size=huge)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: forest)
 
 @titleslide

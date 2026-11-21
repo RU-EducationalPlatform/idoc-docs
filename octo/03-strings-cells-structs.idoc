@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 3: strings, cells, structs and maps)
 
 Text, mixed collections and named records each have their own container.

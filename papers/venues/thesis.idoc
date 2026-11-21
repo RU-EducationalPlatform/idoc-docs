@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=thesis, font=Computer Modern, landscape, speech=standard, speechrate=0.85, pausefactor=0.5, paper=a4)
 @title(Venue: thesis)
 

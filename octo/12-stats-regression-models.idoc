@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 12: regression, GLMs, mixed models and ANOVA)
 
 Models are written as formulas over a table: `y ~ x1 + x2`. The data below is invented.

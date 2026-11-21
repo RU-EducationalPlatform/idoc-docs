@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Code 2: every @@code argument)
 
 Each block shows one argument of @@code at work.

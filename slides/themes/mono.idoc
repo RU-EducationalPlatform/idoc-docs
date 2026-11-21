@@ -1,5 +1,5 @@
 @deck(theme=mono, transition=none, ratio=4:3, size=large)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: mono)
 
 @titleslide

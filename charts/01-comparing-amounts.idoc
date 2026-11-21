@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Charts: Comparing amounts)
 
 Bars, stacked bars, waterfalls and funnels: one number per thing, side by side. Each chart is followed by the source that drew it, and every example carries its own data.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 7: 3-D plots and animation)
 
 Every 3-D figure can be turned with the mouse. A loop that redraws with `drawnow` or `pause` becomes an animation the reader can play.

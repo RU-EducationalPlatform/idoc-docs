@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Charts: Tufte)
 
 Sparklines, slopegraphs, dot-dash plots, small multiples and bullet charts. Each chart is followed by the source that drew it, and every example carries its own data.

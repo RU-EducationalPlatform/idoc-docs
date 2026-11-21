@@ -1,5 +1,5 @@
 @deck(theme=slate, transition=zoom, ratio=16:10, size=small, autostart, autoplay=5s)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: slate)
 
 @titleslide

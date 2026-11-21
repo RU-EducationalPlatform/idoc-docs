@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Code 7: graded code questions)
 
 A runnable block becomes a question when it has points. `@@qc(P)` before it numbers the question and gives its points; the server re-runs the checks on the submitted source.

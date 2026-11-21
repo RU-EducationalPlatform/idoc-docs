@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Code 5: notebooks)
 
 `@@notebook` is a Jupyter-style notebook: cells share one kernel, so a name set in one cell is there in the next.

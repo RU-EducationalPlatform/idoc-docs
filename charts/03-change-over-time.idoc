@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Charts: Change over time)
 
 Lines, areas, steps, candlesticks and timelines. Each chart is followed by the source that drew it, and every example carries its own data.

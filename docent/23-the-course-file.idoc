@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(The course file and Docent)
 
 A course is a file and a folder. The file, PHY101.course beside this one, is the syllabus and the gradebook's rules in one text. Docent is the course page that file drives: students see their to-do list, work and marks there; teachers see the roster, the gradebook and the marking queue.

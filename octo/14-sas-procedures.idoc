@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 14: the SAS procedures)
 
 Octo can print a report the way SAS prints it. Each `proc...` function takes a table and prints the report; with an output argument it returns a table instead. The data is invented.

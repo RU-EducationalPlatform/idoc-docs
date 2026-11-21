@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Code 4: @@lab and its submit modes)
 
 `@@lab(TYPE, ...)` is one name for every studio; `@@lab(code, ...)` is a code exercise and `@@lab(octo, ...)` the Octo studio.

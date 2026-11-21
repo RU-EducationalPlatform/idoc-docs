@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Signing and forms)
 
 Signature fields, initials, dates and signature checks.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Charts: Every argument)
 
 Every @@graph argument and allowed value that the other chart files do not already use, each in one small working chart with invented data.

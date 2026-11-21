@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Styles, themes and fonts)
 
 A stylesheet is the theme: named values, text styles and box styles. This collection uses styles/IDocDemo.style, applied by the first line of every file.
@@ -7,17 +7,17 @@ A stylesheet is the theme: named values, text styles and box styles. This collec
 
 @subsection(@@style)
 
-Apply a stylesheet: a bare name finds styles/Name.style.
+Apply a stylesheet by its path. A bare name such as IDocDemo also finds styles/Name.style, but from a folder below the top the preview asks you to write the path, so these demos do.
 
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 
-@style(IDocDemo, titles=Helvetica, h1.size=24pt)
+@style(../styles/IDocDemo.style, titles=Helvetica, h1.size=24pt)
 
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 
-@style(IDocDemo, test="Quiz 1")
+@style(../styles/IDocDemo.style, test="Quiz 1")
 H@sub(2)O
 
 @subsection(@@value)
@@ -98,7 +98,7 @@ A whole paragraph.
 
 Inside a .style: splice the parent stylesheet in first, so this sheet's settings override it.
 
-@inherits(IDocDemo)
+@inherits(../styles/IDocDemo.style)
 
 @subsection(@@theme)
 

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Equations)
 
 Display and inline maths without backslashes, numbered equations, and equation libraries.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Templates and reuse)
 
 Macros, conditions and included files.

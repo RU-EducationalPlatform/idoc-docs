@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Circuits: breadboard, schematic and PCB (@@EECad))
 
 @box(w=100%, style=offline)

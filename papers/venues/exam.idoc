@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=exam, font=sans, shuffle=mc, spread, qnumbers, fillsize=10, live-grading=on, answer-mode=off)
 @title(Venue: exam)
 

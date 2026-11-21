@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(CAD, meshes, 3-D models and GPU shaders)
 
 @box(w=100%, style=offline)

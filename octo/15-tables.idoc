@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 15: tables, and results as tables)
 
 A table holds named columns of different types, like a spreadsheet. The CSV in this document's sidecar folder is invented.

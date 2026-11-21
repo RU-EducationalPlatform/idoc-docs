@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=acm, font=Palatino, mathfont=pagella, margintop=0.8in, marginbottom=0.9in, marginx=0.75in, theme=light)
 @title(Venue: acm)
 

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(The music studio)
 @subtitle(A score you can play, mix and drum along to, all in one block)
 

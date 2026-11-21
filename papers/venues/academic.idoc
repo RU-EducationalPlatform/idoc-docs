@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=academic, font=Garamond, parspacing=0.8em, widows=avoid, orphans=avoid, notes=end, theme=dark, print=white)
 @title(Venue: academic)
 

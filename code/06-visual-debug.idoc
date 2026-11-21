@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Code 6: run, build and visual debug)
 
 `@visual_debug` mounts a debugger under a code block: a waveform for Verilog and SystemVerilog, a profile for C, C++, CUDA and Rust. `id=` names the @@code block it watches, so it always shows the code as it is now.

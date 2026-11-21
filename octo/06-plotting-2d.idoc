@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 6: plotting in 2-D)
 
 Each plotting call draws into the current figure, which appears beside the code. `figure` starts a new one, `hold on` keeps drawing into the same axes.

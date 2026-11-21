@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 4: functions and function handles)
 
 Functions package work for reuse; handles let you pass a function around as a value.

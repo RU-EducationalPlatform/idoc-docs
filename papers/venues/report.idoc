@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=report, font=Helvetica, twoside, inner=1.2in, outer=0.8in, numbers=i, a11y=colorblind)
 @title(Venue: report)
 

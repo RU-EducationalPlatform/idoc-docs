@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Octo 20: every @@octo argument)
 
 The arguments change how a block looks, when it runs and how long it may take. Each block below shows one.

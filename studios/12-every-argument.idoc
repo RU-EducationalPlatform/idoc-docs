@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Studios: Every argument)
 
 Every studio argument and theme, light and mode value that the other studio files do not already use, each in one small working example.

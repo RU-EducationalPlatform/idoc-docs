@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Code 1: every language @@code runs)
 
 `@@code(LANG, run)` gives an editor with a Run button. JavaScript and Python run in the browser; every other language runs on the server's sandboxed runner (or the student's own local runner).

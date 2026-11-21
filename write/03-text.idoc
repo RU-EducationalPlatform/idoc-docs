@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Text)
 
 Bold, italic, colour, size, fonts, links, footnotes and other inline marks.

@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Points, rubrics and feedback)
 
 How questions are worth points, how they are marked by hand, and what a student sees after answering.

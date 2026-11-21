@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Charts: Many columns at once)
 
 Scatter-plot matrices and parallel coordinates. Each chart is followed by the source that drew it, and every example carries its own data.

@@ -1,5 +1,5 @@
 @deck(theme=ocean, transition=fade, ratio=16:10, size=xlarge)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: ocean)
 
 @titleslide

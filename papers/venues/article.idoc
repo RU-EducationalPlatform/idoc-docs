@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=article, font=Times New Roman, fontsize=11pt, margin=1in, pagenumbers=1, paper=us-letter, lang=en)
 @title(Venue: article)
 

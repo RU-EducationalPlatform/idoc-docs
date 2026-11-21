@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Front matter and cross-references)
 
 Authors, abstract, keywords, notes, labels and references to them.

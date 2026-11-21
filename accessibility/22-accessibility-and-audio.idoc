@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Accessibility and audio)
 
 Read aloud, spoken maths, Braille and audio players.

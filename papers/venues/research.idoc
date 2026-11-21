@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=research, font=Arial, blind-review=on, pdfa, theme=dracula, print=theme)
 @title(Venue: research)
 

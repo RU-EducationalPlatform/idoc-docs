@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../styles/IDocDemo.style)
 @title(Figures and media)
 
 Pictures, figures with captions, video, PDF pages, icons, diagrams and shapes.

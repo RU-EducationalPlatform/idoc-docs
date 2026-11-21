@@ -1,5 +1,5 @@
 @deck(theme=graphite, transition=cover, ratio=16:10, size=normal)
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @title(Deck theme: graphite)
 
 @titleslide

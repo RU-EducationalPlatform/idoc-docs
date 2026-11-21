@@ -1,4 +1,4 @@
-@style(IDocDemo)
+@style(../../styles/IDocDemo.style)
 @doc(template=ieee, columns=2, colgap=0.3in, font=Georgia, refsize=8pt, keywordlabel=Index Terms, mathfont=termes)
 @title(Venue: ieee)
 
