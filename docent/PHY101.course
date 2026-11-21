@@ -1,0 +1,51 @@
+@ A complete sample course file. Every name, id and date in it is invented.
+@ The .course file is the syllabus and what the gradebook runs on.
+
+@course(PHY101, title="Introduction to Circuits", term="Fall 2026")
+
+@ Who teaches it. @staff lists several people at once; @teacher, @ta and @grader add one each.
+@staff(ar101=teacher, so202=ta)
+@teacher(ar101, name="Alex Rivera")
+@ta(so202)
+@grader(lc303)
+@observers(page=student)
+
+@ Where the class meets when it is not a room, and office hours students can book.
+@meet(https://meet.example.org/phy101, title="Lecture", when="Mon & Wed 10:00")
+@meet(https://chat.example.org/phy101, title="Class chat")
+@hours("Tuesday 14:00-16:00", each=15m, where="Science 214")
+
+@ What the grade is made of.
+@weights(Homework=20, Quizzes=15, Labs=15, Exams=50)
+@drop(Homework=2)
+@scale(A=93, A-=90, B=83, C=73)
+@late(percent=10, per=day, max=3, grace=15m)
+
+@ How marking is divided among the staff.
+@grading(split=wrong, deal=task, double=10%)
+
+@ Student groups: the roster column group:Lab says who is in which.
+@groups(Lab, size=3, self=true, teams=8)
+
+@ What students should be able to do. Work tagged outcomes=ohm counts towards it.
+@outcome(ohm, "Apply Ohm's law to a series circuit", master=80)
+
+@topic(DC circuits, opens=2026-09-01)
+@read(lectures/01.idoc, title="Charge, current and voltage")
+@assign(hw1.idoc, due="2026-09-08 23:59", pts=100, cat=Homework, outcomes=ohm)
+@exam(quiz1.idoc, due="2026-09-10 17:00", pts=25, time=30m)
+@gate(score>=70)
+
+@week(2, opens=2026-09-08)
+@assign(lab1.idoc, group=Lab, peers=2, attempts=2, keep=highest, cat=Labs)
+@provide(labs/lab4-starter/, title="Lab 4 files", when=auto)
+@assign(lab4.idoc, provide=labs/lab4-starter/, cat=Labs)
+@discuss(prompt.idoc, pts=10, posts=1, replies=2)
+@gate(complete)
+
+@unit(Measurement)
+@assign(report.idoc, pts=100, markers=2, tolerance=8, post=manual, cat=Homework)
+@tool(publisher-hw, title="Chapter 4 homework", pts=20, cat=Homework)
+@exam(midterm.idoc, due="2026-10-15 10:00", pts=100, grading=scan, variants=4, signup=required)
+@grading(split=paper)
+@provide(folder=labs/lab4-starter/, into=starter, overwrite=false)

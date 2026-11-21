@@ -1,0 +1,229 @@
+@style(IDocDemo)
+@title(Circuits: breadboard, schematic and PCB (@@EECad))
+
+@box(w=100%, style=offline)
+Pressing Start compiles the @@sketch on the server, so the Arduino parts need idoc.page, the local server or the desktop app.
+@end
+
+Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.
+
+@section(Breadboard and Arduino circuits: EECad sourdough)
+
+Build a real circuit by hand on a breadboard with an Arduino and real components, then press Start and watch it run: the sketch is compiled and executed on a simulated microcontroller.
+
+@EECad(sourdough)
+uno u1 at 40,120
+resistor r1 at 320,60 value 220
+led d1 at 420,60 color red
+wire u1.13 to r1.1 color green
+wire r1.2 to d1.a
+wire d1.k to u1.gnd color black
+@sketch
+void setup() { pinMode(13, OUTPUT); }
+void loop() { digitalWrite(13, HIGH); delay(500); digitalWrite(13, LOW); delay(500); }
+@end
+@end
+
+@b{Parts, one per line.} Each line is a part with an id and a place: uno, resistor, led, pushbutton, battery and the rest of the parts drawer.
+
+@EECad(sourdough)
+battery b1 at 40,80
+resistor r1 at 200,60 value 1k
+led d1 at 320,60 color green
+wire b1.+ to r1.1
+wire r1.2 to d1.a
+wire d1.k to b1.-
+@end
+
+@b{The program.} An @@sketch section holds real Arduino C++.
+
+@EECad(sourdough, board=uno)
+uno u1 at 40,120
+@sketch
+void setup() { Serial.begin(9600); Serial.println("hello"); }
+void loop() {}
+@end
+@end
+
+@b{A restricted parts drawer.} Name parts after the type and the drawer offers only those, so a lab about LEDs is not lost among 80 parts.
+
+@EECad(sourdough, led, resistor, battery)
+@end
+
+@b{Views.} views= picks which views a reader can switch between: breadboard, schematic (drawn from the breadboard's connections) and pcb (routed and DRC-checked).
+
+@EECad(sourdough, views=breadboard;schematic)
+battery b1 at 40,80
+led d1 at 200,60
+wire b1.+ to d1.a
+wire d1.k to b1.-
+@end
+
+@b{Look of the canvas.} labels=yes shows part names, pinlabels=no hides a board's lettering, grid=no removes the dot grid and bg= colours the surface.
+
+@EECad(sourdough, labels=yes, grid=no, bg=#f7f7f2)
+led d1 at 120,60
+@end
+
+@b{A graded exercise.} Give id=, pts= and expect= pairs.
+
+@EECad(sourdough, id=lab1, pts=5, expect="count(resistor)=1, led(d1)=on")
+battery b1 at 40,80
+led d1 at 300,60
+@solution
+battery b1 at 40,80
+resistor r1 at 160,60 value 330
+led d1 at 300,60
+wire b1.+ to r1.1
+wire r1.2 to d1.a
+wire d1.k to b1.-
+@end
+
+@b{Graded.} With id=, pts= and expect= the server rebuilds the student's circuit from their text, simulates it for run= milliseconds with seed= fixing every noise source, and checks each pair: nets=solution, parts=, count(), V(), current(), blink(), led(), serial~=, burnt=none, net() and apart().
+
+@section(Circuit schematics and simulation: EECad schematic)
+
+Draw a circuit diagram from symbols and wires, check it, and simulate it with ngspice: operating point, transient, AC sweep and DC sweep, plotted in the card.
+
+@EECad(schematic)
+V1 vsource 5V at 10,40
+R1 resistor 1k at 30,45
+R2 resistor 2k at 30,25
+GND ground at 30,5
+wire 10,40 to 30,40
+wire 30,30 to 30,40
+@end
+
+@b{Parts and wires.} Each part line is a reference, a kind, a value and a place: resistor, cap, cappol, inductor, sw, vsource, isource, diodes, transistors, op-amps, ground.
+
+@EECad(schematic)
+V1 vsource 1V at 0,0
+R1 resistor 1k at 20,0
+C1 cap 1u at 40,0
+GND ground at 60,0
+@end
+
+@b{Analyses.} Add a SPICE line: .op, .tran, .ac or .dc.
+
+@EECad(schematic)
+V1 vsource 1V at 0,0
+R1 resistor 1k at 20,0
+C1 cap 1u at 40,0
+GND ground at 60,0
+.ac dec 30 10 100k
+@end
+
+@b{Probes.} probes= lists the nets Simulate plots.
+
+@EECad(schematic, probes=OUT)
+V1 vsource 5V at 10,40
+R1 resistor 1k at 30,45
+GND ground at 30,5
+@end
+
+@b{A graded exercise.} expect= pairs read node voltages from .op (V(OUT)=3.33 — label the net you ask about) and the circuit's structure: parts=, count(), erc=clean, missing=, extra=, and nets=solution against the @@solution section.
+
+@EECad(schematic, id=div1, pts=4, expect="count(resistor)=2, erc=clean", tolerance=0.05)
+V1 vsource 5V at 10,40
+GND ground at 30,5
+@end
+
+@b{Hide the source.} noedit shows the diagram and its tools without the text pane.
+
+@EECad(schematic, noedit)
+V1 vsource 5V at 10,40
+R1 resistor 1k at 30,45
+GND ground at 30,5
+@end
+
+@b{Graded.} With id=, pts= and expect= the server rebuilds the student's schematic and checks each pair: voltages from the .op solution within tolerance=, and the structure (parts, counts, ERC, nets=solution compared up to names and placement).
+
+@section(Printed circuit boards: EECad pcb)
+
+Lay out a printed circuit board — parts, tracks, vias, zones — check it against design rules and export Gerbers, or show an existing EAGLE or KiCad board and ask students to find a part on it.
+
+@EECad(pcb)
+board 40x30
+rules clearance=0.2 track=0.2
+net VIN GND OUT
+R1 R0805 10k at 10,10 pads 1=VIN 2=OUT
+R2 R0805 22k at 10,16 rot 90 pads 1=OUT 2=GND
+J1 HDR1x3 at 30,8 pads 1=VIN 2=OUT 3=GND
+@end
+
+@b{The board as lines.} board WxH, rules, net names, then each part as a reference, a footprint, a value, a place and its pads' nets; track NET LAYER points, via NET at x,y, zone, text and silkscreen lines.
+
+@EECad(pcb)
+board 20x20
+net A B
+R1 R0805 1k at 6,10 pads 1=A 2=B
+track A F.Cu 5,10 2,10
+via B at 15,10
+@end
+
+@b{View an existing board.} file= shows an EAGLE .brd, a KiCad .kicad_pcb or a .bpcb as it is, with pan and zoom.
+
+@EECad(pcb, file=circuits.assets/board.brd, labels=false)
+
+@b{Find the part.} ask=identify with target= makes a .brd board a question: the student clicks the named part.
+
+@EECad(pcb, file=circuits.assets/board.brd, ask=identify, target=U2)
+
+@b{A graded layout.} expect= pairs check the student's board: drc=clean, unrouted=0, connected=solution (same pads joined as the @@solution key, any route), parts=, count(), missing=, extra=.
+
+@EECad(pcb, id=pcb1, pts=6, expect="drc=clean, unrouted=0")
+board 20x20
+net A B
+R1 R0805 1k at 6,10 pads 1=A 2=B
+@end
+
+@b{Graded.} ask=identify is right when the student clicks the target part.
+
+
+@section(Every other argument)
+
+@b{Simulation controls.} run= is how many milliseconds a graded run lasts, seed= fixes the noise, speed= is simulated seconds per real second, sim=on starts at once, tolerance= is the fraction a reading may be off.
+
+@EECad(sourdough, run=2000, seed=7, speed=0.5, sim=on, tolerance=0.1)
+battery b1 at 40,80 value 9V
+resistor r1 at 200,60 value 470
+led d1 at 320,60 color yellow
+wire b1.+ to r1.1
+wire r1.2 to d1.a
+wire d1.k to b1.-
+@end
+
+@b{Drawer, code panel and look.} parts= lists the drawer, code= picks blocks, both, text or none, pinlabels=no hides a board's lettering, stage=theme takes the document's colours, width= and height= size the card, time= is how long a live class keeps it open.
+
+@EECad(sourdough, parts="led resistor pushbutton", code=both, pinlabels=no, stage=theme, width=720, height=420, time=5m)
+uno u1 at 40,120
+@sketch
+void setup() { pinMode(13, OUTPUT); }
+void loop() { digitalWrite(13, HIGH); }
+@end
+@end
+
+@b{Read only.} noedit shows the circuit with no tools; hex= carries a sketch already compiled by a publication, so you never write it by hand.
+
+@EECad(sourdough, noedit)
+battery b1 at 40,80
+led d1 at 200,60
+wire b1.+ to d1.a
+wire d1.k to b1.-
+@end
+
+@b{Schematic layout and hand-in.} output= puts the result beside the source, submit=server keeps the student's work, height= is the drawing's own height, width= the card's, theme= the studio look.
+
+@EECad(schematic, output=right, submit=server, id=divider-hand-in, height=300, width=700, theme=dark, time=10m)
+V1 vsource 5V at 10,40
+R1 resistor 1k at 30,45
+R2 resistor 2k at 30,25
+GND ground at 30,5
+wire 10,40 to 30,40
+wire 30,30 to 30,40
+wire 30,20 to 30,10
+@end
+
+@b{Board viewer options.} ratsnest=false hides the unrouted lines, labels=false the designators; noedit, stage=, output=, theme=, time=, width= and height= work as above.
+
+@EECad(pcb, file=circuits.assets/board.brd, ratsnest=false, labels=false, noedit, stage=theme, output=right, theme=dark, time=5m, width=640, height=400)

@@ -1,0 +1,128 @@
+@style(IDocDemo)
+@title(Equations)
+
+Display and inline maths without backslashes, numbered equations, and equation libraries.
+
+@section(Writing maths)
+
+@subsection(@@eqn)
+
+A display equation in IDoc math — no backslashes: frac{a}{b}, sqrt{x}, sin^2{alpha}, greek by name.
+
+@eqn
+frac{a}{b} = c
+@end
+@eqn(style=inline) x^2 @end
+
+A numbered display with a wider gap to its number:
+@eqn(gap=2em, label=gap1)
+E = m c^2
+@end
+
+@subsection(@@eqi)
+
+Inline math, short form of eqn(style=inline) — it flows with the prose.
+
+@subsection(@@eqns)
+
+Several lines of maths lined up at &, each line with its own number.
+
+@eqns
+f(x) &= (x+1)^2 @label(sq)
+     &= x^2 + 2x + 1 @nonum
+g(x) &= 3x
+@end
+as shown in @eqref(ohm)
+
+@subsection(@@eqnnum)
+
+A numbered display equation — referenceable with eqref.
+
+@eqnnum(label=ohm)
+V = I R
+@end
+
+@eqnnum(gap=3em)
+F = m a
+@end
+
+@subsection(@@eqref)
+
+Reference a numbered equation by its label.
+
+@section(Equation libraries)
+
+@subsection(@@dict)
+
+Define a library of named equations, reusable with eq / eqsrc.
+
+@dict(trig)
+pythag: a^2 + b^2 = c^2
+@end
+
+@dict(geo)
+Pythagorean: c^2 = a^2 + b^2
+  label: Pythagorean theorem
+  caption: c squared equals a squared plus b squared
+  term: c | c | the hypotenuse
+py = Pythagorean
+@end
+
+@subsection(@@eq)
+
+Insert a library equation from a dict by name (read-only).
+
+@eq(trig.pythag)
+
+@eq(med.Beer-Lambert-Intensity, all)
+
+@eq(fd.nv, num)
+the value @eqi(x^2) grows
+
+@dict(phys)
+ohm: V = I R
+  label: Ohm's law
+  caption: voltage equals current times resistance
+  expanded: the voltage across a resistor is the current through it times its resistance
+  terms: V voltage; I current; R resistance
+  source: Ohm, 1827
+  author: A. Rivera
+@end
+
+Inline from the library: @eq(phys.ohm, inline).
+
+@eq(phys.ohm, label)
+
+@eq(phys.ohm, caption)
+
+@eq(phys.ohm, expanded)
+
+@eq(phys.ohm, terms)
+
+@eq(phys.ohm, source)
+
+@eq(phys.ohm, author)
+
+@subsection(@@eqsrc)
+
+Pull a library equation's SOURCE so you can edit it in place.
+
+@eqsrc(trig.pythag)
+
+@subsection(@@eqinfo)
+
+A dictionary entry's stored fields as a block, without the equation: label, spoken caption, expanded caption, terms table, source, and who wrote and checked it.
+
+@eqinfo(med.Beer-Lambert-Intensity)
+
+@eqinfo(ee.Friis-Aperture, caption, terms)
+
+@eqinfo(phys.ohm, label)
+
+@eqinfo(phys.ohm, expanded)
+
+@eqinfo(phys.ohm, source)
+
+@eqinfo(phys.ohm, author)
+
+@eqinfo(phys.ohm, all)

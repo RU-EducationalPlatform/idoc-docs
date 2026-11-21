@@ -1,0 +1,170 @@
+@style(IDocDemo)
+@title(Charts: Comparing amounts)
+
+Bars, stacked bars, waterfalls and funnels: one number per thing, side by side. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Bar}
+
+One number per category. The default when you have labels and values.
+
+@graph(type=bar, x=field, y=Bachelor, title="Bachelor's degrees awarded")
+@data
+field,Bachelor,Master,Doctorate
+Engineering,126000,52000,11000
+Computer science,104000,48000,2300
+Biology,131000,15000,8100
+Physics,9600,2100,1900
+@end
+
+@code(idoc)
+@graph(type=bar, x=field, y=Bachelor, title="Bachelor's degrees awarded")
+@data
+field,Bachelor,Master,Doctorate
+Engineering,126000,52000,11000
+Computer science,104000,48000,2300
+Biology,131000,15000,8100
+Physics,9600,2100,1900
+@end
+@end
+@endcell
+@cell
+@b{Your own colours}
+
+colors= sets the colours in order — hex or CSS names. Any chart takes it; colormap= picks a named scale instead.
+
+@graph(type=bar, x=team, y=points, colors=#cc0033;#5f6a72;#f0a202, title="colors= takes hex or names")
+@data
+team,points
+Scarlet,120
+Grey,90
+Gold,60
+@end
+
+@code(idoc)
+@graph(type=bar, x=team, y=points, colors=#cc0033;#5f6a72;#f0a202, title="colors= takes hex or names")
+@data
+team,points
+Scarlet,120
+Grey,90
+Gold,60
+@end
+@end
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Grouped bar}
+
+Several series side by side — compare categories AND series at once.
+
+@graph(type=bar, x=field, y=Bachelor;Master;Doctorate, title="Degrees by level")
+@data
+field,Bachelor,Master,Doctorate
+Engineering,126000,52000,11000
+Computer science,104000,48000,2300
+Biology,131000,15000,8100
+Physics,9600,2100,1900
+@end
+
+@code(idoc)
+@graph(type=bar, x=field, y=Bachelor;Master;Doctorate, title="Degrees by level")
+@data
+field,Bachelor,Master,Doctorate
+Engineering,126000,52000,11000
+Computer science,104000,48000,2300
+Biology,131000,15000,8100
+Physics,9600,2100,1900
+@end
+@end
+
+Naming more than one y column groups them. This is the default multi-series bar layout.
+@endcell
+@cell
+@b{Stacked bar}
+
+Series stacked into one bar — the total AND its parts, together.
+
+@graph(type=stacked_bar, x=year, y=Public;Private, title="US secondary schools")
+@data
+year,Public,Private
+2009,98817,33366
+2011,98328,30861
+2013,98271,33619
+2015,98277,34576
+2017,98469,32461
+2019,98469,30492
+@end
+
+@code(idoc)
+@graph(type=stacked_bar, x=year, y=Public;Private, title="US secondary schools")
+@data
+year,Public,Private
+2009,98817,33366
+2011,98328,30861
+2013,98271,33619
+2015,98277,34576
+2017,98469,32461
+2019,98469,30492
+@end
+@end
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Waterfall}
+
+How a starting number becomes an ending one, step by step.
+
+@graph(type=waterfall, x=item, y=delta, title="Budget")
+@data
+item,delta
+Opening,120
+Salaries,-45
+Equipment,-18
+Grant,30
+@end
+
+@code(idoc)
+@graph(type=waterfall, x=item, y=delta, title="Budget")
+@data
+item,delta
+Opening,120
+Salaries,-45
+Equipment,-18
+Grant,30
+@end
+@end
+@endcell
+@cell
+@b{Funnel}
+
+A quantity narrowing through stages.
+
+@graph(type=funnel, x=stage, y=n, title="Applications")
+@data
+stage,n
+Applied,1200
+Screened,540
+Interviewed,160
+Offered,44
+@end
+
+@code(idoc)
+@graph(type=funnel, x=stage, y=n, title="Applications")
+@data
+stage,n
+Applied,1200
+Screened,540
+Interviewed,160
+Offered,44
+@end
+@end
+@endcell
+@endtable

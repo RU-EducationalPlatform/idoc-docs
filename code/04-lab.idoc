@@ -1,0 +1,57 @@
+@style(IDocDemo)
+@title(Code 4: @@lab and its submit modes)
+
+`@@lab(TYPE, ...)` is one name for every studio; `@@lab(code, ...)` is a code exercise and `@@lab(octo, ...)` the Octo studio.
+
+@section(A practice lab)
+
+With no `submit`, a lab is practice: the student runs it as often as they like and nothing is recorded.
+
+@lab(code, python)
+print("practice only")
+@end
+
+@section(Handed in to the server)
+
+`submit=server` adds a Submit button; with `id=` and `pts=` the server re-runs the checks on the submitted source and records the mark.
+
+@lab(code, python, submit=server, id=lab_sum, pts=4, expect="55")
+print(sum(range(11)))
+@end
+
+@section(Starting from a file)
+
+`file=` loads the starting code from a file; the language comes from its suffix.
+
+@lab(code, file=04-lab.assets/first.sv, submit=server, id=lab_sv, pts=4)
+@end
+
+@section(Fixed input)
+
+`stdin=` feeds the same input to every run, so the expected output is fixed.
+
+@lab(code, python, stdin="3 4", submit=server, id=lab_in, pts=2, expect="7")
+a, b = map(int, input().split())
+print(a + b)
+@end
+
+@section(Hidden tests and a solution)
+
+A lab takes @@tests and @@solution like any runnable block.
+
+@lab(code, python, submit=server, id=lab_tests, pts=3)
+def square(x):
+    return x * x
+@tests
+assert square(3) == 9
+assert square(-2) == 4
+@end
+
+@section(The Octo lab)
+
+`@@lab(octo, run)` is the Octo studio; `benchmark=` times it.
+
+@lab(octo, run, benchmark=octo_lab)
+A = magic(4);
+disp(sum(A(:)))
+@end

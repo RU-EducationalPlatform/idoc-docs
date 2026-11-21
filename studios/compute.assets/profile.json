@@ -1,0 +1,1 @@
+{"traceEvents":[{"name":"main","ph":"X","ts":0,"dur":1200,"pid":1,"tid":1},{"name":"sort","ph":"X","ts":100,"dur":800,"pid":1,"tid":1},{"name":"compare","ph":"X","ts":150,"dur":300,"pid":1,"tid":1}]}

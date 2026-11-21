@@ -1,0 +1,267 @@
+@style(IDocDemo)
+@title(Text)
+
+Bold, italic, colour, size, fonts, links, footnotes and other inline marks.
+
+@section(Inline marks)
+
+@subsection(@@b)
+
+Bold text — b{like this}.
+
+@b{bold}
+
+@@strong is the same: @strong{bold}.
+
+@subsection(@@i)
+
+Italic text.
+
+@i{italic}
+
+@i(the @up(Titanic) sank)
+The carry is @use(huge) important @end here.
+
+@@emph is the same: @emph{stressed}.
+
+@@em and @@it are the same as @@i: @em{italic} and @it{italic}.
+
+@subsection(@@u)
+
+Underlined text — and with a look, up to end: wave, double, dotted, dashed, thick (and a colour).
+
+@u(underlined)
+
+@u(wave) misspelt @end
+
+@u(double, red) total @end
+
+@subsection(@@s)
+
+Struck-through text.
+
+@s(old price)
+
+@subsection(@@sc)
+
+Small capitals.
+
+@sc(Example University)
+
+@subsection(@@sub)
+
+Subscript text (not maths): Hsub(2)O.
+
+@subsection(@@sup)
+
+Superscript text (not maths): 1sup(st), xsup(2).
+
+@sup(th)
+
+@subsection(@@up)
+
+Upright text inside italics.
+
+@subsection(@@over)
+
+A line over the text.
+
+@over(Q)
+
+@subsection(@@nl)
+
+A line break (the explicit form inside a quiz line).
+
+@nl
+
+@@newline is the same as @@nl: one@newline two
+
+@subsection(@@nohyphen)
+
+Words that are never hyphenated at a line end (a name, a product).
+
+@nohyphen(Rivera-Okafor)
+
+@section(Colour, highlight, size and font)
+
+@subsection(@@color)
+
+Coloured text, up to end.
+
+@color(red) these words @end
+
+@color(#1d4ed8)
+…paragraphs…
+@end
+
+@color(color=#b91c1c) Named with color=. @end
+
+@subsection(@@hl)
+
+Highlighted text.
+
+@hl(important)
+
+@hl(#bbf7d0) these words @end
+
+@hl(color=#fecaca) A red highlight, set with color=. @end
+
+@subsection(@@size)
+
+Text at another size, up to end: 14pt, 1.2em, large, small.
+
+@size(large) these words @end
+
+@size(9pt)
+…paragraphs…
+@end
+
+@size(size=large) Bigger words by size=. @end
+
+@size(small) small @end and @size(huge) huge @end
+
+@subsection(@@font)
+
+Set the typeface for some words, the rest of a paragraph, or a whole block — and its weight (w=100–900 or light/semibold/black), letter spacing (track=0.05em) and figures (nums=oldstyle, lining, tabular, proportional).
+
+@font(Georgia){these words}
+
+@font(w=semibold, track=0.05em) these words @end
+
+@font(nums=oldstyle tabular) 1234 @end
+
+@font(Times New Roman){Times New Roman for these words}
+
+@font(Palatino)  … @end
+
+@font(Arial, 14pt)
+text@footnote{the note}
+
+@font(name=Georgia, size=14pt, text=Named arguments for font size and text.)
+
+@font(weight=bold, tracking=0.08em) Bold and tracked. @end
+
+@font(liga=false) office, flour, affix: no ligatures. @end
+
+@section(Alignment)
+
+@subsection(@@center)
+
+Centre a block of content.
+
+@center
+content
+@end
+
+@subsection(@@left)
+
+Left-align a block.
+
+@left … @end
+
+@subsection(@@right)
+
+Right-align a block.
+
+@right … @end
+
+@subsection(@@justify)
+
+Justify a block (flush both edges).
+
+@justify … @end
+
+@subsection(@@dropcap)
+
+A large first letter sunk through the opening lines of its paragraph (3 by default; lines=2 to 6).
+
+@dropcap(O)nce upon a time…
+
+@dropcap(T, lines=2)he chapter opens…
+
+@section(Notes and links)
+
+@subsection(@@footnote)
+
+A numbered footnote at the bottom of the page.
+
+@subsection(@@margin)
+
+A note in the right margin, beside the line it is written in — printed, at the same width and size on screen and in the PDF.
+
+@subsection(@@todo)
+
+A note to yourself: shown in the preview's margin while you write, left out of every PDF, Word and EPUB file automatically.
+
+@subsection(@@link)
+
+A hyperlink.
+
+@link(https://example.com, click here)
+
+@link(01-headings-and-structure.idoc, see the notes)
+
+@link(01-headings-and-structure.idoc#keywords, the keywords)
+
+@link(#keywords, jump to that section)
+
+
+@link(url=https://example.org, text=a link by named arguments)
+
+@link(https://example.org, text=A card with a thumbnail, img=auto, size=16em)
+
+@subsection(@@rule)
+
+A horizontal line across the text column — its width, thickness, colour and alignment.
+
+@rule
+
+@rule(w=50%, h=1pt, align=center)
+
+@rule(color=#999)
+
+@subsection(@@demo)
+
+Shows a piece of IDoc twice: its source, answers masked, and what it makes under it.
+
+@demo … @end
+
+@subsection(@@lang)
+
+Words in another language, up to end: hyphenated, quoted and set left to right or right to left as that language is.
+
+@lang(de) Die Würde des Menschen @end
+
+@lang(ar)
+…paragraphs…
+@end
+
+@lang(lang=fr) Bonjour tout le monde. @end
+
+@subsection(@@verb)
+
+Raw text shown exactly as typed — monospace, whitespace preserved, nothing interpreted.
+
+@verb{inline}
+
+@verb(font=mono, size=13)
+  exact text
+@end
+
+@verb(text=Exact text,   spaces kept., font=mono, size=13, color=#1f2937, bg=#f1f5f9, align=left, wrap)
+
+@verb(A very long line that scrolls sideways on screen rather than wrapping, scroll, plain, w=300px, h=40px)
+
+@verb(font=serif, align=center)
+Centred, in a serif face.
+@end
+
+@@verbatim is the same as @@verb:
+@verbatim
+Exact   text.
+@end
+
+@@pre is the same as @@verb:
+@pre
+  indented   exactly
+@end

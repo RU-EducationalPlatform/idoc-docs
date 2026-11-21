@@ -1,0 +1,56 @@
+@style(IDocDemo)
+@title(Code 5: notebooks)
+
+`@@notebook` is a Jupyter-style notebook: cells share one kernel, so a name set in one cell is there in the next.
+
+@section(Cells sharing a kernel)
+
+`kernel=` is python or js; a bare @@cell keeps the previous cell's language.
+
+@notebook(kernel=python)
+@cell
+x = 21
+@cell
+print(x * 2)
+@end
+
+@section(Text, locked setup and IDoc cells)
+
+`@@cell(markdown)` is formatted text, `@@cell(python, locked)` is setup a student cannot edit, and `@@cell(idoc)` is live IDoc, even a question.
+
+@notebook(kernel=python)
+@cell(markdown)
+# Warm-up
+Run the cells in order.
+@cell(python, locked)
+import math
+@cell
+print(round(math.pi, 3))
+@cell(idoc)
+@q(fn: 3.142) What did the cell print?
+@end
+
+@section(A JavaScript notebook)
+
+@notebook(kernel=js)
+@cell
+let n = 5;
+@cell
+console.log(n * n);
+@end
+
+@section(Size, timing and marking)
+
+`height=`/`h=`, `width=`/`w=`, `minwidth=`/`maxwidth=` (`minw=`/`maxw=`) and `x=`/`y=` size and place it; `benchmark=` times a run; `id=` and `time=` make it a live-class exercise. Marks go on each graded cell, as `pts=` on the cell.
+
+@notebook(kernel=python, height=320, width=90%, maxwidth=900, minwidth=300, benchmark=nb_ms, id=nb1, time=10m)
+@cell
+data = [3, 5, 7]
+@cell(python, pts=2, expect="5.0")
+print(sum(data) / len(data))
+@end
+
+@notebook(kernel=python, h=200, w=80%, minw=250, maxw=700, x=0, y=0)
+@cell
+print("short size names")
+@end

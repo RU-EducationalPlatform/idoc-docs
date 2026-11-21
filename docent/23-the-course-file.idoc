@@ -1,0 +1,40 @@
+@style(IDocDemo)
+@title(The course file and Docent)
+
+A course is a file and a folder. The file, PHY101.course beside this one, is the syllabus and the gradebook's rules in one text. Docent is the course page that file drives: students see their to-do list, work and marks there; teachers see the roster, the gradebook and the marking queue.
+
+@box(w=100%, style=offline)
+Publishing, the gradebook and marking run on the IDoc server; the course file can be read and edited anywhere.
+@end
+
+@section(Reading PHY101.course)
+
+Open @link(PHY101.course, PHY101.course) and read it top to bottom. Each line is one fact:
+
+@dl
+course: names the course, its title and term.
+staff, teacher, ta, grader: who teaches and who marks. observers: which page an observer gets.
+meet, hours: the online meeting links and bookable office hours.
+weights, drop, scale, late: what the grade is made of, which low scores drop, the letter cut-offs and the late policy.
+grading: how marking is divided (split=wrong deals one task per wrong answer; split=paper deals whole papers).
+groups: named student groups, marked once per group.
+outcome: what students should be able to do; work tagged outcomes= counts towards it.
+topic, week, unit: a block of the course, running until the next one.
+read: ungraded reading. assign: work to hand in. exam: a timed paper. discuss: a graded discussion. tool: an outside LTI tool.
+provide: files that land in each student's workspace (when=auto copies them at once).
+gate: what a student must reach before the next topic opens.
+@end
+
+@section(Publishing to the course)
+
+A document reaches a class through one line in the course file: add @@assign or @@exam naming it, save, and Docent publishes a snapshot. Editing the source afterwards does not change a paper somebody is sitting; publish again to send a new version.
+
+@section(Teaching live)
+
+Open a document in the editor and press the teach shortcut (Cmd/Ctrl+Shift+M) to open it to the class. A studio or question with time= stays open for that long once the teacher opens it, for example:
+
+@q(fn: 4, id=live-q1) What is 2 + 2?
+
+@section(Course defaults)
+
+A teacher's usual lines (weights, late policy, scale) are saved as defaults and stamped into a new course file with a checklist of what changed.

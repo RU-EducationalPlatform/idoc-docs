@@ -1,0 +1,79 @@
+@style(IDocDemo)
+@title(Octo 3: strings, cells, structs and maps)
+
+Text, mixed collections and named records each have their own container.
+
+@section(Character arrays and strings)
+
+Single quotes make a char array, double quotes allow escapes like `\n`.
+
+@octo
+s = "Hello, Octo";
+upper(s), lower(s), fliplr(s), length(s)
+tolower("AB"), toupper("ab")
+strcat("ab", "cd"), [s " again"]
+strrep(s, "Octo", "world")
+strsplit("a,b,,c", ",")
+strjoin({"x", "y", "z"}, "-")
+strtrim("   pad   ")
+num2str(pi, 4), str2num("[1 2 3]"), str2double("2.5"), int2str(2.7), mat2str([1 2; 3 4])
+blanks(3), repmat("ab", 1, 3), deblank("tail   ")
+@end
+
+@section(Searching and comparing text)
+
+`strcmp` compares whole strings; `strfind` and `regexp` find pieces. Write regular expressions in single quotes so the backslashes reach the pattern.
+
+@octo
+strcmp("a", "a"), strcmpi("A", "a"), strncmp("hello", "help", 3)
+strfind("banana", "an")
+regexprep('2026-11-21', '(\d+)-(\d+)-(\d+)', '$3/$2/$1')
+tok = regexp('x=12, y=7', '(\w)=(\d+)', 'tokens'); tok{2}
+startsWith("report.csv", "rep"), endsWith("report.csv", ".csv"), contains("report", "port")
+isspace("a b"), isdigit("a1"), isletter("a1")
+dec2bin(10), bin2dec("1010"), dec2hex(255), hex2dec("FF"), double("A"), char(72)
+index("abcabc", "b"), substr("abcdef", 2, 3)
+@end
+
+@section(Cell arrays)
+
+A cell holds values of different types; braces get the contents, parentheses get a smaller cell.
+
+@octo
+c = {1, "two", [3 4 5]};
+class(c{2}), c(2)
+numel(c), iscell(c), iscellstr({"a", "b"})
+e = cell(1, 2); size(e)
+c{end+1} = "more"; numel(c)
+cellfun(@numel, c)
+cellfun(@(v) class(v), c, "UniformOutput", false)
+cell2mat({1 2; 3 4}), num2cell([1 2])
+@end
+
+@section(Structs)
+
+A struct groups named fields; an array of structs is a simple record list.
+
+@octo
+p.name = "Ada"; p.score = 91;
+p
+fieldnames(p)'
+isfield(p, "score"), isstruct(p)
+q = setfield(p, "score", 95); getfield(q, "score")
+r = rmfield(p, "score");
+people = struct("name", {"Ada", "Bo"}, "score", {91, 78});
+[people.score]
+arrayfun(@(t) t.score > 80, people)
+s = struct2cell(p)', cell2struct({1; 2}, {"a"; "b"}, 1)
+orderfields(struct("b", 1, "a", 2))
+@end
+
+@section(Maps)
+
+`containers.Map` is a dictionary keyed by text or numbers.
+
+@octo
+m = containers.Map();
+m("apples") = 3; m("pears") = 5;
+keys(m), values(m), isKey(m, "plums"), m.Count
+@end

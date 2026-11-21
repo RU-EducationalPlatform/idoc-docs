@@ -1,0 +1,14 @@
+@deck(theme=paper, transition=reveal, ratio=4:3, size=huge, autoadvance=8s)
+@style(IDocDemo)
+@title(Deck theme: paper)
+
+@titleslide
+
+@slide(A heading)
+Body text in the paper theme, with the reveal transition, ratio 4:3 and size huge.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

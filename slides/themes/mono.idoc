@@ -1,0 +1,14 @@
+@deck(theme=mono, transition=none, ratio=4:3, size=large)
+@style(IDocDemo)
+@title(Deck theme: mono)
+
+@titleslide
+
+@slide(A heading)
+Body text in the mono theme, with the none transition, ratio 4:3 and size large.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

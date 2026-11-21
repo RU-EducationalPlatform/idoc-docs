@@ -1,0 +1,14 @@
+@deck(theme=ocean, transition=fade, ratio=16:10, size=xlarge)
+@style(IDocDemo)
+@title(Deck theme: ocean)
+
+@titleslide
+
+@slide(A heading)
+Body text in the ocean theme, with the fade transition, ratio 16:10 and size xlarge.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

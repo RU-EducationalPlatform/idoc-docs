@@ -1,0 +1,85 @@
+@style(IDocDemo)
+@title(Interactive questions)
+
+Drag and drop, hotspots, connections, grouped blocks, option sets and answer exceptions.
+
+@section(On a picture)
+
+@subsection(@@dragdrop)
+
+Drag labels or parts onto a diagram.
+
+@dragdrop(src=circuit.svg)
+R1 -> #R1
+@end
+
+@dragdrop(src=circuit.svg, w=360, h=220, prompt=Drag each label onto its part., pts=3)
+R1 -> #R1
+R2 -> #R2
+C1 -> #C1
+@end
+
+@subsection(@@hotspot)
+
+Click the right place on an image or SVG to answer.
+
+@hotspot(src=circuit.svg, targets=#R2)
+Click R2.
+@end
+
+@hotspot(src=circuit.svg, targets=#R1 #R2, max=2, w=360, h=220, prompt=Click both resistors., pts=2)
+Click both resistors.
+@end
+
+@subsection(@@connect)
+
+Draw connections between nodes — A - B or A -> B.
+
+@connect(src=map.svg)
+#a -> #b
+@end
+
+@connect(src=map.svg, directed, w=360, h=240, prompt=Draw an arrow from the capital to the port., pts=2)
+#capital -> #port
+@end
+
+@section(Groups and shared options)
+
+@subsection(@@qblock)
+
+Short for questionblock: a group of boxes worth one named share of the qc above it.
+
+@qc(6, part=6)
+Two boxes worth one share: @qblock(id=part)
+1 AND 1 = @q(f:1) and 1 AND 0 = @q(f:0)
+@end
+
+@subsection(@@questionblock)
+
+A group of answer boxes worth ONE share of the qc above it: qc(10, kmap=6, expr=4) then questionblock(id=kmap) … end.
+
+@qc(10, kmap=6, expr=4)
+@questionblock(id=kmap)
+Fill the map: @q(m: 2,2: _0,_1,_1,_0)
+@end
+Simplified: @q(eq:AB'+A'B, id=expr)
+
+@subsection(@@optset)
+
+A named set of dropdown options, reused inline with q(name: answer).
+
+@optset(units)
+V, A, W
+@end
+
+@subsection(@@exceptionset)
+
+A named list of extra right answers, written once and used by any fill-in with except=name: a student who writes one of its words is right, ignoring case and spaces (NaN, nan and N A N all match).
+
+@exceptionset(volt: float, nan, inf)
+
+@subsection(@@fillsize)
+
+The document-wide default width (in characters) of a text fill-in box.
+
+@fillsize(12)

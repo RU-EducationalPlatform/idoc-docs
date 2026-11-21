@@ -1,0 +1,76 @@
+@style(IDocDemo)
+@title(Code 6: run, build and visual debug)
+
+`@visual_debug` mounts a debugger under a code block: a waveform for Verilog and SystemVerilog, a profile for C, C++, CUDA and Rust. `id=` names the @@code block it watches, so it always shows the code as it is now.
+
+@box(w=100%, style=offline)
+Waveforms need the server's simulator, and profiles are taken on the reader's own machine with its compiler and profiler.
+@end
+
+@section(A waveform)
+
+This is an ordinary runnable SystemVerilog block with an `id`.
+
+@code(systemverilog, id=ctr, run)
+module counter(input logic clk, input logic rst, output logic [3:0] q);
+  always @@(posedge clk or posedge rst)
+    if (rst) q <= 4'd0;
+    else     q <= q + 1;
+endmodule
+
+module tb;
+  logic clk = 0, rst = 1;
+  logic [3:0] q;
+  counter dut(.clk(clk), .rst(rst), .q(q));
+  always #1 clk = ~clk;
+  initial begin
+    #1 rst = 0;
+    #40 $finish;
+  end
+endmodule
+@end
+
+`signals=` picks the signals and their radix; `radix=` sets the default; `from=` and `to=` set the time window; `h=`/`height=` and `w=`/`width=` size the panel.
+
+@visual_debug(systemverilog, id=ctr, signals="tb.clk, tb.rst, tb.q[3:0]:hex", radix=dec, from=0ns, to=30ns, h=300px, w=100%)
+
+@section(A waveform as a question)
+
+`expect=` is an assertion over the trace, and with `pts=` (or `points=`) it is marked.
+
+@visual_debug(systemverilog, id=ctr, pts=4, expect="eventually: tb.q == 5", height=260px, width=100%)
+
+@section(A file instead of a block)
+
+`src=` (also `file=`, `path=`, `source=`) debugs a file; `language=` names the language when the first argument does not.
+
+@visual_debug(language=systemverilog, src=06-visual-debug.assets/blink.sv, h=240px)
+
+@visual_debug(systemverilog, file=06-visual-debug.assets/blink.sv, h=200px)
+
+@visual_debug(systemverilog, path=06-visual-debug.assets/blink.sv, points=2, expect="eventually: tb.n == 3", h=200px)
+
+@visual_debug(systemverilog, source=06-visual-debug.assets/blink.sv, h=200px)
+
+@section(A profile, with its build line)
+
+For compiled languages `build=` is the compile line, because -O0 and -O3 are different programs; `controls=yes` lets the reader edit it and re-run. `profile=` picks timeline, flamegraph, roofline, source or memory, joined with `+`.
+
+@code(cpp, id=saxpy, run)
+#include <vector>
+#include <cstdio>
+int main() {
+    std::vector<float> x(1 << 20, 1.0f), y(1 << 20, 2.0f);
+    for (int r = 0; r < 50; r++)
+        for (size_t i = 0; i < x.size(); i++) y[i] = 2.0f * x[i] + y[i];
+    std::printf("%f\n", y[0]);
+}
+@end
+
+@visual_debug(cpp, id=saxpy, profile=timeline+flamegraph, build="g++ -O2 -g -fno-omit-frame-pointer", controls=yes, h=300px)
+
+@section(A profile taken elsewhere)
+
+`capture=` opens a profile recorded on another machine (Chrome or nsys JSON, a perf fold, or an ncu CSV), for readers whose computer cannot take one.
+
+@visual_debug(cpp, id=saxpy, profile=flamegraph, capture=06-visual-debug.assets/sum.folded, h=260px)

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" font-family="ui-sans-serif, system-ui, sans-serif">
+  <!-- water -->
+  <rect x="0" y="0" width="400" height="300" fill="#cfe8f4"/>
+
+  <!-- landmass -->
+  <path id="land" d="M70,60 C120,40 180,48 230,55 C300,64 340,90 350,140
+                     C360,195 320,235 260,250 C200,264 140,255 100,225
+                     C60,196 48,150 55,110 C58,90 60,72 70,60 Z"
+        fill="#bfe3b3" stroke="#7bbf6a" stroke-width="2"/>
+
+  <!-- lake -->
+  <ellipse id="lake" cx="250" cy="100" rx="34" ry="20" fill="#9ed0ec" stroke="#5fa8d3" stroke-width="1.5"/>
+
+  <!-- river: lake to the south coast -->
+  <path d="M250,120 C246,150 235,180 240,210 C243,228 250,240 258,248"
+        fill="none" stroke="#5fa8d3" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- mountains -->
+  <g fill="#a8a29e" stroke="#78716c" stroke-width="1.2" stroke-linejoin="round">
+    <path d="M120,150 l16,-26 l16,26 z"/>
+    <path d="M140,150 l18,-30 l18,30 z"/>
+  </g>
+
+  <!-- capital (gold star) -->
+  <g id="capital">
+    <polygon points="0,-12 3.5,-3.7 11.4,-3.7 5,2.9 7.1,11.1 0,5.6 -7.1,11.1 -5,2.9 -11.4,-3.7 -3.5,-3.7"
+             transform="translate(205,165)" fill="#f4b400" stroke="#b8860b" stroke-width="1.2"/>
+  </g>
+
+  <!-- port city (west coast) -->
+  <circle id="port" cx="78" cy="170" r="6" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
+  <!-- inland city -->
+  <circle id="city2" cx="290" cy="190" r="6" fill="#374151" stroke="#ffffff" stroke-width="1.5"/>
+
+  <!-- compass -->
+  <g transform="translate(360,40)" fill="#374151" font-size="11" text-anchor="middle">
+    <line x1="0" y1="14" x2="0" y2="-10" stroke="#374151" stroke-width="2"/>
+    <polygon points="0,-16 -4,-8 4,-8" fill="#374151"/>
+    <text x="0" y="26">N</text>
+  </g>
+
+  <text x="14" y="24" font-size="14" fill="#1f2937" font-weight="600">Isle of Alandia</text>
+</svg>

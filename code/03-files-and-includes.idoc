@@ -1,0 +1,65 @@
+@style(IDocDemo)
+@title(Code 3: code from files, includes and snippets)
+
+Code can live in its own files beside the document, in this document's sidecar folder.
+
+@section(@@path for code)
+
+`@@path(code: ...)` lists the folders searched for code files, in order; a file in none of them is an error that names every place looked.
+
+@path(code: 03-files-and-includes.assets, 03-files-and-includes.assets/sv)
+
+@section(A whole file)
+
+`@@code(file=...)` shows a file as a listing; add `run` to run it.
+
+@code(file=stats.py, run)
+@end
+
+@section(@@codex: a file, its language from the suffix)
+
+@codex is the older name for a runnable file. `src=` (also `file=`, `path=`, `source=`) names it, `lang=`/`language=` overrides the language, `norun` makes it a listing only, `edit` makes it editable, and `run` forces a Run button.
+
+@codex(src=count4.sv)
+
+@codex(file=stats.py, norun)
+
+@codex(path=stats.py, edit, run)
+
+@codex(source=answer.py, lang=python, timeout=5)
+
+It can be a marked exercise too: `expect=`, `tests=`, `stdin=`, `pts=`/`points=`, `id=` and `submit=server`.
+
+@codex(src=answer.py, expect=42, pts=2, id=ex_file, submit=server)
+
+@codex(src=answer.py, language=python, stdin="", points=1, tests="assert True")
+
+@section(Including files)
+
+`@@inc` includes a file: an .idoc splices in, a code file becomes a listing, `run` or `edit` make it interactive, and `#name` pulls one @@snip region.
+
+@inc(file=part.idoc)
+
+@inc(file=stats.py, run)
+
+@inc(file=stats.py#spread)
+
+`@@include(file, name)` pulls one named region; regions are marked with `@@snip(name)` and `@@endsnip(name)` in the file's own comments.
+
+@include("03-files-and-includes.assets/stats.py", mean)
+
+`@@incsyntax(file=...)` is the older spelling of a whole file as a listing.
+
+@incsyntax(file=stats.py)
+
+`@@input` splices in a whole .idoc, recursively.
+
+@input("03-files-and-includes.assets/part.idoc")
+
+@section(Marking regions in your own document)
+
+A @@snip block in a document marks a region that @@include can pull by name.
+
+@snip(greet)
+print("hello")
+@end

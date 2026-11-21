@@ -1,0 +1,10 @@
+module top;
+  //@ a = rand(1, 200)
+  //@ b = rand(1, 55)
+  logic [7:0] x = @(a:dec8);
+  logic [7:0] y = @(b:dec8);
+  initial begin
+    $display("%0d", x + y); // @ans
+    $display("%h", x ^ y); // @ans
+  end
+endmodule

@@ -1,0 +1,106 @@
+@style(IDocDemo)
+@title(Points, rubrics and feedback)
+
+How questions are worth points, how they are marked by hand, and what a student sees after answering.
+
+@section(Points and marking)
+
+@subsection(@@qc)
+
+A numbered points marker: the P points are split across the questions that follow.
+
+@qc(10)
+
+@qc(30, choose=3)
+
+@qc(9, pick=3 from easy)
+@questionblock(id=easy)
+1+1 = @q(fn: 2)
+2+2 = @q(fn: 4)
+3+3 = @q(fn: 6)
+4+4 = @q(fn: 8)
+@end
+
+@subsection(@@rubric)
+
+Criteria for the question just above — one text: points per line.
+
+@rubric
+States the law: 2
+Correct units: 1
+@end
+
+@rubric(name=lab)
+Circuit works: 5
+Write-up is clear: 3
+@end
+
+@rubric(use=lab)
+
+@rubric(use=lab)
+Explanation is convincing: 2
+@end
+@code(python, run, pts=20)
+def total(xs):
+    return 0
+
+@subsection(@@modelans)
+
+A reference answer for the open question above — feeds the auto-grader's semantic tiers.
+
+@modelans
+Because the current divides…
+@end
+
+@subsection(@@solution)
+
+The teacher's WORKING PROGRAM, inside any runnable block — code, codex, a notebook cell, octo, shader, draw and the EECad studios.
+
+@solution
+def total(xs):
+    return sum(xs)
+@end
+@tests
+<<< 1 2 3
+<<< 4 5
+@end
+@end
+
+@subsection(@@confidence)
+
+Certainty-based marking: the student rates their confidence, and calibration is scored.
+
+@confidence … @end
+
+@@cbm is the same as @@confidence: @cbm
+How sure are you that 2+2=4? @q(fn: 4)
+@end
+
+@subsection(@@tolerance)
+
+The default ± for numeric answers: a percent (5), an absolute (0.05abs), or ±0.05.
+
+@tolerance(5)
+
+@tolerance(0.05abs)
+
+@@tol is the same as @@tolerance: @tol(2)
+
+@section(Feedback)
+
+@subsection(@@hint)
+
+A hint ladder shown after a question — one hint per line, revealed one at a time.
+
+@hint(penalty=1)
+Start from KVL
+Now sum the drops
+@end
+
+@subsection(@@branch)
+
+An adaptive follow-up shown depending on how the previous question was answered.
+
+@branch(if=wrong)
+Review section 2.
+@end

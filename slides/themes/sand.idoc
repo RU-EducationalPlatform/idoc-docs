@@ -1,0 +1,14 @@
+@deck(theme=sand, transition=zoom, ratio=4:3, size=xlarge)
+@style(IDocDemo)
+@title(Deck theme: sand)
+
+@titleslide
+
+@slide(A heading)
+Body text in the sand theme, with the zoom transition, ratio 4:3 and size xlarge.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

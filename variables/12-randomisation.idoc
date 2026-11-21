@@ -1,0 +1,111 @@
+@style(IDocDemo)
+@title(Randomisation)
+
+Each student can get a different paper. The seed decides the values, so a paper can always be printed again exactly.
+
+@ Four small bank questions that the @selectquestion examples below draw from.
+Easy: 2+3 = @q(fn: 5, id=q_easy)
+
+Harder: 12*12 = @q(fn: 144, id=q_hard)
+
+Write the code: @q(essay, id=write_code)
+
+Mixed up: @q(order, open the file, read a line, close the file, id=mixed_up)
+
+@section(Random values)
+
+@subsection(@@rand)
+
+A random value, fixed per student seed: a range, a step grid, or a choice list.
+
+@rand(n=18,22)
+
+@rand(x=1,10)
+
+@rand(2:8:2)
+
+@rand(red, green, blue)
+
+@rand(a=1,9) … @q(fn: @exp(a*2))
+@end
+
+@subsection(@@randsym)
+
+Pick one symbol/word and reuse it consistently across the document.
+
+@randsym(sym=V,I,R)
+
+@subsection(@@formularand)
+
+A graded formula question over randomized inputs.
+
+@formularand(R=1,10; V=5,20; ans=V/R)
+
+@formularand(P = V * I, V=5:12, I=1:3, solve=P, show=V I, tol=2, w=120)
+
+@subsection(@@formulaq)
+
+A graded formula question: the expected answer is computed from the variables, so every variant is marked correctly.
+
+@formulaq(V/R, unit=A)
+
+@formulaq(V = I * R, I=1:5, R=10:100, solve=V, show=I R, tol=1, w=120)
+
+@section(Pools and shuffling)
+
+@subsection(@@pool)
+
+Declare a named question bank (it renders nothing on its own).
+
+@pool(kinematics)
+@item …
+@endpool
+
+@subsection(@@pick)
+
+Pick N items at random from this inline pool.
+
+@pick(2)
+@item Q1
+@item Q2
+@item Q3
+@endpick
+
+@subsection(@@frompool)
+
+Draw N random items from a named pool.
+
+@frompool(kinematics, 3)
+
+@subsection(@@shuffle)
+
+Randomize the order of the item chunks inside, per student seed.
+
+@shuffle
+@item A
+@item B
+@endshuffle
+
+@subsection(@@selectquestion)
+
+Draw one question from the document's bank by id.
+
+@selectquestion(id="s1", fromid="q_easy,q_hard")
+
+@selectquestion(id="s2", fromid="write_code,mixed_up", toggle="lock")
+
+@selectquestion(id="s3", fromid="q_easy", points=2)
+
+@subsection(@@repeat)
+
+Repeat a block N times, drawing fresh rand values each copy.
+
+@repeat(5)
+
+@@repl and @@rept are the same as @@repeat:
+@repl(2)
+A copy.
+@end
+@rept(2)
+Another copy.
+@end

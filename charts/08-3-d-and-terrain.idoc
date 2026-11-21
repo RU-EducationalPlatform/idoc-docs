@@ -1,0 +1,79 @@
+@style(IDocDemo)
+@title(Charts: 3-D and terrain)
+
+Terrain, flyovers, 3-D meshes, surfaces and contours. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Terrain}
+
+A digital elevation model as 3-D relief.
+
+@graph(type=terrain, exag=2)
+
+@code(idoc)
+@graph(type=terrain, exag=2)
+@end
+
+Needs a .bdem elevation block: open the @geo panel, paste a Google Maps URL, and it builds one into this document's .assets/ folder. Then: src=valley.bdem
+@endcell
+@cell
+@b{Flyover}
+
+Free-fly over terrain with satellite imagery, roads and buildings.
+
+@graph(type=flyover, sat, roads)
+
+@code(idoc)
+@graph(type=flyover, sat, roads)
+@end
+
+W A S D to move, drag to look. Needs the same .bdem block as terrain — build one with the @geo panel, then: src=valley.bdem
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{3-D mesh}
+
+A model viewer — drag to orbit, scroll to zoom.
+
+@graph(type=mesh, src=torus.cmesh, shade=smooth)
+
+@code(idoc)
+@graph(type=mesh, src=torus.cmesh, shade=smooth)
+@end
+
+Takes .cmesh or .obj; an .obj is converted to a compact GPU mesh on load. Drag to orbit, scroll to zoom.
+@endcell
+@cell
+@b{Surface z=f(x,y)}
+
+A function of two variables, sampled — no data file at all.
+
+@graph(type=surface, z=sin(x)*cos(y), x=-3:3, y=-3:3, title="A saddle")
+
+@code(idoc)
+@graph(type=surface, z=sin(x)*cos(y), x=-3:3, y=-3:3, title="A saddle")
+@end
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Contour}
+
+The same function read from above, as level curves.
+
+@graph(z=x^2 - y^2, x=-3:3, y=-3:3, view=contour)
+
+@code(idoc)
+@graph(z=x^2 - y^2, x=-3:3, y=-3:3, view=contour)
+@end
+@endcell
+@cell
+@endcell
+@endtable

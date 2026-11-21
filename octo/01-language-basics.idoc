@@ -1,0 +1,73 @@
+@style(IDocDemo)
+@title(Octo 1: language basics)
+
+Octo is IDoc's own compute engine. An @@octo block runs in the reader's browser; leave the semicolon off a line to print its value.
+
+@section(Values and printing)
+
+A name is created by assigning to it; `ans` holds the last unnamed result.
+
+@octo
+x = 2 + 3
+y = x^2;
+y / 4
+disp(pi)
+fprintf("%d items cost %.2f\n", 3, 4.5)
+s = sprintf("%5.1f|", [1.25 2.5])
+@end
+
+@section(Numbers and types)
+
+`class` tells you what a value is; integers saturate instead of wrapping.
+
+@octo
+class(1), class("a"), class(true), class(int8(1))
+a = int8(120) + int8(20)
+b = uint8(250) + 10
+c = single(1)/3
+intmax("int16"), intmin("int16"), realmax, eps
+isnumeric(5), ischar("x"), islogical(false), isinteger(int32(4)), isreal(3+0i), isfloat(2)
+z = 3 + 4i; [real(z) imag(z) abs(z) angle(z)], conj(z)
+idivide(int32(7), int32(2)), class(int64(5)), class(uint16(5)), class(uint32(5)), class(uint64(5))
+isa(5, "numeric"), iscomplex(1i), isfinite(Inf), isinf(-Inf), isnan(NaN), flintmax
+[bitand(12, 10) bitor(12, 10) bitxor(12, 10) bitshift(1, 3)]
+[deg2rad(180) rad2deg(pi)]
+@end
+
+@section(Arithmetic and rounding)
+
+Rounding comes in four directions; `mod` and `rem` differ for negative numbers.
+
+@octo
+[round(2.5) floor(-2.5) ceil(-2.5) fix(-2.5)]
+[mod(-7, 3) rem(-7, 3)]
+[sqrt(16) exp(1) log(100) log10(100) log2(8) nthroot(27, 3)]
+[abs(-3) sign(-3) hypot(3, 4) factorial(5) nchoosek(5, 2)]
+[gcd(12, 18) lcm(4, 6)], primes(20), isprime(7), factor(84)
+[sin(pi/6) cos(0) tan(pi/4) asin(1) atan2(1, 1) sind(30) cosd(60)]
+[sinh(0) cosh(0) tanh(0)]
+@end
+
+@section(Logic and comparison)
+
+Comparisons give logical arrays; `&&` and `||` short-circuit on scalars.
+
+@octo
+v = [3 8 1 9];
+v > 2
+any(v > 8), all(v > 0)
+xor(true, false), ~true, not(false)
+isequal([1 2], [1 2])
+if numel(v) > 0 && v(1) == 3, disp("first is three"), end
+@end
+
+@section(Workspace)
+
+`exist`, `isvarname` and `clear` look after names.
+
+@octo
+k = 4;
+exist("k"), exist("sin"), isvarname("2x")
+clear k
+exist("k")
+@end

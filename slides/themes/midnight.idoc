@@ -1,0 +1,14 @@
+@deck(theme=midnight, transition=push, ratio=16:10, size=large)
+@style(IDocDemo)
+@title(Deck theme: midnight)
+
+@titleslide
+
+@slide(A heading)
+Body text in the midnight theme, with the push transition, ratio 16:10 and size large.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

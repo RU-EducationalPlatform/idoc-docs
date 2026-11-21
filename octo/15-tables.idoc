@@ -1,0 +1,68 @@
+@style(IDocDemo)
+@title(Octo 15: tables, and results as tables)
+
+A table holds named columns of different types, like a spreadsheet. The CSV in this document's sidecar folder is invented.
+
+@section(Making and reading a table)
+
+Build one from columns with `table`, or read a file with `readtable`.
+
+@octo
+T = readtable("15-tables.assets/scores.csv")
+height(T), width(T), T.Properties.VariableNames
+summary(T)
+@end
+
+@section(Selecting rows and columns)
+
+Dot-names give a column; parentheses with a logical mask give rows.
+
+@octo
+T = readtable("15-tables.assets/scores.csv");
+T.exam'
+T(T.exam > 80, :)
+T(:, {"student", "exam"})
+sortrows(T, "exam", "descend")(1:2, :)
+@end
+
+@section(Changing a table)
+
+Add, rename and remove columns; convert to and from arrays and cells.
+
+@octo
+T = readtable("15-tables.assets/scores.csv");
+T.total = T.quiz * 2 + T.exam;
+T.Properties.VariableNames{3} = "q";
+T.section = [];
+T(1:2, :)
+A = table2array(T(:, {"q", "exam"}));
+size(A)
+U = array2table([1 2; 3 4], "VariableNames", {"a", "b"})
+C = table2cell(U)
+S = table2struct(U); S(2).b
+@end
+
+@section(Group summaries and matching rows)
+
+`grpstats` summarises by group; `ismember` matches rows of two tables on a key column.
+
+@octo
+T = readtable("15-tables.assets/scores.csv");
+[mn, grp] = grpstats(T.exam, T.section, {"mean", "gname"})
+mean(table2array(T(:, {"quiz", "exam"})))
+names = table({"S01"; "S03"; "S05"}, {"Rin"; "Tal"; "Ode"}, "VariableNames", {"student", "name"});
+[found, at] = ismember(names.student, T.student);
+names.exam = T.exam(at)
+@end
+
+@section(Results as tables)
+
+A model's coefficients come back as named columns (Name, Estimate, SE, tStat, pValue) that you index like a table's.
+
+@octo
+T = readtable("15-tables.assets/scores.csv");
+m = fitlm(T, "exam ~ quiz");
+C = m.Coefficients
+C.Estimate(2)
+C.pValue' < 0.05
+@end

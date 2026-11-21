@@ -1,0 +1,157 @@
+@style(IDocDemo)
+@title(Charts: Change over time)
+
+Lines, areas, steps, candlesticks and timelines. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Line}
+
+A quantity as it moves. Several y columns draw several lines.
+
+@graph(type=line, x=year, y=Public;Private, title="Schools over time")
+@data
+year,Public,Private
+2009,98817,33366
+2011,98328,30861
+2013,98271,33619
+2015,98277,34576
+2017,98469,32461
+2019,98469,30492
+@end
+
+@code(idoc)
+@graph(type=line, x=year, y=Public;Private, title="Schools over time")
+@data
+year,Public,Private
+2009,98817,33366
+2011,98328,30861
+2013,98271,33619
+2015,98277,34576
+2017,98469,32461
+2019,98469,30492
+@end
+@end
+@endcell
+@cell
+@b{Area}
+
+A line with the space beneath it filled — emphasis on volume.
+
+@graph(type=area, x=year, y=Public, title="Public schools")
+@data
+year,Public,Private
+2009,98817,33366
+2011,98328,30861
+2013,98271,33619
+2015,98277,34576
+2017,98469,32461
+2019,98469,30492
+@end
+
+@code(idoc)
+@graph(type=area, x=year, y=Public, title="Public schools")
+@data
+year,Public,Private
+2009,98817,33366
+2011,98328,30861
+2013,98271,33619
+2015,98277,34576
+2017,98469,32461
+2019,98469,30492
+@end
+@end
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Step}
+
+A value that holds and then jumps — rates, counts, state changes.
+
+@graph(type=step, x=week, y=price, title="Posted price")
+@data
+week,price
+1,4.00
+2,4.00
+3,4.50
+4,4.50
+5,5.25
+@end
+
+@code(idoc)
+@graph(type=step, x=week, y=price, title="Posted price")
+@data
+week,price
+1,4.00
+2,4.00
+3,4.50
+4,4.50
+5,5.25
+@end
+@end
+@endcell
+@cell
+@b{Candlestick}
+
+Open/high/low/close per period — a financial series.
+
+@graph(type=candlestick, x=date, title="Daily range")
+@data
+date,open,high,low,close
+2026-01-02,186.4,189.1,185.2,188.6
+2026-01-05,188.6,190.2,187.0,187.4
+2026-01-06,187.4,188.0,183.5,184.1
+2026-01-07,184.1,186.9,183.8,186.5
+2026-01-08,186.5,191.3,186.2,190.8
+2026-01-09,190.8,192.0,188.4,189.2
+@end
+
+@code(idoc)
+@graph(type=candlestick, x=date, title="Daily range")
+@data
+date,open,high,low,close
+2026-01-02,186.4,189.1,185.2,188.6
+2026-01-05,188.6,190.2,187.0,187.4
+2026-01-06,187.4,188.0,183.5,184.1
+2026-01-07,184.1,186.9,183.8,186.5
+2026-01-08,186.5,191.3,186.2,190.8
+2026-01-09,190.8,192.0,188.4,189.2
+@end
+@end
+
+Finds open/high/low/close by name, and sorts oldest-first — so a file exported newest-first still reads left to right.
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Timeline}
+
+Events or spans laid along an axis.
+
+@graph(type=timeline, label=phase, x=start, y=end, title="Project")
+@data
+phase,start,end
+Design,0,3
+Build,3,9
+Test,8,11
+@end
+
+@code(idoc)
+@graph(type=timeline, label=phase, x=start, y=end, title="Project")
+@data
+phase,start,end
+Design,0,3
+Build,3,9
+Test,8,11
+@end
+@end
+@endcell
+@cell
+@endcell
+@endtable

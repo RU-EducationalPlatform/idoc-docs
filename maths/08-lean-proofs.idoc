@@ -1,0 +1,94 @@
+@title(Lean Proofs, Checked in the Browser)
+
+Write a proof in Lean 4 and IDoc checks it as you type. IDoc's own Lean front end builds each tactic's proof
+term, and IDoc's proof kernel (Lean's logic, in WebAssembly) accepts or refuses it. Nothing is sent to a Lean
+server. Open a theorem to see the goals before and after each step.
+
+@section(Arithmetic: omega, simp, decide)
+
+@proof(lean)
+theorem add_zero' (n : Nat) : n + 0 = n := by
+  simp
+
+theorem linear (a b : Nat) (h : a < b) : a + 1 ≤ b := by
+  omega
+
+theorem small : 2 ^ 10 = 1024 := by
+  decide
+@end
+
+@section(Induction)
+
+A definition by equations, then the classic sums over it. @code{grind} is ring normalisation followed by
+@code{omega}, and each step is still checked by the kernel.
+
+@proof(lean)
+def sumTo (f : Nat → Nat) : Nat → Nat
+  | 0 => 0
+  | n + 1 => sumTo f n + f n
+
+theorem odd_sum (n : Nat) : sumTo (fun i => 2 * i + 1) n = n ^ 2 := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [sumTo, ih]; grind
+
+theorem gauss (n : Nat) : 2 * sumTo (fun i => i) (n + 1) = n * (n + 1) := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [sumTo] at *; grind
+
+theorem squares (n : Nat) : 6 * sumTo (fun i => i ^ 2) (n + 1) = n * (n + 1) * (2 * n + 1) := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [sumTo] at *; grind
+
+theorem powers_of_two (n : Nat) : sumTo (fun i => 2 ^ i) n + 1 = 2 ^ n := by
+  induction n with
+  | zero => rfl
+  | succ n ih => simp only [sumTo, Nat.pow_succ]; omega
+@end
+
+@section(Inequalities)
+
+@proof(lean)
+theorem two_pow (n : Nat) : 2 ^ n ≥ n + 1 := by
+  induction n with
+  | zero => decide
+  | succ n ih => rw [Nat.pow_succ]; omega
+
+theorem bernoulli (x n : Nat) : (1 + x) ^ n ≥ 1 + n * x := by
+  induction n with
+  | zero => simp
+  | succ n ih =>
+    rw [Nat.pow_succ]
+    have := Nat.mul_le_mul_right (1 + x) ih
+    grind
+@end
+
+@section(A wrong proof is refused)
+
+The first theorem is false, so no tactic can prove it, and the kernel says so. The second is true and is
+accepted beside it.
+
+@proof(lean)
+theorem nope (n : Nat) : n + 1 = n := by
+  omega
+
+theorem fine (n : Nat) : n + 0 = n := by
+  simp
+@end
+
+@section(Lean proofs as graded exercises)
+
+The student writes tactics in the box and sees the goals and the verdict as they type. The mark comes from the
+server, which runs the same front end and kernel on the text that was handed in. A proof that the student's own
+browser claims is checked is still marked wrong if it is not.
+
+@lab(prove, lean, id=lean1, pts=4, goal="(n : Nat) : 2 ^ n ≥ n + 1")
+@end
+
+@lab(prove, lean, id=lean2, pts=6, goal="(n : Nat) : 3 ^ n ≥ 2 * n + 1")
+@end
+
+@lab(prove, lean, id=lean3, pts=2, goal="(a b : Nat) (h : a < b) : a + 1 ≤ b")
+@end

@@ -1,0 +1,14 @@
+@deck(theme=light, transition=slide, ratio=4:3, size=normal, speak, background=circuit.svg)
+@style(IDocDemo)
+@title(Deck theme: light)
+
+@titleslide
+
+@slide(A heading)
+Body text in the light theme, with the slide transition, ratio 4:3 and size normal.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

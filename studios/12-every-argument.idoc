@@ -1,0 +1,296 @@
+@style(IDocDemo)
+@title(Studios: Every argument)
+
+Every studio argument and theme, light and mode value that the other studio files do not already use, each in one small working example.
+
+@section(Parametric 3-D parts)
+
+light=studio is the three-point light that follows the camera (the default).
+
+@cad(light=studio)
+cube([10, 10, 10]);
+@end
+
+light=technical is flat and even, for reading dimensions.
+
+@cad(light=technical)
+cylinder(h=10, r=5);
+@end
+
+light=dramatic is a hard key and a strong rim, for a figure in a deck.
+
+@cad(light=dramatic)
+sphere(r=8);
+@end
+
+light=sun is fixed in the world, so turning the part shows how the light falls.
+
+@cad(light=sun)
+cube([20, 10, 5]);
+@end
+
+theme=dark gives the studio the graphite interface.
+
+@cad(theme=dark)
+cube([10, 10, 10]);
+@end
+
+theme=studio is the same graphite interface under its other name.
+
+@cad(theme=studio)
+cube([10, 10, 10]);
+@end
+
+theme=showcase adds glow and glass, for a demo.
+
+@cad(theme=showcase)
+sphere(r=10);
+@end
+
+output=right puts the viewport beside the code instead of below it.
+
+@cad(output=right)
+cube([10, 10, 20]);
+@end
+
+submit=server lets a student hand the exercise in; id= tells the submissions apart.
+
+@cad(id=block1, submit=server, expect="volume=1000")
+cube([10, 10, 10]);
+@end
+
+noedit hides the source editor and shows only the part.
+
+@cad(noedit)
+translate([0, 0, 5]) sphere(r=5);
+@end
+
+x=, y= and z= place the card absolutely, and z= puts it in front of or behind its neighbours.
+
+@cad(x=0, y=0, z=1)
+cube([8, 8, 8]);
+@end
+
+benchmark= names a value that receives the build time in ms.
+
+@cad(benchmark=cadtime)
+cube([10, 10, 10]);
+@end
+
+@section(Meshes and models)
+
+h= sets the mesh editor's height.
+
+@mesh(h=300)
+@end
+
+theme=studio on the mesh editor.
+
+@mesh(theme=studio)
+@end
+
+theme=showcase on the mesh editor.
+
+@mesh(theme=showcase)
+@end
+
+shade=smooth shades a model smoothly.
+
+@model(src=cad-3d.assets/bracket.obj, shade=smooth)
+
+shade=wire draws a model as a wireframe.
+
+@model(src=cad-3d.assets/bracket.obj, shade=wire)
+
+@section(Calculators and compute)
+
+mode=hp48 is the four-level RPN calculator in the style of the HP 48.
+
+@calc(mode=hp48)
+
+float=left wraps the text on the left of the calculator; h= sets its height.
+
+@calc(scientific, float=left, w=280, h=360)
+
+The calculator floats beside this paragraph, and the text keeps flowing around it until it runs past the bottom of the calculator.
+
+preload=no fetches the Octo engine only on the first run instead of as the page opens.
+
+@settings(module=octo, preload=no)
+
+theme=dark on a spreadsheet.
+
+@spreadsheet(theme=dark)
+Item	Qty
+Pens	3
+Pads	2
+@end
+
+theme=showcase on a spreadsheet.
+
+@spreadsheet(theme=showcase)
+Item	Qty
+Pens	3
+Pads	2
+@end
+
+@section(Algorithms and automata)
+
+theme=dark on the algorithm player. It takes no pts=: the linter says pts= has no effect here, because a student cannot change the program.
+
+@algoviz(theme=dark)
+algo: insertion
+data: 8 2 5 1
+@end
+
+theme=studio on an automaton.
+
+@automaton(theme=studio)
+type: dfa
+start: q0
+accept: q1
+q0 -1-> q1
+q1 -1-> q0
+@end
+
+theme=showcase on an automaton.
+
+@automaton(theme=showcase)
+type: dfa
+start: q0
+accept: q0
+q0 -0-> q0
+q0 -1-> q1
+q1 -1-> q0
+@end
+
+@section(Science)
+
+theme=dark on the chemistry studio.
+
+@chem(theme=dark)
+CCO
+@end
+
+theme=showcase on the chemistry studio.
+
+@chem(theme=showcase)
+H2 + O2 -> H2O
+@end
+
+theme=studio on a physics simulation.
+
+@sim(theme=studio)
+system: pendulum
+length: 1.0
+@end
+
+theme=showcase on a physics simulation.
+
+@sim(theme=showcase)
+system: spring
+@end
+
+theme=studio on a quantum circuit.
+
+@quantum(theme=studio)
+q = QUBITS(1)
+H(q)
+@end
+
+theme=showcase on a quantum circuit.
+
+@quantum(theme=showcase)
+q0, q1 = QUBITS(2)
+H(q0)
+@end
+
+@section(Drawing, music and cards)
+
+theme=studio on the drawing studio.
+
+@draw(theme=studio, height=200)
+rect r1 at 40,40 size 120,70
+@end
+
+theme=showcase on the drawing studio.
+
+@draw(theme=showcase, height=200)
+ellipse e1 at 100,80 size 80,50
+@end
+
+theme=studio on the music studio.
+
+@music(theme=studio)
+C4:q E4:q G4:h
+@end
+
+theme=showcase on the music studio.
+
+@music(theme=showcase)
+G4:q E4:q C4:h
+@end
+
+theme=studio on a flashcard deck.
+
+@flashcards(id=cards-studio, theme=studio)
+Unit of charge :: the coulomb
+@end
+
+theme=showcase on a flashcard deck.
+
+@flashcards(id=cards-showcase, theme=showcase)
+Unit of power :: the watt
+@end
+
+@section(Circuits)
+
+theme=studio on a schematic.
+
+@EECad(schematic, theme=studio)
+V1 vsource 5V at 10,40
+R1 resistor 1k at 30,40
+GND ground at 10,5
+@end
+
+theme=showcase on a schematic.
+
+@EECad(schematic, theme=showcase)
+V1 vsource 5V at 10,40
+R1 resistor 1k at 30,40
+GND ground at 10,5
+@end
+
+labels=no hides part names on the breadboard (the default, written out).
+
+@EECad(sourdough, labels=no)
+@end
+
+pinlabels=yes shows a board's own lettering (the default, written out).
+
+@EECad(sourdough, board=uno, pinlabels=yes)
+@end
+
+grid=yes shows the dot grid (the default, written out).
+
+@EECad(sourdough, grid=yes)
+@end
+
+views=both offers the Breadboard and Schematic tabs only.
+
+@EECad(sourdough, views=both)
+@end
+
+views=breadboard offers the bench only.
+
+@EECad(sourdough, views=breadboard)
+@end
+
+hex= carries a compiled sketch; a publication writes it, never an author, so this one is an invented placeholder.
+
+@EECad(sourdough, board=uno, hex=00)
+@end
+
+@section(Proofs)
+
+The proof arguments goal=, pts=, partial, auto, bool and rat are written as @@lab(prove, …), the only spelling there is, and each is shown in science.idoc.

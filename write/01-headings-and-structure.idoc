@@ -1,0 +1,131 @@
+@style(IDocDemo)
+@title(Headings and document structure)
+
+Titles, numbered headings, a table of contents and appendices. Each heading below is a live example.
+
+@section(Titles)
+
+@subsection(@@title)
+
+The document title — the biggest heading, and the name the PDF carries.
+
+@title(My Exam)
+
+@subsection(@@subtitle)
+
+A subtitle line under the title (also feeds titleslide).
+
+@subtitle(Spring 2026)
+
+@subsection(@@titlepage)
+
+A cover page: title, author, date, then a page break.
+
+@titlepage(title="Final Exam", author="Prof. X", date="2026")
+
+@subsection(@@doc)
+
+Document-wide settings: paper template, theme, shuffling, question numbering, default fill-in width.
+
+@doc(template=ieee)
+
+@doc(theme=dark, qnumbers)
+
+@doc(shuffle=mc, fillsize=12)
+
+@section(Headings)
+
+@subsection(@@section)
+
+A numbered section heading (h2).
+
+@section(Part 1)
+
+@section(Part 1, label=intro)
+
+@section(Aside, number=0)
+
+@subsection(@@subsection)
+
+A numbered sub-heading (h3).
+
+@subsection(Topic)
+
+@subsection(Aside, number=0)
+
+@subsection(@@subsubsection)
+
+A numbered sub-sub-heading (h4).
+
+@subsubsection(Detail)
+
+@subsection(@@heading)
+
+An UNNUMBERED heading (h2) — a section head that stays out of the numbering and the table of contents.
+
+@heading(Agenda)
+
+@subsection(@@h1)
+
+Outline level 1 — the same heading as section, under its HTML/Word name.
+
+@h1(Introduction)
+
+@subsection(@@h2)
+
+Outline level 2 — the same heading as subsection.
+
+@h2(Background)
+
+@subsection(@@h3)
+
+Outline level 3 — the same heading as subsubsection.
+
+@h3(Details)
+
+@subsection(@@h4)
+
+Outline level 4 — an unnumbered run-in heading at body size.
+
+@h4(Fine point)
+
+@subsection(@@h5)
+
+Outline level 5 — an unnumbered run-in heading.
+
+@h5(Finer point)
+
+@subsection(@@h6)
+
+Outline level 6 — the deepest unnumbered run-in heading.
+
+@h6(Finest point)
+
+@section(Contents and appendices)
+
+@subsection(@@toc)
+
+A table of contents.
+
+@toc(figures)
+
+@toc(tables)
+
+@toc
+
+@toc(sections)
+
+@toc(cols=2)
+
+@toc(sections, cols=auto)
+
+@subsection(@@appendix)
+
+Everything after this is an appendix: sections letter A, B, C and their subsections number A.1, A.2 — in the preview and the PDF alike.
+
+@appendix
+
+@@appendices is the same as @@appendix:
+@appendices
+@section(A lettered appendix)
+This section is lettered.

@@ -1,0 +1,81 @@
+@style(IDocDemo)
+@title(Front matter and cross-references)
+
+Authors, abstract, keywords, notes, labels and references to them.
+
+@section(Front matter)
+
+@subsection(@@author)
+
+One author line — name, department, affiliation, email.
+
+@author(name=Alex Rivera, department=Physics, affiliation=Example University)
+
+@author(name=Sam Okafor, department=Chemistry, affiliation=Example University, email=s.okafor@example.edu)
+
+@subsection(@@authors)
+
+Authors pulled from author.db by id; style=full\|names\|short\|ieee\|email, or anon for blind review.
+
+@authors(dk, sg)
+
+@authors(dk, sg, style=ieee)
+
+@subsection(@@author_cr)
+
+An author credit line from author.db: each name links to the generated Authors page with photo, contact and every other field.
+
+@author_cr(dk, sg)
+
+@subsection(@@anonymous)
+
+Blind review: replace every author with Author 1, Author 2…
+
+@anonymous
+
+@subsection(@@abstract)
+
+The paper abstract block.
+
+@abstract
+The summary.
+@end
+
+@subsection(@@keywords)
+
+Paper keywords — IEEE prints them as Index Terms.
+
+@keywords(fpga, timing)
+
+@subsection(@@indexterms)
+
+Index terms for a paper (IEEE prints them as Index Terms).
+
+@indexterms(fpga, timing)
+
+@subsection(@@note)
+
+A numbered note block.
+
+@note … @end
+
+@section(Labels and references)
+
+@subsection(@@label)
+
+Attach a label to the thing above so ref/eqref/qref can point at it.
+
+@label(fig1)
+
+@subsection(@@ref)
+
+Reference labelled figures, tables, sections, equations or theorems: one, or several ("Figures 1 and 2"), or the page one is on.
+
+@ref(fig1, fig2)
+
+@ref(fig1, tab3)
+on @ref(fig1, page)
+
+@subsection(@@qref)
+
+Reference a labelled question — prints its number ("Q3").

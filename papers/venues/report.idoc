@@ -1,0 +1,21 @@
+@style(IDocDemo)
+@doc(template=report, font=Helvetica, twoside, inner=1.2in, outer=0.8in, numbers=i, a11y=colorblind)
+@title(Venue: report)
+
+Two justified columns for a technical report.
+
+@section(Introduction)
+
+This page is set in the report venue. Its first line after the stylesheet is the @@doc line; every argument on it is live: template=report, font=Helvetica, twoside, inner=1.2in, outer=0.8in, numbers=i, a11y=colorblind
+
+@abstract
+A short abstract, so the venue shows how it sets one.
+@end
+
+@section(Method)
+
+Two sentences of body text, enough to see the type size, the margins and the columns. The second sentence carries an equation: @eqi(V = I R).
+
+@section(Result)
+
+The measured current was 0.5 A.@footnote{A footnote, set the way this venue sets one.}

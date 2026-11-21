@@ -1,0 +1,66 @@
+@style(IDocDemo)
+@title(Octo 19: grading Octo answers)
+
+An @@octo block with `id=` and `pts=` becomes a studio question. The student edits the code; Check gives feedback in the browser, and the mark comes from the server, which re-runs the program with the student's seed and the same time limit.
+
+@section(A fixed expected output)
+
+`expect=` is the printed output the program must produce. Ask for exactly one printed value so the comparison is clear.
+
+@qc(2) Print the sum of the whole numbers from 1 to 100.
+@octo(id=sum100, pts=2, expect="5050")
+s = 0;
+for k = 1:100
+  s = s + k;
+end
+disp(s)
+@end
+
+@section(A number within a tolerance)
+
+`tolerance=` lets a computed number be off by that much.
+
+@qc(3) Print the area under exp(-x^2) from 0 to 1.
+@octo(id=gauss, pts=3, expect="0.7468", tolerance=0.001)
+disp(integral(@(x) exp(-x.^2), 0, 1))
+@end
+
+@section(The teacher's program as the key)
+
+Put the teacher's working program after an @@solution line. Its output, run on the same seed, is the key, so random data is fine and nobody types the expected output. The solution is stripped from the student's copy and never printed.
+
+@qc(4) Print the mean of the random vector x, rounded to two decimals.
+@octo(id=meanx, pts=4)
+x = rand(1, 10);
+disp(round(mean(x) * 100) / 100)
+@solution
+x = rand(1, 10);
+disp(round(mean(x) * 100) / 100)
+@end
+
+@section(Live class and the lab form)
+
+`time=` limits how long a live-class exercise stays open once the teacher opens it. `@@lab(octo, ...)` is the same studio under the shared lab name; `submit=server` makes it a hand-in.
+
+@octo(id=live1, pts=2, time=4m, expect="12")
+3 * 4
+@end
+
+@lab(octo, id=lab1, pts=2, submit=server, expect="25")
+disp(5^2)
+@end
+
+@section(Data the question reads)
+
+A graded block may read a file beside the document or a @@spreadsheet in it with `readtable("sheet:NAME")`; the server gives the same data to the marking run.
+
+@spreadsheet(name=marks)
+student	mark
+A	7
+B	=3+5
+@end
+
+@octo(id=marks1, pts=2, expect="15")
+T = readtable("sheet:marks");
+disp(sum(T.mark))
+@end

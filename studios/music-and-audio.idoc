@@ -1,0 +1,219 @@
+@style(IDocDemo)
+@title(Music, the orchestra, the studio and the audio editor)
+
+Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.
+
+@section(Music notation with playback)
+
+Write notes as text and see them on a five-line staff, then play them back.
+
+@music
+tempo: 120
+C4:q D4:q E4:q F4:q G4:h R:q C5:w
+@end
+
+@b{Notes.} A note is its pitch and octave (C4 is middle C), with # or b for sharp and flat, then : and a length: w whole, h half, q quarter (the default), e eighth, s sixteenth.
+
+@music
+C#4:e D4:e Bb3:h R:q
+@end
+
+@b{Header lines.} tempo: beats per minute, key: (its signature is drawn, and its notes need no sign), time: 3/4 (bar lines follow it), and clef: treble or bass.
+
+@music(meter=3/4, key=F)
+clef: bass
+tempo: 90
+C3 E3 G3 C4:h. Bb3 A3 G3
+@end
+
+@b{A part for each instrument.} A line that starts with an instrument's name (violin:, cello:, flute:) is that instrument's part; more lines with the same name carry it on.
+
+@music
+time: 3/4
+violin: G4 A4 B4 | C5:h.
+cello: G2:h. | C3:h.
+@end
+
+@b{Chords, dots and ties.} [C4 E4 G4]:h is a chord.
+
+@music
+[C4 E4 G4]:h. C5:q. | C5:h~ C5:q R:q
+@end
+
+@b{Real instruments.} Each part is played by a recorded instrument, chosen by its name: violin, viola, cello, double bass, flute, piccolo, oboe, clarinet, bassoon, horn, trumpet, trombone, tuba, harp, timpani, celesta, glockenspiel, xylophone, marimba, organ, guitar, choir, strings, harpsichord, upright (a lighter upright piano); anything else is the piano, a concert grand.
+
+@music
+tempo: 72
+clarinet: p D5:h. C5:q B4:h A4:h
+bassoon: p G2:w D3:w
+@end
+
+@b{Orchestrate a tune.} Write the tune on a melody: line and its harmony on a chords: line (chord names like C, Am, G7, F#dim, or [C4 E4 G4] chords).
+
+@music(orchestrate=strings, meter=3/4)
+melody: E5:q D5:q C5:q | D5:h. | E5:q F5:q G5:q | C5:h.
+chords: C:h. | G:h. | C:h. | C:h.
+@end
+
+@b{Loudness.} pp p mp mf f ff (and ppp, fff) set how loud the notes after them play, and are printed under the staff; cresc and dim grow or fade to the next mark, evenly in time, so one long note under a cresc swells while it sounds (tie notes to hold it across bars).
+
+@music
+p C4 D4 cresc E4 F4 G4 f C5:h
+@end
+
+@b{How it is played.} pizz (plucked), stac (short), trem (tremolo) and arco (back to the bow) set how the notes after them are played, until the next one, the way a dynamic sets how loud; each plays the instrument's own recordings of that technique, and is printed beside the dynamics (pizz.
+
+@music
+violin: mf D5 E5 pizz F#5 G5 arco A5:h
+@end
+
+@b{Triplets.} A 3 after a note's length makes it a triplet, three in the time of two: C4:e3 D4:e3 E4:e3 fill one beat, and are drawn as eighths with a 3 over them.
+
+@music
+C4:e3 D4:e3 E4:e3 F4:q G4:h
+@end
+
+@b{Changing tempo.} tempo=90 inside a part line changes the tempo from that beat on, for every part, and prints ♩ = 90 above the staff.
+
+@music(tempo=72)
+violin: D5 E5 F5 G5 tempo=54 A5:h G5:h
+@end
+
+@b{Changing key or time.} key=G (or key=F#m for a minor key) and time=3/4 inside a part line change the key or the time signature for every part from the next bar line on, and print the new signature right after that bar line.
+
+@music(key=C, meter=4/4)
+violin: C5 D5 E5 F5 key=G time=3/4 G5 F#5 E5 D5:h.
+@end
+
+@b{Lines that sing.} Notes that follow each other with no rest between are joined the way a player slurs them: the next note comes in already sounding, with no gap.
+
+@music(tempo=72, key=D)
+violin: mf D5 E5 F#5 G5 A5:h
+@end
+
+@b{A graded exercise.} expect= names what was written: notes=, count=, tempo= or clef=.
+
+Write the first three notes of C major.
+@music(id=cmaj, expect="notes=C4 D4 E4")
+C4
+@end
+
+@b{Graded.} Each reading named in expect= (the notes, their count, the tempo or the clef) is one check.
+
+@section(Multitrack audio editing)
+
+Mix several tracks of sound in the document, with effects, automation and a measured loudness, where the body is the session; the same mix plays, exports as WAV and is graded.
+
+@audioeditor
+track Voice
+clip music-and-audio.assets/voice.wav 0..10 at=0 fadein=0.2
+fx highpass f=80
+track Music vol=0.4
+clip music-and-audio.assets/bed.wav 0..10 at=0
+master limit=-1 loudness=-16
+export mix.wav
+@end
+
+@b{Tracks, clips and effects.} track NAME vol= pan= mute solo, then clip lines and effects in chain order: eq, highpass, lowpass, comp, gate, delay, reverb, gain.
+
+@audioeditor
+track Voice
+clip music-and-audio.assets/voice.wav 0..10 at=0
+fx comp threshold=-20 ratio=3 attack=10 release=120
+@end
+
+@b{Automation.} auto vol T:V …, auto pan …, or an effect's parameter by its place or kind (auto lowpass.f 0:8000 4:1200).
+
+@audioeditor
+track Music vol=0.4
+clip music-and-audio.assets/bed.wav 0..10 at=0
+fx lowpass f=8000
+auto vol 0:0.4 4:0.15 9:0.4
+@end
+
+@b{A graded mix.} id=, pts= and expect=: fx(Voice)=comp, auto(Music)=vol, pan(Voice)<0, lufs=-16±1 (the student's own mix, measured on the server).
+
+@audioeditor(id=q1, pts=10, expect="fx(Voice)=comp, lufs=-16±1")
+track Voice
+@end
+
+@b{Graded.} The server reads the session text and checks each term; lufs= renders the student's own mix from their WAV files and measures it.
+
+@section(Read text aloud)
+
+Put a speak button in the document that reads a sentence aloud with IDoc's own neural voice, maths in $…$ read as English.
+
+@say(Welcome to lecture 1)
+
+@b{Voice and delivery.} voice=, rate=, pitch=, energy=, emotion=, articulation= and context= shape how it sounds.
+
+@say(text=Slow and clear, rate=0.9, emotion=calm, context=educational)
+
+@b{Say something other than what is shown.} speak= is what is said when it differs from the shown text.
+
+@say(text=Ohm's law, speak=V equals I times R)
+
+@b{A dictionary equation.} eq= speaks an entry's stored caption; expanded speaks its expanded caption.
+
+@say(eq=med.bl, expanded)
+
+@b{Graded.} Not graded: it is content, and a student sees and uses exactly what you see.
+
+
+@section(Every other argument and the orchestra)
+
+@b{Guitar and choir.} A part named guitar is played by a sampled guitar and choir by a sampled choir.
+
+@box(w=100%, style=offline)
+Sampled instruments download on first play: they need the network, or the desktop app's music pack.
+@end
+
+@music(tempo=84, key=G)
+choir: mp G4:h A4:h | B4:w
+guitar: [G3 B3 D4]:h [D3 F#3 A3]:h | [G3 B3 D4]:w
+@end
+
+@b{Chamber and full ensembles.} orchestrate=chamber writes flute, clarinet, horn and bassoon parts; full adds every section and a double bass.
+
+@music(orchestrate=chamber, tempo=96)
+melody: C5:q E5:q G5:h | F5:q E5:q D5:h | C5:w
+chords: C:h C:h | F:h G:h | C:w
+@end
+
+@music(orchestrate=full, tempo=60, meter=3/4)
+melody: p G4:h. | cresc A4:h B4:q | f C5:h.
+chords: G:h. | D:h. | C:h.
+@end
+
+@b{The studio lines.} lane sets a part's level, pan and effects; kit, beat and arrange build a drum pattern; the studio writes these for you when you use its mixer and beat machine.
+
+@music(tempo=100)
+piano: C4:q E4:q G4:q C5:q | [F3 A3 C4]:w
+lane piano -6dB pan=-20 fx=eq:2,hall:25
+kit brush 16 swing=54
+beat A kick 9.......9.......
+beat A snare ....6.......6...
+arrange A A
+@end
+
+@b{Recording, theme and hand-in.} src= (or the older file=) plays a recording instead of the built-in sound, theme= sets the look, width= and height= size the card, submit=server makes it a hand-in, and time= is the live-class window; file= is an older spelling of src=.
+
+@music(file=music-and-audio.assets/bed.wav, theme=dark, width=600, height=200)
+C4:q E4:q G4:h
+@end
+
+@music(id=scale-hand-in, submit=server, expect="count=4", time=5m)
+C4 D4 E4 F4
+@end
+
+@b{Mix without editing.} noedit on @@audioeditor plays the mix with no editing tools.
+
+@audioeditor(noedit)
+track Voice
+clip music-and-audio.assets/voice.wav 0..6 at=0
+master loudness=-16
+@end
+
+@music(src=music-and-audio.assets/bed.wav)
+A2:w
+@end

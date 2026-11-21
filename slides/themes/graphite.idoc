@@ -1,0 +1,14 @@
+@deck(theme=graphite, transition=cover, ratio=16:10, size=normal)
+@style(IDocDemo)
+@title(Deck theme: graphite)
+
+@titleslide
+
+@slide(A heading)
+Body text in the graphite theme, with the cover transition, ratio 16:10 and size normal.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

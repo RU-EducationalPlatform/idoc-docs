@@ -1,0 +1,187 @@
+@style(IDocDemo)
+@title(Code 1: every language @@code runs)
+
+`@@code(LANG, run)` gives an editor with a Run button. JavaScript and Python run in the browser; every other language runs on the server's sandboxed runner (or the student's own local runner).
+
+@section(In the browser)
+
+JavaScript runs in a Web Worker.
+
+@code(javascript, run)
+const xs = [3, 1, 4, 1, 5];
+console.log(xs.reduce((a, b) => a + b, 0));
+@end
+
+Python runs in Pyodide, with numpy available.
+
+@code(python, run)
+squares = [n * n for n in range(6)]
+print(sum(squares))
+@end
+
+@section(On the server)
+
+@box(w=100%, style=offline)
+The blocks in this section need the IDoc server's runner or the student's local runner.
+@end
+
+C, compiled with gcc.
+
+@code(c, run)
+#include <stdio.h>
+int main(void) {
+    int s = 0;
+    for (int i = 1; i <= 10; i++) s += i;
+    printf("%d\n", s);
+    return 0;
+}
+@end
+
+C++, compiled with g++.
+
+@code(cpp, run)
+#include <iostream>
+#include <vector>
+#include <numeric>
+int main() {
+    std::vector<int> v{1, 2, 3, 4};
+    std::cout << std::accumulate(v.begin(), v.end(), 0) << "\n";
+}
+@end
+
+Rust.
+
+@code(rust, run)
+fn main() {
+    let v: Vec<u32> = (1..=5).collect();
+    println!("{}", v.iter().product::<u32>());
+}
+@end
+
+Go.
+
+@code(go, run)
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println(len("hello"))
+}
+@end
+
+Java; the class with `main` is the program.
+
+@code(java, run)
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(String.join("-", "a", "b", "c"));
+    }
+}
+@end
+
+Bash.
+
+@code(bash, run)
+for f in one two three; do echo "$f"; done | wc -l
+@end
+
+Lua.
+
+@code(lua, run)
+local t = {5, 7, 9}
+print(#t, t[1] + t[3])
+@end
+
+Perl.
+
+@code(perl, run)
+my @w = split / /, "the quick brown fox";
+print scalar(@w), "\n";
+@end
+
+PHP.
+
+@code(php, run)
+<?php
+echo strtoupper("idoc"), "\n";
+@end
+
+R.
+
+@code(r, run)
+x <- c(2, 4, 6, 8)
+cat(mean(x), sd(x), "\n")
+@end
+
+Ruby.
+
+@code(ruby, run)
+puts [3, 1, 2].sort.inspect
+@end
+
+Assembly (x86-64, GNU syntax), linked and run.
+
+@code(assembly, run)
+    .globl main
+main:
+    mov $42, %eax
+    ret
+@end
+
+Verilog, simulated with Icarus Verilog.
+
+@code(verilog, run)
+module top;
+  initial $display("%d", 4'b1010);
+endmodule
+@end
+
+SystemVerilog.
+
+@code(systemverilog, run)
+module top;
+  logic [7:0] a = 8'd200, b = 8'd55;
+  initial $display("%0d", a + b);
+endmodule
+@end
+
+@section(Listings that do not run)
+
+Without `run` a block is a highlighted listing; `edit` makes it editable without running.
+
+@code(python)
+print("a listing only")
+@end
+
+@code(c, edit)
+int main(void) { return 0; }
+@end
+
+Inline code sits in a sentence: @code(x = 1) is a short assignment.
+
+@code(shell, edit)
+$ make test
+@end
+
+@section(Older names that still work)
+
+These spellings mean the same as a form of @@code; new documents should write @@code.
+
+@codeblock(python)
+print("codeblock")
+@end
+
+@listing(c)
+int x = 1;
+@end
+
+@codebox(language=python)
+print("codebox")
+@end
+
+@shellbox
+$ ls
+@end
+
+@inlinecode(y = 2) is the older inline form.

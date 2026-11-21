@@ -1,0 +1,137 @@
+@style(IDocDemo)
+@title(Algorithms and automata)
+
+Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.
+
+@section(Algorithm animations: sorting and graph search)
+
+Watch a sorting algorithm or a graph search run one step at a time, as a bar chart or a node-and-edge diagram.
+
+@algoviz
+algo: bubble
+data: 5 2 8 1 9 3
+@end
+
+@b{Sorting.} algo: bubble, insertion, selection, quick or merge, with data: a list of numbers.
+
+@algoviz
+algo: merge
+data: 9 4 7 1 3
+@end
+
+@b{Graph search.} algo: bfs, dfs or dijkstra, then one edge per line (A-B, or A-B: 7 for a weight) and start:.
+
+@algoviz
+algo: dijkstra
+A-B: 1
+B-C: 2
+A-C: 5
+start: A
+@end
+
+@b{A graded exercise.} expect= names what the run produces: final= (the sorted list), order= (the visit order), steps= (frames taken) or dist(NODE)=.
+
+@algoviz(id=sort1, submit=server, expect="final=1,2,5,8")
+algo: insertion
+data: 5 2 8 1
+@end
+
+@b{Graded.} The server runs the same algorithm on the handed-in source and reads the same things: the final list, the visit order, a distance or the step count.
+
+@section(Finite automata and Turing machines)
+
+Describe a DFA, NFA or Turing machine as a list of transitions and get its state diagram, which you can run on a test string step by step.
+
+@automaton
+type: dfa
+start: q0
+accept: q1
+q0 -0-> q1
+q0 -1-> q0
+q1 -0-> q1
+q1 -1-> q0
+@end
+
+@b{The lines.} type: dfa, nfa or tm (default dfa).
+
+@automaton
+type: nfa
+start: s
+accept: f
+s -a-> s
+s -a-> f
+s -eps-> f
+@end
+
+@b{Turing machines.} q0 a/b,R q1 reads a, writes b, moves the head R, L or S, and goes to q1.
+
+@automaton
+type: tm
+start: q0
+accept: qa
+q0 1/0,R q0
+q0 _/_,S qa
+@end
+
+@b{A preset test string.} input= fills the test box when the page opens.
+
+@automaton(input=0110)
+start: q0
+accept: q0
+q0 -0-> q0
+q0 -1-> q0
+@end
+
+@b{A graded exercise.} accepts= and rejects= list example strings; each one is a check.
+
+Accept strings ending in 0.
+@automaton(id=end0, pts=3, accepts="0,10,110", rejects="1,01")
+start: q0
+@end
+
+@b{Graded.} Each accepts= and rejects= string is one check, and the score is the fraction the student's machine gets right, so a machine that is right on four of five examples earns four fifths.
+
+
+@section(Every other argument)
+
+@b{Algoviz look and timing.} theme= sets the look, width= and height= size it, time= is the live-class window.
+
+@algoviz(theme=showcase, width=640, height=320, time=5m)
+algo: insertion
+data: 7 3 9 1 4
+@end
+
+@b{Merge sort and depth-first search.} The other two algorithms the visualizer steps through.
+
+@algoviz
+algo: merge
+data: 6 2 9 4 1 8
+@end
+
+@algoviz(theme=studio)
+algo: dfs
+A-B
+A-C
+B-D
+start: A
+@end
+
+@b{Automaton layout and look.} output= places the diagram, noedit hides the rules, theme= sets the look, width= and height= size it, time= is the live-class window.
+
+@automaton(output=right, theme=dark, width=640, height=300, time=5m)
+type: dfa
+start: q0
+accept: q1
+q0 -1-> q1
+q0 -0-> q0
+q1 -0-> q1
+q1 -1-> q0
+@end
+
+@automaton(noedit, input=11)
+type: dfa
+start: q0
+accept: q1
+q0 -1-> q1
+q1 -1-> q0
+@end

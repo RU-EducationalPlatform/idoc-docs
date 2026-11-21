@@ -1,0 +1,119 @@
+@style(IDocDemo)
+@title(Code 2: every @@code argument)
+
+Each block shows one argument of @@code at work.
+
+@section(Language, size and text)
+
+`language=` names the language when it is not the first argument; `width=` and `height=` size the editor; `fs=` sets the code's text size.
+
+@code(language=python, run, width=60%, height=6, fs=11)
+print("sized editor")
+@end
+
+`caption=` puts a caption under the listing and `label=` lets @@ref point at it.
+
+@code(python, caption=A loop that counts, label=lst:count)
+for i in range(3):
+    print(i)
+@end
+
+The listing above is @ref(lst:count).
+
+`text=` gives the code inline when it is not the first argument: @code(python, text=print(1)).
+
+@section(Running)
+
+`stdin=` feeds input to the program; `timeout=` stops it after that many seconds.
+
+@code(python, run, stdin="4", timeout=5)
+n = int(input())
+print(n * n)
+@end
+
+`active=` lists the lines a student may edit; the rest stay locked.
+
+@code(python, run, active=2)
+total = 0
+total = total + 5
+print(total)
+@end
+
+`scaffold` locks everything except the region between `@@edit` and `@@end` comment markers.
+
+@code(python, run, scaffold)
+import statistics
+# @edit
+def mean(xs):
+    return sum(xs) / len(xs)
+# @end
+print(mean([1, 2, 3]))
+@end
+
+`benchmark=` names a timer that receives the run time in milliseconds, shown in the toolbar.
+
+@code(python, run, benchmark=loop_ms)
+print(sum(range(100000)))
+@end
+
+@section(Marking)
+
+`expect=` is the output the program must print; `tol=` lets a printed number be close.
+
+@code(python, run, expect="15")
+print(sum(range(6)))
+@end
+
+@code(python, run, expect="3.1416", tol=0.001)
+import math
+print(round(math.pi, 4))
+@end
+
+A @@tests section holds hidden checks; each line is one check, and the score is the fraction that pass. `pts=` sets the points and `debug` shows the result of each test.
+
+@code(python, run, pts=3, debug)
+def add(a, b):
+    return a + b
+@tests
+assert add(2, 3) == 5
+assert add(-1, 1) == 0
+assert add(0, 0) == 0
+@end
+
+A test line can carry its own input after `<<<`; with an @@solution, the expected output comes from the teacher's program.
+
+@code(python, run, pts=2)
+n = int(input())
+print(n * 2)
+@tests
+<<< 5
+<<< 11
+@solution
+n = int(input())
+print(n * 2)
+@end
+
+`tests=` can name a file of checks instead, such as a Verilog testbench compiled with the student's module.
+
+@code(systemverilog, run, pts=4, tests=02-arguments.assets/and_tb.sv)
+module and2(input logic a, b, output logic y);
+  assign y = a & b;
+endmodule
+@end
+
+`id=` names the exercise (its mark and draft hang off it); `submit=server` makes it a hand-in; `time=` limits how long it stays open in a live class; `points=` is another spelling of `pts=`.
+
+@code(python, run, id=ex_double, points=2, submit=server, time=5m, expect="10")
+print(5 * 2)
+@end
+
+`lines=` sets the ruled lines for a handwritten answer when the paper is printed as a scan form.
+
+@code(python, edit, lines=10, pts=2)
+# write a function that reverses a list
+@end
+
+`file=` shows and runs a source file instead of the body.
+
+@code(file=02-arguments.assets/hello.c, run)
+@end

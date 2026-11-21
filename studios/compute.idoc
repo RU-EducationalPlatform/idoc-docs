@@ -1,0 +1,446 @@
+@style(IDocDemo)
+@title(Compute: Octo, Jackal, spreadsheets, calculators, code, notebooks and the debugger)
+
+Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.
+
+@section(Octo: code and plots)
+
+Write Octo code (the Octave language) in the page and run it there: numbers, matrices and plots appear under the code, computed by Octo, IDoc's own engine, in your browser with nothing to install.
+
+@octo
+x = 0:0.1:6.3;
+y = sin(x) .* exp(-0.2*x);
+plot(x, y)
+title("damped sine")
+@end
+
+@b{Output and values.} A line without a semicolon prints its value as name = value; disp and fprintf print text.
+
+@octo
+A = [1 2; 3 4]
+b = [5; 6];
+x = A \ b
+@end
+
+@b{Octave's language.} Ranges a:b and a:step:b, matrices [1 2; 3 4], element-wise .* ./ .^, 1-based indexing, % comments, functions, if/for/while, cell arrays and structs, and a large part of Octave's function library (its agreement with GNU Octave is measured by a test suite, not assumed).
+
+@octo
+function y = sq(x)
+  y = x.^2;
+end
+disp(sq(1:5))
+@end
+
+@b{Plots.} plot, scatter, bar, stem, hist and more draw figures under the output; title, xlabel, ylabel, legend and hold on label and layer them.
+
+@octo
+x = randn(1, 500);
+hist(x, 20)
+xlabel("value")
+@end
+
+@b{Tables and the document's data.} table and categorical hold columns by name; readtable reads a CSV or an Excel workbook (.xlsx) into one: readtable("data/trial.csv") is the file beside the document, and readtable("sheet:NAME") is the @@spreadsheet(name=NAME) in the same document, as the values it computes when you press Run.
+
+@spreadsheet(name=scores)
+student	score
+Ann	81
+Bo	=70+4
+@end
+@octo
+T = readtable("sheet:scores");
+disp(mean(T.score))
+@end
+
+@b{When a block runs, and for how long.} A block runs as the page opens, for up to 5 seconds (each reader can change that in Preferences).
+
+@settings(module=octo, run=visible, maxrun=20)
+@octo(run=click, limit=10)
+s = 0;
+for k = 1:2e6
+  s = s + 1/k^2;
+end
+disp(s)
+@end
+
+@b{3-D surfaces.} surf and mesh draw a surface you can look at in 3-D.
+
+@octo
+[X, Y] = meshgrid(-2:0.2:2);
+surf(X, Y, X.*exp(-X.^2 - Y.^2))
+@end
+
+@b{Animation.} A program that calls drawnow or pause inside a loop plays its frames in one pane, like a short film.
+
+@octo
+x = linspace(0, 2*pi, 60);
+for k = 1:20
+  plot(x, sin(x + k/3)); drawnow
+end
+@end
+
+@b{Speed and time limits.} Octo is compiled to WebAssembly and runs off the page's main thread, so a long loop does not freeze the editor.
+
+@octo(limit=30)
+A = rand(400);
+B = A * A;
+disp(size(B))
+@end
+
+@b{Hide the code.} noedit (or nosrc) hides the code and keeps the results and the toolbar, so a lesson can show a plot without its program.
+
+@octo(noedit)
+t = linspace(-20, 20, 400);
+plot(t, sin(t) ./ t)
+@end
+
+@b{A graded exercise.} expect= is the printed output the student's program must produce (a number may be off by tolerance=).
+
+Print the sum of 1 to 100.
+@octo(id=sum100, pts=2, expect="5050")
+s = 0;
+@end
+
+@b{Graded.} With expect= the server re-runs the student's program itself, seeded with their variant's random seed and on the same time budget, and compares what it printed with expect= (the whole printout, or just the values after name =), numbers within tolerance=.
+
+@section(Jackal: maths questions in plain words)
+
+Type a maths question in ordinary words and get the answer as typeset maths, the steps the engine actually took, other forms of the answer and a plot where one helps, with no code to learn.
+
+@jackal
+integrate x^2 sin(x)
+@end
+
+@b{Calculus.} Derivatives ("derivative of", "d/dx", "differentiate"), integrals with or without limits, limits ("limit of ...
+
+@jackal
+derivative of sin(x^2) * e^x
+@end
+
+@b{Algebra.} Solve equations and systems ("solve x^2 - 5x + 6 = 0"), factor, expand, simplify and partial fractions.
+
+@jackal
+solve x^2 - 5x + 6 = 0
+@end
+
+@b{Numbers.} Exact arithmetic and any precision, fractions, primes and factorisation, gcd and lcm, number bases ("255 in binary", two's complement), complex numbers in both forms, and unit conversion ("5 miles in km").
+
+@jackal
+factor 3600
+@end
+
+@b{Matrices.} Determinant, inverse, eigenvalues and eigenvectors, row reduction with each row operation shown.
+
+@jackal
+eigenvalues of [[2,1],[1,2]]
+@end
+
+@b{Logic and statistics.} Truth tables and simplification of Boolean expressions ("truth table of a and (b or not c)"), and the mean, median and spread of a list of numbers.
+
+@jackal
+truth table of a and (b or not c)
+@end
+
+@b{Transforms and differential equations.} Laplace, Fourier and Z transforms and their inverses, and ordinary differential equations with initial conditions.
+
+@jackal
+laplace transform of t^2 e^(-3t)
+@end
+
+@b{It never guesses.} A question it cannot read gets "I don't understand that" with phrasings it does understand, which you can click.
+
+@jackal
+what is the capital of France
+@end
+
+@b{Hide the working.} steps=hide (or the flag nosteps) shows the answer without the steps, for a quick reference.
+
+@jackal(steps=hide)
+integrate 1/(1+x^2)
+@end
+
+@b{A graded exercise.} pts= (or the flag graded) turns the block into a question the student answers: they see the question and an answer box, and their answer is marked by meaning, so 2x+2 and 2(x+1) are both right.
+
+@jackal(id=d1, pts=2)
+derivative of x^2 + 2x
+@end
+
+@b{Graded.} A graded block shows the question and an answer box, never the answer or the steps.
+
+@section(Spreadsheets with formulas)
+
+A real spreadsheet in the page: cells, formulas such as =SUM(D2:D3), formatting, and Excel files in and out.
+
+@spreadsheet
+Item	Qty	Price	Total
+Pens	3	1.50	=B2*C2
+Pads	2	4.00	=B3*C3
+Total			=SUM(D2:D3)
+@end
+
+@b{Cells and formulas.} One row per line, cells separated by TAB.
+
+@spreadsheet
+x	y
+2	=A2^2
+3	=A3^2
+@end
+
+@b{Name it, chart it.} name= gives the sheet a name; @@graph(source=sheet:NAME) charts it, and updates when the sheet changes.
+
+@spreadsheet(name=sales)
+Month	Units
+Jan	40
+Feb	55
+@end
+
+@b{Layout.} freeze=1:1 pins the first row and column while scrolling; widths= sets column widths in pixels.
+
+@spreadsheet(freeze=1:0, widths="120 60")
+Name	Score
+Ada	91
+@end
+
+@b{Read-only and big data.} readonly shows the grid without editing.
+
+@spreadsheet(readonly)
+Unit	Symbol
+ohm	Ω
+@end
+
+@b{A graded exercise.} expect= names cells and the values they must hold; tolerance= lets a number be slightly off.
+
+Fill in the total.
+@spreadsheet(id=tot, pts=2, expect="D2=4.5")
+Item	Qty	Price	Total
+Pens	3	1.50	
+@end
+
+@b{Graded.} Each cell named in expect= is a check and the score is the fraction right.
+
+@section(On-screen calculators)
+
+A calculator inside the page, basic, scientific, graphing or RPN, that can send its result straight into a question's answer box.
+
+@calc(scientific)
+
+@b{Kinds.} @@calc alone is basic; scientific adds functions (sin, log, powers); graphing plots y= functions; rpn or hp48gx is a four-level RPN calculator in the style of the HP 48.
+
+@calc(graphing, w=420)
+
+@b{Fill a question.} for= sends the result to a question when you press = or Enter: by id (for=prob6), the Nth fill-in (for=2), or the box that has the focus (for=active).
+
+Resistance of 12 V at 3 A: @q(fn: 4)
+@calc(for=1)
+
+@b{Size and place.} w= and h= size it, float=left or right wraps text beside it, theme=light or dark pins its colours.
+
+@calc(scientific, w=300, float=right, theme=dark)
+
+@b{Graded.} The calculator itself is never graded.
+
+@section(Runnable and graded code)
+
+A code editor in the page with a Run button, in Python, JavaScript and many compiled languages, which can be marked by its output or by hidden tests.
+
+@code(python, run)
+print("hello")
+@end
+
+@b{A listing, an editor, or a runner.} @@code(python) alone is a highlighted listing; edit makes it editable; run adds Run.
+
+@code(c, edit, width=50%)
+int main(void) { return 0; }
+@end
+
+@b{Marked by output.} expect= is the output it must print; tol= allows numbers to be close.
+
+@code(python, run, expect="15")
+print(sum(range(6)))
+@end
+
+@b{Marked by hidden tests.} A @@tests section is never shown; each assert is one check, and the score is the fraction that pass.
+
+@code(python, run, pts=3)
+def add(a, b):
+    return a + b
+@tests
+assert add(2, 3) == 5
+assert add(-1, 1) == 0
+@end
+
+@b{Input and limits.} stdin= is fed to the program; timeout= stops it after that many seconds.
+
+@code(python, run, stdin="4", timeout=5)
+n = int(input())
+print(n * n)
+@end
+
+@b{Locked starter code.} scaffold locks everything except the region between comment markers @@edit and @@end, which are written in the language's own comment.
+
+@code(python, run, scaffold)
+import statistics
+# @edit
+def mean(xs):
+    pass
+# @end
+print(mean([1, 2, 3]))
+@end
+
+@b{Graded.} expect= compares the printed output (numbers within tol); @@tests runs hidden checks after the student's code and gives the fraction passing; with both, the two are averaged.
+
+@section(Notebooks of cells that share a kernel)
+
+A Jupyter-style notebook: runnable cells that share one kernel, so a name set in one cell is there in the next.
+
+@notebook(kernel=python)
+@cell
+x = 21
+@cell
+print(x * 2)
+@end
+
+@b{Cells.} @@cell starts a cell; a bare @@cell keeps the previous cell's language.
+
+@notebook(kernel=python)
+@cell(markdown)
+# Warm-up
+@cell
+print(2 + 2)
+@end
+
+@b{Locked setup.} @@cell(python, locked) is given code a student cannot edit.
+
+@notebook(kernel=python)
+@cell(python, locked)
+import math
+@cell
+print(math.pi)
+@end
+
+@b{Graded.} Each cell is graded like @@code(run): expect= or @@tests on a cell, with the notebook's points shown once above it.
+
+@section(Waveforms and profiles under your code)
+
+Mount the real debugger under a code block: a waveform for Verilog or SystemVerilog, and a timeline, flamegraph or roofline for C, C++, CUDA and Rust.
+
+@code(systemverilog, run, id=counter)
+module tb;
+  logic clk = 0;
+  always #5 clk = ~clk;
+  initial #50 $finish;
+endmodule
+@end
+@visual_debug(systemverilog, id=counter)
+
+@b{Point it at code.} id= names a @@code block in the document, or src= a file (one or the other).
+
+@visual_debug(systemverilog, src=compute.assets/alu_tb.sv)
+
+@b{Choose the signals.} signals= lists them, with a radix per signal (tb.q[3:0]:hex) or groups; radix= sets the default; from= and to= the window.
+
+@visual_debug(systemverilog, id=alu, signals="tb.clk, tb.q[3:0]:hex", from=0ns, to=100ns)
+
+@b{Profiles.} profile= timeline, flamegraph, roofline, source or memory, joined with +; build= the compile line (C, C++, CUDA, Rust); controls=yes lets the reader edit it and re-run; capture= a profile taken elsewhere.
+
+@visual_debug(cpp, id=sort, profile=flamegraph, build="g++ -O2 -g")
+
+@b{A graded check.} expect= is an assertion over the trace, and pts= its worth.
+
+@visual_debug(systemverilog, id=counter, expect="eventually: tb.q == 5", pts=10)
+
+@b{Graded.} With expect= and pts= the assertion is checked against the trace from the student's code.
+
+
+@section(Every other argument)
+
+@b{Octo layout and limits.} output=right puts plots beside the code, height= sets the code area, width= the cell, stage=theme recolours the plot stage, theme= the studio look, time= the live-class window, nolim lifts the time limit (it then waits for Run), benchmark= names the run time in milliseconds.
+
+@octo(output=right, height=120, width=90%, stage=theme, theme=dark, time=5m, benchmark=octoms)
+x = linspace(0, 2*pi, 100);
+plot(x, cos(x))
+@end
+
+@octo(nolim, run=click)
+s = 0; for k = 1:1e5, s = s + 1/k^2; end; disp(s)
+@end
+
+@b{Octo graded with tolerance.} tolerance= is how far a printed number may be off from expect=.
+
+@octo(id=pi-est, pts=2, expect="3.1416", tolerance=0.001)
+disp(round(pi * 1e4) / 1e4)
+@end
+
+@b{Jackal extras.} graded makes an exercise with no points given, noedit hides the question box, theme=, width= and height= set its look and size.
+
+@jackal(graded, id=jk-graded)
+derivative of x^2
+@end
+
+@jackal(noedit, theme=dark, width=600, height=300)
+solve 2x + 3 = 11
+@end
+
+@b{Spreadsheet hand-in and big data.} submit=server keeps the student's sheet, tolerance= allows a near value, theme=, width=, height= and time= as usual; source= opens a .bct column table read-only.
+
+@spreadsheet(id=sheet-hand-in, submit=server, pts=2, expect="B3=12", tolerance=0.01, theme=studio, width=500, height=160, time=10m)
+Item	Value
+a	5
+total	=B2+7
+@end
+
+@spreadsheet(source=compute.assets/flights.bct, height=240)
+@end
+
+@b{Calculator by argument.} mode= is the same as the first word, bind= the same as for=, width= and height= size it.
+
+@calc(mode=rpn, width=320, height=420)
+
+The answer goes here: @q(f: 42, id=calc-target)
+
+@calc(mode=basic, bind=calc-target)
+
+@b{Code from a file, with a caption and label.} file= shows and runs a source file, language= names the language, caption= and label= title the listing for @@ref, fs= sets its text size.
+
+@code(file=compute.assets/first.py, language=python, run, caption=A first program, label=first-prog)
+@end
+
+@b{Code as a graded hand-in.} tests= holds hidden checks, debug grades per test, active= says which lines may be edited, height= is the editor's rows, submit=server keeps the work, time= is the live-class window, benchmark= names the run time, lines= sets ruled lines on paper.
+
+@code(python, run, id=add-hand-in, pts=4, submit=server, tests="assert add(2, 3) == 5", debug, active=1-2, height=8, time=10m, benchmark=addms, lines=10)
+def add(a, b):
+    return 0
+@end
+
+@b{Inline code.} text= puts the code in the head; it prints inline in the sentence.
+
+The loop is @code(text=for i in range(3): print(i), language=python) in one line.
+
+@b{Notebook extras.} time= is the live-class window, width= and height= size it, benchmark= names the run time.
+
+@notebook(kernel=python, time=10m, width=90%, height=300, benchmark=nbms)
+x = [1, 2, 3]
+print(sum(x))
+@end
+
+@b{Debugger controls.} language= names it when the first argument does not, controls=yes lets the reader edit the build and re-run, radix= sets number display, width= and height= size the panel; file= is the older spelling of src=, and capture= loads a profile taken elsewhere (C, C++, CUDA or Rust only).
+
+@box(w=100%, style=offline)
+The debugger needs the local server or the desktop app to run the simulator and take profiles.
+@end
+
+@visual_debug(language=systemverilog, file=compute.assets/alu_tb.sv, controls=yes, radix=hex, width=100%, height=320)
+
+@visual_debug(cpp, capture=compute.assets/profile.json, profile=timeline+flamegraph)
+
+@b{Code output with a tolerance.} tol= lets a printed number be close to expect=.
+
+@code(python, run, id=third, pts=1, expect="0.3333", tol=0.001)
+print(1/3)
+@end
+
+@b{A plain listing.} @@code(LANG) with no run or edit is a highlighted listing, the same in the PDF.
+
+@code(python)
+for n in range(3):
+    print(n * n)
+@end

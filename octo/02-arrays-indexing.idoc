@@ -1,0 +1,87 @@
+@style(IDocDemo)
+@title(Octo 2: arrays and indexing)
+
+Everything in Octo is an array. These blocks show how to build, reshape and index them.
+
+@section(Building arrays)
+
+Brackets build by hand, the colon builds ranges, and the constructor functions build the common shapes.
+
+@octo
+r = [1 2 3], c = [1; 2; 3]
+t = 0:0.25:1
+linspace(0, 1, 5)
+logspace(0, 2, 3)
+zeros(2, 3), ones(2), eye(3)
+rand(2) < 2
+randi(6, 1, 4) > 0
+size(randn(3, 2))
+repmat([1 2], 2, 2)
+magic(4)
+diag([1 2 3])
+@end
+
+@section(Size and shape)
+
+`size`, `numel` and `reshape` describe and change shape; `(:)` always gives a column.
+
+@octo
+A = reshape(1:6, 2, 3)
+size(A), numel(A), rows(A), columns(A), ndims(A), length(A)
+A(:)'
+A'
+isempty([]), isvector(1:3), isscalar(5), ismatrix(A), isrow(1:3), iscolumn((1:3)')
+squeeze(ones(1, 1, 3))'
+permute(reshape(1:8, 2, 2, 2), [2 1 3])(:, :, 1)
+@end
+
+@section(Indexing)
+
+Index by position, by `end`, by logical mask, or by linear index.
+
+@octo
+A = magic(4);
+A(2, 3), A(end, end), A(2, :), A(:, 1)'
+A(A > 12)'
+[r, c] = find(A == 16)
+idx = sub2ind(size(A), 2, 3), [i, j] = ind2sub(size(A), 10)
+B = A; B(1, :) = []; size(B)
+B(B > 10) = 0
+@end
+
+@section(Joining, sorting and searching)
+
+These are the everyday array tools.
+
+@octo
+x = [4 1 3 1 5];
+cat(1, x, x), horzcat(x, 9), vertcat(x, x)
+[s, k] = sort(x, "descend")
+sortrows([3 1; 1 2; 2 0])
+unique(x), fliplr(x), flipud([1; 2]), circshift(x, 1)
+rot90([1 2; 3 4]), numel(randperm(5))
+[m, im] = max(x), min(x), cumsum(x), cumprod([1 2 3]), diff(x)
+sum(magic(3)), sum(magic(3), 2)', prod([1 2 3 4]), mean(x)
+nnz(x > 2), numel(find(x == 1))
+@end
+
+@section(Sets)
+
+Set functions treat arrays as sets and return sorted results.
+
+@octo
+a = [1 2 3 4]; b = [3 4 5];
+union(a, b), intersect(a, b), setdiff(a, b), setxor(a, b)
+ismember(2, a), [tf, loc] = ismember([5 3], a)
+@end
+
+@section(Vectorised arithmetic)
+
+Dotted operators work element by element; broadcasting stretches a row against a column.
+
+@octo
+a = [1 2 3];
+a .* a, a ./ 2, a .^ 2
+a' + a
+bsxfun(@plus, a', a)
+@end

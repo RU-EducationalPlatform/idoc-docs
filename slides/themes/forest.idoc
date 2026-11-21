@@ -1,0 +1,14 @@
+@deck(theme=forest, transition=slide, ratio=16:9, size=huge)
+@style(IDocDemo)
+@title(Deck theme: forest)
+
+@titleslide
+
+@slide(A heading)
+Body text in the forest theme, with the slide transition, ratio 16:9 and size huge.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

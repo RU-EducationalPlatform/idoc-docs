@@ -1,0 +1,256 @@
+@style(IDocDemo)
+@title(Figures and media)
+
+Pictures, figures with captions, video, PDF pages, icons, diagrams and shapes.
+
+@section(Pictures and figures)
+
+@subsection(@@img)
+
+An image.
+
+@img(src=circuit.svg, caption=Front)
+@draw(caption=Plan)
+…
+@end
+@end
+@figure(src=circuit.svg, caption=Measured response, label=fig-r, alt=A circuit)
+
+@img(file=circuit.svg, w=60%)
+
+@img(file=circuit.svg, inline)
+
+@img(circuit.svg, w=200, h=120, fit=contain, alt=A series circuit, label=fig-circ, gap=12px)
+
+@img(circuit.svg, w=140, float=right, alt=Circuit floating right)
+Text runs beside a floating picture. It keeps going here so the wrap is visible on screen.
+
+@img(circuit.svg, w=140, float=left, alt=Circuit floating left)
+And here the picture floats left.
+
+Turned and cropped: @img(circuit.svg, w=160, rotate=90, alt=Rotated circuit) @img(circuit.svg, w=200, crop=10% 0 10% 5%, alt=Cropped circuit) @img(circuit.svg, scale=0.5, alt=Half size)
+
+@subsection(@@figure)
+
+A NUMBERED figure with a caption, referenceable with ref, placed where it is written.
+
+@figure(file=circuit.svg, caption=Result, label=fig1)
+
+@figure(caption=Three views, cols=3)
+
+@figure(file=circuit.svg, span)
+
+@figure(src=circuit.svg, alt=A battery and two resistors in series, caption=A series circuit, columns=1)
+
+@figure(src=circuit.svg, w=50%, alt=A series circuit at half width, caption=Half width)
+
+@subsection(@@icon)
+
+A built-in icon glyph, sized and coloured like text.
+
+@icon(check)
+
+@icon(warning, size=2em)
+
+@subsection(@@shape)
+
+A vector shape: rect, ellipse, triangle, diamond, pentagon, hexagon, star, arrow, line, callout.
+
+@shape(star, w=80, fill=#f5b800)
+
+@shape(arrow, x=20%, y=40%)
+
+@section(Video and PDF)
+
+@subsection(@@video)
+
+A video player.
+
+@video(file=clip.mp4, width=60%, poster=circuit.svg)
+
+@video(src=clip.mp4, label=A short test clip, loop, stage, w=360)
+
+@video(src=clip.mp4, autoplay, w=240)
+
+@subsection(@@pdf)
+
+A PDF in the document.
+
+@pdf(file=datasheet.pdf)
+
+@pdf(file=datasheet.pdf, w=70%, caption=The brief)
+
+@pdf(file=datasheet.pdf, edit)
+pages 1-3
+highlight 1 10%,20%,60%,3%
+note 1 at 80%,10% "Read this first" id=n1
+note 1 at 84%,10% "Done: see page 2" reply=n1 by="TA"
+fill student.name="Ada Lovelace"
+export datasheet.pdf
+@end
+
+@pdf(file=datasheet.pdf, h=40vh, alt=A one-page lab data sheet)
+
+An editing exercise on the same PDF: @pdf(file=datasheet.pdf, edit, expect=pages=1, pts=2, id=pdf-ex1)
+
+@pdf(file=datasheet.pdf, edit, noedit, id=pdf-ex2)
+
+@section(Diagrams)
+
+@subsection(@@diagram)
+
+A figure that is computed, not drawn: give the measures and it is solved and drawn to scale, varies with rand, prints as vector, is described for screen readers, and ask= turns its unknown into a graded blank with a computed answer.
+
+@diagram(triangle, a=5, b=7, C=40, ask=c, units=cm)
+
+@diagram(symbol, resistor, style=iec)
+
+@diagram(circuit, series, V=9, R1=2k, R2=1k, ask=I)
+
+@diagram(freebody, gravity=20@270, normal=20@90, applied=12@0, ask=net)
+
+@diagram(numberline, from=-5, to=5, show=-2<x<=3)
+
+@diagram(rectangle, l=8, b=5, units=cm, ask=area)
+
+@diagram(parallelogram, base=9, side=5, angle=60, units=cm, ask=area)
+
+@diagram(trapezoid, top=4, bottom=10, height=5, units=cm, ask=area)
+
+@diagram(kite, d1=8, d2=6, units=cm, ask=area)
+
+@diagram(angles, supplementary, a=115, ask=other)
+
+@diagram(transversal, angle=65, at=1, ask=7)
+
+@diagram(grid, range=-6:6, points="A(-2,1) B(4,5)", segments=AB, ask=distance)
+
+@diagram(prism, l=6, b=3, height=4, units=cm, ask=volume)
+
+@diagram(cylinder, r=3, height=8, units=cm, ask=volume)
+
+@diagram(cone, r=3, height=4, units=cm, ask=slant)
+
+@diagram(pyramid, side=6, height=4, units=cm, ask=volume)
+
+@diagram(sphere, r=5, units=cm, ask=volume)
+
+@diagram(boxplot, data="3 7 8 5 12 14 21 13 18", ask=iqr)
+
+@diagram(mapping, pairs="1>3, 2>5, 3>7, 4>7")
+
+@diagram(ruler, length=7.4, units=cm, ask=reading)
+
+@diagram(buret, value=12.35, ask=reading)
+
+@diagram(beaker, value=140, max=250, step=50, ask=reading, tol=10)
+
+@diagram(thermometer, value=23.5, from=-10, to=50, ask=reading)
+
+@diagram(balance, value=273.4, ask=reading)
+
+@diagram(springscale, value=3.5, max=10, step=0.5, units=N, ask=reading)
+
+@diagram(syringe, value=37, max=100, step=2, units=cm³, ask=reading)
+
+@diagram(phmeter, value=4.2, ask=reading)
+
+@diagram(displacement, before=30, after=42, max=50, ask=volume)
+
+@diagram(incline, angle=30, mass=5, ask=parallel)
+
+@diagram(pulley, m1=3, m2=5, ask=a)
+
+@diagram(projectile, v=20, angle=45, ask=range)
+
+@diagram(motion, velocity, points="0,0 2,4 5,4 7,0", ask=displacement)
+
+@diagram(wave, wavelength=4, amplitude=2, cycles=2.5, units=m, ask=wavelength)
+
+@diagram(vectors, A=3@0, B=4@90, ask=resultant)
+
+@diagram(titration, weak, Ca=0.1, Va=25, Cb=0.1, pKa=4.76, ask=equivalence)
+
+@diagram(heating, substance=water, ask=bp)
+
+@diagram(particles, gas, kind=mixture)
+
+@diagram(bohr, Na, ask=valence)
+
+@diagram(orbitals, Fe, ask=unpaired)
+
+@diagram(lewis, NH3, ask=lonepairs)
+
+@diagram(spectrum, H)
+
+@diagram(pes, O, ask=peaks)
+
+@diagram(massspec, Cl, ask=average)
+
+@diagram(type=triangle, a=3, b=4, c=5, width=240, label.a=x, label.b=y, label.c=none, label.A=alpha, label.B=beta, label.C=gamma)
+
+@diagram(type=triangle, a=7, b=10, solution=2)
+
+@diagram(type=symbol, name=resistor)
+
+@diagram(type=circuit, R1=100, R2=220, R3=330, R4=470)
+
+@diagram(type=freebody, body=block, weight=20@270, friction=5@180, tension=12@0, spring=4@90, air=2@200, drag=3@160, lift=6@80, thrust=8@10)
+
+@diagram(type=vector, vx=3, vy=4)
+
+@diagram(type=polygon, n=6)
+
+@diagram(type=circle, d=4)
+
+@diagram(type=trapezoid, shift=1)
+
+@diagram(type=grid, xrange=-2:10, yrange=-3:6)
+
+@diagram(type=boxplot, five=2 5 7 9 12, method=inclusive)
+
+@diagram(type=mapping, domain=x)
+
+@diagram(type=ruler, start=2)
+
+@diagram(type=incline, mu=0.2, g=9.8)
+
+@diagram(type=motion, tunit=s)
+
+@diagram(type=wave, speed=340)
+
+@diagram(type=titration, strength=weak, pKb=4.75)
+
+@diagram(type=heating, mp=0, bp=100)
+
+@diagram(type=particles, state=gas, seed=3)
+
+@diagram(type=bohr, element=Na, charge=1, neutrons=12)
+
+@diagram(type=lewis, formula=NH3)
+
+@diagram(type=spectrum, lines=410 434 486 656)
+
+@diagram(type=pes, energies=104 6.84 4.98)
+
+@diagram(type=massspec, isotopes=35:75.8 37:24.2)
+
+@subsection(@@smartart)
+
+A laid-out diagram from a list: process (arrows), list (stacked), cycle (ring), hierarchy (org chart).
+
+@smartart(process, Plan; Build; Ship)
+
+@subsection(@@problem)
+
+The task a student is set inside the module above it — marked by a named template, worth points, and openable in a live class like any other exercise.
+
+@problem(bits.kmap-min, pts=10)
+  Cover every min-term in at most 8 literals.
+  minTerms = 0 2 5 7
+  maxLiterals = 8
+@end
+
+@problem(template=bits.kmap-min, id=kmap-p1, time=8m)
+Minimise F = sum m(0,2,5,7).
+@end

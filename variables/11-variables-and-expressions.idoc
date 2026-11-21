@@ -1,0 +1,99 @@
+@style(IDocDemo)
+@title(Variables and expressions)
+
+Set a value once and print it anywhere; evaluate expressions; read values from a profile.
+
+@section(Values)
+
+@subsection(@@set)
+
+Set a variable — a fixed value or an expression over other variables.
+
+@set(f = factorial(5))
+
+@set(V=12)
+
+@set(half=V/2)
+
+@@let is the same as @@set: @let(w=7) w is @var(w).
+
+@subsection(@@var)
+
+Print a variable's value.
+
+@@val is the same as @@var: @val(w)
+
+@subsection(@@var_noc)
+
+Print a variable's value, no check.
+
+@var_noc(acknowledge)
+
+@subsection(@@exp)
+
+Evaluate an expression inline and print the result.
+
+@exp(V/R)
+
+@@eval is the same as @@exp: @eval(2+3)
+
+@subsection(@@print)
+
+Print name = value for a variable (or just the value for an expression).
+
+@print(V)
+
+@section(Number formats)
+
+@subsection(@@bin)
+
+Print a value in BINARY.
+
+@bin(m)
+@bin4(m)
+
+@subsection(@@hex)
+
+Print a value in HEX; a width in the name zero-pads it (hex2(n) → 0A).
+
+@hex(n)
+@hex2(n)
+
+@subsection(@@oct)
+
+Print a value in OCTAL; a width in the name zero-pads it.
+
+@oct(x)
+@oct3(x)
+
+@subsection(@@factorial)
+
+n!
+
+@factorial(20)
+
+@factorial(n)
+
+@section(Profiles and parameters)
+
+@subsection(@@getvar)
+
+Read a value from a PROFILE — a key=value file of the things that are true about you rather than about the document (your name, your school, this year and semester).
+
+@getvar(instructor, PROFILE)
+
+@getvar(adinstructor[@var(courseid)], PROFILE)
+@inherits(@getvar(school, PROFILE))
+
+@subsection(@@profile)
+
+Name the profile a bare getvar(key) reads from.
+
+@profile(Teaching)
+
+@subsection(@@param)
+
+A parameter passed into an included document or stylesheet, readable as a variable.
+
+@param(topic)
+@style(IDocDemo, topic="DC")

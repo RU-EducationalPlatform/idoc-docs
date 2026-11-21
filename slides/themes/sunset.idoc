@@ -1,0 +1,14 @@
+@deck(theme=sunset, transition=push, ratio=4:3, size=small)
+@style(IDocDemo)
+@title(Deck theme: sunset)
+
+@titleslide
+
+@slide(A heading)
+Body text in the sunset theme, with the push transition, ratio 4:3 and size small.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

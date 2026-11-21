@@ -1,0 +1,114 @@
+@style(IDocDemo)
+@title(Octo 20: every @@octo argument)
+
+The arguments change how a block looks, when it runs and how long it may take. Each block below shows one.
+
+`@@settings(module=octo, ...)` sets the run policy for every block in the document; this one runs blocks as they scroll into view and allows up to 20 seconds.
+
+@settings(module=octo, run=visible, maxrun=20)
+
+@section(Layout)
+
+`output=` puts the results below, right, above or left of the code.
+
+@octo(output=right)
+x = 1:5;
+plot(x, x.^2); title("output on the right");
+@end
+
+@octo(output=above)
+disp("results above the code")
+@end
+
+`height=` (or `h=`) and `width=` (or `w=`), with `minwidth=`/`maxwidth=` (`minw=`/`maxw=`), size the block.
+
+@octo(height=300, width=90%, minwidth=320, maxwidth=900)
+plot(randn(1, 50)); title("sized block");
+@end
+
+@octo(h=240, w=70%, minw=300, maxw=700)
+disp("short names for the same sizes")
+@end
+
+`fs=` sets the code's text size in points; `size=` takes a size word: small, large or huge.
+
+@octo(fs=12, size=large)
+disp("larger code text")
+@end
+
+Margins and spacing: `m=`, `mt=`, `mb=`, `ml=`, `mr=`, `pad=` and `gap=`; `align=` places the block.
+
+@octo(mt=12pt, mb=12pt, ml=0, mr=0, pad=8px, gap=6px, align=center)
+disp("spaced and centred")
+@end
+
+@octo(m=6pt)
+disp("one margin on every side")
+@end
+
+`x=`, `y=` and `z=` position a block on a slide or a fixed page, as for other floating blocks.
+
+@octo(x=0, y=0, z=1)
+disp("positioned")
+@end
+
+@section(Looks)
+
+`theme=` picks dark, studio or showcase; `stage=theme` makes the figure stage take the document theme's colours; `bg=` and `color=` set the background and text colour.
+
+@octo(theme=dark)
+disp("dark theme")
+@end
+
+@octo(theme=studio, stage=theme)
+plot(sin(0:0.1:6)); title("stage takes the theme");
+@end
+
+@octo(theme=showcase, bg=#f4f1ea, color=#222222)
+disp("showcase with custom colours")
+@end
+
+`noedit` hides the code and keeps the results.
+
+@octo(noedit)
+t = linspace(-20, 20, 400);
+plot(t, sin(t) ./ t); title("sinc, code hidden");
+@end
+
+@section(When it runs and for how long)
+
+`run=click` waits for the Run button and `run=visible` runs when scrolled into view. `limit=` gives a block more seconds; `nolim` removes the limit.
+
+@octo(run=click, limit=10)
+s = 0;
+for k = 1:2e5
+  s = s + 1/k^2;
+end
+disp(s)
+@end
+
+@octo(run=visible)
+disp("ran when scrolled into view")
+@end
+
+@octo(nolim)
+disp(sum(1:1e6))
+@end
+
+`benchmark=` names a timer that receives the block's run time in milliseconds; a @@benchmark block times everything inside it.
+
+@benchmark(octo_total)
+@octo(benchmark=matmul)
+A = rand(200);
+B = A * A;
+disp(size(B))
+@end
+@end
+
+@section(Grading arguments)
+
+`id=`, `pts=` (or `points=`), `expect=`, `tolerance=` and `time=` make a question; see the grading file for each in use.
+
+@octo(id=args1, points=1, expect="6")
+disp(1 + 2 + 3)
+@end

@@ -1,0 +1,323 @@
+@style(IDocDemo)
+@title(Every question widget, one example each)
+
+Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.
+
+@section(Multiple choice, one answer)
+
+Ask a question with several options where exactly one is right; the student picks it with a click.
+
+Which metal conducts best? @q(mcv: *silver, iron, lead, tin)
+
+@b{Three layouts.} mch puts the options in a row, mcv stacks them, mcd makes a dropdown that sits inside a sentence.
+
+The SI unit of force is the @q(mcd: *newton, joule, watt).
+
+@b{The right option.} A star in front of an option marks it right.
+
+2 + 2 = @q(mch: 3, *4, 5)
+
+@b{Partly right options.} A tilde gives part credit: ~ alone is half, ~0.3 is 30%.
+
+Best first step? @q(mcv: *measure it, ~0.5 estimate it, guess)
+
+@b{Columns.} cols=N lays the options out in N columns instead of one tall stack.
+
+Pick the prime @q(mcv, cols=2, *7, 8, 9, 10)
+
+@b{Points and shuffling.} pts= sets the points (1 if you leave it out).
+
+Pick the noble gas @q(mcv, pts=2, shuffle, *neon, sodium, iron, =none of these)
+
+@b{Option labels on paper.} labels=letters (the default), numbers or none decides how options are labelled.
+
+Pick one @q(mcv, labels=numbers, *a, b, c)
+
+@b{Graded.} One mark for the starred option, part credit for a ~ option, 0 otherwise.
+
+@section(Check all that apply)
+
+Ask a question where any number of options may be right; the student ticks every one that applies.
+
+Pick every prime: @q(mah: *2, *3, 4, *5, 9)
+
+@b{Three layouts.} mah is a row of checkboxes, mav a stack, mad a list you can pick several from.
+
+Which are vectors? @q(mav: *velocity, speed, *force, mass)
+
+@b{How part credit is counted.} grading= picks the rule: partial (the default: right ticks earn, wrong ticks cost), proportional (wrong ticks are ignored), jaccard (overlap of the two sets), allornothing.
+
+Pick the metals @q(mah, grading=allornothing, *iron, *copper, glass)
+
+@b{The cost of a wrong tick.} penalty= sets how much a wrong tick takes away, from 0 up.
+
+Pick the even numbers @q(mah, penalty=0.5, *2, *4, 5)
+
+@b{Partly right options.} ~ (or ~0.3) makes an option worth part of a right one.
+
+Good safety habits @q(mav: *wear goggles, ~0.5 read the label, run in the lab)
+
+@b{Graded.} Under the default partial rule each right tick earns its share and each wrong tick loses penalty= of a share, never going below 0.
+
+@section(Fill in the blank: text answers)
+
+Leave a blank in a sentence for the student to type a word or phrase into, marked against the answers you list.
+
+The capital of France is @q(f: Paris).
+
+@b{Several right answers.} Separate accepted answers with | or commas; any one is full credit.
+
+The unit of power is the @q(f: watt|watts|W).
+
+@b{Case and spaces.} Case is ignored by default.
+
+Element symbol for sodium: @q(fcs: Na). Two words: @q(fsi: New York)
+
+@b{A blank in the middle of a sentence.} @@q answer @@e puts the answer inline without the colon form.
+
+The sky is @q blue @e today.
+
+@b{Box size.} f72 makes the box 72 points wide; f72,30 also 30 tall.
+
+Name: @q(f200: x)
+
+@b{Part credit for near misses.} partial= lists answers worth less: value:credit, separated by |.
+
+Capital of Australia @q(f, partial=sydney:0.25, Canberra)
+
+@b{Accepted exceptions.} except= names an @@exceptionset of extra words that are always accepted, ignoring case and spaces.
+
+Unit of charge @q(f: coulomb, C)
+
+@b{Graded.} The typed answer is compared with each accepted answer, ignoring case (unless fcs) and surrounding spaces; a match is full credit, a partial= entry its share.
+
+@section(Fill in with a pattern)
+
+Accept any answer that matches a pattern, for spelling variants and answers with many correct shapes.
+
+Spell the colour: @q(fr: colou?r)
+
+@b{Alternatives.} a|b accepts either.
+
+Zero: @q(fr: zero|0)
+
+@b{Optional and repeated parts.} ? makes the letter before it optional, + allows it once or more, [0-9] is any digit.
+
+A year in the 1900s: @q(fr: 19[0-9][0-9])
+
+@b{Case.} Matching ignores case unless you write fr.cs.
+
+@q(fr.cs: NaCl)
+
+@b{Graded.} The whole answer must match the pattern.
+
+@section(Number answers)
+
+Ask for a number and accept anything within a tolerance or range, so 3.14 and 3.142 are both right.
+
+Pi to two decimal places: @q(fn: 3.13, 3.15)
+
+@b{A range or a value.} fn: lo, hi accepts anything between.
+
+@tolerance(2)
+g on Earth, in m/s^2: @q(fn: 9.81)
+
+@b{Expressions.} The student may type pi/2 or 1/3; it is worked out before comparing.
+
+Half of pi: @q(fn: 1.570, 1.571)
+
+@b{Thresholds.} >20, >=20 and <5 accept any number past the limit.
+
+Any number above ten: @q(fn: >10)
+
+@b{Whole numbers only.} n rejects 3.5; n, 1, 10 is an integer in a range.
+
+Sides of a hexagon: @q(n: 6)
+
+@b{Computed answers.} With @@rand values, fn=expression works out each student's own answer.
+
+@rand(R, 1:10)
+Current through @var(R) ohms at 10 V, in amps: @q(fn=10/R, 2)
+
+@b{Complex numbers.} fc, re, im, tol: the student may type 3+4j or 5*exp(i*pi/6).
+
+Impedance: @q(fc, 3, 4, 0.01)
+
+@b{Graded.} The typed value is evaluated (so 1/3 and 0.3333 both work) and compared with the range or tolerance; inside is full credit.
+
+@section(Interval answers)
+
+Ask for an interval, such as the range a value lies in; the student types something like 3-5 or 3 to 5.
+
+Normal body temperature, in degrees Celsius: @q(range, 36, 37.5)
+
+@b{How intervals are compared.} mode=overlap accepts any interval that overlaps yours, contains one that contains it, within one inside it.
+
+A range inside 10 to 20: @q(range, 10, 20, mode=within)
+
+@b{Slack.} tol= allows the ends to be off by that much.
+
+@q(range, 3, 5, tol=0.5)
+
+@b{Graded.} The two ends the student types are compared with yours under mode= and tol=; right or wrong.
+
+@section(Equation and formula answers)
+
+Ask for a formula and accept any form that is mathematically the same, so x+1 and 1+x are both right.
+
+Expand (x+1)^2: @q(eq: x^2 + 2x + 1)
+
+@b{Equivalent forms.} The answer is tried at many random points, so any equal expression is right.
+
+Simplify 2(a+b): @q(eq: 2a + 2b)
+
+@b{Must be factored, expanded or reduced.} eq.factored rejects the multiplied-out form, eq.expanded the product, eq.reduced a fraction not in lowest terms.
+
+Factor x^2 - 1: @q(eq.factored: (x-1)(x+1))
+
+@b{Exactly as written.} eq.strict compares the text only, with no algebra.
+
+@q(eq.strict: x+1)
+
+@b{The simplest Boolean form.} eq.min wants a minimal sum of products (a K-map answer): any equally small cover is right, a longer equivalent is not.
+
+Minimise: @q(eq.min: A'B + AB')
+
+@b{A formula box with a preview.} formula draws the student's typing as maths underneath as they type.
+
+Ohm's law for current: @q(formula: V/R)
+
+@b{Graded.} Right when the student's expression equals the key at every sampled point (and, for factored/expanded/reduced, also has that shape).
+
+@section(Name several, in any order)
+
+Ask the student to list several things in one blank, in any order, with part credit for each one right.
+
+Name the colours of the French flag: @q(unordered: blue, white, red)
+
+@b{Name any N of a pool.} uo3 accepts any three members of a longer list; naming more never hurts.
+
+Name three chip makers: @q(uo3: AMD, Intel, Nvidia, TSMC, Samsung)
+
+@b{Alternative spellings.} Each member may list alternatives with |.
+
+@q(uo: red|rouge, white|blanc, blue|bleu)
+
+@b{Graded.} Each right member earns its share (of all members, or of N for uoN); duplicates count once.
+
+@section(Slider answers)
+
+Let the student answer by dragging a slider to a value, marked within a tolerance.
+
+Set the angle that gives the longest throw: @q(slider, min=0, max=90, answer=45, tol=3)
+
+@b{Range and step.} min=, max= and step= set the scale.
+
+@q(slider, min=0, max=1, step=0.05, answer=0.5, tol=0.05)
+
+@b{Tolerance.} tol= is how far from answer= still counts.
+
+@q(slider, min=0, max=100, answer=42, tol=2)
+
+@b{Graded.} Right when the value is within tol= of answer=.
+
+@section(Matching pairs)
+
+Give a list of terms and ask the student to match each to its partner from a shuffled list.
+
+@q(match, H=hydrogen, O=oxygen, N=nitrogen)
+
+@b{Distractors.} An entry with no = is an extra wrong choice.
+
+@q(match, Fe=iron, Cu=copper, tin, zinc)
+
+@b{Columns.} cols=N lays the pairs out in N columns.
+
+@q(match, cols=2, a=1, b=2, c=3, d=4)
+
+@b{Graded.} Each correct pair earns its share of the points.
+
+@section(Put in order)
+
+List items in their right order; the student sees them shuffled and gives each its position.
+
+Order the planets from the Sun: @q(order, Mercury, Venus, Earth, Mars)
+
+@b{Points.} pts= sets the points; each item in the right place earns its share.
+
+@q(order, pts=4, boil water, add pasta, drain, serve)
+
+@b{Graded.} Each item in its right position earns its share.
+
+@section(Grid and truth-table answers)
+
+Ask for a grid of answers, such as a matrix, a truth table or a K-map, with each cell marked on its own.
+
+Identity matrix: @q(m: 2,2: _1, _0, _0, _1)
+
+@b{Given, graded and empty cells.} =x is a label you give, _x is a blank whose answer is x, a bare _ is an empty cell nobody grades.
+
+@q(m: 3,3: =A, =B, =AND, =0, =1, _0, =1, =1, _1)
+
+@b{Dropdown cells.} A third section lists choices; every graded cell becomes a dropdown of them.
+
+@q(m: 1,2: 0;1 : _1, _0)
+
+@b{Cell size.} m120,80 makes the grid 120 by 80 pixels.
+
+@q(m120,80: 2,2: _1, _2, _3, _4)
+
+@b{Graded.} Each graded cell is worth an equal share, so a nearly right truth table earns nearly full marks.
+
+@section(Survey scales)
+
+Ask how much someone agrees, on a scale; it records the answer and is never marked right or wrong.
+
+This lab was useful. @q(likert5)
+
+@b{Your own words.} labels= gives the scale's words, separated by |, and sets how many points there are.
+
+I read the notes before class. @q(likert5, labels=Never|Rarely|Sometimes|Often|Always)
+
+@b{A longer scale.} scale=7 gives seven points without words.
+
+Rate the pace. @q(likert5, scale=7)
+
+@b{Graded.} Not graded: the answer is recorded with the hand-in and earns no points.
+
+@section(Written answers)
+
+Give the student a box to write a paragraph or more; you mark it by hand, with a rubric if you like.
+
+Explain why the sky is blue. @q(essay)
+
+@b{Starter text.} Text after the colon starts in the box, and the student edits it.
+
+Describe your method. @q(essay: First I measured...)
+
+@b{A rubric.} @@rubric after the question lists criteria with points; you see it while marking, and the grader can suggest a mark.
+
+Explain Ohm's law. @q(essay, pts=4)
+@rubric
+states V = IR: 2
+names the units: 2
+@end
+
+@b{Graded.} Marked by a person.
+
+@section(Drawing answers)
+
+Let the student answer by drawing: a sketch on a blank canvas, marks over a picture, or changes to a drawing you start.
+
+Sketch the graph of y = x^2. @q(draw)
+
+@b{Over a picture.} markdraw draws on top of src=, for circling or labelling.
+
+Circle the short circuit. @q(markdraw, src=question-widgets.assets/circuit.svg)
+
+@b{Change a drawing.} moddraw starts with strokes you give, which the student edits.
+
+Fix the diagram. @q(moddraw, src=question-widgets.assets/plot.svg)
+
+@b{Graded.} Marked by a person: the drawing is saved with the hand-in for you to look at.
+

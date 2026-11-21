@@ -1,0 +1,50 @@
+@style(IDocDemo)
+@title(Signing and forms)
+
+Signature fields, initials, dates and signature checks.
+
+@section(Signing)
+
+@subsection(@@sign)
+
+Where a signer signs: a box for a drawn or typed signature, for one role (student, teacher, parent…).
+
+@sign(name=student, role=student)
+
+@sign(name=ta, role=teacher, label="Witnessed by", after=student)
+
+@sign(Student, required)
+
+@subsection(@@initials)
+
+A box for a signer's initials, for one role: signed like a signature, drawn or typed, and required before that signer can sign.
+
+@initials(name=page2, role=student)
+
+@initials(Reviewer, label=Initial here, after=Author, required)
+
+@subsection(@@signdate)
+
+The date a signer signs, filled in automatically with the day of the signature; the offline checker refuses any other date.
+
+@signdate(role=student)
+
+@signdate(name=student-date, label=Date signed, after=Student, required)
+
+@subsection(@@signfield)
+
+A field the signer fills before signing: text for words (an emergency contact, a student ID) or check for a box; required makes it a condition of signing.
+
+@signfield(text, name=contact, role=student, label="Emergency contact")
+
+@signfield(check, name=photos, role=parent, label="Photos may be taken")
+
+@signfield(Witness, after=Student, required)
+
+@subsection(@@signcheck)
+
+A box the signer ticks, such as "I agree to the rules"; required means they cannot sign without ticking it.
+
+@signcheck(name=agree, role=student, label="I agree to the rules", required)
+
+@signcheck(Reviewer, after=Student)

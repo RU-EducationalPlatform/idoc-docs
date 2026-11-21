@@ -1,0 +1,68 @@
+@style(IDocDemo)
+@title(Charts: Many columns at once)
+
+Scatter-plot matrices and parallel coordinates. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Scatter-plot matrix}
+
+Every pair of columns at once — the fastest way to see what relates.
+
+@graph(type=splom, title="Every pair of measures")
+@data
+height,weight,age
+158,52,24
+163,55,31
+167,61,28
+171,64,45
+175,70,39
+182,79,52
+@end
+
+@code(idoc)
+@graph(type=splom, title="Every pair of measures")
+@data
+height,weight,age
+158,52,24
+163,55,31
+167,61,28
+171,64,45
+175,70,39
+182,79,52
+@end
+@end
+
+With thousands of columns it picks the highest-variance ones and offers a column picker.
+@endcell
+@cell
+@b{Parallel coordinates}
+
+One line per row across many axes — clusters and outliers show up.
+
+@graph(type=parallel, title="Every measure at once")
+@data
+height,weight,age
+158,52,24
+163,55,31
+167,61,28
+171,64,45
+175,70,39
+182,79,52
+@end
+
+@code(idoc)
+@graph(type=parallel, title="Every measure at once")
+@data
+height,weight,age
+158,52,24
+163,55,31
+167,61,28
+171,64,45
+175,70,39
+182,79,52
+@end
+@end
+@endcell
+@endtable

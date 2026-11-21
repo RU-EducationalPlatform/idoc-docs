@@ -1,0 +1,70 @@
+@style(IDocDemo)
+@title(Units, chemistry and algorithms)
+
+Numbers with units, chemical formulas, commutative diagrams and pseudocode.
+
+@section(Numbers and units)
+
+@subsection(@@num)
+
+A number set properly: digits grouped by threes with thin spaces, a true minus, an exponent written out (6.02e23 → 6.02 × 10²³).
+
+@num(1234567.89)
+
+@num(6.02e23)
+
+@subsection(@@si)
+
+A unit set properly: upright, powers raised, thin spaces between factors; ohm, degC, micro… become their symbols.
+
+@si(kg m s^-2)
+
+@si(ohm)
+
+@si(degC)
+
+@subsection(@@qty)
+
+A quantity: a number and its unit, never broken across a line.
+
+@qty(9.81, m/s^2)
+
+@qty(4.7, kohm)
+
+@qty(25, percent)
+
+@section(Chemistry and diagrams)
+
+@subsection(@@ce)
+
+A chemical formula or equation — counts lowered, charges raised, arrows: H2O, SO4^2-, Fe^3+, NaCl(aq), CuSO4*5H2O, 2H2 + O2 -> 2H2O, N2 + 3H2 <=> 2NH3 (^ a gas, v a precipitate).
+
+@ce(2H2 + O2 -> 2H2O)
+
+@ce(SO4^2-)
+
+@ce(N2 + 3H2 <=> 2NH3)
+
+@subsection(@@cd)
+
+A commutative diagram.
+
+@cd
+A & B
+C & D
+A -> B : f
+A -> C : g'
+B -> D : h
+C -> D : k
+@end
+
+@section(Pseudocode)
+
+@subsection(@@algo)
+
+A pseudocode algorithm listing, numbered and indented.
+
+@algo(Binary search)
+while lo <= hi
+  …
+@end

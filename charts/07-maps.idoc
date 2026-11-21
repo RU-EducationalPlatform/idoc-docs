@@ -1,0 +1,74 @@
+@style(IDocDemo)
+@title(Charts: Maps)
+
+Choropleths, slippy maps, globes and street imagery, all offline. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Choropleth}
+
+Regions shaded by value.
+
+@graph(type=choropleth, geo=us-states, region=State, value=Rate, title="By state")
+@data
+State,Rate
+California,7.2
+Texas,6.1
+New York,5.4
+@end
+
+@code(idoc)
+@graph(type=choropleth, geo=us-states, region=State, value=Rate, title="By state")
+@data
+State,Rate
+California,7.2
+Texas,6.1
+New York,5.4
+@end
+@end
+@endcell
+@cell
+@b{Slippy map}
+
+A zoomable, pannable basemap drawn on the GPU from local blocks — no tiles, no API calls.
+
+@graph(type=map, basemap=dark, center=-74.0,40.7, zoom=10)
+
+@code(idoc)
+@graph(type=map, basemap=dark, center=-74.0,40.7, zoom=10)
+@end
+
+Styles: dark, light, blueprint. Plot data over it with lon=/lat=, or layer=heatmap.
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Globe}
+
+A rotatable 3-D globe, in any projection.
+
+@graph(type=globe, projection=Orthographic)
+
+@code(idoc)
+@graph(type=globe, projection=Orthographic)
+@end
+
+Projections: Natural, Mercator, EqualEarth, Orthographic, AzimuthalEqualArea, Equirectangular.
+@endcell
+@cell
+@b{Street imagery}
+
+Street-level photography with a coverage mini-map, packed offline.
+
+@graph(type=street)
+
+@code(idoc)
+@graph(type=street)
+@end
+
+With no src= it shows a Midtown-NYC demo; point src= at a .bstr pack for your own area.
+@endcell
+@endtable

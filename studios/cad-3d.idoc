@@ -1,0 +1,167 @@
+@style(IDocDemo)
+@title(CAD, meshes, 3-D models and GPU shaders)
+
+@box(w=100%, style=offline)
+@@gpu and @@shader need a browser with WebGPU; without it they show a note instead of the picture.
+@end
+
+Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.
+
+@section(Parametric 3-D parts)
+
+Build a 3-D solid from a few lines of OpenSCAD-style code (boxes, spheres, cylinders, unions and differences) and turn it in a lit viewport.
+
+@cad
+difference() {
+  cube([20, 20, 10]);
+  translate([10, 10, -1]) cylinder(h=12, r=4);
+}
+@end
+
+@b{Shapes and operations.} cube, sphere, cylinder; translate, rotate, scale, mirror; union, difference, intersection; linear_extrude and rotate_extrude.
+
+@cad
+union() {
+  cube([10, 10, 10]);
+  translate([5, 5, 10]) sphere(r=5);
+}
+@end
+
+@b{Look.} color= the solid's colour, light= the lighting (studio, soft, technical, dramatic, sun), axes=false hides the axes and grid, height= the viewport height.
+
+@cad(color=#4c8dff, light=soft, axes=false, height=300)
+sphere(r=10);
+@end
+
+@b{Real BREP.} kernel=occ uses OpenCASCADE: real fillets and chamfers, and a STEP download.
+
+@cad(kernel=occ)
+box(10, 10, 10)
+@end
+
+@b{A graded exercise.} expect= lists measurements the solid must have: volume, area, triangles, w, d, h, cx, cy, cz, watertight.
+
+Make a 20 mm cube.
+@cad(id=cube20, pts=2, expect="volume=8000, w=20", tolerance=1)
+cube([10, 10, 10]);
+@end
+
+@b{Graded.} The server rebuilds the handed-in code and measures the solid; each measurement in expect= is one check within tolerance=, so a part of the right size but the wrong shape still earns what it got right.
+
+@section(3-D mesh modelling)
+
+A Blender-style editor for 3-D meshes: add shapes, select vertices, edges or faces, extrude, bevel and export.
+
+@mesh(height=400)
+@end
+
+@b{Start from a cube or a model.} An empty block starts with a cube; put an OBJ in the body to load it.
+
+@mesh
+v 0 0 0
+v 1 0 0
+v 0 1 0
+f 1 2 3
+@end
+
+@b{Look.} height= sets the viewport height; theme= dark, studio or showcase.
+
+@mesh(height=300, theme=dark)
+@end
+
+@b{A graded exercise.} expect= gives counts the finished mesh must have: verts, faces, tris.
+
+Extrude one face of the cube.
+@mesh(id=ext1, pts=2, expect="faces=10")
+@end
+
+@b{Graded.} Each count in expect= is one check.
+
+@section(3-D model and SVG viewer)
+
+Show a 3-D model (or a large SVG drawing) that readers can turn and zoom.
+
+@model(file=cad-3d.assets/part.cmesh)
+
+@b{The file.} file= (or src=) names a .cmesh, .obj or .svg.
+
+@model(src=cad-3d.assets/bracket.obj)
+
+@b{Look and size.} shade= smooth, flat or wire; color= the solid colour; height= (or h=) and width= the viewer size.
+
+@model(file=cad-3d.assets/part.cmesh, shade=flat, color=#c08040, height=360)
+
+@b{Graded.} Not graded: it shows a model for students to look at, and records no answer.
+
+@section(Animated maths fields on the GPU)
+
+An animated picture of a formula in x, y and time t, drawn by the graphics card.
+
+@gpu(field=sin(x*4)+cos(y*4+t))
+
+@b{The formula.} field= is any expression in x, y (screen position) and t (seconds).
+
+@gpu(field=sin(sqrt(x*x+y*y)-t*2))
+
+@b{Resolution and size.} scale= zooms the coordinates; height= sets the canvas height.
+
+@gpu(field=sin(x)+cos(y+t), scale=8, height=320)
+
+@b{Colour flash mode.} colors= a list of colours and interval= milliseconds per colour cycles solid colours.
+
+@gpu(colors=red green blue, interval=500)
+
+@b{Graded.} Not graded.
+
+@section(Graded GPU shaders in WGSL)
+
+Students write a small WGSL function that colours each pixel and see it live; with a reference solution it is marked by comparing the pictures.
+
+@shader
+return vec3<f32>(uv.x, uv.y, 0.5);
+@end
+
+@b{The contract.} The body is the inside of a function: uv is the pixel position (about -1 to 1), t is time in seconds, and it returns a vec3<f32> colour.
+
+@shader
+let d = length(uv);
+return vec3<f32>(d, d, d);
+@end
+
+@b{A graded question.} Everything after a line @@solution is the reference; it is hidden from students.
+
+@shader(prompt="Make the left half red", pts=2, tol=0.05)
+return vec3<f32>(0.0, 0.0, 0.0);
+@solution
+return select(vec3<f32>(0.0), vec3<f32>(1.0, 0.0, 0.0), uv.x < 0.0);
+@end
+
+@b{Size.} height= the canvas height, scale= the resolution scale.
+
+@shader(height=200, scale=2)
+return vec3<f32>(uv.y, 0.2, 0.4);
+@end
+
+@b{Graded.} With a @@solution, the student's shader and the reference are each drawn small and compared pixel by pixel: within tol is right, close earns part credit.
+
+
+@section(Every other argument)
+
+@b{Mesh hand-in.} submit=server keeps the student's mesh, time= is the live-class window, width= sizes the card.
+
+@mesh(submit=server, id=mesh-hand-in, expect="verts=8, faces=6", time=10m, width=600)
+@end
+
+@b{Model viewer extras.} format= says what a file is when its name does not, width= sizes the viewer, time= and pts= work as in any exercise.
+
+@model(src=cad-3d.assets/bracket.obj, format=obj, width=480, time=5m, shade=flat)
+
+@b{GPU canvas width.} width= sets how wide the field is drawn.
+
+@gpu(field=sin(x*3)*cos(y*3), width=480, height=240)
+
+@b{Shader extras.} tolerance= is how far each pixel may be off when graded, time= the live-class window, width= the canvas width.
+
+@shader(tolerance=0.03, time=10m, width=480)
+return vec3<f32>(uv.x * 0.5 + 0.5, 0.4, 0.6);
+@end

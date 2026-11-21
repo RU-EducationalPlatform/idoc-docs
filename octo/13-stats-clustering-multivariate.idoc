@@ -1,0 +1,40 @@
+@style(IDocDemo)
+@title(Octo 13: clustering and multivariate methods)
+
+Unsupervised tools find structure in data that has no labels. The points below are invented.
+
+@section(k-means)
+
+`kmeans(X, k)` assigns each row to one of k clusters and returns the centres.
+
+@octo
+X = [1 1; 1.2 0.8; 0.9 1.1; 5 5; 5.2 4.9; 4.8 5.1; 9 1; 9.1 1.2; 8.9 0.8];
+[idx, C] = kmeans(X, 3);
+numel(unique(idx))
+sortrows(round(C))
+scatter(X(:, 1), X(:, 2), 40, idx, "filled"); title("k-means clusters");
+@end
+
+@section(Hierarchical clustering)
+
+`pdist` gives pairwise distances, `linkage` builds the tree, `cluster` cuts it and `dendrogram` draws it.
+
+@octo
+X = [1 1; 1.2 0.8; 5 5; 5.2 4.9; 9 1; 9.1 1.2];
+D = pdist(X);
+squareform(D)(1, :)
+Z = linkage(D, "average");
+cluster(Z, "maxclust", 3)'
+figure; dendrogram(Z); title("dendrogram");
+@end
+
+@section(Principal components)
+
+`pca` finds the directions of greatest variance; the first component usually carries most of it.
+
+@octo
+t = (1:10)';
+X = [t, 2*t + [0.1 -0.2 0.1 0 0.2 -0.1 0 0.1 -0.1 0.2]', mod(t, 3)];
+[coeff, score, latent, ~, explained] = pca(X);
+round(explained' * 10) / 10
+@end

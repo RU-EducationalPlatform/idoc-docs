@@ -1,0 +1,38 @@
+@style(IDocDemo)
+@title(Maps, terrain and the @@geo panel)
+
+@@geo downloads an area, compresses it into our block format beside the document and writes a ready @@graph for it.
+
+@box(w=100%, style=offline)
+@@geo needs the local server (npm run local or the desktop app) and the network; terrain and flyover need WebGL.
+@end
+
+@section(The @@geo panel, by type)
+
+@b{Flyover.} type=flyover fetches satellite imagery, elevation and buildings; the first word does the same as type=.
+
+@geo(type=flyover)
+
+@b{Terrain.} terrain builds an orbiting relief with exag= as the vertical exaggeration.
+
+@geo(terrain, exag=2)
+
+@b{Map and street.} map is a slippy basemap with nothing to download; street packs street imagery.
+
+@geo(map)
+
+@geo(street, width=640, height=360)
+
+@b{Say where.} url= takes a pasted map link and fills the box in; west=, south=, east= and north= give the box by hand, z= is the zoom level, name= names the asset file.
+
+@geo(type=terrain, url="https://www.google.com/maps/@40.75,-73.98,13z")
+
+@geo(type=terrain, name=midtown, west=-74.01, south=40.74, east=-73.96, north=40.78, z=13, exag=1.5)
+
+@section(What it writes: terrain and flyover from a block)
+
+The blocks below are the kind of file @@geo writes into the sidecar: a compressed elevation block (.bdem). These draw on the GPU in the browser; with no WebGL they show a still.
+
+@graph(type=terrain, src=maps-geo.assets/manhattan.bdem, exag=2)
+
+@graph(type=flyover, src=maps-geo.assets/manhattan.bdem, exag=2, width=900)

@@ -1,0 +1,21 @@
+@style(IDocDemo)
+@doc(template=thesis, font=Computer Modern, landscape, speech=standard, speechrate=0.85, pausefactor=0.5, paper=a4)
+@title(Venue: thesis)
+
+One wide column, double-spaced, a generous binding margin.
+
+@section(Introduction)
+
+This page is set in the thesis venue. Its first line after the stylesheet is the @@doc line; every argument on it is live: template=thesis, font=Computer Modern, landscape, speech=standard, speechrate=0.85, pausefactor=0.5, paper=a4
+
+@abstract
+A short abstract, so the venue shows how it sets one.
+@end
+
+@section(Method)
+
+Two sentences of body text, enough to see the type size, the margins and the columns. The second sentence carries an equation: @eqi(V = I R).
+
+@section(Result)
+
+The measured current was 0.5 A.@footnote{A footnote, set the way this venue sets one.}

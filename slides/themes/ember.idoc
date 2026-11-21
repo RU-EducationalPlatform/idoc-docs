@@ -1,0 +1,14 @@
+@deck(theme=ember, transition=cover, ratio=16:9, size=xlarge, narrate)
+@style(IDocDemo)
+@title(Deck theme: ember)
+
+@titleslide
+
+@slide(A heading)
+Body text in the ember theme, with the cover transition, ratio 16:9 and size xlarge.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

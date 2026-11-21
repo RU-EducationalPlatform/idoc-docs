@@ -1,0 +1,73 @@
+@style(IDocDemo)
+@title(Code 8: randomized code)
+
+`@@codegen` is a program template: setup lines draw values from the student's seed, the program is run on the server, and the key is what it really printed. `@@gencode` places it on the paper.
+
+@box(w=100%, style=offline)
+Each paper's answers come from running its program on the server.
+@end
+
+@variantlabel
+
+@section(Values from the seed)
+
+Setup lines start with the language's comment and `@@`; `@@(name)` puts a value into the code and `# @@ans` marks an output line as a question.
+
+@codegen(python, id=loop)
+#@ n = rand(3, 6)
+#@ step = rand(2, 5)
+total = 0
+for i in range(@(n)):
+    total += i * @(step)
+print(total) # @ans
+@end
+
+@qc(10) What does this program print?
+@gencode(loop)
+
+@section(Blanks, words and checks)
+
+`@@blank(code)` is a fill-in checked by running the student's line; `check` rejects a draw; `word("noun")` draws a word.
+
+@codegen(python, id=words)
+#@ w = word("noun")
+#@ k = rand(2, 4)
+#@ check k < 5
+w = @(w:str)
+print(w[:@(k)].upper()) # @ans
+x = @blank(len(w))
+print(x) # @ans
+@end
+
+@qc(10) Fill in the blank so that it prints the length of the word, and give the output.
+@gencode(words)
+
+@section(Formats and bit widths)
+
+`hex16`, `dec8` and the other formats write a value in the language's own spelling; `splitbits` picks a field that always fits.
+
+@codegen(c, id=field)
+//@ v = rand(0, 65535)
+//@ s, e = splitbits(16, 1, 3, 6)
+#include <stdio.h>
+int main(void) {
+    unsigned v = @(v:hex16);
+    unsigned f = (v >> @(s)) & ((1u << (@(e) - @(s) + 1)) - 1);
+    printf("%X\n", f); // @ans
+    return 0;
+}
+@end
+
+@qc(10) What does this program print?
+@gencode(field)
+
+A second number places that many variants side by side, for a teacher's answer key.
+
+@gencode(field, 2)
+
+@section(A template in its own file)
+
+`@@codepre(src=...)` reads a `.pre` file; the suffix before `.pre` names the language.
+
+@qc(10) What does this module print?
+@codepre(src=08-randomized-code.assets/xor8.sv.pre)

@@ -1,0 +1,61 @@
+@style(IDocDemo)
+@title(Octo 7: 3-D plots and animation)
+
+Every 3-D figure can be turned with the mouse. A loop that redraws with `drawnow` or `pause` becomes an animation the reader can play.
+
+@section(Grids and surfaces)
+
+`meshgrid` turns two vectors into coordinate grids; `surf` and `mesh` draw a height over them.
+
+@octo
+[X, Y] = meshgrid(-2:0.2:2);
+Z = X .* exp(-X.^2 - Y.^2);
+surf(X, Y, Z); title("surf"); xlabel("x"); ylabel("y"); zlabel("z"); colorbar;
+figure; mesh(X, Y, Z); title("mesh");
+figure; contour(X, Y, Z, 12); title("contour");
+figure; contourf(X, Y, Z); title("contourf");
+figure; imagesc(Z); colormap(jet); title("imagesc");
+@end
+
+@section(Curves, points and vector fields)
+
+`plot3` and `scatter3` work in three coordinates; `quiver` draws arrows; `lighting`, `material` and `camlight` light a surface.
+
+@octo
+t = linspace(0, 6*pi, 300);
+plot3(cos(t), sin(t), t / 6); title("helix"); view(45, 30);
+figure; scatter3(randn(1, 60), randn(1, 60), randn(1, 60)); title("scatter3");
+figure; [x, y] = meshgrid(-1:0.25:1); quiver(x, y, -y, x); title("rotation field");
+figure; [x, y, z] = sphere(20); surf(x, y, z); axis equal; shading interp; title("sphere");
+figure; [X, Y] = meshgrid(-2:0.4:2); Z = X .* exp(-X.^2 - Y.^2);
+meshc(X, Y, Z); title("meshc: mesh with contours");
+figure; surfc(X, Y, Z); title("surfc");
+figure; waterfall(X, Y, Z); title("waterfall");
+figure; surface(X, Y, Z); title("surface");
+figure; surf(X, Y, Z); shading interp; lighting gouraud; material shiny; camlight; title("lit surface");
+@end
+
+@section(Animation)
+
+Clear and redraw inside a loop; `pause(s)` holds each frame for s seconds, `drawnow` takes a frame at once.
+
+@octo
+x = linspace(0, 2*pi, 80);
+for k = 1:24
+  clf;
+  plot(x, sin(x - k * pi / 12), "LineWidth", 2);
+  axis([0 2*pi -1 1]);
+  title(sprintf("travelling wave, frame %d", k));
+  pause(0.05);
+end
+@end
+
+@octo
+[X, Y] = meshgrid(-3:0.25:3);
+for k = 1:12
+  clf;
+  surf(X, Y, sin(sqrt(X.^2 + Y.^2) - k / 2));
+  zlim([-1 1]); title("ripple");
+  drawnow;
+end
+@end

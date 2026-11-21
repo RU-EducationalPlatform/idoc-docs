@@ -1,0 +1,54 @@
+@style(IDocDemo)
+@title(Octo 16: symbolic maths)
+
+`syms` declares symbols; expressions built from them stay exact until you ask for numbers.
+
+@section(Expressions)
+
+`expand`, `factor`, `simplify` and `subs` rewrite and evaluate an expression.
+
+@octo
+syms x y
+e = (x + 1)^2
+expand(e)
+factor(x^2 - 1)
+simplify(sin(x)^2 + cos(x)^2)
+subs(e, x, 2)
+vpa(sqrt(sym(2)), 20)
+@end
+
+@section(Calculus)
+
+`diff`, `int`, `limit` and `taylor` work as on paper.
+
+@octo
+syms x
+diff(x^3 + sin(x), x)
+int(x^2, x)
+int(x^2, x, 0, 3)
+limit(sin(x) / x, x, 0)
+taylor(exp(x), x, 0, "Order", 4)
+@end
+
+@section(Solving)
+
+`solve` finds exact roots and solves systems; `dsolve` solves differential equations.
+
+@octo
+syms x y
+solve(x^2 - 5*x + 6 == 0, x)
+[a, b] = solve(x + y == 3, x - y == 1, x, y)
+syms f(t)
+dsolve(diff(f, t) == -2*f, f(0) == 1)
+@end
+
+@section(Back to numbers)
+
+`double` gives a number, and `subs` inside a handle turns an expression into a function you can call.
+
+@octo
+syms x
+g = x^2 - 2;
+r = solve(g == 0, x); double(r)'
+h = @(t) double(subs(g, x, t)); h(3)
+@end

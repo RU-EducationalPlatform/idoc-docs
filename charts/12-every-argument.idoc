@@ -1,0 +1,1389 @@
+@style(IDocDemo)
+@title(Charts: Every argument)
+
+Every @@graph argument and allowed value that the other chart files do not already use, each in one small working chart with invented data.
+
+@section(Alias chart types)
+
+type=grouped_bar is the same as bar with several series.
+
+@graph(type=grouped_bar, x=team, y=Spring;Fall, title="Points by term")
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+type=parcoords is the same as parallel.
+
+@graph(type=parcoords, title="Three measures")
+@data
+name,speed,mass,cost
+A,3,7,2
+B,5,4,6
+C,8,2,4
+@end
+
+type=function is the same as surface: a function of x and y, no data needed.
+
+@graph(type=function, z=x*y, x=-2:2, y=-2:2)
+
+type=surf3d is another name for the same surface.
+
+@graph(type=surf3d, z=x^2 + y^2, x=-2:2, y=-2:2)
+
+type=scene is the same as choropleth; geo=world shades countries.
+
+@graph(type=scene, geo=world, region=country, value=value, title="Invented values by country")
+@data
+country,value
+Brazil,40
+India,70
+Canada,25
+Kenya,55
+France,35
+@end
+
+type=worldmap is the same as globe.
+
+@graph(type=worldmap)
+
+type=gapminder is the same as bubble: time= animates it, trails= draws a fading trail, glow=on lights the bubbles, board= adds a leaderboard, unit= suffixes y, labels=all names every bubble.
+
+@graph(type=gapminder, x=income, y=life, size=pop, label=country, time=year, trails=3, glow=on, board=2, unit=%, labels=all)
+@data
+country,year,income,life,pop
+Alba,2000,10,60,5
+Alba,2010,14,66,6
+Alba,2020,18,71,7
+Borvia,2000,4,50,20
+Borvia,2010,7,58,24
+Borvia,2020,11,64,28
+Celsa,2000,25,74,3
+Celsa,2010,28,77,3
+Celsa,2020,31,79,4
+@end
+
+timeformat=clock shows an hour value as 10:15 on a bubble chart's clock.
+
+@graph(type=bubble, x=a, y=b, size=n, label=who, time=hour, timeformat=clock)
+@data
+who,hour,a,b,n
+P,9.25,1,2,3
+P,10.5,2,3,3
+Q,9.25,3,1,2
+Q,10.5,4,2,2
+@end
+
+@section(Function plots)
+
+r= names an intermediate expression the z= formula can use; res= sets the samples per axis.
+
+@graph(z=sin(r)/r, r=sqrt(x^2+y^2), x=-8:8, y=-8:8, res=64)
+
+view=heatmap draws the function this way.
+
+@graph(z=x^2 - y^2, x=-3:3, y=-3:3, view=heatmap)
+
+view=surface draws the function this way.
+
+@graph(z=x^2 - y^2, x=-3:3, y=-3:3, view=surface)
+
+view=heatmap+contour draws the function this way.
+
+@graph(z=x^2 - y^2, x=-3:3, y=-3:3, view=heatmap+contour)
+
+color=roygbv colours the surface with that scale.
+
+@graph(z=sin(x)*cos(y), x=-3:3, y=-3:3, view=heatmap, color=roygbv)
+
+color=rainbow colours the surface with that scale.
+
+@graph(z=sin(x)*cos(y), x=-3:3, y=-3:3, view=heatmap, color=rainbow)
+
+color=jet colours the surface with that scale.
+
+@graph(z=sin(x)*cos(y), x=-3:3, y=-3:3, view=heatmap, color=jet)
+
+color=turbo colours the surface with that scale.
+
+@graph(z=sin(x)*cos(y), x=-3:3, y=-3:3, view=heatmap, color=turbo)
+
+color=viridis colours the surface with that scale.
+
+@graph(z=sin(x)*cos(y), x=-3:3, y=-3:3, view=heatmap, color=viridis)
+
+color=plasma colours the surface with that scale.
+
+@graph(z=sin(x)*cos(y), x=-3:3, y=-3:3, view=heatmap, color=plasma)
+
+color=inferno colours the surface with that scale.
+
+@graph(z=sin(x)*cos(y), x=-3:3, y=-3:3, view=heatmap, color=inferno)
+
+color=magma colours the surface with that scale.
+
+@graph(z=sin(x)*cos(y), x=-3:3, y=-3:3, view=heatmap, color=magma)
+
+color=greys colours the surface with that scale.
+
+@graph(z=sin(x)*cos(y), x=-3:3, y=-3:3, view=heatmap, color=greys)
+
+@section(Colour scales)
+
+colormap=viridis on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=viridis)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=plasma on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=plasma)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=inferno on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=inferno)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=magma on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=magma)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=blues on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=blues)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=greens on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=greens)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=reds on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=reds)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=oranges on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=oranges)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=greys on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=greys)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=spectral on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=spectral)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=bwr on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=bwr)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=jet on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=jet)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=turbo on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=turbo)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=hsv on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=hsv)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=twilight on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=twilight)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=tab10 on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=tab10)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=tab20 on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=tab20)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=set1 on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=set1)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=set2 on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=set2)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=okabe-ito on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=okabe-ito)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=paired on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=paired)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=hot on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=hot)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+colormap=cool on a heatmap.
+
+@graph(type=heatmap, x=hour, y=day, value=n, colormap=cool)
+@data
+hour,day,n
+9,Mon,4
+12,Mon,9
+15,Mon,6
+9,Tue,7
+12,Tue,3
+15,Tue,8
+9,Wed,2
+12,Wed,5
+15,Wed,10
+@end
+
+@section(Fits and models)
+
+trend=poly:2 fits that curve to the points.
+
+@graph(type=scatter, x=x, y=y, trend=poly:2)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+trend=poly:3 fits that curve to the points.
+
+@graph(type=scatter, x=x, y=y, trend=poly:3)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+trend=exp fits that curve to the points.
+
+@graph(type=scatter, x=x, y=y, trend=exp)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+trend=power fits that curve to the points.
+
+@graph(type=scatter, x=x, y=y, trend=power)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+trend=log fits that curve to the points.
+
+@graph(type=scatter, x=x, y=y, trend=log)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+trend=none fits that curve to the points.
+
+@graph(type=scatter, x=x, y=y, trend=none)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+model=poly:2: the student types a function of that family, graded; pts= is what it is worth and fncolor= colours their curve.
+
+@graph(ask=fit, model=poly:2, pts=2, fncolor=#cc0033, points="1,2; 2,4; 3,9; 4,16")
+
+model=poly:3: the student types a function of that family, graded; pts= is what it is worth and fncolor= colours their curve.
+
+@graph(ask=fit, model=poly:3, pts=2, fncolor=#cc0033, points="1,2; 2,4; 3,9; 4,16")
+
+model=exp: the student types a function of that family, graded; pts= is what it is worth and fncolor= colours their curve.
+
+@graph(ask=fit, model=exp, pts=2, fncolor=#cc0033, points="1,2; 2,4; 3,9; 4,16")
+
+model=power: the student types a function of that family, graded; pts= is what it is worth and fncolor= colours their curve.
+
+@graph(ask=fit, model=power, pts=2, fncolor=#cc0033, points="1,2; 2,4; 3,9; 4,16")
+
+model=log: the student types a function of that family, graded; pts= is what it is worth and fncolor= colours their curve.
+
+@graph(ask=fit, model=log, pts=2, fncolor=#cc0033, points="1,2; 2,4; 3,9; 4,16")
+
+ask=plot just plots, with nothing graded.
+
+@graph(ask=plot, points="0,1; 1,3; 2,5")
+
+cluster=kmeans:3 colours the points by that many clusters.
+
+@graph(type=scatter, x=x, y=y, cluster=kmeans:3)
+@data
+x,y
+1,1
+1.2,1.1
+5,5
+5.1,4.8
+9,1
+9.2,1.3
+1,9
+1.1,8.7
+5,9
+5.2,9.1
+@end
+
+cluster=kmeans:4 colours the points by that many clusters.
+
+@graph(type=scatter, x=x, y=y, cluster=kmeans:4)
+@data
+x,y
+1,1
+1.2,1.1
+5,5
+5.1,4.8
+9,1
+9.2,1.3
+1,9
+1.1,8.7
+5,9
+5.2,9.1
+@end
+
+cluster=kmeans:5 colours the points by that many clusters.
+
+@graph(type=scatter, x=x, y=y, cluster=kmeans:5)
+@data
+x,y
+1,1
+1.2,1.1
+5,5
+5.1,4.8
+9,1
+9.2,1.3
+1,9
+1.1,8.7
+5,9
+5.2,9.1
+@end
+
+@section(Summarising the data)
+
+normalize=percent rescales each series.
+
+@graph(type=bar, x=team, y=Spring;Fall, normalize=percent)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+normalize=max rescales each series.
+
+@graph(type=bar, x=team, y=Spring;Fall, normalize=max)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+normalize=zscore rescales each series.
+
+@graph(type=bar, x=team, y=Spring;Fall, normalize=zscore)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+agg=sum combines rows that share a category.
+
+@graph(type=bar, x=section, y=score, agg=sum)
+@data
+section,score
+A,70
+A,80
+B,65
+B,90
+B,75
+C,85
+@end
+
+agg=mean combines rows that share a category.
+
+@graph(type=bar, x=section, y=score, agg=mean)
+@data
+section,score
+A,70
+A,80
+B,65
+B,90
+B,75
+C,85
+@end
+
+agg=count combines rows that share a category.
+
+@graph(type=bar, x=section, y=score, agg=count)
+@data
+section,score
+A,70
+A,80
+B,65
+B,90
+B,75
+C,85
+@end
+
+agg=min combines rows that share a category.
+
+@graph(type=bar, x=section, y=score, agg=min)
+@data
+section,score
+A,70
+A,80
+B,65
+B,90
+B,75
+C,85
+@end
+
+agg=max combines rows that share a category.
+
+@graph(type=bar, x=section, y=score, agg=max)
+@data
+section,score
+A,70
+A,80
+B,65
+B,90
+B,75
+C,85
+@end
+
+stack stacks a bar chart's series instead of grouping them.
+
+@graph(type=bar, x=team, y=Spring;Fall, stack)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+@section(Markers, grid and legend)
+
+marker=circle sets the point shape.
+
+@graph(type=line, x=week, y=Lab;Quiz, marker=circle)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+marker=square sets the point shape.
+
+@graph(type=line, x=week, y=Lab;Quiz, marker=square)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+marker=diamond sets the point shape.
+
+@graph(type=line, x=week, y=Lab;Quiz, marker=diamond)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+marker=triangle sets the point shape.
+
+@graph(type=line, x=week, y=Lab;Quiz, marker=triangle)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+marker=point sets the point shape.
+
+@graph(type=line, x=week, y=Lab;Quiz, marker=point)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+marker=none sets the point shape.
+
+@graph(type=line, x=week, y=Lab;Quiz, marker=none)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+markers=circle is the older spelling of marker=.
+
+@graph(type=scatter, x=x, y=y, markers=circle)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+markers=square is the older spelling of marker=.
+
+@graph(type=scatter, x=x, y=y, markers=square)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+markers=diamond is the older spelling of marker=.
+
+@graph(type=scatter, x=x, y=y, markers=diamond)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+markers=triangle is the older spelling of marker=.
+
+@graph(type=scatter, x=x, y=y, markers=triangle)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+markers=point is the older spelling of marker=.
+
+@graph(type=scatter, x=x, y=y, markers=point)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+markers=none is the older spelling of marker=.
+
+@graph(type=scatter, x=x, y=y, markers=none)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+markersize=4 sets the marker radius.
+
+@graph(type=scatter, x=x, y=y, markersize=4)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+markersize=8 sets the marker radius.
+
+@graph(type=scatter, x=x, y=y, markersize=8)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+markersize=12 sets the marker radius.
+
+@graph(type=scatter, x=x, y=y, markersize=12)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+markersize=large sets the marker radius.
+
+@graph(type=scatter, x=x, y=y, markersize=large)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+grid=on chooses the grid lines.
+
+@graph(type=line, x=week, y=Lab, grid=on)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+grid=off chooses the grid lines.
+
+@graph(type=line, x=week, y=Lab, grid=off)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+grid=x chooses the grid lines.
+
+@graph(type=line, x=week, y=Lab, grid=x)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+grid=y chooses the grid lines.
+
+@graph(type=line, x=week, y=Lab, grid=y)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+legend=on places or sizes the legend.
+
+@graph(type=line, x=week, y=Lab;Quiz, legend=on)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+legend=off places or sizes the legend.
+
+@graph(type=line, x=week, y=Lab;Quiz, legend=off)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+legend=bottom places or sizes the legend.
+
+@graph(type=line, x=week, y=Lab;Quiz, legend=bottom)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+legend=left places or sizes the legend.
+
+@graph(type=line, x=week, y=Lab;Quiz, legend=left)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+legend=right places or sizes the legend.
+
+@graph(type=line, x=week, y=Lab;Quiz, legend=right)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+legend=large places or sizes the legend.
+
+@graph(type=line, x=week, y=Lab;Quiz, legend=large)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+legend=small places or sizes the legend.
+
+@graph(type=line, x=week, y=Lab;Quiz, legend=small)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+@section(Axes, sizes and type)
+
+xlabel= and ylabel= title the axes; xmin=, xmax=, ymin= and ymax= set the scale; height= sets the drawing height.
+
+@graph(type=line, x=week, y=Lab, xlabel="Week", ylabel="Mark", xmin=0, xmax=6, ymin=0, ymax=100, height=240)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+log=y draws the y axis on a log scale.
+
+@graph(type=scatter, x=x, y=y, log=y)
+@data
+x,y
+1,2.1
+2,4.3
+3,8.8
+4,16.5
+5,31.0
+6,63.2
+@end
+
+fontsize=large scales all the chart text.
+
+@graph(type=bar, x=team, y=Spring, title="Spring", fontsize=large)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+fontsize=huge scales all the chart text.
+
+@graph(type=bar, x=team, y=Spring, title="Spring", fontsize=huge)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+fontsize=small scales all the chart text.
+
+@graph(type=bar, x=team, y=Spring, title="Spring", fontsize=small)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+fontsize=18 scales all the chart text.
+
+@graph(type=bar, x=team, y=Spring, title="Spring", fontsize=18)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+fontsize=1.4 scales all the chart text.
+
+@graph(type=bar, x=team, y=Spring, title="Spring", fontsize=1.4)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+ticksize=, labelsize=, titlesize= and legendsize= size each kind of text on its own.
+
+@graph(type=line, x=week, y=Lab;Quiz, title="Marks", xlabel="Week", ylabel="Mark", ticksize=small, labelsize=large, titlesize=1.5, legendsize=1.4)
+@data
+week,Lab,Quiz
+1,62,55
+2,68,60
+3,71,66
+4,75,64
+5,80,72
+@end
+
+benchmark= names a value that receives the chart's drawing time in ms.
+
+@graph(type=bar, x=team, y=Spring, benchmark=bartime)
+@data
+team,Spring,Fall
+Red,40,55
+Blue,25,30
+Green,35,20
+@end
+
+@section(Networks, slopes and bullets)
+
+from= and to= name the two columns of a slopegraph.
+
+@graph(type=slopegraph, label=club, from=y2019, to=y2024)
+@data
+club,y2019,y2024
+Chess,30,42
+Robotics,55,48
+Drama,20,35
+@end
+
+from= and to= also name a network's source and target columns.
+
+@graph(type=network, from=a, to=b)
+@data
+a,b
+Sensors,Signals
+Signals,Control
+Control,Motors
+@end
+
+dict draws the equation dictionaries as a network; cats= keeps only the ones listed.
+
+@graph(type=network, dict, cats=fd;ee)
+
+target= names a bullet chart's target column.
+
+@graph(type=bullet, label=metric, value=actual, target=goal)
+@data
+metric,actual,goal
+Labs done,8,10
+Quizzes,5,6
+@end
+
+@section(Maps)
+
+projection=Natural on a globe.
+
+@graph(type=globe, projection=Natural)
+
+projection=Mercator on a globe.
+
+@graph(type=globe, projection=Mercator)
+
+projection=EqualEarth on a globe.
+
+@graph(type=globe, projection=EqualEarth)
+
+projection=Equirectangular on a globe.
+
+@graph(type=globe, projection=Equirectangular)
+
+projection=AzimuthalEqualArea on a globe.
+
+@graph(type=globe, projection=AzimuthalEqualArea)
+
+basemap=light styles the slippy map.
+
+@graph(type=map, basemap=light, center=-74.45,40.5, zoom=11)
+
+basemap=blueprint styles the slippy map.
+
+@graph(type=map, basemap=blueprint, center=-74.45,40.5, zoom=11)
+
+lon= and lat= name the point columns; detail=high uses the sharp coastlines; labels=off hides place names.
+
+@graph(type=map, lon=lon, lat=lat, detail=high, labels=off, center=-74.45,40.5, zoom=12)
+@data
+lon,lat,n
+-74.45,40.50,3
+-74.44,40.51,8
+-74.46,40.49,5
+-74.43,40.52,2
+-74.45,40.52,6
+@end
+
+layer=graduated draws the points this way.
+
+@graph(type=map, lon=lon, lat=lat, value=n, layer=graduated, center=-74.45,40.5, zoom=12)
+@data
+lon,lat,n
+-74.45,40.50,3
+-74.44,40.51,8
+-74.46,40.49,5
+-74.43,40.52,2
+-74.45,40.52,6
+@end
+
+layer=heatmap draws the points this way.
+
+@graph(type=map, lon=lon, lat=lat, value=n, layer=heatmap, center=-74.45,40.5, zoom=12)
+@data
+lon,lat,n
+-74.45,40.50,3
+-74.44,40.51,8
+-74.46,40.49,5
+-74.43,40.52,2
+-74.45,40.52,6
+@end
+
+layer=cluster draws the points this way.
+
+@graph(type=map, lon=lon, lat=lat, value=n, layer=cluster, center=-74.45,40.5, zoom=12)
+@data
+lon,lat,n
+-74.45,40.50,3
+-74.44,40.51,8
+-74.46,40.49,5
+-74.43,40.52,2
+-74.45,40.52,6
+@end
+
+layer=bin draws the points this way.
+
+@graph(type=map, lon=lon, lat=lat, value=n, layer=bin, center=-74.45,40.5, zoom=12)
+@data
+lon,lat,n
+-74.45,40.50,3
+-74.44,40.51,8
+-74.46,40.49,5
+-74.43,40.52,2
+-74.45,40.52,6
+@end
+
+layer=hotspot draws the points this way.
+
+@graph(type=map, lon=lon, lat=lat, value=n, layer=hotspot, center=-74.45,40.5, zoom=12)
+@data
+lon,lat,n
+-74.45,40.50,3
+-74.44,40.51,8
+-74.46,40.49,5
+-74.43,40.52,2
+-74.45,40.52,6
+@end
+
+layer=track draws the points this way.
+
+@graph(type=map, lon=lon, lat=lat, value=n, layer=track, center=-74.45,40.5, zoom=12)
+@data
+lon,lat,n
+-74.45,40.50,3
+-74.44,40.51,8
+-74.46,40.49,5
+-74.43,40.52,2
+-74.45,40.52,6
+@end
+
+classify=quantile with classes=4 breaks a choropleth's values into four classes.
+
+@graph(type=choropleth, geo=world, region=country, value=value, classes=4, classify=quantile)
+@data
+country,value
+Brazil,40
+India,70
+Canada,25
+Kenya,55
+France,35
+@end
+
+classify=equal with classes=4 breaks a choropleth's values into four classes.
+
+@graph(type=choropleth, geo=world, region=country, value=value, classes=4, classify=equal)
+@data
+country,value
+Brazil,40
+India,70
+Canada,25
+Kenya,55
+France,35
+@end
+
+@section(3-D and terrain)
+
+view=front starts a model facing the viewer; spin=on turns it slowly until touched.
+
+@graph(type=mesh, src=torus.cmesh, view=front, spin=on)
+
+shade=flat on a 3-D mesh.
+
+@graph(type=mesh, src=torus.cmesh, shade=flat)
+
+shade=wire on a 3-D mesh.
+
+@graph(type=mesh, src=torus.cmesh, shade=wire)
+
+weather= drapes readings over time on terrain; sky=none lets the page show behind it; frame=none drops the card border.
+
+@graph(type=terrain, weather=weather.csv, sky=none, frame=none)

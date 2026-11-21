@@ -1,0 +1,21 @@
+@style(IDocDemo)
+@doc(template=letter, font=serif, studio-output=right, studio-look=light, studio-code=hide, octo-run=visible)
+@title(Venue: letter)
+
+A one-column business letter.
+
+@section(Introduction)
+
+This page is set in the letter venue. Its first line after the stylesheet is the @@doc line; every argument on it is live: template=letter, font=serif, studio-output=right, studio-look=light, studio-code=hide, octo-run=visible
+
+@abstract
+A short abstract, so the venue shows how it sets one.
+@end
+
+@section(Method)
+
+Two sentences of body text, enough to see the type size, the margins and the columns. The second sentence carries an equation: @eqi(V = I R).
+
+@section(Result)
+
+The measured current was 0.5 A.@footnote{A footnote, set the way this venue sets one.}

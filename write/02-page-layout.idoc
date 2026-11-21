@@ -1,0 +1,298 @@
+@style(IDocDemo)
+@title(Page layout)
+
+Columns, boxes, spacing, page breaks, headers, footers and fixed pages.
+
+@section(Alignment and spacing)
+
+@subsection(@@align)
+
+Aligns everything inside it: left, right, center or justify.
+
+@align(center)
+All of this is centred.
+@end
+
+@align(justify)
+A justified paragraph.
+@end
+
+@subsection(@@hspace)
+
+A horizontal gap of a given length.
+
+@hspace(2em)
+
+@subsection(@@vspace)
+
+A vertical gap of a given length.
+
+@vspace(2em)
+
+@vspace(1cm)
+
+@subsection(@@hfill)
+
+A flexible horizontal spacer — pushes what follows to the right.
+
+@hfill
+
+@subsection(@@vfill)
+
+A flexible vertical spacer — pushes what follows to the bottom.
+
+@vfill
+
+@subsection(@@centertext)
+
+Template-layer centred text, optionally placed absolutely — used by generated layouts and stylesheets.
+
+@centertext(text=Final Exam)
+
+@centertext(text=Name, x=2in, y=1in, w=4in)
+@col
+
+@section(Columns)
+
+@subsection(@@columns)
+
+Columns side by side, split by col — or, with flow, text that runs from one column into the next and ends level (balanced) on screen and in the PDF.
+
+@columns(count=2)
+left text
+@col
+right text
+@end
+
+@columns(3, flow)
+…text that flows…
+@end
+
+@columns(2, flow, gap=1.5em)
+…
+@end
+
+@subsection(@@cols)
+
+Auto-flowing columns; col splits them.
+
+@cols(count=2)
+left text
+@col
+right text
+@end
+
+@subsection(@@col)
+
+The column break inside columns — and the column split on a two-column slide.
+
+@subsection(@@colbreak)
+
+What follows starts the next column of a two-column paper or a columns(n, flow) block.
+
+@colbreak
+
+@subsection(@@multicol)
+
+Auto-flowing item columns: mark each item with item (or next) — or mark nothing and every source line is an item — and the column count falls out of the width, on screen and in print.
+
+@multicol(min=170)
+@item one
+@item two
+@item three
+@end
+
+@multicol(cols=3, header=1)
+Section A
+q1
+q2
+@end
+
+@subsection(@@next)
+
+The item marker inside multicol — identical to item, both spellings read naturally.
+
+@subsection(@@wide)
+
+Content across both columns of a two-column paper (LaTeX's figure* or widetext).
+
+@wide
+@table(sep=|)
+…
+@endtable
+@end
+
+@wide(at=bottom)
+…
+@end
+
+@section(Boxes)
+
+@subsection(@@box)
+
+An absolutely-placed box: position it with x/y, size it with w/h, style it with bg/border/pad.
+
+@box(x=2cm, y=3cm, w=6cm)
+content
+@end
+
+@box(w=40%, bg=#eef, pad=8px, align=center) … @end
+
+@box(w=40%, style=qrbox)
+…
+@end
+
+@box(x=1in, y=1in, w=3in) …@end
+@endpage
+
+@box(w=40%, h=3cm, color=#1e3a8a, border=1px solid #93c5fd, fs=10pt, radius=8pt, shadow, title=A titled box, titlebg=#dbeafe)
+A box with a height, text colour, border, font size, rounded corners, a shadow and a title band.
+@end
+
+@box(w=30%, float=right, rounded, bg=#f0fdf4)
+Floats to the right; text wraps beside it.
+@end
+The text that follows a floating box runs beside it until the box ends. This sentence is here to show the wrap.
+
+@box(w=30%, float=left, align=left)
+Floats left, text aligned left.
+@end
+More running text beside the left box.
+
+@box(w=30%, align=right)
+Aligned right.
+@end
+
+@box(w=4cm, h=4cm, shape=circle, bg=#fef3c7, align=center)
+A circle
+@end
+
+Stacking order on a fixed page, back to front:
+@page(w=12cm, h=4cm)
+@box(x=0.5cm, y=0.5cm, w=5cm, h=3cm, bg=#e0e7ff, z=back)
+z=back
+@end
+@box(x=2cm, y=1cm, w=5cm, h=2.5cm, bg=#fde68a, z=behind)
+z=behind
+@end
+@box(x=4cm, y=1.5cm, w=5cm, h=2cm, bg=#fecaca, z=front)
+z=front
+@end
+@endpage
+
+@box(w=50%, theme=tip)
+theme= names a box style, the same as style=.
+@end
+
+@subsection(@@boxstyle)
+
+How a box looks, by name — boxstyle(qrbox, bg=#eef2ff, border=1pt solid #1d4ed8, radius=6pt, pad=8pt); then box(x=…, y=…, style=qrbox) says only where the box goes.
+
+@boxstyle(qrbox, bg=#eef2ff, border=1pt solid #1d4ed8, radius=6pt, pad=8pt)
+
+@boxstyle(card, w=60%, bg=#f8fafc, border=1pt solid #cbd5e1, color=#0f172a, shadow, title=Card)
+
+@boxstyle(warncard, extends=card, bg=#fff7ed, title=Warning)
+
+@box(style=card)
+A box drawn from the card style.
+@end
+
+@box(style=warncard)
+The same card, extended with another colour and title.
+@end
+
+@subsection(@@rotate)
+
+A table or figure turned a quarter (90 clockwise, -90 anticlockwise) or 180 degrees, taking its turned size on the page — a wide table set sideways.
+
+@rotate(90)
+@table(sep=|)
+…
+@endtable
+@end
+
+@rotate(-90)
+…
+@end
+
+@section(Pages)
+
+@subsection(@@pagesetup)
+
+Paper size and margins for the whole document (put it in a .style to share it): landscape; binding margins inner= / outer= (twoside mirrors them on even pages); the page-number style pagenumbers=1 \| i \| I \| a \| A \| Page 1 of N \| off.
+
+@pagesetup(size=letter, margin=1in)
+
+@pagesetup(size=a4, margin=2cm)
+
+@pagesetup(landscape)
+
+@pagesetup(inner=1.5in, outer=1in, twoside)
+
+@pagesetup(pagenumbers=i)
+
+@subsection(@@header)
+
+A running page header with left / center / right slots.
+
+@header(left=Course, center=Exam 1, right=Page)
+
+@header(left={section}, right=Page {page} of {pages}, first=none)
+
+@header(left={title}, right={page}, even=mirror)
+
+@subsection(@@footer)
+
+A running page footer with left / center / right slots — the same tokens and first= / even= as header.
+
+@footer(center={page})
+
+@footer(left={title}, right=Page {page} of {pages})
+
+@subsection(@@newpage)
+
+A page break.
+
+@newpage
+
+@newpage(odd)
+
+@newpage(odd, numbers=1)
+
+@newpage(numbers=Page 1 of N)
+@next
+
+@subsection(@@watermark)
+
+Big faded text behind the page content (DRAFT, CONFIDENTIAL…).
+
+@watermark(DRAFT)
+
+@watermark(text=CONFIDENTIAL, opacity=0.08)
+
+@subsection(@@page)
+
+A fixed-geometry page: everything inside is positioned in real page coordinates.
+
+@page(w=8.5in, h=2in)
+@box(x=1in, y=0.4in, w=4in)
+Placed one inch from the left edge of a fixed page.
+@end
+@endpage
+
+@@fixedpage is the same as @@page:
+@fixedpage(w=8.5in, h=1in)
+@box(x=1in, y=0.2in, w=3in)
+On a fixed page.
+@end
+@endpage
+
+@subsection(@@pack)
+
+A shared document's tail — every stylesheet, include, picture and data file the document needs, appended as ONE block so the file opens the same on any machine.
+
+@pack(v=1, mode=edit, sha=0000)
+manifest
+{"root":"quiz3.idoc","entries":[]}
+@end

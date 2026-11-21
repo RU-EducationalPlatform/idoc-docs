@@ -1,0 +1,21 @@
+@ IDocDemo: the one stylesheet every file in this collection uses.
+@ A document applies it with @style(IDocDemo) on its first line.
+
+@value(body=Palatino, heads=Helvetica, mono=Courier, ink=#1f2937, accent=#1d4ed8)
+
+@theme(github-light)
+@theme(code, github-light)
+
+@textstyle(normal, font=body, size=11pt, leading=1.5)
+@textstyle(title, font=heads, size=26pt, weight=bold, color=#1f2937)
+@textstyle(subtitle, font=heads, size=13pt, color=#4b5563)
+@textstyle(heading1, font=heads, size=17pt, weight=bold, color=#1d4ed8)
+@textstyle(heading2, font=heads, size=13pt, weight=bold, color=#1f2937)
+@textstyle(heading3, font=heads, size=11pt, weight=bold, color=#374151)
+@textstyle(code, font=mono, size=9.5pt)
+@textstyle(caption, font=heads, size=9pt, color=#4b5563)
+@textstyle(tableheader, font=heads, weight=bold, color=#1f2937)
+
+@ Two boxes the collection uses for asides.
+@boxstyle(tip, bg=#eff6ff, border=1pt solid #93c5fd, radius=6pt, pad=8pt)
+@boxstyle(offline, bg=#fffbeb, border=1pt solid #fcd34d, radius=6pt, pad=8pt)

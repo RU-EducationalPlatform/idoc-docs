@@ -1,0 +1,53 @@
+@style(IDocDemo)
+@title(Templates and reuse)
+
+Macros, conditions and included files.
+
+@section(Macros and conditions)
+
+@subsection(@@def)
+
+Define a reusable macro with parameters; call it as name(args).
+
+@def(warn(text))
+@b{Warning:} text
+@enddef
+
+@subsection(@@if)
+
+Conditional content — else gives the alternative.
+
+@if(level > 2)
+harder version
+@else
+easier version
+@end
+
+@section(Including files)
+
+@subsection(@@inc)
+
+Include a file: another .idoc splices in, an image becomes img, anything else becomes a code listing.
+
+@inc(file=part.idoc)
+
+@code(file=x.cpp, run)
+@end
+
+@inc(file=x.cpp#helper)
+
+@subsection(@@include)
+
+Extract a named snip region from a file.
+
+@include("lib.cpp", solve)
+
+@subsection(@@input)
+
+Include a whole .idoc, recursively (spec spelling).
+
+@input("intro.idoc")
+
+@input(shared/ece-policies.course)
+
+@input(logic-bank.idoc)

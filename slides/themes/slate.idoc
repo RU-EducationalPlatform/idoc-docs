@@ -1,0 +1,14 @@
+@deck(theme=slate, transition=zoom, ratio=16:10, size=small, autostart, autoplay=5s)
+@style(IDocDemo)
+@title(Deck theme: slate)
+
+@titleslide
+
+@slide(A heading)
+Body text in the slate theme, with the zoom transition, ratio 16:10 and size small.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

@@ -1,0 +1,302 @@
+@style(IDocDemo)
+@title(Drawing, photos, film, Emerge cards, PDFs and players)
+
+Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.
+
+@section(Drawing studio: shapes, paths and diagrams)
+
+Draw diagrams, figures and simple circuits with shapes, text, arrows, paths and schoolbook circuit parts; every edit is written back as one line per element, and a drawing can be an exercise.
+
+@draw(height=280)
+rect r1 at 40,40 size 120,70
+text t1 at 50,60 "A box"
+@end
+
+@b{Shapes, text, paths.} rect, ellipse, line, arrow, text and path lines; any shape takes stroke, sw (stroke width), dash, cap, join and fill, including linear() and radial() gradients.
+
+@draw(height=260)
+path p1 d "M 40 200 C 80 40 220 40 260 200" stroke #1d3557 sw 4 cap round
+@end
+
+@b{Circuit parts and wires.} battery, switch, lamp, resistor and the other schoolbook symbols have ports; wire b1.+ to s1.1 joins two ports.
+
+@draw(height=200)
+battery b1 at 60,80 rot 90
+switch s1 at 150,30
+lamp l1 at 240,80 rot 90
+wire b1.+ to s1.1
+wire s1.2 to l1.1
+wire l1.2 to b1.-
+@end
+
+@b{Draw over a picture.} src= puts a picture under the drawing (stretched to width × height), for circle-the-fault work.
+
+@draw(src=drawing-and-media.assets/circuit.png, width=400, height=300)
+@end
+
+@b{Grid and size.} width= and height= set the page; grid= is the snap pitch in px, or off.
+
+@draw(width=400, height=200, grid=10)
+ellipse e1 at 100,100 size 80,50
+@end
+
+@b{A graded drawing.} id=, pts= and expect= pairs: parts=, count(), connected=, series=, polarity=, labelled=, shape=, within(), match=solution against the @@solution section.
+
+@draw(id=ex1, pts=10, expect="parts=battery,switch,lamp, match=solution")
+@solution
+battery b1 at 60,80 rot 90
+switch s1 at 150,30
+lamp l1 at 240,80 rot 90
+wire b1.+ to s1.1
+wire s1.2 to l1.1
+wire l1.2 to b1.-
+@end
+
+@b{Graded.} The server reads the student's drawing text and checks each expect= pair; counts are exact and tolerance= is a distance in drawing units.
+
+@section(Photo editing with layers)
+
+Edit a picture in the document with layers, masks, adjustments and paint, where the body is the picture: one line per layer, so the edit is text you can read, diff and grade.
+
+@photo
+canvas 1800x2400
+layer Background fill #f4d35e→#c8553d angle=160
+layer Title text "SPRING DESIGN WEEK" font=Schibsted 72 color=#f7f7f2 at 8%,78%
+@end
+
+@b{Canvas and layers.} canvas WxH (with 16bit or 32bit and a colour space), then layers bottom first: fill, a gradient, import a file, smart objects, text, and the fifteen adjustments (curves, levels, huesat and the rest).
+
+@photo
+canvas 1200x800
+layer Sky fill #1d3557→#a8dadc angle=90
+@end
+
+@b{Groups, blends and masks.} group NAME with in=NAME on its layers; any layer takes blend=, opacity=, hidden and a mask (rect, poly, wand or subject).
+
+@photo
+canvas 1200x800 16bit
+group Poster
+layer Sky fill #1d3557→#a8dadc angle=90 in=Poster
+@end
+
+@b{A graded edit.} id=, pts= and expect= pairs read the layer text: layers>=3, masks>=1, adjustment=curves, size=, blend(), opacity(), hidden(), exports=psd.
+
+@photo(id=p1, pts=5, expect="layers>=2, blend(Shade)=multiply")
+canvas 800x600
+layer Base fill #ffffff
+@end
+
+@b{Graded.} The server reads the student's layer text and checks each expect= pair.
+
+@section(Video editing on a timeline)
+
+Edit video in the document: tracks of clips, pictures, titles, captions and sound on a timeline whose text is the body, then render an MP4 on your own device.
+
+@film
+size 1920x1080 fps=30
+track V1
+clip drawing-and-media.assets/intro.mp4 0..8 at=0 fadein=0.5
+track T1
+title "Week 3" at=0 dur=3 size=72 y=80%
+export week3.mp4
+@end
+
+@b{Tracks and items.} track NAME, then clip FILE IN..OUT at=T, image, title, caption, color and audio lines, with fadein=, fadeout=, speed= and transition=dissolve|wipe|slide|fade:SECONDS.
+
+@film
+size 1920x1080 fps=30
+track V1
+clip drawing-and-media.assets/intro.mp4 0..8 at=0 fadein=0.5
+clip drawing-and-media.assets/demo.mp4 2..14 at=8 transition=dissolve:0.5
+@end
+
+@b{Captions and sound.} A caption track draws subtitles (burned in on export); audio takes vol= and duck=V1 to dip under speech.
+
+@film
+size 1280x720
+track C1
+caption "Today: Thevenin equivalents" at=1 dur=4
+track A1
+audio drawing-and-media.assets/song.mp3 0..20 at=0 vol=0.4 duck=V1
+@end
+
+@b{A graded edit.} id=, pts= and expect= terms: clips>=3, transitions>=1, titles>=1, captions>=1, duration=30±3, fades>=1, exports=mp4.
+
+@film(id=q1, pts=10, expect="clips>=3, transitions>=1, captions>=1")
+size 1920x1080
+@end
+
+@b{Graded.} The server reads the student's timeline text and checks each term.
+
+@section(Emerge cards: a message that forms out of water)
+
+Make a card or short video in which a message forms out of rippling water or particles and is spoken as it lands, with photos, clips and music.
+
+@emerge
+Happy | Birthday
+  say "Happy birthday."
+@end
+
+@b{Scenes, one per line.} A bare line is a message (| breaks it); cover, photo, video, music, timelapse and aspect are the other scene kinds.
+
+@emerge
+aspect 9:16
+cover "Thank You" subtitle="from all of us"
+photo drawing-and-media.assets/img/team.jpg effect=kenburns caption="Spring 2026"
+@end
+
+@b{A timelapse.} timelapse with frame lines morphs particles through shapes and words.
+
+@emerge
+timelapse
+  frame shape:heart
+  frame "thanks" hold=2
+@end
+
+@b{The player alone.} noedit shows the card without the studio around it.
+
+@emerge(noedit)
+Welcome | to the course
+  say "Welcome to the course."
+@end
+
+@b{Graded.} Not graded: a card is something you make, not a question.
+
+@section(PDF editing: organise, annotate, fill, redact)
+
+Edit a PDF inside the document — reorder and rotate pages, add notes, highlights, text, ink and redactions, fill its form — where every edit is a line you can read, and Export writes the result.
+
+@pdf(file=drawing-and-media.assets/handout.pdf, edit)
+pages 1-3
+highlight 1 10%,20%,60%,3%
+note 1 at 80%,10% "Read this first" id=n1
+@end
+
+@b{Pages.} pages keeps and orders pages; rotate turns one; insert brings pages of another PDF after a page.
+
+@pdf(file=drawing-and-media.assets/handout.pdf, edit)
+pages 1-3,5
+rotate 2 90
+@end
+
+@b{Notes that thread.} note PAGE at X%,Y% "text" id=n1, and a reply with reply=n1 by="Ada".
+
+@pdf(file=drawing-and-media.assets/handout.pdf, edit)
+note 1 at 30%,40% "Check this" id=n1
+note 1 at 34%,40% "Done" reply=n1 by="TA"
+@end
+
+@b{Fill, redact, protect, export.} fill name="…" fills a form field; redact burns a box in so nothing under it stays in the file; protect encrypts (the password is asked at export); export names the output.
+
+@pdf(file=drawing-and-media.assets/form.pdf, edit)
+fill student_name="Ada Lovelace"
+redact 1 10%,50%,80%,5%
+export form-filled.pdf
+@end
+
+@b{Just show a PDF.} Without edit, @@pdf(file=…) is the browser's own viewer: it scrolls, zooms, searches and fills forms.
+
+@pdf(file=drawing-and-media.assets/notes.pdf, w=70%, caption=The brief)
+
+@b{A graded edit.} id=, pts=, expect=: pages=4, order=3 1 2, notes>=1, highlights>=2, filled(name), redactions>=1, protected, exports=pdf.
+
+@pdf(file=drawing-and-media.assets/handout.pdf, edit, id=q1-2, pts=4, expect="notes>=1, highlights>=2")
+@end
+
+@b{Graded.} The server reads the edit lines and checks each expect= term.
+
+@section(Video player)
+
+Show a video in the document with the browser's own player.
+
+@video(file=drawing-and-media.assets/demo.mp4, width=60%, poster=drawing-and-media.assets/thumb.png)
+
+@b{Start on its own.} autoplay starts it on load; browsers allow sound only after a click, so it may start silent.
+
+@video(file=drawing-and-media.assets/intro.mp4, autoplay, loop)
+
+@b{A name to refer to.} label= is a caption above the player and a name @@ref can point at.
+
+@video(file=drawing-and-media.assets/demo.mp4, label=The experiment)
+
+@b{Graded.} Not graded: it is content, and a student sees and uses exactly what you see.
+
+@section(Audio player and playlists)
+
+Play a sound file, or a playlist of several, in the document.
+
+@audioplayer(file=drawing-and-media.assets/clip.mp3)
+
+@b{A playlist.} tracks= lists several files; dir= plays every file in a folder.
+
+@audioplayer(dir=drawing-and-media.assets)
+
+@b{Autoplay and loop.} autoplay starts on load (after the first click on the page); loop repeats the file or wraps the playlist.
+
+@audioplayer(file=drawing-and-media.assets/bach.ogg, loop, label=Prelude)
+
+@b{Graded.} Not graded: it is content, and a student sees and uses exactly what you see.
+
+
+@section(Every other argument)
+
+@b{Drawing options.} tolerance= is how far a drawn position may be off when graded, caption= prints under the figure, theme= is the studio look, time= the live-class window, file= is the older spelling of src=.
+
+@draw(id=draw-more, pts=4, expect="parts=battery,lamp, connected=b1-l1", tolerance=12, caption=A battery and a lamp, theme=dark, time=10m, height=200)
+battery b1 at 60,80 rot 90
+lamp l1 at 240,80 rot 90
+wire b1.+ to l1.1
+@end
+
+@b{Read-only drawing.} noedit shows the picture with no tools.
+
+@draw(noedit, file=drawing-and-media.assets/circuit.png, width=400, height=250)
+ellipse e1 at 290,60 size 60,140 stroke #c00 sw 3
+@end
+
+@b{Photo: imports, smart objects, adjustments, styles, filters and paint.} import brings in a picture, smart places one through a transform, adjust adds an adjustment layer, shadow= and outline= are layer styles, filter= adds blur, sharpen, noise or motion, and stroke paints on a layer.
+
+@photo
+canvas 640x480
+layer Photo import drawing-and-media.assets/portrait.png filter=noise:0.05
+layer Warm adjust photofilter color=#ec8a00 density=0.45 mask=rect:320,0,640,480
+layer Curves adjust curves rgb=(0,0)(70,40)(180,220)(255,255) mask=rect:0,0,320,480
+layer Badge smart drawing-and-media.assets/logo.png scale=0.45 rotate=-12 at=550,85 shadow=6,8,10,#000000,0.45
+layer Ink
+stroke Ink color=#ffffff size=8 points=40,440;200,400;360,430
+layer Caption text "Layers, all as text" font=HerosBold 28 color=#ffffff at 5%,94% outline=2,#023047
+@end
+
+@b{Film player and stage.} noedit shows only the player; stage=theme gives the stage the document's colours.
+
+@film(noedit, stage=theme)
+size 640x360 fps=15
+track V1
+clip drawing-and-media.assets/intro.mp4 0..4 at=0
+color #1d3557 at=4 dur=2
+track T1
+title "The end" at=4 dur=2 size=40 color=#ffffff
+@end
+
+@b{Emerge as an exercise key.} id= names the card so its edits and a live-class gate hang off it.
+
+@emerge(id=welcome-card)
+Welcome | to the lab
+  say "Welcome to the lab."
+@end
+
+@b{PDF viewer sizes and text.} width= and height= size the viewer, alt= is read by screen readers, noedit shows edits without tools.
+
+@pdf(file=drawing-and-media.assets/notes.pdf, width=600, height=400, alt=The lab brief)
+
+@pdf(file=drawing-and-media.assets/handout.pdf, edit, noedit)
+highlight 1 10%,20%,60%,3%
+@end
+
+@b{Video and audio extras.} src= is the same as file=, title= names it for @@ref, height= sizes it, stage=theme recolours the frame; tracks= makes a playlist and autoplay starts at once.
+
+@video(src=drawing-and-media.assets/intro.mp4, title=Test pattern, height=200, stage=theme)
+
+@audioplayer(src=drawing-and-media.assets/clip.mp3, title=Short tone, width=400, height=80)
+
+@audioplayer(tracks="drawing-and-media.assets/clip.mp3, drawing-and-media.assets/song.mp3", autoplay)

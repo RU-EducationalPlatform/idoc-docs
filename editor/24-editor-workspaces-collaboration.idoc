@@ -1,0 +1,230 @@
+@style(IDocDemo)
+@title(The editor, workspaces and collaboration)
+
+Every command the editor has, with its shortcut, and where documents live. Mod is Cmd on macOS and Ctrl elsewhere. Mod+K opens the command palette and Mod+/ opens help.
+
+@section(Edit)
+
+@table(zebra, compact, widths=70% 30%)
+Command, Shortcut
+Comment on the selection, mod + alt + m
+Undo, 
+Redo, 
+Find in document, 
+Format document, mod + shift + f
+Insert block or question…, mod + e
+Generate quiz with AI…, 
+Convert LaTeX → IDoc \(selection or document\), 
+Convert to quiz \(recognize questions — text/GIFT/Aiken\), 
+Tidy asset paths \(shorten ../../ references\), 
+Insert 3D model / SVG… \(compress to .cmesh\), 
+Make blanks, mod + shift + b
+Import class stylesheet here, mod + shift + e
+AI: Suggest here \(Ctrl-Space\), 
+Insert special characters…, mod + shift + i
+Insert emoji…, mod + alt + shift + o
+Colour picker…, mod + shift + c
+Insert a shape…, 
+Document settings…, 
+@endtable
+
+@section(File)
+
+@table(zebra, compact, widths=70% 30%)
+Command, Shortcut
+New document, mod + n
+New blank tab, mod + t
+New code file…, 
+Run this file, mod + r
+Build this file \(compile without running\), mod + alt + b
+Version history…, mod + alt + h
+Seal for signing…, 
+Git…, mod + alt + g
+Lobbies…, 
+Copy shared documents here now, 
+Debug this file, mod + shift + d
+Open…, mod + o
+Find a file…, mod + shift + o
+Browse files…, 
+Save, mod + s
+GitHub: commit now \(with a message\)…, 
+GitHub: how often to commit…, 
+Save as…, mod + shift + s
+Reload from disk, 
+Import a document…, mod + i
+Share as one file…, 
+Use idoc… \(unpack a shared file into a folder\), 
+Close tab, mod + w
+Next tab, ctrl + tab
+Previous tab, ctrl + shift + tab
+Reopen closed tab, mod + shift + t
+Pin / unpin this tab, 
+Go to tab 1, mod + 1
+Go to tab 2, mod + 2
+Go to tab 3, mod + 3
+Go to tab 4, mod + 4
+Go to tab 5, mod + 5
+Go to tab 6, mod + 6
+Go to tab 7, mod + 7
+Go to tab 8, mod + 8
+Go to the last tab, mod + 9
+Close all tabs, mod + alt + shift + w
+Close other tabs, 
+Set class stylesheet…, mod + shift + y
+Where documents live… \(server / folder / Drive\), 
+Open workspace folder…, 
+Connect Google Drive…, 
+Connect the GitHub repository, 
+Close workspace folder, 
+Print…, mod + p
+Save PDF of studio items & slides \(exactly as shown\), mod + alt + shift + p
+Save PDF… \(Typst\), mod + shift + p
+Download as Braille \(3D-print STL\), 
+Export as EPUB \(accessible ebook\), 
+Save as web page \(.html\), 
+Print with PostScript \(a printer or plotter\), 
+Export as Word \(.docx\), 
+Export as Excel workbook \(.xlsx\), 
+Export to PowerPoint \(.pptx\), 
+Export to PowerPoint with narration…, 
+Insert a file…, mod + shift + k
+Pick a symbol for this workspace, 
+Delete the sample course, 
+@endtable
+
+@section(Grade)
+
+@table(zebra, compact, widths=70% 30%)
+Command, Shortcut
+Check answers, mod + enter
+Toggle live grading, mod + shift + j
+Check every paper — generate\, compile and run each student's program…, 
+New variant, mod + shift + v
+Edit rubric…, mod + shift + g
+Download answer key \(.ans\), mod + shift + z
+Grade scans…, 
+Open course…, 
+New course…, 
+Pick the document for this course line…, 
+Publish to a course as an exam…, 
+Publish to Docent…, 
+Publish to a course as an assignment…, 
+Publish to a course as a live lesson…, 
+Share with a course as a reading…, 
+@endtable
+
+@section(Help)
+
+@table(zebra, compact, widths=70% 30%)
+Command, Shortcut
+Command palette, mod + k
+Command reference, mod + h
+Command reference, mod + /
+Tips, 
+Explore with a sample course, 
+What's new, 
+Show your first steps, 
+@endtable
+
+@section(Insert)
+
+@table(zebra, compact, widths=70% 30%)
+Command, Shortcut
+New slide deck \(choose a theme\)…, 
+@endtable
+
+@section(Review)
+
+@table(zebra, compact, widths=70% 30%)
+Command, Shortcut
+Toggle spell-check, 
+Check accessibility, 
+Comments…, 
+@endtable
+
+@section(Tools)
+
+@table(zebra, compact, widths=70% 30%)
+Command, Shortcut
+Run code… \(use your own computer instead of the server\), 
+@endtable
+
+@section(View)
+
+@table(zebra, compact, widths=70% 30%)
+Command, Shortcut
+Show comments, mod + alt + c
+Reload preview images / assets, 
+Choose a theme for this document…, 
+Jump to this line in the preview, mod + alt + j
+Jump to the source for what's on screen, 
+Toggle drag/resize mode in preview, 
+Calculator, mod + alt + k
+On-screen keyboard \(multilingual\)…, mod + shift + l
+Keyboard hotkeys & size…, 
+Voice command \(tap to talk\), mod + shift + u
+Start voice dictation, 
+Stop voice dictation, 
+Hands-free voice \(“hey idoc” wake word\), mod + shift + h
+View mode, mod + shift + m
+Anonymize authors \(blind review\), mod + shift + a
+Design — slide theme & accent…, 
+Transitions & animations…, 
+Slide Sorter \(reorder slides\)…, 
+Toggle Pages view, 
+Appearance / choose a theme…, mod + j
+Present the slides, 
+Present from the cursor's slide, mod + shift + enter
+Accessibility: colour-blind safe theme, 
+Accessibility: dyslexia-friendly theme, 
+Toggle file-tree sidebar, mod + b
+Toggle editor pane, mod + alt + e
+Toggle preview pane, mod + alt + p
+Swap editor / preview, mod + alt + s
+Reset layout, mod + alt + 0
+PDF of variants side by side \(compare two seeds\), 
+@endtable
+
+@section(Debugging in the document)
+
+The debugger block is @@visual_debug (see code/06-visual-debug.idoc). @@vdebug and @@visualdebug are two more spellings of it:
+
+@vdebug(language=systemverilog, src=blink.sv, h=200px)
+
+@visualdebug(language=systemverilog, src=blink.sv, h=200px)
+
+@section(Where documents live)
+
+A workspace is where your files are. There are four kinds:
+
+@dl
+server: your own space on the IDoc server, reachable from any computer you sign in on.
+folder: a folder on this computer, opened through the browser.
+drive: Google Drive.
+none: open one file, edit it and save it back.
+@end
+
+On the server your own folder is private. A colleague can be given read or edit access to one document; it stays where it is and they open it under shares. Every save compares what the tab last read with what is on disk, so a stale tab cannot overwrite someone else's change. Version history keeps snapshots and deleted files go to a trash you can restore from.
+
+@section(Working together)
+
+Live co-editing is off until someone turns it on. A lobby keeps the server's copy as the document, shows who is in it with cursor colours, and keeps comments attached to the words they are about.
+
+@box(w=100%, style=offline)
+Server workspaces, sharing and live co-editing need the IDoc server.
+@end
+
+@section(File types)
+
+@dl
+.idoc: a document.
+.style: a stylesheet, applied with @@style(Name).
+.course: a course file, read by Docent.
+.profile: who you are, read by @@getvar.
+.dict: an equation library, read by @@eq.
+.ans: a generated answer key for scanned papers.
+.bib: BibTeX references.
+.bml .bct .cmesh .bdem: compressed map, table, mesh and terrain blocks.
+@end
+
+Exports: PDF, PowerPoint with or without narration, EPUB, Braille STL, QTI, answer keys and grades.csv. Imports: Word, PDF, Markdown, HTML, plain text, LaTeX, GIFT, Aiken, QTI, Common Cartridge and Moodle backups.

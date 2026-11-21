@@ -1,0 +1,282 @@
+@style(IDocDemo)
+@title(Small teaching widgets and Knowsy modules)
+
+@box(w=100%, style=offline)
+@@module embeds a Knowsy page, so it needs the network.
+@end
+
+Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.
+
+@section(Flashcards with spaced repetition)
+
+A deck of study cards, front and back, that schedules each card for review based on how well you knew it.
+
+@flashcards(id=ohm)
+What is Ohm's law? :: V = IR
+Unit of resistance :: the ohm
+@end
+
+@b{Cards.} One card per line: the front, two colons, the back.
+
+@flashcards(id=greek)
+alpha :: α
+beta :: β
+@end
+
+@b{Saved progress.} id= (or deck=) names the deck, so each reader's progress is kept in their own browser between visits.
+
+@flashcards(deck=week3)
+Capacitor energy :: half C V squared
+@end
+
+@b{Graded.} Not graded.
+
+@section(Hints shown one at a time)
+
+A ladder of hints under a question that the student opens one at a time, each optionally costing points.
+
+Total resistance of 2 Ω and 3 Ω in series: @q(fn: 5)
+@hint
+In series, resistances add.
+Two plus three.
+@end
+
+@b{One hint per line.} Each non-empty line is one hint, revealed in order; a leading - or * is dropped.
+
+@hint
+- Start from Kirchhoff's voltage law.
+- Now sum the drops.
+@end
+
+@b{A cost.} penalty= shows the points off per hint and tells the course it was used.
+
+@hint(penalty=1)
+Think about units.
+@end
+
+@b{Graded.} A hint is not a question.
+
+@section(Confidence-based marking)
+
+After a question, the student says how sure they are, and the mark rewards being right and sure and punishes being wrong and sure.
+
+2 + 2 = @q(fn: 4)
+@confidence
+@end
+
+@b{The scale.} Low: right +1, wrong 0.
+
+Capital of France? @q(f: Paris)
+@confidence
+@end
+
+@b{Graded.} It reads the question just above it and shows the confidence mark live as the answer or the level changes.
+
+@section(Follow-up shown by how a question went)
+
+Content under a question that appears only when it was answered right, answered wrong, or answered at all.
+
+Ohm's law: V = @q(mcd: *I R, I/R)
+@branch(if=wrong)
+Voltage is current times resistance. Review section 2.
+@end
+
+@b{The condition.} if=correct, if=wrong, or if=answered (the default).
+
+2 + 2 = @q(fn: 4)
+@branch(if=correct)
+Well done. Try the challenge below.
+@end
+
+@b{Any content.} The body is full IDoc: text, pictures, even another question.
+
+Pick a prime: @q(mcv: *7, 8)
+@branch(if=answered)
+Next: @q(f: 2)
+@end
+
+@b{Graded.} The branch itself is not graded; a question inside it is graded as usual.
+
+@section(Choosing between versions of a question)
+
+Place a question drawn from the document's bank by its label: one per student when several are named, or a switch the reader can flip between versions.
+
+@quiz
+Capital of France? @q(mch, *Paris, Rome, label=easy)
+Capital of Bhutan? @q(mch, *Thimphu, Paro, label=hard)
+@endquiz
+@selectquestion(id=s1, fromid="easy,hard", toggle=lock)
+
+@b{A draw per student.} fromid= with several labels and no toggle picks one per student seed, the same one every time for that seed.
+
+@quiz
+Q1 @q(f: 4, label=a)
+Q2 @q(f: 6, label=b)
+@endquiz
+@selectquestion(id=s2, fromid="a,b")
+
+@b{A reader's switch.} toggle= shows a switch between the versions; every selector with the same toggle value switches together.
+
+@selectquestion(id=s3, fromid="easy,hard", toggle=lock)
+
+@b{Graded.} The chosen question is graded exactly as it would be on its own; the selector adds nothing to the mark.
+
+@section(Vector shapes)
+
+A vector shape (box, ellipse, arrow, star, callout and more) with optional text, inline or placed anywhere on a slide.
+
+@shape(type=star, w=140, h=140, fill=#ff8e53, text=New!)
+
+@b{Kinds.} type= rect, ellipse, triangle, diamond, pentagon, hexagon, star, arrow, line, callout.
+
+@shape(arrow, w=200, h=40, fill=#4c8dff)
+
+@b{Look.} fill= and stroke= colours, sw= stroke width, rotate= degrees, text= a centred label in color=.
+
+@shape(type=ellipse, w=120, h=60, fill=#fff, stroke=#333, sw=2, rotate=15, text=Idea, color=#333)
+
+@b{Place it.} x= and y= position it absolutely on a slide or @@page; drag it in the preview and the new place is written back.
+
+@shape(type=rect, x=20%, y=60%, w=200, h=40, fill=#4c8dff)
+
+@b{Graded.} Not graded: a shape is a picture, and records no answer.
+
+@section(Diagrams from a list)
+
+Turn a short list into a laid-out diagram: steps with arrows, a stack, a cycle or a hierarchy.
+
+@smartart(type=process, items=Plan; Build; Ship)
+
+@b{Layouts.} type= process (boxes and arrows), list (stacked), cycle (a ring), hierarchy (the first item over the rest).
+
+@smartart(type=hierarchy, items=Dean; Physics; Chemistry; Biology)
+
+@b{Colours.} fill= the boxes, color= the text, accent= the arrows and lines.
+
+@smartart(type=list, items=Read; Try; Ask, fill=#eef4ff, color=#123, accent=#2563eb)
+
+@b{Graded.} Not graded: a diagram is a picture, and records no answer.
+
+@section(Knowsy interactive modules)
+
+Put one of Knowsy's interactive modules — a calculus explorer, a CPU animator, a bit playground and others — inside the document, running in its own frame.
+
+@module(cpu-animator)
+
+@b{By name or by address.} The first argument is the module's id (the @@module( menu offers them); url= takes a page name or full address instead.
+
+@module(url=cpu-animator)
+
+@b{Size and title.} h= sets the frame's height (460px by default); title= replaces the name in the bar.
+
+@module(cpu-animator, h=600px, title=The fetch cycle)
+
+@b{Keep Knowsy's own challenge.} challenge=yes keeps the module's challenge bar and navbar, hidden by default because in a document they are another site's task.
+
+@module(cpu-animator, challenge=yes)
+
+@b{Graded.} A module on its own is not graded.
+
+@section(Click on a picture: hotspot questions)
+
+Ask a student to click the right place on a picture or diagram, graded against target zones.
+
+@hotspot(src=teaching-widgets.assets/circuit.svg, targets=#R2)
+Click R2.
+@end
+
+@b{Targets.} targets= is the id of an element in an SVG (#R2) or a circle x,y,r in percent of the picture; several are separated by ;.
+
+@hotspot(src=teaching-widgets.assets/map.png, targets=10,13,6)
+Click the top-left corner of the grey frame.
+@end
+
+@b{More than one pick.} max= caps how many markers a student may drop.
+
+@hotspot(src=teaching-widgets.assets/circuit.svg, targets=#R1;#R2, max=2)
+Click both resistors.
+@end
+
+@b{Graded.} Each target zone must contain a marker, and each earns its share of pts=.
+
+@section(Drag labels onto a diagram)
+
+Ask a student to drag labels, pictures or parts onto the right places in a diagram.
+
+@dragdrop(src=teaching-widgets.assets/circuit.svg)
+Drag each label onto its component.
+R1 -> #R1
+R2 -> #R2
+@end
+
+@b{Items and targets.} Each line is ITEM -> TARGET.
+
+@dragdrop(src=teaching-widgets.assets/board.svg)
+img:teaching-widgets.assets/parts/cap.svg -> #C1
+#battery -> 5/50/8
+@end
+
+@b{Graded.} An item is right when its centre lands inside its target; each item earns its share of pts=.
+
+@section(Wire terminals together on a picture)
+
+Ask a student to draw connections between terminals on a picture — wire a circuit, link concepts — graded against the expected connections.
+
+@connect(src=teaching-widgets.assets/board.svg)
+Wire the battery to both resistors.
+node BAT @ 8,50
+BAT - #R1
+BAT - #R2
+@end
+
+@b{Nodes and edges.} A node is an #svg-id or node NAME @@ x,y in percent; an edge is A - B, or A -> B with directed to grade direction.
+
+@connect(src=teaching-widgets.assets/map.svg, directed)
+#a -> #b
+@end
+
+@b{Graded.} Each expected connection earns its share; an extra wrong wire stops the answer from being fully correct.
+
+@section(Braille and 3-D printed Braille)
+
+Show text as Braille and download it as a 3-D printable plate, or export the whole document as Braille.
+
+@braille(Hello)
+
+@b{The whole document.} @@braille() with nothing inside, at the top, adds a button that converts the whole document to Braille and downloads the embossed STL.
+
+@braille()
+
+@b{A dictionary equation.} eq= brailles an entry's stored caption (or its spoken reading when it has none).
+
+@braille(eq=med.bl)
+
+@b{Graded.} Not graded: it is content, and a student sees and uses exactly what you see.
+
+
+@section(Every other argument)
+
+@b{Flashcard extras.} theme= sets the look, width= and height= size it, time= is the live-class window.
+
+@flashcards(id=units-deck, theme=dark, width=500, height=260, time=5m)
+volt :: joule per coulomb
+ampere :: coulomb per second
+@end
+
+@b{Module extras.} base= says where the modules are served from, width= and height= size the frame.
+
+@module(kmap, base=https://knowsy.duckdns.org, width=100%, height=520)
+
+@b{Picture questions by argument.} prompt= is the question text, pts= its points, answer= the same as targets=, file= the older spelling of src=, width= and height= size the picture.
+
+@hotspot(file=teaching-widgets.assets/circuit.svg, answer=#R1, prompt=Click R1., pts=2, width=400, height=240)
+@end
+
+@dragdrop(file=teaching-widgets.assets/circuit.svg, prompt=Label the resistors., pts=2, width=400, height=240)
+R1 -> #R1
+R2 -> #R2
+@end
+
+@connect(file=teaching-widgets.assets/map.svg, prompt=Join a to b., pts=1, width=400, height=240)
+#a - #b
+@end

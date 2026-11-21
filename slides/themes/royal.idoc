@@ -1,0 +1,14 @@
+@deck(theme=royal, transition=reveal, ratio=16:9, size=large)
+@style(IDocDemo)
+@title(Deck theme: royal)
+
+@titleslide
+
+@slide(A heading)
+Body text in the royal theme, with the reveal transition, ratio 16:9 and size large.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

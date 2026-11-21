@@ -1,0 +1,58 @@
+@style(IDocDemo)
+@title(Charts: Parts of a whole)
+
+Pies and donuts: how a total splits into shares. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Pie}
+
+Shares of a total. Best with few slices — beyond about six, use a bar.
+
+@graph(type=pie, label=part, value=share, title="Where the time goes")
+@data
+part,share
+Teaching,45
+Research,30
+Service,15
+Admin,10
+@end
+
+@code(idoc)
+@graph(type=pie, label=part, value=share, title="Where the time goes")
+@data
+part,share
+Teaching,45
+Research,30
+Service,15
+Admin,10
+@end
+@end
+@endcell
+@cell
+@b{Donut}
+
+A pie with the middle open — the total sits in the hole.
+
+@graph(type=donut, label=part, value=share, values=percent, title="Where the time goes")
+@data
+part,share
+Teaching,45
+Research,30
+Service,15
+Admin,10
+@end
+
+@code(idoc)
+@graph(type=donut, label=part, value=share, values=percent, title="Where the time goes")
+@data
+part,share
+Teaching,45
+Research,30
+Service,15
+Admin,10
+@end
+@end
+@endcell
+@endtable

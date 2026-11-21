@@ -1,0 +1,401 @@
+@style(IDocDemo)
+@title(Question kinds)
+
+Every @@q kind, each one live. Answers are checked in the browser for feedback and again on the server for marks.
+
+@section(Questions and quizzes)
+
+@subsection(@@q)
+
+A question or a blank.
+
+@q(fn: 2.2, except=volt)
+
+@q(fsi: violin, except=volt+units)
+
+@q(units: W)
+
+@q(mch: 3, *4, 5)
+
+@q(f: Paris)
+
+@q(fn: 3.9, 4.1)
+
+@q answer @e
+
+@q(4)
+
+Worth 2 points, partial credit, with a penalty: @q(mav, *a, *b, c, pts=2, partial=0.5, penalty=0.25)
+
+grading=all: @q(mav, *x, *y, z, grading=all)
+
+grading=any: @q(mav, *x, *y, z, grading=any)
+
+grading=first: @q(mav, *x, *y, z, grading=first)
+
+Options shuffled, labelled for @@qref: @q(mch, *4, 3, 5, shuffle, label=q-four)
+
+One box per ;-part on paper: @q(f: 3;4, boxes)
+
+A sized widget: @q(essay, w=420px, h=120px)
+
+@subsection(@@quiz)
+
+A quiz container — ONE question per line.
+
+@quiz
+2+2? @q(fn: 4)
+@endquiz
+
+@quiz(shuffle, numbered)
+What is 3+4? @q(fn: 7)
+What is 5-2? @q(fn: 3)
+@endquiz
+
+@subsection(@@likert5)
+
+A Likert table: statements down the side, a 1–5 scale across.
+
+@likert5
+I enjoyed the course
+@endlikert5
+
+@likert5(scale=7, labels=Never|Rarely|Sometimes|Often|Usually|Almost always|Always)
+I check my units
+I draw the circuit first
+@endlikert5
+
+@section(Every kind)
+
+Each line gives the kind, what it grades, and a live question.
+
+@subsection(c)
+
+exact answer
+
+Answer: @q(c:answer)
+
+@subsection(draw))
+
+freehand sketch on a blank canvas — manually graded
+
+Answer: @q(draw)
+
+@subsection(e)
+
+alias for eq — math answer, whitespace/case normalised
+
+Answer: @q(e:answer)
+
+@subsection(eq)
+
+equation/math box (accepts forms); 'e:' is shorthand
+
+Answer: @q(eq:form1 | form2)
+
+@subsection(eq.expanded)
+
+answer must be MULTIPLIED OUT — rejects (x+2)(x+1) copied back from the prompt
+
+Answer: @q(eq.expanded:x^2+3x+2)
+
+@subsection(eq.factored)
+
+answer must be FACTORED — accepts (1+x)^2, rejects the expanded x^2+2x+1
+
+Answer: @q(eq.factored:(x+1)(x+1))
+
+@subsection(eq.min)
+
+OPTIMAL (Karnaugh) answer: the same function, in the key's form (sum of products or product of sums), no more terms or literals — any equally small cover is right, a longer one is wrong (also eq.minimal, eq.optimal)
+
+Answer: @q(eq.min:A'B'+A'C'+A'D)
+
+@subsection(eq.reduced)
+
+answer must be in LOWEST TERMS — rejects 2/6 and the un-evaluated 3/4+1/6
+
+Answer: @q(eq.reduced:1/3)
+
+@subsection(eq.strict)
+
+no algebraic equivalence — exact normalized string
+
+Answer: @q(eq.strict:x+1)
+
+@subsection(essay)
+
+essay with editable starter text
+
+Answer: @q(essay: starter text)
+
+@subsection(essay))
+
+free-text essay
+
+Answer: @q(essay)
+
+@subsection(essay500.store)
+
+written survey answer: OCR-transcribed + recorded on scan grading, 0 points (also 'survey')
+
+Answer: @q(essay500.store:)
+
+@subsection(f)
+
+or spell it out: case sensitive | space insensitive | insensitive
+
+Answer: @q(f, New York, space insensitive)
+
+@subsection(f)
+
+text fill-in (exact, case-insensitive by default)
+
+Answer: @q(f:answer)
+
+@subsection(f)
+
+any of the |-separated answers is correct (e.g. watt|watts)
+
+Answer: @q(f:watt|watts)
+
+@subsection(f.cs)
+
+exact match, case matters (the strict form)
+
+Answer: @q(f.cs:Answer)
+
+@subsection(f72)
+
+fill-in with a fixed box width (px)
+
+Answer: @q(f72:answer)
+
+@subsection(fc)
+
+COMPLEX answer (real, imaginary, tolerance) — the student may type 3+4j or 5*exp(i*pi/6)
+
+Answer: @q(fc, 3, 4, 0.01)
+
+@subsection(fci)
+
+case-insensitive (explicit; same as f)
+
+Answer: @q(fci:answer)
+
+@subsection(fcs)
+
+the exact case is required — 'answer' does not match 'Answer' (same as f.cs)
+
+Answer: @q(fcs:Answer)
+
+@subsection(fcsi)
+
+ignores both case and whitespace (explicit)
+
+Answer: @q(fcsi:answer)
+
+@subsection(fi)
+
+ignores case AND whitespace (the loosest match)
+
+Answer: @q(fi:answer)
+
+@subsection(fi.min)
+
+a fill-in that accepts ANY minimal cover of the same map, in any order (A'C'+B'C+AB here), and rejects a longer equivalent
+
+Answer: @q(fi.min:A'B'+BC'+AC)
+
+@subsection(fn)
+
+numeric (range, value, or >20 / >=20 / <5 threshold)
+
+Answer: @q(fn:lo,hi)
+
+@subsection(formula)
+
+symbolic/derived answer, graded like eq (algebraic equivalence)
+
+Answer: @q(formula: V/R)
+
+@subsection(fr)
+
+regex answer
+
+Answer: @q(fr:pattern)
+
+@subsection(fsi)
+
+ignores whitespace — 'ParisFrance' also matches
+
+Answer: @q(fsi:Paris France)
+
+@subsection(hmc)
+
+alias of mch — multiple choice, options across the line
+
+Answer: @q(hmc, *a, b, c)
+
+@subsection(likert5))
+
+5-point Likert scale
+
+Answer: @q(likert5)
+
+@subsection(m)
+
+truth table: =given labels/inputs, _value = graded blank, bare _ = ungraded
+
+Answer: @q(m:3,3: =A,=B,=AND, =0,=0,_0, =1,=1,_1)
+
+@subsection(m)
+
+matrix grid — graded cells are _value (e.g. _0); given/labels are =value; bare _ is ungraded
+
+Answer: @q(m:2,2:_1,_0,_0,_1)
+
+@subsection(m)
+
+matrix grid (ungraded)
+
+Answer: @q(m:2,3)
+
+@subsection(mad)
+
+select all that apply (multi-select list)
+
+Answer: @q(mad: *a, *b, c, d)
+
+@subsection(mah)
+
+select all that apply (checkboxes, horizontal)
+
+Answer: @q(mah: *a, *b, c, d)
+
+@subsection(markdraw)
+
+freehand marking OVER an image — circle the fault, annotate the diagram
+
+Answer: @q(markdraw, src=circuit.svg)
+
+@subsection(match)
+
+cols=N lays the pairs out in N columns instead of one tall stack
+
+Answer: @q(match, a=1, b=2, cols=2)
+
+@subsection(match)
+
+bare entries (no =) are DISTRACTORS: extra wrong choices in the answer bank
+
+Answer: @q(match, a=1, b=2, distractor1, distractor2)
+
+@subsection(match)
+
+matching pairs — repeated right values dedupe in the bank
+
+Answer: @q(match, term1=def1, term2=def2)
+
+@subsection(mav)
+
+select all that apply (checkboxes, vertical)
+
+Answer: @q(mav: *a, *b, c, d)
+
+@subsection(mcd)
+
+multiple choice (dropdown)
+
+Answer: @q(mcd, *correct, wrong1, wrong2)
+
+@subsection(mch)
+
+* correct · ~ partial 'more-correct' · plain wrong
+
+Answer: @q(mch, *a, *b, ~0.5 c, d)
+
+@subsection(mch)
+
+multiple choice (horizontal)
+
+Answer: @q(mch, *correct, wrong1, wrong2)
+
+@subsection(mch)
+
+policy: partial|proportional|jaccard|allornothing
+
+Answer: @q(mch, grading=partial, penalty=1, *a, *b, c)
+
+@subsection(mcv)
+
+cols=N lays the choices out in N columns instead of one tall stack
+
+Answer: @q(mcv, *correct, b, c, d, cols=2)
+
+@subsection(mcv)
+
+multiple choice (vertical)
+
+Answer: @q(mcv, *correct, wrong1, wrong2)
+
+@subsection(moddraw)
+
+freehand over an image that starts with the author's own strokes loaded — the student modifies them
+
+Answer: @q(moddraw, src=circuit.svg)
+
+@subsection(mwidth)
+
+matrix grid, fixed px size
+
+Answer: @q(m200,120:2,2)
+
+@subsection(n)
+
+INTEGER answer (rejects 3.5); @@q(n, 1, 10) = integer in range
+
+Answer: @q(n, 5)
+
+@subsection(order)
+
+put in order
+
+Answer: @q(order, first, second, third)
+
+@subsection(range)
+
+answer is an interval; student types '3-5'. + mode=overlap|contains|within, tol=
+
+Answer: @q(range, 3, 5)
+
+@subsection(slider)
+
+drag a slider to answer, graded within ±tol
+
+Answer: @q(slider, min=0, max=100, answer=42, tol=2)
+
+@subsection(unordered)
+
+student lists all members in any order; partial credit; each member may use | alternatives
+
+Answer: @q(unordered:red, white, blue)
+
+@subsection(uo)
+
+terse alias of unordered — all members, any order, partial credit
+
+Answer: @q(uo: red, white, blue)
+
+@subsection(uo3)
+
+uo3: = any 3 of the accepted pool count; more never hurts; case-insensitive (.cs opts out, .si ignores spaces)
+
+Answer: @q(uo3:AMD|Advanced Micro Devices, Intel, Nvidia, TSMC, Samsung)
+
+@subsection(vmc)
+
+alias of mcv — multiple choice, one option per line
+
+Answer: @q(vmc, *a, b, c)
+

@@ -1,0 +1,250 @@
+@style(IDocDemo)
+@title(Interactive modules)
+
+@@module embeds one self-contained interactive lesson by its id. There are fifty, grouped below by subject.
+
+@box(w=100%, style=offline)
+Modules load from the Knowsy site, so they need the network.
+@end
+
+@section(Architecture)
+
+@subsection(Structural systems explorer)
+
+@module(structural-systems-explorer, h=480px, title=Structural systems explorer)
+
+@section(Assembler)
+
+@subsection(AArch64 Simulator)
+
+@module(aarch64, h=480px, title=AArch64 Simulator)
+
+@subsection(AArch64 Assembler Simulator)
+
+@module(aarch64-rust, h=480px, title=AArch64 Assembler Simulator)
+
+@subsection(CPU Animator)
+
+@module(cpu-animator, h=480px, title=CPU Animator)
+
+@subsection(LC-3 Simulator)
+
+@module(lc3, h=480px, title=LC-3 Simulator)
+
+@subsection(LC-3 Assembler Simulator)
+
+@module(lc3-rust, h=480px, title=LC-3 Assembler Simulator)
+
+@subsection(RISC-V Simulator)
+
+@module(riscv, h=480px, title=RISC-V Simulator)
+
+@subsection(RISC-V Assembler Simulator)
+
+@module(riscv-rust, h=480px, title=RISC-V Assembler Simulator)
+
+@subsection(x86 Simulator)
+
+@module(x86, h=480px, title=x86 Simulator)
+
+@subsection(x86 Assembler Simulator)
+
+@module(x86-rust, h=480px, title=x86 Assembler Simulator)
+
+@section(Astronomy)
+
+@subsection(Celestial Navigation)
+
+@module(celestial-navigation, h=480px, title=Celestial Navigation)
+
+@subsection(Solar system)
+
+@module(webgl-solar-system, h=480px, title=Solar system)
+
+@section(Bits and gates)
+
+@subsection(Boolean algebra)
+
+@module(balab, h=480px, title=Boolean algebra)
+
+@subsection(Bit Operations)
+
+@module(bit-operations, h=480px, title=Bit Operations)
+
+@subsection(Bits as Numbers)
+
+@module(bitinterp, h=480px, title=Bits as Numbers)
+
+@subsection(Bits as Characters)
+
+@module(bits-to-characters, h=480px, title=Bits as Characters)
+
+@subsection(Error coding lab)
+
+@module(ecc, h=480px, title=Error coding lab)
+
+@subsection(Error correction explorer)
+
+@module(error-correction-explorer, h=480px, title=Error correction explorer)
+
+@subsection(Floating point)
+
+@module(floating-point, h=480px, title=Floating point)
+
+@subsection(Integer overflow)
+
+@module(integer-overflow, h=480px, title=Integer overflow)
+
+@subsection(Karnaugh map)
+
+@module(id=kmap, h=480px, title=Karnaugh map)
+
+@section(Chemistry)
+
+@subsection(Periodic table)
+
+@module(periodic-table, h=480px, title=Periodic table)
+
+@section(Cryptography)
+
+@subsection(Cryptography)
+
+@module(cryptography, h=480px, title=Cryptography)
+
+@section(Electronics)
+
+@subsection(Schematic Editor)
+
+@module(diagram, h=480px, title=Schematic Editor)
+
+@subsection(CMOS MOSFET gates)
+
+@module(mosfet-gates, h=480px, title=CMOS MOSFET gates)
+
+@subsection(Verilog Simulator)
+
+@module(verilog, h=480px, title=Verilog Simulator)
+
+@section(Geography)
+
+@subsection(World map projections)
+
+@module(world-map-projections, h=480px, title=World map projections)
+
+@section(Graphics)
+
+@subsection(Shader playground)
+
+@module(shadertoy, h=480px, title=Shader playground)
+
+@section(Health)
+
+@subsection(Health systems explorer)
+
+@module(health-systems-explorer, h=480px, title=Health systems explorer)
+
+@section(History)
+
+@subsection(The Great War)
+
+@module(great-war, h=480px, title=The Great War)
+
+@section(Languages)
+
+@subsection(Verb conjugation)
+
+@module(verb-conjugation-explorer, h=480px, title=Verb conjugation)
+
+@section(Materials)
+
+@subsection(Semiconductor structure)
+
+@module(semiconductor-structure, h=480px, title=Semiconductor structure)
+
+@section(Mathematics)
+
+@subsection(Calculus Explorer)
+
+@module(calculus-explorer, h=480px, title=Calculus Explorer)
+
+@subsection(Differential equations)
+
+@module(differential-equations, h=480px, title=Differential equations)
+
+@subsection(Linear Algebra Explorer)
+
+@module(linear-transformation-explorer, h=480px, title=Linear Algebra Explorer)
+
+@subsection(Probability Distribution Explorer)
+
+@module(probability-explorer, h=480px, title=Probability Distribution Explorer)
+
+@section(Mechanics)
+
+@subsection(2D Static Equilibrium)
+
+@module(static-equilibrium, h=480px, title=2D Static Equilibrium)
+
+@subsection(Siege Engine Lab)
+
+@module(trebuchet, h=480px, title=Siege Engine Lab)
+
+@section(Networking)
+
+@subsection(Bus architecture explorer)
+
+@module(bus-architecture-explorer, h=480px, title=Bus architecture explorer)
+
+@subsection(Networking systems explorer)
+
+@module(networking-systems-explorer, h=480px, title=Networking systems explorer)
+
+@section(Programming)
+
+@subsection(C++ Execution & Optimization)
+
+@module(cpp-exec-opt, h=480px, title=C++ Execution & Optimization)
+
+@subsection(Parallel Algorithms / SIMD Explorer)
+
+@module(parallel-simd, h=480px, title=Parallel Algorithms / SIMD Explorer)
+
+@section(Reference)
+
+@subsection(Learning Data Structures)
+
+@module(learning-dsa, h=480px, title=Learning Data Structures)
+
+@subsection(Command Reference)
+
+@module(reference-command, h=480px, title=Command Reference)
+
+@subsection(Graphical Reference)
+
+@module(reference-graphical, h=480px, title=Graphical Reference)
+
+@section(RF)
+
+@subsection(Antenna radiation pattern)
+
+@module(antenna-propagation, h=480px, title=Antenna radiation pattern)
+
+@subsection(Smith chart)
+
+@module(antenna-smith, h=480px, title=Smith chart)
+
+@section(Tests)
+
+@subsection(Color vision screening)
+
+@module(colorblind-test, h=480px, title=Color vision screening)
+
+@section(Tools)
+
+@subsection(Git / GitHub visualizer)
+
+@module(gitlab, h=480px, title=Git / GitHub visualizer)
+
+@subsection(Graph Builder)
+
+@module(graph-builder, h=480px, title=Graph Builder)

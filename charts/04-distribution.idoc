@@ -1,0 +1,154 @@
+@style(IDocDemo)
+@title(Charts: Distribution)
+
+How values are spread: histograms, box plots, strips and Q-Q plots. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Histogram}
+
+How one column's values are spread. `bins=` sets the resolution.
+
+@graph(type=histogram, x=score, bins=8, title="Exam scores")
+@data
+score
+54
+61
+63
+67
+70
+71
+72
+74
+75
+77
+78
+81
+83
+88
+91
+@end
+
+@code(idoc)
+@graph(type=histogram, x=score, bins=8, title="Exam scores")
+@data
+score
+54
+61
+63
+67
+70
+71
+72
+74
+75
+77
+78
+81
+83
+88
+91
+@end
+@end
+@endcell
+@cell
+@b{Box plot}
+
+Median, quartiles and outliers — several distributions compared.
+
+@graph(type=box, x=section, y=score, title="Exam scores by section")
+@data
+section,score
+Morning,71
+Morning,78
+Morning,64
+Morning,83
+Evening,88
+Evening,91
+Evening,84
+Evening,52
+@end
+
+@code(idoc)
+@graph(type=box, x=section, y=score, title="Exam scores by section")
+@data
+section,score
+Morning,71
+Morning,78
+Morning,64
+Morning,83
+Evening,88
+Evening,91
+Evening,84
+Evening,52
+@end
+@end
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Strip}
+
+Every observation as a point — honest about small samples.
+
+@graph(type=strip, x=section, y=score, title="Every score, one dot each")
+@data
+section,score
+Morning,71
+Morning,78
+Morning,64
+Morning,83
+Evening,88
+Evening,91
+Evening,84
+@end
+
+@code(idoc)
+@graph(type=strip, x=section, y=score, title="Every score, one dot each")
+@data
+section,score
+Morning,71
+Morning,78
+Morning,64
+Morning,83
+Evening,88
+Evening,91
+Evening,84
+@end
+@end
+@endcell
+@cell
+@b{Q–Q plot}
+
+Is this normal? Points on the line say yes.
+
+@graph(type=qq, x=residual, title="Residuals")
+@data
+residual
+-2.1
+-0.9
+-0.3
+0.1
+0.4
+1.2
+2.0
+@end
+
+@code(idoc)
+@graph(type=qq, x=residual, title="Residuals")
+@data
+residual
+-2.1
+-0.9
+-0.3
+0.1
+0.4
+1.2
+2.0
+@end
+@end
+@endcell
+@endtable

@@ -1,0 +1,76 @@
+@style(IDocDemo)
+@title(Octo 4: functions and function handles)
+
+Functions package work for reuse; handles let you pass a function around as a value.
+
+@section(Anonymous functions)
+
+`@(x) ...` makes a one-line function that captures the variables around it.
+
+@octo
+k = 3;
+f = @(x) k * x.^2;
+f(2), f([1 2 3])
+g = @(x, y) x + y; g(2, 5)
+h = @sin; h(pi/2)
+func2str(f), class(f), is_function_handle(f)
+s = str2func("@(t) t + 1"); s(1)
+feval(@max, [4 9 2])
+@end
+
+@section(Script functions)
+
+A block can define named functions after its script lines. `nargin` and default values handle optional arguments; several outputs come back in brackets.
+
+@octo
+[lo, hi] = bounds2([4 8 1 6])
+area = circle_area(2)
+area1 = circle_area()
+
+function [a, b] = bounds2(v)
+  a = min(v);
+  b = max(v);
+end
+
+function a = circle_area(r)
+  if nargin < 1
+    r = 1;
+  end
+  a = pi * r^2;
+end
+@end
+
+@section(Recursion and varargin)
+
+A function may call itself; `varargin` collects any number of arguments.
+
+@octo
+fib(10)
+total(1, 2, 3, 4)
+
+function f = fib(n)
+  if n < 2
+    f = n;
+  else
+    f = fib(n - 1) + fib(n - 2);
+  end
+end
+
+function s = total(varargin)
+  s = 0;
+  for k = 1:numel(varargin)
+    s = s + varargin{k};
+  end
+  printf("%d arguments\n", nargin);
+end
+@end
+
+@section(Applying functions to arrays)
+
+`arrayfun` and `cellfun` map a function over elements; `accumarray` sums values by group.
+
+@octo
+arrayfun(@(n) n^2, 1:5)
+cellfun(@upper, {"a", "b"}, "UniformOutput", false)
+accumarray([1; 2; 1; 3], [10; 20; 30; 40])'
+@end

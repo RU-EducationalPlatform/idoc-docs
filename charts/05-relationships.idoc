@@ -1,0 +1,220 @@
+@style(IDocDemo)
+@title(Charts: Relationships)
+
+Scatter, error bars, bubbles, heatmaps, radar, polar and networks. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Scatter}
+
+Two columns against each other. Add `trend=` for a fit and its R².
+
+@graph(type=scatter, x=voltage, y=current, trend=linear, showR2, title="Ohm's law")
+@data
+voltage,current
+1,0.10
+2,0.19
+3,0.31
+4,0.39
+5,0.52
+@end
+
+@code(idoc)
+@graph(type=scatter, x=voltage, y=current, trend=linear, showR2, title="Ohm's law")
+@data
+voltage,current
+1,0.10
+2,0.19
+3,0.31
+4,0.39
+5,0.52
+@end
+@end
+@endcell
+@cell
+@b{Error bars}
+
+Measurements with their uncertainty. `yerr=` names the ± column; it also works on a line or scatter.
+
+@graph(type=error_bar, x=trial, y=mean, yerr=sd, title="Reaction time (ms)")
+@data
+trial,mean,sd
+1,312,24
+2,298,19
+3,281,22
+4,276,15
+5,270,12
+@end
+
+@code(idoc)
+@graph(type=error_bar, x=trial, y=mean, yerr=sd, title="Reaction time (ms)")
+@data
+trial,mean,sd
+1,312,24
+2,298,19
+3,281,22
+4,276,15
+5,270,12
+@end
+@end
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Bubble}
+
+Scatter with a third column as size — and a fourth as time, animated.
+
+@graph(type=bubble, x=income, y=life, size=pop, label=country, title="Gapminder")
+@data
+country,income,life,pop
+Norway,64800,82.4,5.4
+India,6400,69.7,1380
+Brazil,14100,75.9,212
+@end
+
+@code(idoc)
+@graph(type=bubble, x=income, y=life, size=pop, label=country, title="Gapminder")
+@data
+country,income,life,pop
+Norway,64800,82.4,5.4
+India,6400,69.7,1380
+Brazil,14100,75.9,212
+@end
+@end
+
+Add `time=year` and a year column to animate it — press play or drag the scrubber.
+@endcell
+@cell
+@b{Heatmap}
+
+A grid coloured by value — two categories and a number.
+
+@graph(type=heatmap, x=hour, y=day, value=n, title="When people submit")
+@data
+day,hour,n
+Mon,09:00,3
+Mon,17:00,8
+Mon,23:00,14
+Tue,09:00,5
+Tue,17:00,6
+Tue,23:00,11
+Wed,09:00,4
+Wed,17:00,9
+Wed,23:00,16
+@end
+
+@code(idoc)
+@graph(type=heatmap, x=hour, y=day, value=n, title="When people submit")
+@data
+day,hour,n
+Mon,09:00,3
+Mon,17:00,8
+Mon,23:00,14
+Tue,09:00,5
+Tue,17:00,6
+Tue,23:00,11
+Wed,09:00,4
+Wed,17:00,9
+Wed,23:00,16
+@end
+@end
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Radar}
+
+Several measures on one shape — profiles compared.
+
+@graph(type=radar, label=skill, value=score, title="Rubric")
+@data
+skill,score
+Correctness,4
+Clarity,3
+Efficiency,5
+Style,4
+@end
+
+@code(idoc)
+@graph(type=radar, label=skill, value=score, title="Rubric")
+@data
+skill,score
+Correctness,4
+Clarity,3
+Efficiency,5
+Style,4
+@end
+@end
+@endcell
+@cell
+@b{Polar}
+
+Angle and radius — anything cyclic (wind, phase, time of day).
+
+@graph(type=polar, x=angle, y=r, title="Antenna pattern")
+@data
+angle,r
+0,1.0
+45,0.7
+90,0.2
+135,0.7
+180,1.0
+@end
+
+@code(idoc)
+@graph(type=polar, x=angle, y=r, title="Antenna pattern")
+@data
+angle,r
+0,1.0
+45,0.7
+90,0.2
+135,0.7
+180,1.0
+@end
+@end
+@endcell
+@endtable
+
+
+@table(widths=equal)
+@row
+@cell
+@b{Network}
+
+Things and the links between them. An edge list is enough; hover a node to see what it touches, drag it, click to pin. `dict` draws the equation dictionary itself.
+
+@graph(type=network, mark=Calculus)
+@data
+source,target,group
+Calculus,Physics,math
+Calculus,Statistics,math
+Linear algebra,Statistics,math
+Linear algebra,Machine learning,math
+Statistics,Machine learning,data
+Physics,Engineering,science
+Calculus,Engineering,math
+@end
+
+@code(idoc)
+@graph(type=network, mark=Calculus)
+@data
+source,target,group
+Calculus,Physics,math
+Calculus,Statistics,math
+Linear algebra,Statistics,math
+Linear algebra,Machine learning,math
+Statistics,Machine learning,data
+Physics,Engineering,science
+Calculus,Engineering,math
+@end
+@end
+@endcell
+@cell
+@endcell
+@endtable

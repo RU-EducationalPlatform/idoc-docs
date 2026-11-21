@@ -1,0 +1,167 @@
+@style(IDocDemo)
+@title(Charts: Tufte)
+
+Sparklines, slopegraphs, dot-dash plots, small multiples and bullet charts. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Sparkline}
+
+A series at word scale — no axes, no frame. Marks the min, the max and where it ended.
+
+@graph(type=sparkline)
+@data
+v
+3
+5
+4
+8
+6
+9
+7
+11
+8
+12
+10
+14
+@end
+
+@code(idoc)
+@graph(type=sparkline)
+@data
+v
+3
+5
+4
+8
+6
+9
+7
+11
+8
+12
+10
+14
+@end
+@end
+@endcell
+@cell
+@b{Slopegraph}
+
+Many items, two moments, one line each — who rose, who fell, who crossed.
+
+@graph(type=slopegraph, title="Life expectancy")
+@data
+country,2000,2020
+Norway,79,83
+Brazil,70,76
+India,63,70
+Japan,81,85
+@end
+
+@code(idoc)
+@graph(type=slopegraph, title="Life expectancy")
+@data
+country,2000,2020
+Norway,79,83
+Brazil,70,76
+India,63,70
+Japan,81,85
+@end
+@end
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Dot-dash plot}
+
+A scatter whose axes ARE the marginal distributions — one tick per observation.
+
+@graph(type=dotdash, x=height, y=weight)
+@data
+height,weight
+158,52
+163,55
+167,61
+171,64
+175,70
+178,72
+182,79
+186,84
+@end
+
+@code(idoc)
+@graph(type=dotdash, x=height, y=weight)
+@data
+height,weight
+158,52
+163,55
+167,61
+171,64
+175,70
+178,72
+182,79
+186,84
+@end
+@end
+@endcell
+@cell
+@b{Small multiples}
+
+The same chart once per series, on ONE shared scale — the only honest way to compare many.
+
+@graph(type=smallmultiples, title="Same scale throughout")
+@data
+month,north,south,east,west
+1,5,2,9,4
+2,7,3,8,6
+3,6,5,7,7
+4,9,4,6,5
+5,8,6,5,8
+@end
+
+@code(idoc)
+@graph(type=smallmultiples, title="Same scale throughout")
+@data
+month,north,south,east,west
+1,5,2,9,4
+2,7,3,8,6
+3,6,5,7,7
+4,9,4,6,5
+5,8,6,5,8
+@end
+@end
+@endcell
+@endtable
+
+@table(widths=equal)
+@row
+@cell
+@b{Bullet chart}
+
+A gauge's information in a fifth of the ink — measure, bands, target. Fits in a table cell.
+
+@graph(type=bullet)
+@data
+metric,value,target
+Revenue,270,300
+Profit,180,150
+Satisfaction,42,50
+@end
+
+@code(idoc)
+@graph(type=bullet)
+@data
+metric,value,target
+Revenue,270,300
+Profit,180,150
+Satisfaction,42,50
+@end
+@end
+@endcell
+@cell
+@endcell
+@endtable

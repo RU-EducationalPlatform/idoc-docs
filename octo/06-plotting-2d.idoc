@@ -1,0 +1,65 @@
+@style(IDocDemo)
+@title(Octo 6: plotting in 2-D)
+
+Each plotting call draws into the current figure, which appears beside the code. `figure` starts a new one, `hold on` keeps drawing into the same axes.
+
+@section(Lines, labels and legends)
+
+`plot` takes x, y and an optional style string; the labelling functions describe the axes.
+
+@octo
+x = linspace(0, 2*pi, 100);
+plot(x, sin(x), "b-", x, cos(x), "r--");
+title("sine and cosine"); xlabel("x (rad)"); ylabel("value");
+legend("sin", "cos"); grid on; axis([0 2*pi -1.2 1.2]);
+@end
+
+@section(Several series and subplots)
+
+`subplot(m, n, k)` splits a figure into a grid of axes.
+
+@octo
+t = 0:0.1:5;
+subplot(2, 2, 1); plot(t, exp(-t)); title("plot");
+subplot(2, 2, 2); semilogy(t, exp(-t)); title("semilogy");
+subplot(2, 2, 3); loglog(1:10, (1:10).^2); title("loglog");
+subplot(2, 2, 4); semilogx(logspace(0, 2, 20), 1:20); title("semilogx");
+@end
+
+@section(Bars, histograms, pies and areas)
+
+Pick the chart by the question: bars compare groups, histograms show a distribution.
+
+@octo
+figure; bar([3 5 2 6]); title("bar");
+figure; barh([3 5 2]); title("barh");
+figure; histfit(randn(1, 500), 20); title("histfit");
+figure; hist(randn(1, 200)); title("hist");
+figure; pie([2 3 5]); title("pie");
+figure; area(1:5, [1 3 2 4 3]); title("area");
+@end
+
+@section(Points, steps, stems, errors and fills)
+
+These show measured data rather than smooth curves.
+
+@octo
+x = 1:8; y = [2 4 3 6 5 7 6 8];
+figure; scatter(x, y, 40, "filled"); title("scatter");
+figure; stairs(x, y); title("stairs");
+figure; stem(x, y); title("stem");
+figure; errorbar(x, y, 0.5 * ones(1, 8)); title("errorbar");
+figure; fill([0 1 1 0], [0 0 1 1], "g"); title("fill");
+figure; plot(x, y, "o"); hold on; plot(x, polyval(polyfit(x, y, 1), x), "k-"); hold off; title("fit over points");
+figure; boxplot([randn(50, 1), randn(50, 1) + 1]); title("boxplot");
+@end
+
+@section(Annotations and polar plots)
+
+`text` places a label at a data point; `polar` draws in angle and radius.
+
+@octo
+figure; plot(1:3, [1 4 9]); text(2, 4, "  the middle point"); xlim([0 4]); ylim([0 10]);
+figure; th = linspace(0, 2*pi, 200); polar(th, 1 + cos(th)); title("cardioid");
+figure; plotyy(1:5, 1:5, 1:5, (1:5).^2); title("two y axes");
+@end

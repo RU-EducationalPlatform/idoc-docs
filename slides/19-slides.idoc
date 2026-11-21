@@ -1,0 +1,121 @@
+@deck(theme=midnight, transition=fade, ratio=16:9, size=normal, presenter=Alex Rivera, institution=Example University, logo=circuit.svg, footer=Slides in IDoc, date, slidenumbers, accent=#38bdf8, font=Helvetica, bodyfont=Palatino, fg=#e5e7eb, muted=#94a3b8, pad=3%, fontscale=1.1, titlesize=44pt, headingsize=30pt, bodysize=20pt, subtitlesize=22pt, qsize=20pt, eqnsize=24pt)
+@style(IDocDemo)
+@script_generate(file=talk-notes.idoc)
+@title(Slides in IDoc)
+@subtitle(One file, one frame per @@slide)
+
+@ The @deck line above sets the theme, transition, ratio, size, presenter, institution,
+@ logo, footer, date, slide numbers, accent, fonts, colours, padding and every font size.
+@ script_generate writes the speaker notes out to talk-notes.idoc on each save.
+
+@titleslide
+
+@slide(What a deck is)
+A document whose first line is @@deck is a presentation. Each @@slide starts a frame. Space advances, Escape exits, and the deck exports to PDF or .pptx.
+@notes
+Say that the same file prints as a handout.
+@end
+
+@slide(Layouts, layout=content)
+@ul
+content: a heading and a body
+two-col: two columns split by @@col
+section, center, statement and quote: one big idea
+@end
+
+@slide(Two columns, layout=two-col)
+Left column: the claim.
+@col
+Right column: the evidence.
+
+@slide(twocol, layout=twocol)
+The other spelling of two-col.
+@col
+Same result.
+
+@slide(Part two, layout=section)
+
+@slide(Centred, layout=center)
+A single centred line.
+
+@slide(Quote, layout=quote)
+Measure twice, cut once.
+
+@slide(Statement, layout=statement)
+Every slide is plain text in the source.
+
+@slide(Picture and caption, layout=picture-caption)
+@img(circuit.svg, w=60%, alt=A series circuit)
+A series circuit.
+
+@slide(Comparison, layout=comparison)
+Before: a deck in one tool and a handout in another.
+@col
+After: one source for both.
+
+@slide(Full bleed, layout=full)
+@img(circuit.svg, w=100%, alt=A series circuit, full width)
+
+@slide(Title layout, layout=title)
+A slide in the title layout.
+
+@slide(Blank, layout=blank)
+@box(x=10%, y=40%, w=80%)
+A blank slide with one placed box.
+@end
+
+@slide(Builds, transition=slide, bg=#0b1220)
+@step
+Appears first, with the default fade.
+@end
+@step(anim=fade)
+Fades in.
+@end
+@step(anim=fly, dir=left, order=2, dur=400ms, delay=100ms)
+Flies in from the left.
+@end
+@step(anim=zoom, dir=right, group=a)
+Zooms, grouped with the next build.
+@end
+@step(anim=grow, dir=top, group=a)
+Grows at the same time.
+@end
+@step(anim=wipe, dir=bottom)
+Wipes up from the bottom.
+@end
+@fragment
+@@fragment is the same as @@step.
+@end
+@reveal
+@@reveal is the same as @@step.
+@end
+@step(anim=float, each)
+@ul
+one build
+per item
+@end
+@end
+
+@slide(Transitions, transition=push)
+This slide arrives with push.
+@slide(Cover, transition=cover)
+cover
+@slide(Reveal, transition=reveal)
+reveal
+@slide(Zoom, transition=zoom)
+zoom
+@slide(Through black, transition=fade-through-black)
+fade-through-black
+@slide(No transition, transition=none)
+none
+@slide(Fade, transition=fade)
+fade
+
+@slide(Auto-advancing, advance=5s, class=callout)
+This slide moves on by itself after five seconds.
+
+@slide(A question on a slide)
+What is 3 + 4? @q(fn: 7)
+@eqn
+V = I R
+@end

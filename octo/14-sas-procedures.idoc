@@ -1,0 +1,68 @@
+@style(IDocDemo)
+@title(Octo 14: the SAS procedures)
+
+Octo can print a report the way SAS prints it. Each `proc...` function takes a table and prints the report; with an output argument it returns a table instead. The data is invented.
+
+
+@section(PROC MEANS)
+
+Summary statistics, overall or per class level; `"Stats"` picks which ones.
+
+@octo
+group = categorical(["c"; "c"; "c"; "c"; "t"; "t"; "t"; "t"]);
+gain  = [2.1; 2.9; 3.8; 5.2; 3.0; 4.1; 5.3; 6.4];
+T = table(group, gain);
+procmeans(T, {"gain"}, "Class", "group")
+R = procmeans(T, {"gain"}, "Stats", {"n", "mean", "median", "clm"})
+@end
+
+@section(PROC FREQ)
+
+One-way counts with percentages, or a two-way table with chi-square tests.
+
+@octo
+color = categorical({"red"; "blue"; "red"; "red"; "blue"; "green"; "red"; "blue"});
+size_ = categorical({"S"; "L"; "S"; "L"; "L"; "S"; "S"; "L"});
+T = table(color, size_);
+procfreq(T, "color")
+procfreq(T, {"color", "size_"})
+@end
+
+@section(PROC CORR)
+
+Pearson correlations with their p-values and the simple statistics.
+
+@octo
+dose = [1; 2; 3; 4; 1; 2; 3; 4];
+gain = [2.1; 2.9; 3.8; 5.2; 3.0; 4.1; 5.3; 6.4];
+before = [60; 62; 59; 64; 61; 63; 58; 65];
+proccorr(table(dose, gain, before), {"dose", "gain", "before"})
+@end
+
+@section(PROC TTEST)
+
+Two groups (pooled and Satterthwaite), one sample against `H0`, or paired.
+
+@octo
+group = categorical(["c"; "c"; "c"; "c"; "t"; "t"; "t"; "t"]);
+gain  = [2.1; 2.9; 3.8; 5.2; 3.0; 4.1; 5.3; 6.4];
+before = [60; 62; 59; 64; 61; 63; 58; 65];
+after  = [62; 63; 62; 66; 64; 65; 61; 69];
+T = table(group, gain, before, after);
+procttest(T, "gain", "Class", "group")
+procttest(T, "gain", "H0", 3)
+procttest(T, {"after", "before"}, "Paired", true)
+@end
+
+@section(PROC ANOVA and PROC REG)
+
+`procanova` treats each effect as a class variable; `procreg` is linear regression with SAS's report.
+
+@octo
+group = categorical(["c"; "c"; "c"; "c"; "t"; "t"; "t"; "t"]);
+dose  = [1; 2; 3; 4; 1; 2; 3; 4];
+gain  = [2.1; 2.9; 3.8; 5.2; 3.0; 4.1; 5.3; 6.4];
+T = table(group, dose, gain);
+procanova(T, "gain ~ group + dose")
+procreg(T, "gain ~ dose")
+@end

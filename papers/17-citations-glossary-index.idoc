@@ -1,0 +1,85 @@
+@style(IDocDemo)
+@title(Citations, glossary and index)
+
+Cite sources, define terms, and build an index.
+
+@section(Citations)
+
+@subsection(@@cite)
+
+Cite a reference → [n], numbered in first-citation order — with a page (p=12, pp=3-7, ch=, sec=), or as the author's name (text: "Shannon [1]"), the year or the author alone.
+
+@cite(shannon48)
+
+@cite(a, b)
+
+@cite(shannon48, p=12)
+
+@cite(shannon48, text)
+
+@cite(shannon48, year)
+
+@subsection(@@nocite)
+
+Include a reference in the bibliography without citing it in the text.
+
+@nocite(shannon48)
+
+@subsection(@@references)
+
+Define references inline — one per line, key: full text.
+
+@references
+shannon48: C. E. Shannon, …
+@end
+
+See the @@bibliography section above for @@references(group=, title=).
+
+@subsection(@@bibliography)
+
+Print the reference list — from a .bib file or from references.
+
+@bibliography(file=17-citations-glossary-index.assets/sources.bib)
+
+@bibliography
+
+@references(group=primary, title=Primary sources)
+[ref1] A. Rivera. Notes on small circuits. Example Press, 2024.
+@end
+
+@bibliography(group=primary, title=Primary sources)
+
+A .bib file in a named style: @bibliography(17-citations-glossary-index.assets/sources.bib, style=ieee)
+
+@section(Glossary and index)
+
+@subsection(@@gloss)
+
+A glossary term in the text, linked to its definition (and listed by printglossary).
+
+@subsection(@@glossary)
+
+The glossary's definitions, one term: definition per line (a term may have spaces).
+
+@glossary
+API: application programming interface
+Fourier transform: …
+@end
+The @idx(entropy) of a source
+a @idx(code, entry=coding)
+
+@subsection(@@printglossary)
+
+The glossary: the terms used, alphabetically, with their definitions.
+
+@printglossary
+
+@subsection(@@idx)
+
+A word in the text that also goes into the index; entry= files it under another heading.
+
+@subsection(@@printindex)
+
+The index: every idx entry, alphabetical under its initial, with the pages it is on — each a link.
+
+@printindex

@@ -1,0 +1,84 @@
+@style(IDocDemo)
+@title(Accessibility and audio)
+
+Read aloud, spoken maths, Braille and audio players.
+
+@section(Accessibility)
+
+@subsection(@@enable)
+
+Turn on document features — notably accessibility, which adds per-equation listen buttons and a whole-document Read aloud.
+
+@enable(accessibility)
+
+@subsection(@@say)
+
+Speak text with the neural voice — math inside $…$ is read as English.
+
+@say(Welcome to lecture 1)
+
+@say(text=…, voice=mika, rate=1.1)
+
+@say(eq=med.Beer-Lambert-Intensity)
+
+@say(eq=med.bl, expanded)
+
+@say(text=The circuit has two resistors., speak=The circuit has two resistors in series., pitch=1, energy=1.1, articulation=crisp, autoplay)
+
+@say(text=This line is read with the neutral voice., emotion=neutral)
+
+@say(text=This line is read with the calm voice., emotion=calm)
+
+@say(text=This line is read with the confident voice., emotion=confident)
+
+@say(text=This line is read with the warm voice., emotion=warm)
+
+@say(text=This line is read with the sad voice., emotion=sad)
+
+@say(text=This line is read with the angry voice., emotion=angry)
+
+@say(text=This line is read with the fearful voice., emotion=fearful)
+
+@say(text=This line is read with the excited voice., emotion=excited)
+
+@say(text=This line is read with the reassuring voice., emotion=reassuring)
+
+@say(text=This line is read with the urgent voice., emotion=urgent)
+
+@say(text=This line uses the default context., context=default)
+
+@say(text=This line uses the formal context., context=formal)
+
+@say(text=This line uses the conversational context., context=conversational)
+
+@say(text=This line uses the clinical context., context=clinical)
+
+@say(text=This line uses the educational context., context=educational)
+
+@subsection(@@braille)
+
+Render text as Braille — and, at the top of a document, export the whole thing as a 3-D printable Braille plate.
+
+@braille(Hello)
+
+@braille()
+
+@braille(eq=med.bl)
+
+@section(Audio)
+
+@subsection(@@audioplayer)
+
+An audio player — one file, or dir=folder for a playlist.
+
+@audioplayer(file=tone-a.wav)
+
+@audioplayer(dir=lecture1)
+
+One file, with a name for @@ref, looping: @audioplayer(src=tone-a.wav, label=A 440 Hz tone, loop)
+
+A playlist of two files: @audioplayer(tracks="tone-a.wav, tone-d.wav", label=Two tones)
+
+Starts on load: @audioplayer(src=tone-d.wav, autoplay)
+
+@@audio is the same as @@audioplayer: @audio(src=tone-a.wav, label=Tone)

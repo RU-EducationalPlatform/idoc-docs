@@ -1,0 +1,66 @@
+@style(IDocDemo)
+@title(Charts: Analysis)
+
+Correlation matrices, PCA and k-means. Each chart is followed by the source that drew it, and every example carries its own data.
+
+@table(widths=equal)
+@row
+@cell
+@b{Correlation matrix}
+
+Pearson correlation of every numeric column, as a heatmap. The key runs -1 to +1 always, never to the data — so an all-red matrix means everything really is correlated. colormap= changes the scale.
+
+@graph(stat=corr, colormap=coolwarm)
+@data
+height,weight,age
+158,52,24
+163,55,31
+167,61,28
+171,64,45
+175,70,39
+182,79,52
+@end
+
+@code(idoc)
+@graph(stat=corr, colormap=coolwarm)
+@data
+height,weight,age
+158,52,24
+163,55,31
+167,61,28
+171,64,45
+175,70,39
+182,79,52
+@end
+@end
+@endcell
+@cell
+@b{PCA and k-means}
+
+Project onto principal components, colour by cluster. Computed in WebAssembly.
+
+@graph(reduce=pca, cluster=kmeans:2)
+@data
+height,weight,age
+158,52,24
+163,55,31
+167,61,28
+171,64,45
+175,70,39
+182,79,52
+@end
+
+@code(idoc)
+@graph(reduce=pca, cluster=kmeans:2)
+@data
+height,weight,age
+158,52,24
+163,55,31
+167,61,28
+171,64,45
+175,70,39
+182,79,52
+@end
+@end
+@endcell
+@endtable

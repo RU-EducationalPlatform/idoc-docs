@@ -1,0 +1,400 @@
+@style(IDocDemo)
+@title(Lists and tables)
+
+Bulleted, numbered and definition lists, tables, interlinear glosses and paragraph settings.
+
+@section(Lists)
+
+@subsection(@@ul)
+
+A bulleted list — one item per line, or item per entry.
+
+@ul
+First
+Second
+@end
+
+@ul(cols=3, mono, plain) … @end
+
+@ul(cols=2, order=row, sort=az, marker=check)
+wires
+battery
+lamp
+switch
+@end
+
+@ul(marker=disc)
+one
+two
+@end
+
+@ul(marker=circle)
+one
+two
+@end
+
+@ul(marker=square)
+one
+two
+@end
+
+@ul(marker=dash)
+one
+two
+@end
+
+@ul(marker=arrow)
+one
+two
+@end
+
+@ul(marker=chevron)
+one
+two
+@end
+
+@ul(marker=triangle)
+one
+two
+@end
+
+@ul(marker=star)
+one
+two
+@end
+
+@ul(marker=none)
+one
+two
+@end
+
+@ul(order=col, sort=za)
+x
+y
+@end
+
+@ul(sort=len)
+abc
+a
+ab
+@end
+
+@ul(sort=natural)
+v10
+v9
+@end
+
+@@itemize is the same as @@ul:
+@itemize
+@item First
+@end
+
+@subsection(@@ol)
+
+A numbered list.
+
+@ol
+First
+Second
+@end
+
+@ol(I)
+Roman one
+Roman two
+@end
+
+@ol(1.1)
+Top
+@ol
+Nested
+@end
+@end
+
+@ol(cols=2)
+one
+two
+three
+four
+@end
+
+@ol(order=row, sort=az, mono, style=a, cols=2)
+pear
+apple
+fig
+cherry
+@end
+
+@ol(cols=2, order=col, sort=za)
+b
+a
+c
+d
+@end
+
+@ol(sort=len)
+long word here
+short
+mid size
+@end
+
+@ol(sort=natural)
+item 10
+item 2
+item 1
+@end
+
+@@enum and @@enumerate are the same as @@ol:
+@enum
+@item First
+@end
+@enumerate
+@item First
+@end
+
+@subsection(@@item)
+
+One list entry, LaTeX-style.
+
+@subsection(@@list)
+
+A COLUMN list: one comma-separated run — across as many lines as you like — laid out in N columns, balanced so no two columns differ by more than one item.
+
+@list(cols=5)
+a, b, c,
+d, e
+@end
+
+@list(cols=auto, mono)
+R1, R2, C1, L1
+@end
+
+@list(cols=4, order=row)
+1, 2, 3, 4, 5, 6, 7, 8
+@end
+
+@list(cols=4, sort=az)
+pear, apple, fig, plum
+@end
+
+@list(cols=3, marker=arrow)
+in, through, out
+@end
+
+@list(ol, cols=2)
+first, second, third, fourth
+@end
+
+@list(cols=4, sep=;)
+Ohm, volt; amp, watt; farad; henry
+@end
+
+@list(plain, cols=3)
+red, green, blue
+@end
+
+@list(ol, style=A, cols=2)
+first, second, third, fourth
+@end
+
+@list(cols=3, order=col, sort=za)
+b, a, c, d, e, f
+@end
+
+@list(sort=len)
+abc, a, ab
+@end
+
+@list(sort=natural)
+v10, v9, v1
+@end
+
+@list(marker=disc)
+one, two
+@end
+
+@list(marker=circle)
+one, two
+@end
+
+@list(marker=square)
+one, two
+@end
+
+@list(marker=dash)
+one, two
+@end
+
+@list(marker=chevron)
+one, two
+@end
+
+@list(marker=triangle)
+one, two
+@end
+
+@list(marker=check)
+one, two
+@end
+
+@list(marker=star)
+one, two
+@end
+
+@list(marker=none)
+one, two
+@end
+
+@subsection(@@dl)
+
+A description list: one term: definition per line — the term bold, the definition after it, a hanging indent, the same on paper.
+
+@dl
+Resistor: a part that opposes current
+Capacitor: a part that stores charge
+@end
+
+@section(Tables)
+
+@subsection(@@table)
+
+A table — rows on newlines, cells on commas (sep= changes that).
+
+@table
+@row
+@cell
+@graph(type=bar, src=a.csv)
+@endcell
+@cell
+@graph(type=pie, src=b.csv)
+@endcell
+@endtable
+
+@table
+@row
+@cell A
+@cell B
+@endtable
+
+@table
+Head1, Head2
+a, b
+@endtable
+
+@table(style=grid, align=l,r,r)
+Part, Ohms, Watts
+R1, 100, 0.25
+@endtable
+
+@table(widths=30% 70%)
+Term, Definition
+@endtable
+
+@table(sep=|)
+Name | Value, with a comma
+A | 1, 2
+@endtable
+
+@table
+@row
+@cell
+@graph(type=bar, src=a.csv)
+@endcell
+@cell
+@graph(type=pie, src=b.csv)
+@endcell
+@endtable
+
+@table(header=1, zebra, compact, accent=#1d4ed8, caption=Readings with stripes, width=80%, label=tab-read, footer=1)
+Part, Volts, Amps
+R1, 2.0, 0.1
+R2, 4.0, 0.1
+Total, 6.0, 0.1
+@endtable
+
+@table(roomy, rows=2, bg=#fef9c3, columns=3, color=#b91c1c)
+A, B, C
+1, 2, 3
+4, 5, 6
+@endtable
+
+@table(cells=r2..3 c2..3, bg=#dcfce7)
+A, B, C
+1, 2, 3
+4, 5, 6
+@endtable
+
+@table(paint=r1..2:yellow; c(1 3):red text)
+A, B, C
+1, 2, 3
+@endtable
+
+@table(scramble)
+Step, Action
+1, Read the meter
+2, Write it down
+3, Switch off
+@endtable
+
+@table(side)
+X, Y
+1, 2
+@endtable
+
+@table(rotate=90)
+A wide, table, turned, sideways
+1, 2, 3, 4
+@endtable
+
+In a two-column paper, span crosses both columns: @table(span)
+Key, Value
+a, 1
+@endtable
+
+@table(border)
+A, B
+1, 2
+@endtable
+
+@subsection(@@row)
+
+Starts a table row in the explicit form, where newlines mean nothing and only row and cell divide the table.
+
+@subsection(@@endcell)
+
+Closes a cell.
+
+@subsection(@@endrow)
+
+Closes a row.
+
+@section(Paragraphs and glosses)
+
+@subsection(@@par)
+
+A passage with its own paragraph settings, up to end: first-line indent, hanging indent, spacing between paragraphs, line spacing, alignment, kept on one page, no hyphenation.
+
+@par(indent=1.5em, spacing=0.4em)
+…paragraphs…
+@end
+
+@par(hang=2em)
+…a reference list…
+@end
+
+@par(leading=2, align=justify, keep)
+…
+@end
+
+@par(nohyphen)
+A passage that never hyphenates a word at the end of a line, however long the words: electroencephalography, interdisciplinary.
+@end
+
+@subsection(@@interlinear)
+
+A glossed example, numbered (1), (2)… First line the example, word by word (in italic); each line after it glosses those words, one gloss per word, so they line up in columns.
+
+@interlinear(label=dog)
+Der Hund bell-t
+the dog bark-3SG
+'The dog is barking.'
+@end

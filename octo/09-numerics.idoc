@@ -1,0 +1,78 @@
+@style(IDocDemo)
+@title(Octo 9: polynomials, roots, integrals, ODEs, optimisation and interpolation)
+
+The numerical toolbox: each function takes a function handle or data and returns a number you can check.
+
+@section(Polynomials)
+
+A polynomial is its coefficient vector, highest power first.
+
+@octo
+p = [1 -6 11 -6];
+roots(p)'
+polyval(p, 4)
+poly([1 2 3])
+conv([1 1], [1 -1]), [q, r] = deconv([1 0 -1], [1 1])
+polyder(p), polyint([3 2 1])
+c = polyfit(1:5, [1 4 9 16 25], 2)
+@end
+
+@section(Roots and minima)
+
+`fzero` finds a sign change, `fminbnd` a minimum on an interval, `fminsearch` a minimum in several variables, and `fsolve` a root of a system.
+
+@octo
+fzero(@(x) cos(x) - x, [0 1])
+[x, fval] = fminbnd(@(x) (x - 2).^2 + 1, 0, 5)
+rosen = @(v) (1 - v(1))^2 + 100 * (v(2) - v(1)^2)^2;
+round(fminsearch(rosen, [-1 2]) * 100) / 100
+fminunc(@(x) (x - 3)^2, 0)
+fsolve(@(v) [v(1)^2 + v(2)^2 - 4; v(1) - v(2)], [1; 1])'
+lsqnonneg([1 0; 0 1; 1 1], [1; 2; 3])'
+@end
+
+@section(Constrained and linear programming)
+
+`fmincon` handles constraints; `glpk` solves linear programmes (`"UU"` makes both rows upper bounds); `lsqcurvefit` fits a model's parameters.
+
+@octo
+x = fmincon(@(v) v(1)^2 + v(2)^2, [1 1], [], [], [1 1], 1)
+xl = glpk([-1; -2], [1 1; 1 -1], [4; 2], [0; 0], [], "UU")'
+k = lsqcurvefit(@(p, x) p(1) * exp(p(2) * x), [1 0.1], 0:4, [2 2.7 3.6 4.9 6.6])
+@end
+
+@section(Integration)
+
+`integral` and `quadgk` integrate a function; `trapz` integrates sampled data.
+
+@octo
+integral(@(x) exp(-x.^2), -Inf, Inf)^2
+quad(@(x) x.^2, 0, 3), quadgk(@(x) 1 ./ sqrt(x), 0, 1)
+t = linspace(0, pi, 201); trapz(t, sin(t))
+cumtrapz([1 2 3])
+integral2(@(x, y) x .* y, 0, 1, 0, 2)
+@end
+
+@section(Differential equations)
+
+`ode45` is the default for smooth problems; `ode15s` is for stiff ones. Both return the time points and the solution.
+
+@octo
+[t, y] = ode45(@(t, y) -2 * y, [0 1], 1);
+abs(y(end) - exp(-2)) < 1e-3
+[t, y] = ode45(@(t, y) [y(2); -y(1)], [0 2*pi], [1; 0]);
+plot(t, y); legend("position", "velocity"); title("harmonic oscillator");
+[t2, y2] = ode15s(@(t, y) -50 * (y - cos(t)), [0 1], 0); numel(t2) > 2
+[t3, y3] = ode23(@(t, y) t, [0 1], 0); y3(end)
+@end
+
+@section(Interpolation and differences)
+
+`interp1` fills in between samples; `spline` and `pchip` give smooth curves; `gradient` estimates slopes.
+
+@octo
+x = 0:4; y = x.^2;
+interp1(x, y, 2.5), interp1(x, y, 2.5, "spline"), pchip(x, y, 2.5), spline(x, y, 2.5)
+[X, Y] = meshgrid(0:2); Z = X + Y; interp2(X, Y, Z, 0.5, 1.5)
+gradient([1 4 9 16])
+@end

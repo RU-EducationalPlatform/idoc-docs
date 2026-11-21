@@ -1,0 +1,75 @@
+@style(IDocDemo)
+@title(Octo 10: descriptive statistics and distributions)
+
+All data here is invented. Random draws are seeded, so a reader sees the same numbers every time.
+
+@section(Centre and spread)
+
+Each of these summarises a sample in one number; with a matrix they work down columns.
+
+@octo
+x = [12 15 11 18 14 15 22 13 15 16];
+mean(x), median(x), mode(x)
+std(x), var(x), range(x), iqr(x), mad(x)
+min(x), max(x), sum(x)
+prctile(x, [25 50 75]), quantile(x, 0.9)
+skewness(x), kurtosis(x), moment(x, 3)
+zscore(x)(1:3)
+normalize(x, "range")(1:3)
+@end
+
+@section(Two variables)
+
+Covariance and correlation measure how two variables move together.
+
+@octo
+h = [150 160 165 170 180]; w = [50 58 63 66 77];
+cov(h, w), corr(h', w'), corrcoef(h, w)
+@end
+
+@section(Counting)
+
+`tabulate` and `histc` count values; `crosstab` counts pairs.
+
+@octo
+grade = [1 2 2 3 3 3 1 2];
+tabulate(grade)
+histc(grade, 1:3)
+crosstab([1 1 2 2], [1 2 1 2])
+@end
+
+@section(Distribution functions)
+
+Each family has `pdf`, `cdf`, `inv` and `rnd` forms; the generic `pdf`/`cdf`/`icdf` take the family's name.
+
+@octo
+normpdf(0), normcdf(1.96), norminv(0.975)
+binopdf(3, 10, 0.5), binocdf(3, 10, 0.5)
+poisspdf(2, 3), poisscdf(2, 3)
+exppdf(1, 2), expcdf(1, 2)
+unifpdf(0.5, 0, 1), tcdf(2, 10), tinv(0.975, 10)
+chi2cdf(3.84, 1), fcdf(4, 2, 10), gampdf(1, 2, 1), betapdf(0.5, 2, 2)
+pdf("Normal", 0, 0, 1), cdf("Poisson", 2, 3), icdf("Normal", 0.5, 0, 1)
+@end
+
+@section(Random numbers and fitting)
+
+Draw from a family, then fit the family back to the draws.
+
+@octo
+r = normrnd(10, 2, 1, 2000);
+[mu, sigma] = normfit(r)
+numel(random("Poisson", 4, 1, 5))
+lam = mean(poissrnd(4, 1, 500))
+@end
+
+@section(Looking at a distribution)
+
+`ksdensity` smooths a histogram; `ecdf` and `qqplot` compare a sample with a model.
+
+@octo
+r = randn(1, 300);
+[f, xi] = ksdensity(r); plot(xi, f); title("kernel density");
+figure; [F, xe] = ecdf(r); stairs(xe, F); title("empirical CDF");
+figure; qqplot(r);
+@end

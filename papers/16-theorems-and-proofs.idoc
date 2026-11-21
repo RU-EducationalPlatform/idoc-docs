@@ -1,0 +1,91 @@
+@style(IDocDemo)
+@title(Theorems and proofs)
+
+Numbered theorem-like blocks and proofs, and new kinds of your own.
+
+@section(Theorem blocks)
+
+@subsection(@@theorem)
+
+A numbered theorem block (the family: lemma, proof, definition, corollary, example, note, proposition, remark).
+
+@theorem(Sum of odd numbers) For every natural number n, @eqi(sum_{i=0}^{n-1} (2i+1) = n^2).
+@end
+
+@theorem(Square of a sum) For all natural numbers a and b, @eqi((a+b)^2 = a^2 + 2ab + b^2).
+@end
+
+@theorem(Pythagoras)
+a^2 + b^2 = c^2
+@end
+
+@subsection(@@lemma)
+
+A numbered lemma block.
+
+@lemma … @end
+
+@subsection(@@corollary)
+
+A numbered corollary block.
+
+@corollary … @end
+
+@subsection(@@proposition)
+
+A numbered proposition block.
+
+@proposition … @end
+Kirchhoff's voltage law: @q(fn: 0, label=kvl)
+as in @qref(kvl)
+@img(circuit.svg, w=120, label=fig1, alt=A circuit)
+see @ref(fig1)
+
+@subsection(@@definition)
+
+A numbered definition block.
+
+@definition(Entropy) … @end
+
+@subsection(@@example)
+
+A numbered example block.
+
+@example … @end
+call the @gloss(API)
+
+@subsection(@@remark)
+
+A numbered remark block.
+
+@remark … @end
+
+@subsection(@@proof)
+
+A proof block (set in italics, ends with ∎).
+
+@proof … @end
+
+@proof(check)
+induction n
+step: sum_{i=0}^{n} (2i+1) = sum_{i=0}^{n-1} (2i+1) + (2n+1)   by sum
+                           = n^2 + (2n+1)                        by IH
+                           = (n+1)^2                             by ring
+@end
+
+@proof(check)
+(a+b)^2 = (a+b)(a+b)        by ring
+        = a^2 + 2ab + b^2   by ring
+@end
+
+@proof(goal="The sum of two even numbers is even")
+Write 2a + 2b = 2(a + b).
+@end
+
+@subsection(@@newthm)
+
+A theorem-like block of your own — newthm(conjecture, Conjecture) then conjecture … end.
+
+@newthm(conjecture, Conjecture)
+
+@newthm(claim, Claim, style=definition, counter=theorem)

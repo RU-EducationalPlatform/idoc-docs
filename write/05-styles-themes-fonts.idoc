@@ -1,0 +1,110 @@
+@style(IDocDemo)
+@title(Styles, themes and fonts)
+
+A stylesheet is the theme: named values, text styles and box styles. This collection uses styles/IDocDemo.style, applied by the first line of every file.
+
+@section(Stylesheets)
+
+@subsection(@@style)
+
+Apply a stylesheet: a bare name finds styles/Name.style.
+
+@style(IDocDemo)
+
+@style(IDocDemo, titles=Helvetica, h1.size=24pt)
+
+@style(IDocDemo)
+
+@style(IDocDemo)
+
+@style(IDocDemo, test="Quiz 1")
+H@sub(2)O
+
+@subsection(@@value)
+
+A stylesheet's named values, written once: value(basefont=Times Roman, titles=Arial, basesize=12pt).
+
+@value(basefont=Times Roman, titles=Arial, basesize=12pt, ink=#1f3a5f)
+
+@subsection(@@textstyle)
+
+Typography for a named role, set once, honored on screen AND in the PDF.
+
+@textstyle(normal, font="Georgia", size=18pt)
+
+@textstyle(normal, indent=1.5em, spacing=0.4em, leading=1.6)
+
+@textstyle(title, size=28pt)
+
+@textstyle(table, font=Palatino, size=9pt)
+
+@textstyle(tableheader, color=#1f3a5f)
+
+@textstyle(h1, extends=title, size=20pt)
+
+@textstyle(huge, extends=normal, size=1.5em, weight=bold)
+
+@textstyle(subsection, number=0)
+
+@textstyle(title, font=titles, color=ink)
+
+@textstyle(note1, extends=normal, align=center, fg=#065f46, bgcolor=#ecfdf5)
+
+@textstyle(note2, extends=normal, fgcolor=#7c2d12, background=#fff7ed, italic, hang=2em, paragraphstyle=space)
+
+@use(note1) Centred green words from a named style. @end
+
+@use(note2) Italic, hanging, on a warm background. @end
+
+@textstyle(alleft, extends=normal, align=left)
+
+@textstyle(alright, extends=normal, align=right)
+
+@textstyle(aljustify, extends=normal, align=justify)
+
+@textstyle(face0, extends=normal, font=Times New Roman)
+@use(face0) This line is set in Times New Roman. @end
+
+@textstyle(face1, extends=normal, font=Garamond)
+@use(face1) This line is set in Garamond. @end
+
+@textstyle(face2, extends=normal, font=Arial)
+@use(face2) This line is set in Arial. @end
+
+@textstyle(face3, extends=normal, font=Helvetica)
+@use(face3) This line is set in Helvetica. @end
+
+@textstyle(face4, extends=normal, font=Calibri)
+@use(face4) This line is set in Calibri. @end
+
+@textstyle(face5, extends=normal, font=Computer Modern)
+@use(face5) This line is set in Computer Modern. @end
+
+@textstyle(face6, extends=normal, font=serif)
+@use(face6) This line is set in serif. @end
+
+@textstyle(face7, extends=normal, font=sans)
+@use(face7) This line is set in sans. @end
+
+@subsection(@@use)
+
+Put a style of the stylesheet's own on words, up to end: textstyle(huge, extends=normal, size=1.5em, weight=bold) names it (any name that is not a role), use(huge) puts it on.
+
+@use(huge)
+A whole paragraph.
+@end
+
+@subsection(@@inherits)
+
+Inside a .style: splice the parent stylesheet in first, so this sheet's settings override it.
+
+@inherits(IDocDemo)
+
+@subsection(@@theme)
+
+Pin a named colour theme for THIS document (the reader can still override it in Appearance).
+
+@theme(nord)
+
+@theme(code, monokai)
+The gain is 12 dB @todo(Check this value) at 1 kHz.

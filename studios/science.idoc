@@ -1,0 +1,210 @@
+@style(IDocDemo)
+@title(Science: chemistry, medical imaging, physics and proofs)
+
+Every block on this page is live in the preview. Each feature gets one line and one working example; the block is also what prints in the PDF.
+
+@section(Chemistry: molecules and balanced equations)
+
+Draw a molecule from its SMILES string, or balance a chemical equation to the smallest whole-number coefficients.
+
+@chem
+CCO
+C3H8 + O2 -> CO2 + H2O
+@end
+
+@b{Molecules.} A line in SMILES notation is drawn as a 2-D skeletal structure with its formula underneath.
+
+@chem
+CC(=O)O
+@end
+
+@b{Equations.} A line with -> (or =) and + is an equation, balanced for you.
+
+@chem
+Fe + O2 -> Fe2O3
+@end
+
+@b{A caption.} A name: line becomes the caption.
+
+@chem
+name: Ethanol
+CCO
+@end
+
+@b{A graded exercise.} expect= is the balanced equation the student must reach.
+
+Balance the combustion of hydrogen.
+@chem(id=h2o, expect="2H2 + O2 -> 2H2O")
+H2 + O2 -> H2O
+@end
+
+@b{Graded.} With expect= the balanced result of the student's equation is compared with the key, and a correctly balanced equation earns the mark however it is spaced.
+
+@section(Medical images: CT, MRI and DICOM)
+
+View, measure and grade CT, MRI and other DICOM studies in the document, de-identified in your browser before anything is kept.
+
+@dicom(src=phantom)
+layout 1x2
+series 2 window=lung slice=31
+series 2 window=soft slice=31
+@end
+
+@b{The view, one line each.} layout, series with window= and slice=, point, length and roi lines; every click in the card writes a line.
+
+@dicom(src=phantom)
+series 2 window=soft slice=31
+point 58,78 label=lesion
+@end
+
+@b{Your own study.} Drop a DICOM folder or CD onto the card: it is de-identified to DICOM PS3.15 Annex E and saved as a .bvol block, which src= then names.
+
+@dicom(src=phantom)
+@end
+
+@b{3-D and presets.} A pane takes plane=3d with yaw=, pitch= and cut=; a preset line (bone, soft, lung, vessels, skin, mr) sets the transfer function.
+
+@dicom(src=phantom)
+preset bone
+@end
+
+@b{A graded question.} id=, pts=, expect= in millimetres: hotspot(lesion)=solution ±8mm, length(L1)=42±2mm, roi(liver)~solution dice>=0.85; the key is the @@solution section.
+
+@dicom(src=phantom, id=q3, pts=10, expect="hotspot(lesion)=solution ±8mm")
+series 2 window=lung slice=31
+@solution
+series 2 slice 31 point 58,78 label=lesion
+@end
+
+@b{Graded.} The server marks the student's view lines in millimetres against the @@solution key: a point within its distance, a length within its tolerance, an outline by its overlap (Dice).
+
+@section(Physics simulations with sliders)
+
+An animated physics system (pendulum, projectile, spring, orbit or double pendulum) with live sliders for its settings and a readout of energy and period.
+
+@sim
+system: pendulum
+length: 1.2
+gravity: 9.81
+angle: 35
+@end
+
+@b{Choose the system.} system: pendulum, projectile, spring, orbit or double-pendulum.
+
+@sim
+system: projectile
+speed: 20
+angle: 45
+@end
+
+@b{Starting values.} Each line name: value sets one setting.
+
+@sim
+system: spring
+mass: 1
+k: 20
+x0: 0.5
+@end
+
+@b{Hand in the settings.} pts= makes it work to hand in: the student hands in the settings they reached and a teacher marks them.
+
+Set the pendulum to a 2 s period.
+@sim(id=period2, pts=2)
+system: pendulum
+@end
+
+@b{Graded.} Not marked automatically.
+
+@section(Proofs students write, checked by the kernel)
+
+Students write a proof one step per line, each step with its reason, and IDoc's own proof kernel checks every step as they type and again for the mark.
+
+@lab(prove, id=p1, pts=6, goal="(a+b)^2 = a^2 + 2ab + b^2")
+@solution
+(a+b)^2 = (a+b)(a+b) by ring
+        = a^2 + 2ab + b^2 by ring
+@end
+
+@b{Steps and reasons.} Each line is a = b (or <=, <, >=) with by and a reason: ring (algebra), sum (the definition of a sum), IH (the induction hypothesis).
+
+@lab(prove, id=p0, goal="2(a+b) = 2a + 2b")
+@end
+
+@b{Induction.} induction n then a step: chain proves a statement for every n; a base case the kernel can compute may be left out.
+
+@lab(prove, id=p2, pts=8, partial, goal="2 sum_{i=0}^{n} i = n(n+1)")
+@solution
+induction n
+step: 2 sum_{i=0}^{n+1} i = 2 (sum_{i=0}^{n} i + (n+1)) by sum
+  = 2 sum_{i=0}^{n} i + 2(n+1) by ring
+  = n(n+1) + 2(n+1) by IH
+  = (n+1)(n+2) by ring
+@end
+
+@b{Boolean algebra.} bool: each step names the one law it uses (absorption, De Morgan, distributive, consensus, ...), or by truth table.
+
+@lab(prove, bool, id=p3, pts=4, goal="A + AB = A")
+@solution
+A + AB = A by absorption
+@end
+
+@b{Fractions and integrals.} rat: algebra over the rationals, sqrt(c), and integrals of polynomials; givens and definitions go inside goal= separated by ;.
+
+@lab(prove, rat, id=g0, goal="int_{0}^{1} x dx = 1/2")
+@end
+
+@b{Credit per step, and automation.} partial gives credit for each step that checks (otherwise all or nothing).
+
+@lab(prove, id=p4, pts=4, partial, auto, goal="(a+1)^2 = a^2 + 2a + 1")
+@end
+
+@b{Graded.} The server re-checks the handed-in text with the same kernel; what the browser says is feedback only.
+
+@section(Checked proofs in your notes)
+
+Write a worked proof under a theorem and let the reader's browser check each step with IDoc's kernel, so a wrong step in your notes cannot go unnoticed.
+
+@theorem(Square of a sum) For all natural numbers a and b, @eqi((a+b)^2 = a^2 + 2ab + b^2).
+@end
+@proof(check)
+(a+b)^2 = (a+b)(a+b)        by ring
+        = a^2 + 2ab + b^2   by ring
+@end
+
+@b{What it proves.} By default the theorem just above; goal= names the statement instead.
+
+@proof(check, goal="(a+b)(a-b) = a^2 - b^2")
+(a+b)(a-b) = a^2 - b^2   by ring
+@end
+
+@b{Induction.} induction n with base: and step: chains proves a statement for every n.
+
+@theorem(Odd numbers) For every n, @eqi(sum_{i=0}^{n-1} (2i+1) = n^2).
+@end
+@proof(check)
+induction n
+step: sum_{i=0}^{n} (2i+1) = sum_{i=0}^{n-1} (2i+1) + (2n+1)   by sum
+                           = n^2 + (2n+1)                        by IH
+                           = (n+1)^2                             by ring
+@end
+
+@b{Graded.} Not a question: it is feedback for the reader.
+
+
+@section(Every other argument)
+
+@b{Chemistry hand-in and look.} submit=server keeps the student's answer, theme= sets the look, width= and height= size it, time= is the live-class window.
+
+@chem(id=propane, submit=server, expect="C3H8 + 5O2 -> 3CO2 + 4H2O", theme=studio, width=600, height=200, time=5m)
+C3H8 + O2 -> CO2 + H2O
+@end
+
+@b{Simulation look.} theme=, width=, height= and time= work as on every studio.
+
+@sim(theme=dark, width=600, height=320, time=5m)
+system: orbit
+@end
+
+@sim
+system: double-pendulum
+@end

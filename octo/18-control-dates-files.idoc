@@ -1,0 +1,48 @@
+@style(IDocDemo)
+@title(Octo 18: control systems, dates and files)
+
+Three smaller families: transfer functions, calendar arithmetic, and reading and writing files.
+
+@section(Transfer functions)
+
+`tf` builds a system from numerator and denominator; `step` and `bode` draw its responses.
+
+@octo
+sys = tf(1, [1 3 2])
+pole(sys)', dcgain(sys)
+[y, t] = step(sys); round(y(end) * 100) / 100
+step(sys); title("step response");
+figure; bode(sys);
+s = ss(sys); s.A
+cl = feedback(sys, 1)
+@end
+
+@section(Dates and times)
+
+Dates are day numbers, so arithmetic on them is ordinary arithmetic.
+
+@octo
+d = datenum(2026, 1, 2);
+datestr(d), datestr(d + 30, "yyyy-mm-dd")
+weekday(d)
+v = datevec(d); v(1:3)
+calendar(2026, 2)
+numel(clock), cputime >= 0, ischar(date)
+@end
+
+@section(Files)
+
+A block can write a file into its own workspace and read it back in the same run.
+
+@octo
+M = magic(3);
+csvwrite("m.csv", M);
+csvread("m.csv")
+dlmwrite("m.txt", M, " ");
+dlmread("m.txt")(2, :)
+fid = fopen("note.txt", "w"); fprintf(fid, "line one\nline two\n"); fclose(fid);
+txt = fileread("note.txt")
+fid = fopen("note.txt"); first = fgetl(fid), fclose(fid);
+T = table([1; 2], [3; 4]); writetable(T, "t.csv"); readtable("t.csv")
+exist("note.txt", "file")
+@end

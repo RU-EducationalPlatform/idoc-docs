@@ -1,0 +1,14 @@
+@deck(theme=vivid, transition=fade-through-black, ratio=16:9, size=normal, bg=#111827)
+@style(IDocDemo)
+@title(Deck theme: vivid)
+
+@titleslide
+
+@slide(A heading)
+Body text in the vivid theme, with the fade-through-black transition, ratio 16:9 and size normal.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

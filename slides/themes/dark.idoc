@@ -1,0 +1,14 @@
+@deck(theme=dark, transition=fade, ratio=16:9, size=small, author=Sam Okafor, autoplay=6s)
+@style(IDocDemo)
+@title(Deck theme: dark)
+
+@titleslide
+
+@slide(A heading)
+Body text in the dark theme, with the fade transition, ratio 16:9 and size small.
+
+@slide(A second slide)
+@ul
+first point
+second point
+@end

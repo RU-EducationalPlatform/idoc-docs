@@ -1,0 +1,669 @@
+@style(IDocDemo)
+@title(Digital logic and quantum circuits: the complete @@logic and @@quantum tour)
+
+This page is a tour of @@logic. Every block is live: flip the input switches, press Pulse CLK, open a component to see inside it, drag a gate to move it. Each block has tabs: the Simulate diagram, the Truth table (a State table once the circuit remembers), the K-map with its minimized form, and Timing for circuits with a clock. Ctrl or ⌘ + wheel zooms a big drawing; Fit brings it back. The same block prints in the PDF, and can be a graded question.
+
+@toc
+
+@section(Part 1 · Expressions)
+
+@subsection(Notation)
+
+Write one OUT = expression per line. AND is &, * or two letters side by side (AB); OR is + or |; NOT is ' after a term, ~ or !; XOR is ^. Brackets group. Single capitals juxtapose; longer names (Cin, EN1) stay whole.
+
+@logic
+F = (A + B)'C + A ^ C
+@end
+
+@subsection(A single function, three views)
+
+Exclusive-OR in sum-of-products form. Toggle A and B in Simulate; the K-map shows it cannot be reduced.
+
+@logic
+Y = A'B + AB'
+@end
+
+@subsection(Several outputs: a full adder)
+
+Each output gets its own truth-table column and its own K-map; the carry collapses to the classic AB + ACin + BCin.
+
+@logic
+S = A ^ B ^ Cin
+Cout = A&B | Cin&(A^B)
+@end
+
+@subsection(Minimization in action)
+
+Five minterms, written the long way. The K-map draws the prime-implicant groups over the map and gives the simplified expression.
+
+@logic
+F = A'B'C'D' + A'B'C'D + A'B'CD + AB'C'D' + AB'C'D
+@end
+
+@subsection(Diagram only, and a darker look)
+
+noedit hides the expression, so a reader sees only the circuit and its tables. theme=dark gives the graphite studio look.
+
+@logic(noedit, theme=dark)
+M = (A + B)(B + C)(C + A)
+@end
+
+@section(Part 2 · Gates as calls)
+
+@subsection(Any number of inputs)
+
+Once a body uses calls, each word is one signal and the block is drawn as a schematic: every signal is one wire, drawn once, branching at a dot.
+
+@logic
+Y = NAND(A, B, C, D)
+Z = NOR(A, B')
+@end
+
+@subsection(The parts box)
+
+Beyond the gates there are ready-made parts, each with its own symbol: a multiplexer, a decoder, half and full adders. A decoder is one-hot: exactly one output is 1.
+
+@logic
+Y = MUX(I0, I1, I2, I3, S1, S0)
+D0, D1, D2, D3 = DEC(A1, A0)
+Sum, Carry = HA(A, B)
+@end
+
+@subsection(A component of your own)
+
+def makes a component, drawn as a box; click it to open it into its gates. as mux borrows the multiplexer's symbol. This one is the same circuit as the MUX above, so their truth tables agree row for row.
+
+@logic
+def Mux4(a, b, c, d, s1, s0) as mux =
+  OR(AND(s1', s0', a), AND(s1', s0, b),
+     AND(s1, s0', c),  AND(s1, s0, d))
+Y = Mux4(I0, I1, I2, I3, S1, S0)
+@end
+
+@section(Part 3 · Circuits that remember)
+
+@subsection(Feedback is just naming: an SR latch)
+
+A name on the left that is used on the right is a wire back. Set S, release it, and Q holds. The Truth table tab becomes a State table.
+
+@logic
+Q = NOR(R, Qn)
+Qn = NOR(S, Q)
+@end
+
+@subsection(A D flip-flop, built from gates and built in)
+
+A master–slave flip-flop is two D latches of NAND gates. Pulse CLK and it changes exactly when the built-in DFF does; the Timing tab draws both traces.
+
+@logic
+def DLat(d, en) -> q, qn
+  q  = NAND(NAND(d, en), qn)
+  qn = NAND(NAND(d', en), q)
+end
+def MyDFF(clk, d) as dff -> q
+  m, _ = DLat(d, clk')
+  q, _ = DLat(m, clk)
+end
+Built = MyDFF(CLK, D)
+Q, Qn = DFF(CLK, D)
+@end
+
+@subsection(JK and T flip-flops)
+
+JK toggles when J and K are both 1; T toggles whenever T is 1. Clock first, always.
+
+@logic
+Qjk, Qjkn = JKFF(CLK, J, K)
+Qt, Qtn = TFF(CLK, T)
+@end
+
+@subsection(Counters show every bit)
+
+A ripple counter of T flip-flops, each clocked by the bit before it, and a synchronous counter that also raises a carry at 11. Every bit keeps its own output, even when it only feeds the carry. Press Pulse CLK and read the count.
+
+@logic
+Q0, Qn0 = TFF(CLK, 1)
+Q1, Qn1 = TFF(Qn0, 1)
+Q2, Qn2 = TFF(Qn1, 1)
+@end
+
+@logic
+q0, _ = TFF(CLK, 1)
+q1, _ = TFF(CLK, q0)
+carry = q0 & q1
+@end
+
+@subsection(A shift register)
+
+@logic
+Q2, _ = DFF(CLK, D)
+Q1, _ = DFF(CLK, Q2)
+Q0 = DFF(CLK, Q1)
+@end
+
+@subsection(A tristate bus)
+
+Two drivers may share one wire when both are TRI. One enabled: the bus takes its value. Both enabled and disagreeing: the bus reads X, drawn in red.
+
+@logic
+BUS = TRI(A, EN1)
+BUS = TRI(B, EN2)
+@end
+
+@section(Part 4 · Drawing it the way you want)
+
+@subsection(Placing gates yourself)
+
+@(column, row) at the end of a line pins that gate to the grid. Drag a gate in the preview and its line gets the coordinates written for you.
+
+@logic
+S1, C1 = HA(A, B)      @(1,1)
+Sum, C2 = HA(S1, Cin)  @(3,1)
+Cout = OR(C1, C2)      @(4,2)
+@end
+
+@subsection(Turning and mirroring)
+
+flip mirrors a gate (inputs on the right), r90, r180, r270 turn it. The second NOR is mirrored, as latches are usually drawn; the logic is unchanged.
+
+@logic
+Q = NOR(R, Qn)
+Qn = NOR(S, Q)  @(flip)
+@end
+
+@logic
+S, C = HA(A, B)        @(1,1,r90)
+Y = MUX(S, C, SEL)     @(3,1,flip)
+@end
+
+r180 and r270 turn a gate the other two ways.
+
+@logic
+X = AND(A, B)   @(1,1,r180)
+Z = OR(X, C)    @(3,1,r270)
+@end
+
+@subsection(Inputs where they belong)
+
+An input on a line of its own takes a side: a[i] @(top) puts each bit of a and b just above the adder it feeds, so only the carries run along the bottom.
+
+@logic
+def FA(a, b, cin) -> s, cout {
+    x    = a ^ b
+    s    = x ^ cin
+    cout = (a & b) | (x & cin)
+}
+for i = 0..3 {
+    a[i] @(top)
+    b[i] @(top)
+    s[i], cin[i+1] = FA(a[i], b[i], cin[i])  @(13-3*i, 4)
+}
+@end
+
+@section(Part 5 · Many bits at once)
+
+@subsection(A 4-bit adder, written out)
+
+Four full adders, the carry of each feeding the next.
+
+@logic
+S0, Cout1 = FA(A0, B0, Cin)
+S1, Cout2 = FA(A1, B1, Cout1)
+S2, Cout3 = FA(A2, B2, Cout2)
+S3, Cout4 = FA(A3, B3, Cout3)
+@end
+
+@subsection(The same adder in one line)
+
+A line ending for i in 0..3 repeats once per bit, and C[i+1] names the next bit's carry. Flip the switches and watch the carry ripple from C0 to C4.
+
+@logic
+S[i], C[i+1] = FA(A[i], B[i], C[i])  for i in 0..3
+@end
+
+@subsection(Buses: a vector as one wire)
+
+Wrap the adder in a component with vector ports (a[4]), pass it whole vectors, and bus=all draws each vector as one thick bus with numbered taps instead of a wire per bit (bus=A picks just one). Each tap is still a switch you can flip.
+
+@logic(bus=all)
+def ADD4(a[4], b[4], cin) -> s[4], cout {
+    c[0] = cin
+    for i = 0..3 {
+        s[i], c[i+1] = FA(a[i], b[i], c[i])
+    }
+    cout = c[4]
+}
+S[0..3], COUT = ADD4(A[0..3], B[0..3], CIN)
+@end
+
+@subsection(Placing a loop: an 8-bit ripple, drawn right to left)
+
+A placement can use the loop variable: @(51-5*i, 11) draws bit 0 on the right, the way the numbers are written.
+
+@logic
+def FA(a, b, cin) -> s, cout {
+    x    = a ^ b
+    s    = x ^ cin
+    cout = NAND( NAND(a, b), NAND(x, cin) )
+}
+for i = 0..7 {
+   s[i], cin[i+1] = FA(a[i], b[i], cin[i])  @(51-5*i, 11)
+}
+@end
+
+@section(Part 6 · Graded questions)
+
+Give a block an id=, points and its key, and it becomes a question. The key never reaches a student's copy, and the server re-checks every hand-in with the same rule Check uses here.
+
+@subsection(Write an expression)
+
+Write Y so that it is 1 when exactly one of A and B is 1.
+
+@logic(id=xor1, pts=2, answer="A'B + AB'")
+Y =
+@end
+
+@subsection(Build a sequential circuit)
+
+The circuit below uses a D latch, and it does not pass: a latch lets D through the whole time the clock is high. Change it so Q takes D only at the rising edge. check= gives the clock and D traces and the Q the circuit must produce, step by step. At step 3 D falls while the clock is still high: a flip-flop keeps its 1, a latch lets the 0 through. Press Check to see that step go wrong.
+
+@logic(id=dff1, pts=3, check="CLK:01101 D:11000 -> Q:01110")
+Q, Qn = DLATCH(CLK, D)
+@end
+
+@section(Part 7 · Big circuits)
+
+Loops and definitions can be written as blocks: for i = 0..7 { }, def F(a, b) -> s, c { }, vector ports like A[8], two-index names like a[i][j], // comments, slices s[4k .. 4k+3], an empty slot on the left to skip an output, and a line starting with | to continue the one before.
+
+@subsection(An 8x8 pipelined multiplier)
+
+This multiplier gives A x B eight clock edges after its inputs: set X and Y, then press Pulse CLK eight times.
+
+@logic
+def HA(a, b) -> s, c {
+    s = a ^ b
+    c = a & b
+}
+
+def FA(a, b, cin) -> s, cout {
+    x    = a ^ b
+    s    = x ^ cin
+    cout = NAND( NAND(a, b), NAND(x, cin) )
+}
+
+def MUL8(clk, A[8], B[8]) -> P[16] {
+
+    // ---------------- Stage 0 ----------------
+    // pp0 = A & B[0]; bit 0 is final, bits 7..1 become running sum R[0][6..0]
+    for j = 0..7 {
+        pp0[j] = A[j] & B[0]
+        a[0][j],  = DFF(clk, A[j])
+    }
+    for j = 1..7 {
+        b[0][j],  = DFF(clk, B[j])            // b[i] holds only bits > i
+    }
+    lo[0][0],  = DFF(clk, pp0[0])
+    for j = 0..6 {
+        R[0][j],  = DFF(clk, pp0[j+1])
+    }
+    R[0][7],  = DFF(clk, 0)                   // nothing above bit 7 yet
+
+    // ---------------- Stages 1..7 ----------------
+    for i = 1..7 {
+
+        // partial product row i
+        for j = 0..7 {
+            pp[i][j] = a[i-1][j] & b[i-1][i]
+        }
+
+        // ripple add: T = R[i-1] + pp[i]   (T is 9 bits)
+        T[i][0], c[i][1] = HA(R[i-1][0], pp[i][0])             @(1, 1+i)
+        for j = 1..7 {
+            T[i][j], c[i][j+1] = FA(R[i-1][j], pp[i][j], c[i][j]) @(1+j, 1+i)
+        }
+        T[i][8] = c[i][8]
+
+        // pipeline registers
+        for j = 0..7 {
+            a[i][j],  = DFF(clk, a[i-1][j])
+        }
+        for j = i+1..7 {
+            b[i][j],  = DFF(clk, b[i-1][j])
+        }
+        for k = 0..i-1 {
+            lo[i][k],  = DFF(clk, lo[i-1][k])     // delay finished bits
+        }
+        lo[i][i],  = DFF(clk, T[i][0])            // new finished bit
+        for j = 0..7 {
+            R[i][j],  = DFF(clk, T[i][j+1])       // running sum, shifted right
+        }
+    }
+
+    // ---------------- Outputs (valid 8 clocks after inputs) ----------------
+    for k = 0..7 { P[k]   = lo[7][k] }
+    for j = 0..7 { P[8+j] = R[7][j]  }
+}
+
+P[0..15] = MUL8(CLK, X[0..7], Y[0..7])
+@end
+
+@subsection(A 32-bit carry-lookahead adder)
+
+Two levels of lookahead: eight 4-bit blocks, then two units that compute each block's carry at once. A vector port takes a whole name (LCU4(cin, p, g)).
+
+@logic
+def PG(a, b) -> p, g {
+    p = a ^ b
+    g = a & b
+}
+
+// 4-group lookahead carry unit: the same cell is used at both levels.
+// Inputs are per-group propagate/generate; outputs are the carry into each group,
+// the carry out, and the group-level P/G for the next level up.
+def LCU4(cin, p[4], g[4]) -> c[4], cout, P, G {
+    c[0] = cin
+    c[1] = g[0] | (p[0] & cin)
+    c[2] = g[1] | (p[1] & g[0]) | (p[1] & p[0] & cin)
+    c[3] = g[2] | (p[2] & g[1]) | (p[2] & p[1] & g[0])
+                | (p[2] & p[1] & p[0] & cin)
+
+    G    = g[3] | (p[3] & g[2]) | (p[3] & p[2] & g[1])
+                | (p[3] & p[2] & p[1] & g[0])
+    P    = p[3] & p[2] & p[1] & p[0]
+    cout = G | (P & cin)
+}
+
+// 4-bit CLA block: cin comes from the level above, and it exports group P/G.
+def CLA4(a[4], b[4], cin) -> s[4], P, G {
+    for i = 0..3 {
+        p[i], g[i] = PG(a[i], b[i])
+    }
+    c[0..3], , P, G = LCU4(cin, p, g)
+    for i = 0..3 {
+        s[i] = p[i] ^ c[i]
+    }
+}
+
+def ADD32(a[32], b[32], cin) -> s[32], cout {
+
+    // ---- Level 1: eight 4-bit CLA blocks ----
+    // Each block's carry-in is supplied by level 2 (see below).
+    for k = 0..7 {
+        s[4k .. 4k+3], BP[k], BG[k] =
+            CLA4(a[4k .. 4k+3], b[4k .. 4k+3], bc[k])    @(1+4*k, 1)
+    }
+
+    // ---- Level 2: two lookahead units, four blocks each ----
+    // Low half: blocks 0..3 (bits 0..15)
+    bc[0..3], , SP[0], SG[0] = LCU4(cin, BP[0..3], BG[0..3]) @(1, 3)
+
+    // High half: blocks 4..7 (bits 16..31), carry-in is the carry out of bit 15
+    c16 = SG[0] | (SP[0] & cin)
+    bc[4..7], _, SP[1], SG[1] = LCU4(c16, BP[4..7], BG[4..7]) @(17, 3)
+
+    // ---- Level 3: final carry out ----
+    cout = SG[1] | (SP[1] & c16)
+}
+
+S[0..31], COUT = ADD32(A[0..31], B[0..31], CIN)
+@end
+
+@section(Part 8 · The rest of the language)
+
+@subsection(Every operator, every gate)
+
+NOT is A' or !A or ~A, AND is AB, A&B or A*B, OR is A+B or A|B, XOR is A^B; as calls there are AND, OR, NOT, NAND, NOR, XOR and XNOR, each with any number of inputs.
+
+@logic
+F = !A & B | ~C ^ D*A
+G = XNOR(A, B, C)
+H = NOT(AND(A, OR(B, C)))
+@end
+
+@subsection(The built-in latches)
+
+DLATCH(EN, D) is transparent while EN is 1; SRLATCH(S, R) sets and resets. Enable or set first, as with the flip-flops.
+
+@logic
+Qd, Qdn = DLATCH(EN, D)
+Qs, Qsn = SRLATCH(S, R)
+@end
+
+@subsection(Full adders from the parts box)
+
+FA(A, B, Cin) is a built-in full adder with sum and carry out.
+
+@logic
+S, Co = FA(A, B, Cin)
+@end
+
+@subsection(A 4-bit shift register in a loop, with comments)
+
+A loop over flip-flops builds a register; // starts a comment.
+
+@logic
+// serial in at D, parallel out on Q[0..3]
+Q[0], _ = DFF(CLK, D)
+for i = 1..3 {
+    Q[i], _ = DFF(CLK, Q[i-1])   // each stage takes the one before it
+}
+@end
+
+@subsection(Placing an output terminal)
+
+A name on a line of its own with @(col,row) places that input or output terminal on the grid.
+
+@logic
+Y = AND(A, B)   @(2,1)
+A @(0,0)
+B @(0,3)
+Y @(4,1)
+@end
+
+@subsection(One bus, not all of them)
+
+bus=A draws only the vector A as a bus; B stays a wire per bit.
+
+@logic(bus=A)
+def AND4(a[4], b[4]) -> y[4] {
+    for i = 0..3 { y[i] = a[i] & b[i] }
+}
+Y[0..3] = AND4(A[0..3], B[0..3])
+@end
+
+@subsection(Layout and look)
+
+output=right puts the diagram beside the source, theme=studio and theme=showcase are the other two looks.
+
+@logic(output=right, theme=studio, width=640, height=260)
+Y = A ^ B
+@end
+
+@logic(theme=showcase)
+Y = (A + B)(A' + C)
+@end
+
+@subsection(Graded: one key per output, a live-class timer, and several traces)
+
+answer= takes one expression per output, separated by ;. time= is how long the question stays open once a teacher opens it in a live class. check= takes several traces separated by ;, and - is "don't care". The starter below is wrong on purpose: the student fixes it until both keys pass.
+
+@logic(id=fa-key, pts=4, time=4m, answer="S = A^B^Cin; Cout = AB + Cin(A^B)")
+S = A ^ B
+Cout = AB
+@end
+
+@logic(id=tff-key, pts=3, check="CLK:0101 T:1111 -> Q:0110; CLK:0101 T:0000 -> Q:----")
+Q, Qn = TFF(CLK, T)
+@end
+
+@section(Part 9 · Quantum circuits with @@quantum)
+
+The same grammar drives a quantum circuit: one line per qubit, exact probabilities for every outcome, and the final state when nothing is measured.
+
+@subsection(Superposition and a Bell pair)
+
+@quantum
+q = QUBITS(1)
+H(q)
+@end
+
+@quantum
+q0, q1 = QUBITS(2)
+H(q0)
+CNOT(q0, q1)
+c0 = MEASURE(q0)
+c1 = MEASURE(q1)
+@end
+
+@subsection(Every gate)
+
+H X Y Z S T act in place; RX, RY and RZ take an angle; CNOT, CZ and SWAP take two qubits and TOFFOLI three.
+
+@quantum
+a, b, c = QUBITS(3)
+H(a)
+X(b)
+Y(c)
+Z(a)
+S(b)
+T(c)
+a = RX(a, pi/2)
+b = RY(b, pi/3)
+c = RZ(c, pi/4)
+CZ(a, b)
+SWAP(b, c)
+TOFFOLI(a, b, c)
+@end
+
+@subsection(Classical control: teleportation)
+
+A gate followed by if BIT runs only when that measured bit is 1; the run is split exactly, never sampled.
+
+@quantum
+q0, q1, q2 = QUBITS(3)
+q0 = RY(q0, pi/3)
+H(q1)
+CNOT(q1, q2)
+CNOT(q0, q1)
+H(q0)
+m0 = MEASURE(q0)
+m1 = MEASURE(q1)
+X(q2) if m1
+Z(q2) if m0
+@end
+
+@subsection(Classical logic in, and a component of your own)
+
+Bits combine with @@logic's gates, PREP(b) makes a qubit from a bit, and def makes a reusable sub-circuit (here the Deutsch-Jozsa oracle f(x) = x).
+
+@quantum
+b = NAND(a, c)
+q = PREP(b)
+H(q)
+r = MEASURE(q)
+@end
+
+@quantum
+def Oracle(x, y)
+  CNOT(x, y)
+end
+x, y = QUBITS(2)
+X(y)
+H(x)
+H(y)
+Oracle(x, y)
+H(x)
+m = MEASURE(x)
+@end
+
+@subsection(Graded quantum questions)
+
+answer= lists every outcome with its probability; bits= sets the digit order, tol= the allowed error, inputs= holds classical inputs while grading.
+
+Make a Bell pair.
+
+@quantum(id=bell, pts=4, answer="00:0.5 11:0.5")
+q0, q1 = QUBITS(2)
+c0 = MEASURE(q0)
+c1 = MEASURE(q1)
+@end
+
+Prepare a qubit from the NAND of a and b, with a=1 and b=1.
+
+@quantum(id=prep-nand, pts=2, answer="0:1", bits="r", tol=0.02, inputs="a=1 b=1")
+q = PREP(NAND(a, b))
+r = MEASURE(q)
+@end
+
+@subsection(Layout and look)
+
+@quantum(output=right, theme=dark, noedit, width=640, height=240)
+q0, q1 = QUBITS(2)
+H(q0)
+CZ(q0, q1)
+@end
+
+@section(Part 10 · The last few forms)
+
+@subsection(XOR and BUF as calls, and picking one output)
+
+XOR( takes any number of inputs, BUF( passes a signal through a buffer, and .C after a call picks one of its outputs by name.
+
+@logic
+P = XOR(A, B, C)
+Y = BUF(P)
+Carry = HA(A, B).C
+@end
+
+@subsection(Choosing a component's symbol)
+
+as NAME draws a def with a standard symbol: box (the default), decoder, adder, alu, reg and latch, as well as mux and dff shown earlier.
+
+@logic
+def Thing(a, b) as box = a & b'
+def Dec2(a1, a0) as decoder -> d0, d1, d2, d3 {
+    d0 = a1' & a0'
+    d1 = a1' & a0
+    d2 = a1 & a0'
+    d3 = a1 & a0
+}
+def Add1(a, b, c) as adder -> s, co {
+    s = a ^ b ^ c
+    co = (a & b) | (c & (a ^ b))
+}
+def Alu1(a, b, op) as alu = MUX(a & b, a | b, op)
+Y = Thing(A, B)
+D0, D1, D2, D3 = Dec2(A, B)
+S, Co = Add1(A, B, Cin)
+R = Alu1(A, B, Op)
+@end
+
+@logic
+def Reg1(clk, d) as reg -> q {
+    q, _ = DFF(clk, d)
+}
+def Lat1(en, d) as latch -> q {
+    q, _ = DLATCH(en, d)
+}
+Q1 = Reg1(CLK, D)
+Q2 = Lat1(EN, D)
+@end
+
+@section(Part 11 · The same studio under other names)
+
+@@eecad is the lower-case spelling of @@EECad; @@studio and @@widget are the same block as @@lab, so @@studio(logic) is a @@logic block.
+
+@eecad(sourdough)
+battery b1 at 40,80
+led d1 at 200,60
+wire b1.+ to d1.a
+wire d1.k to b1.-
+@end
+
+@studio(logic, height=320)
+Y = A ^ B
+@end
+
+@widget(logic, height=320)
+Y = NAND(A, B)
+@end
