@@ -4,11 +4,11 @@
 
 # IDoc docs
 
-**One hundred and six working documents that show what IDoc can do. Open them, change them, break them.**
+**116 working documents that show what IDoc can do. Open them, change them, break them.**
 
 [![Open IDoc](https://img.shields.io/badge/open-idoc.page-6d4fd0?style=for-the-badge)](https://idoc.page)
 [![Desktop app](https://img.shields.io/github/v/release/RU-EducationalPlatform/idoc-desktop?style=for-the-badge&label=desktop&color=1f2a37)](https://github.com/RU-EducationalPlatform/idoc-desktop/releases/latest)
-[![Documents](https://img.shields.io/badge/documents-106-2e7d6b?style=for-the-badge)](#whats-inside)
+[![Documents](https://img.shields.io/badge/documents-116-2e7d6b?style=for-the-badge)](#whats-inside)
 
 </div>
 
@@ -83,7 +83,7 @@ Follow this order the first time through. It builds up.
 | 3 | `questions/` and `variables/` | Questions that mark themselves, and randomised versions of them |
 | 4 | `exams/`, `papers/`, `slides/` | Printable exams, papers with citations, slide decks |
 | 5 | `code/` and `octo/` | Code that runs in the page, and the Octo language |
-| 6 | `charts/` and `studios/` | Forty-odd chart types, plus the drawing, circuit and music studios |
+| 6 | `charts/`, `studios/`, `music/` and `craft/` | Forty-odd chart types, the circuit and logic studios, the music studio, and the photo, film and audio editors |
 | 7 | `docent/` | Turning your documents into a course |
 | 8 | `accessibility/`, `forms/`, `editor/` | Reading aloud, signing, and the editor itself |
 
@@ -102,6 +102,8 @@ Follow this order the first time through. It builds up.
 | `octo/` | 20 | The Octo language, from basics to stats and signal work |
 | `charts/` | 12 | Bars, maps, 3-D terrain, distributions and every argument a chart takes |
 | `studios/` | 12 | Drawing, circuits, music and the other studios |
+| `music/` | 1 | The music studio: score, a mixer lane for each instrument, and a drum machine |
+| `craft/` | 8 | The photo, drawing, film, audio, PDF, Office and imaging studios, with a guided start |
 | `modules/` | 1 | Interactive modules you can drop into a document |
 | `docent/` | 1 | A full course file, with a sample course |
 | `accessibility/` | 1 | Read-aloud and audio |
