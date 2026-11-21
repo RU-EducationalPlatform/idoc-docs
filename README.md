@@ -4,11 +4,11 @@
 
 # IDoc docs
 
-**116 working documents that show what IDoc can do. Open them, change them, break them.**
+**131 working documents that show what IDoc can do. Open them, change them, break them.**
 
 [![Open IDoc](https://img.shields.io/badge/open-idoc.page-6d4fd0?style=for-the-badge)](https://idoc.page)
 [![Desktop app](https://img.shields.io/github/v/release/RU-EducationalPlatform/idoc-desktop?style=for-the-badge&label=desktop&color=1f2a37)](https://github.com/RU-EducationalPlatform/idoc-desktop/releases/latest)
-[![Documents](https://img.shields.io/badge/documents-116-2e7d6b?style=for-the-badge)](#whats-inside)
+[![Documents](https://img.shields.io/badge/documents-131-2e7d6b?style=for-the-badge)](#whats-inside)
 
 </div>
 
@@ -96,7 +96,7 @@ Follow this order the first time through. It builds up.
 | `questions/` | 3 | The question kinds, and how they are graded |
 | `variables/` | 6 | Randomised numbers and variants, so every student gets their own |
 | `exams/` | 1 | Exams on paper, scanned back in |
-| `papers/` | 14 | Front matter, theorems, citations, figures and media |
+| `papers/` | 29 | Front matter, theorems, citations, figures, the ten paper venues, and two full example papers |
 | `slides/` | 15 | Slide decks and presenting |
 | `code/` | 9 | Running, grading and randomising code, notebooks, hardware debugging |
 | `octo/` | 20 | The Octo language, from basics to stats and signal work |
