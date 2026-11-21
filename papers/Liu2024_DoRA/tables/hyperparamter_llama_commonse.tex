@@ -1,0 +1,25 @@
+\begin{table}[h]
+\centering
+\caption{Hyperparameter configurations of \ours~for LLaMA-7B/13B, LLaMA2-7B, and LLaMA3-8B on the commonsense reasoning tasks.}
+% \vspace{0.8em}
+\vskip 0.1in
+\small
+\begin{tabular}{ccccccccc}
+\toprule
+\textbf{Hyperparameters (\ours)} & \multicolumn{2}{c}{LLaMA-7B} & \multicolumn{2}{c}{LLaMA-13B} & \multicolumn{2}{c}{LLaMA2-7B} & \multicolumn{2}{c}{LLaMA3-8B} \\ \midrule
+Rank r & 16 & 32 & 16 & 32 & 16 & 32 & 16 & 32 \\ 
+$\alpha$ & 32 & 64 & 32 & 64 & 32 & 64 & 32 & 64 \\ 
+Dropout & \multicolumn{8}{c}{0.05} \\ 
+Optimizer & \multicolumn{8}{c}{AdamW}  \\ 
+LR & 2e-4 & 1e-4 & 3e-4 & 2e-4 & 2e-4 & 2e-4 & 1e-4 & 1e-4  \\
+LR Scheduler & \multicolumn{8}{c}{Linear} \\
+Batch size & \multicolumn{8}{c}{16} \\
+Warmup Steps & \multicolumn{8}{c}{100} \\
+Epochs & \multicolumn{8}{c}{3} \\
+Where & \multicolumn{8}{c}{Q,K,V,Up,Down} \\
+\bottomrule
+\end{tabular}
+\label{tab:llama_commonsense_hyperparameters}
+\vskip -0.1in
+\end{table}
+

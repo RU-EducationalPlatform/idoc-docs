@@ -1,0 +1,18 @@
+\begin{table}[ht]
+\centering
+\caption{The multi-task evaluation results on TVQA, How2QA, TVC, and YC2C with the VL-BART backbone.}
+% \vspace{0.8em}
+\vskip 0.1in
+\setlength{\tabcolsep}{1.2mm}
+% \renewcommand\arraystretch{0.8}
+\resizebox{0.48\textwidth}{!}{
+\begin{tabular}{ccccccc}
+\toprule
+\textbf{Method} & \# \textbf{Params (\%)} & \textbf{TVQA} & \textbf{How2QA}& \textbf{TVC}& \textbf{YC2C} & \textbf{Avg.}\\ \midrule
+FT & 100 & 76.3 & 73.9 & 45.7 & 154 & 87.5 \\ \hline
+LoRA & 5.17 &  75.5 & 72.9 & 44.6 & 140.9 & 83.5 \\ 
+\ours~(Ours) & 5.19 & 76.3 & 74.1 & 45.8 & 145.4 & \textbf{85.4} \\ \bottomrule
+\end{tabular}}
+\label{tab:vlbart_video}
+\vskip -0.1in
+\end{table}

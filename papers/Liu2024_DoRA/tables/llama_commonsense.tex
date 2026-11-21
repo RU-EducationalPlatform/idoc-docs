@@ -1,0 +1,37 @@
+\begin{table*}[t]
+\caption{Accuracy comparison of LLaMA 7B/13B, LLaMA2 7B, and LLaMA3 8B with various PEFT methods on eight commonsense reasoning datasets. Results of all the baseline methods on LLaMA 7B/13B are taken from \cite{hu2023llmadapters}. Results of LoRA on LLaMA2 7B and LLaMA3 8B are obtained using the hyperparameters  described in \cite{hu2023llmadapters}. $\text{\ours}^{\dagger}$: the adjusted version of \ours~with the rank halved.
+}
+% \vspace{0.8em}
+\vskip 0.1in
+\setlength{\tabcolsep}{1.2mm}
+\centering
+% \renewcommand\arraystretch{0.8}
+\resizebox{0.99\textwidth}{!}{
+\begin{tabular}{ccccccccccccc}
+\toprule
+\textbf{Model} & \textbf{PEFT Method} & \# \textbf{Params (\%)} & \textbf{BoolQ} & \textbf{PIQA}&\textbf{SIQA}& \textbf{HellaSwag} & \textbf{WinoGrande}& \textbf{ARC-e} & \textbf{ARC-c} & \textbf{OBQA} & \textbf{Avg.} \\ \hline
+ChatGPT & - & - & 73.1 & 85.4 & 68.5 & 78.5 & 66.1 & 89.8 & 79.9 & 74.8 & 77.0 \\ \hline
+\multirow{6}{*}{LLaMA-7B}    & Prefix & 0.11 & 64.3 & 76.8 & 73.9 & 42.1 & 72.1 & 72.9 & 54.0 & 60.6 & 64.6 \\ 
+    & Series & 0.99 & 63.0 & 79.2 & 76.3 & 67.9 & 75.7 & 74.5 & 57.1 & 72.4 & 70.8 \\ 
+ & Parallel & 3.54 & 67.9 & 76.4 & 78.8 & 69.8 & 78.9 & 73.7 & 57.3 & 75.2 & 72.2 \\ 
+                                & LoRA & 0.83 & 68.9 & 80.7 & 77.4 & 78.1 & 78.8 & 77.8 & 61.3 & 74.8 & 74.7 \\ 
+                                 & $\text{\ours}^{\dagger}$~(Ours)  & 0.43 & 70.0 & 82.6 & 79.7 & 83.2 & 80.6 & 80.6 & 65.4 & 77.6 & \textbf{77.5} \\ 
+                                 & \ours~(Ours)  & 0.84 & 69.7 &	83.4 &	78.6 &	87.2 &	81.0 &	81.9 &	66.2 &	79.2 &	\textbf{78.4} \\ \hline
+\multirow{6}{*}{LLaMA-13B}    & Prefix & 0.03 & 65.3 & 75.4 & 72.1 & 55.2 & 68.6 & 79.5 & 62.9 & 68.0 & 68.4 \\ 
+    & Series & 0.80 & 71.8 & 83 & 79.2 & 88.1 & 82.4 & 82.5 & 67.3 & 81.8 & 79.5 \\ 
+ & Parallel & 2.89 & 72.5 & 84.9 & 79.8 & 92.1 & 84.7 & 84.2 & 71.2 & 82.4 & 81.4 \\ 
+                                & LoRA & 0.67 & 72.1 & 83.5 & 80.5 & 90.5 & 83.7 & 82.8 & 68.3 & 82.4 & 80.5 \\ 
+                                 & $\text{\ours}^{\dagger}$~(Ours) & 0.35 & 72.5 & 85.3 & 79.9 & 90.1 & 82.9 & 82.7 & 69.7 & 83.6 & \textbf{80.8}\\ 
+                                 & \ours~(Ours)& 0.68 & 72.4 & 84.9 & 81.5 & 92.4 & 84.2 & 84.2 & 69.6 & 82.8 & \textbf{81.5} \\ \hline
+\multirow{3}{*}{LLaMA2-7B}    & LoRA & 0.83 & 69.8&	79.9&	79.5&	83.6&	82.6&	79.8&	64.7&	81.0&	77.6 \\ 
+& $\text{\ours}^{\dagger}$~(Ours) & 0.43 & 72.0	&83.1	&79.9&	89.1&	83.0	&84.5&	71.0	&81.2&	\textbf{80.5}\\ 
+    & DoRA~(Ours) & 0.84 & 71.8 &	83.7&	76.0&	89.1&	82.6&	83.7&	68.2&	82.4&	\textbf{79.7} \\ \hline
+\multirow{3}{*}{LLaMA3-8B}    & LoRA & 0.70 &70.8&	85.2&	79.9&	91.7&	84.3&	84.2&	71.2&	79.0&	80.8 \\ 
+& $\text{\ours}^{\dagger}$~(Ours) & 0.35 & 74.5 &	88.8&	80.3&	95.5&	84.7&	90.1&	79.1&	87.2&	\textbf{85.0}\\ 
+    & DoRA~(Ours) & 0.71 & 74.6&	89.3&	79.9&	95.5&	85.6&	90.5&	80.4&	85.8&	\textbf{85.2} \\ \hline
+\end{tabular}}
+\label{tab:llama_commonsense}
+\vskip -0.1in
+\end{table*}
+
+

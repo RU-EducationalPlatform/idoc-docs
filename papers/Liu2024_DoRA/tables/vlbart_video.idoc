@@ -1,0 +1,15 @@
+The multi-task evaluation results on TVQA, How2QA, TVC, and YC2C with the VL-BART backbone.
+
+\vskip 0.1in
+
+\resizebox{0.48\textwidth}{!}{
+
+@table(border)
+| @b{Method} | # @b{Params (%)} | @b{TVQA} | @b{How2QA} | @b{TVC} | @b{YC2C} | @b{Avg.} |
+| FT | 100 | 76.3 | 73.9 | 45.7 | 154 | 87.5 |
+| LoRA | 5.17 | 75.5 | 72.9 | 44.6 | 140.9 | 83.5 |
+| \ours (Ours) | 5.19 | 76.3 | 74.1 | 45.8 | 145.4 | @b{85.4} |
+@endtable
+}
+\label{tab:vlbart_video}
+\vskip -0.1in

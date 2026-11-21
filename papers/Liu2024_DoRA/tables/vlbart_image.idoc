@@ -1,0 +1,15 @@
+The multi-task evaluation results on VQA, GQA, @eqi(text{NVLR}^2) and COCO Caption with the VL-BART backbone.
+
+\vskip 0.1in
+
+\resizebox{0.48\textwidth}{!}{
+
+@table(border)
+| @b{Method} | # @b{Params (%)} | @b{@eqi(text{VQA}^{text{v2}})} | @b{GQA} | @eqi(\textbf{NVLR}^2) | @b{COCO Cap} | @b{Avg.} |
+| FT | 100 | 66.9 | 56.7 | 73.7 | 112.0 | 77.3 |
+| LoRA | 5.93 | 65.2 | 53.6 | 71.9 | 115.3 | 76.5 |
+| \ours (Ours) | 5.96 | 65.8 | 54.7 | 73.1 | 115.9 | @b{77.4} |
+@endtable
+}
+\label{tab:vlbart_image}
+\vskip -0.1in

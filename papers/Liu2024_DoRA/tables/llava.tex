@@ -1,0 +1,21 @@
+\begin{table}[h]
+\centering
+\caption{Visual instruction tuning evaluation results for LLaVA-1.5-7B on a wide range of seven vision-language tasks. We directly use checkpoints from \cite{liu2023llava} to reproduce their results.}
+% \PM{if space permits, it is nice to add columns with tasks. }}
+% \vspace{0.8em}
+\vskip 0.1in
+% \setlength{\tabcolsep}{1.2mm}
+% \renewcommand\arraystretch{0.8}
+% \resizebox{0.45\textwidth}{!}{
+\small
+\begin{tabular}{ccc}
+\toprule
+\textbf{Method} & \# \textbf{Params}(\%)  & \textbf{Avg.}\\ \midrule
+FT & 100 &  66.5 \\ \hline
+LoRA & 4.61 & 66.9 \\ 
+\ours~(Ours) & 4.63 & \textbf{67.6} \\ 
+\bottomrule
+\end{tabular}
+\label{tab:llava}
+\end{table}
+

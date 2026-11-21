@@ -1,0 +1,40 @@
+\begin{table}[ht]
+\centering
+\caption{Hyperparameter configurations of \ours~and \ourss~for fine-tuning LLaMA-7B and LLaMA2-7B with cleaned Alpaca dataset.}
+% \vspace{0.8em}
+\vskip 0.1in
+\small
+\begin{tabular}{ccc}
+\toprule
+\textbf{Hyperparameters (\ours)} & \multicolumn{1}{c}{LLaMA-7B} & \multicolumn{1}{c}{LLaMA2-7B} \\ \midrule
+Rank r &  \multicolumn{2}{c}{64} \\ 
+Dropout & \multicolumn{2}{c}{0.0} \\ 
+Optimizer & \multicolumn{2}{c}{AdamW}  \\ 
+LR & \multicolumn{2}{c}{4e-4}   \\
+LR Scheduler & \multicolumn{2}{c}{Cosine} \\
+Batch size & \multicolumn{2}{c}{4} \\
+Accumulation Steps & \multicolumn{2}{c}{4} \\
+Warmup ratio & \multicolumn{2}{c}{0.1} \\
+Epochs & \multicolumn{2}{c}{1} \\
+Where & \multicolumn{2}{c}{Q,K,V,O,Up,Down,Gate} \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{ccc}
+\toprule
+\textbf{Hyperparameters (\ourss)} & \multicolumn{1}{c}{LLaMA-7B} & \multicolumn{1}{c}{LLaMA2-7B} \\ \midrule
+Rank r &  \multicolumn{2}{c}{1024} \\ 
+Dropout & \multicolumn{2}{c}{0.0} \\ 
+Optimizer & \multicolumn{2}{c}{AdamW}  \\ 
+LR & \multicolumn{2}{c}{4e-3}   \\
+LR Scheduler & \multicolumn{2}{c}{Cosine} \\
+Batch size & \multicolumn{2}{c}{4} \\
+Accumulation Steps & \multicolumn{2}{c}{4} \\
+Warmup ratio & \multicolumn{2}{c}{0.1} \\
+Epochs & \multicolumn{2}{c}{1} \\
+Where & \multicolumn{2}{c}{Q,K,V,O,Up,Down,Gate} \\
+\bottomrule
+\end{tabular}
+\label{tab:elora_hyperparamters}
+\vskip -0.1in
+\end{table}
+

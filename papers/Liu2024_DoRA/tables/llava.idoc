@@ -1,0 +1,13 @@
+Visual instruction tuning evaluation results for LLaVA-1.5-7B on a wide range of seven vision-language tasks. We directly use checkpoints from \cite{liu2023llava
+ to reproduce their results.}
+
+\vskip 0.1in
+
+@table(border)
+| @b{Method} | # @b{Params}(%) | @b{Avg.} |
+| FT | 100 | 66.5 |
+| LoRA | 4.61 | 66.9 |
+| \ours (Ours) | 4.63 | @b{67.6} |
+@endtable
+
+\label{tab:llava}

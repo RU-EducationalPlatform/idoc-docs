@@ -1,0 +1,24 @@
+\begin{table}[h]
+\caption{GPU cost and accuracy of \ours~with or without the modification on the commonsense reasoning tasks and image-text understanding tasks.}
+\vskip 0.1in
+\centering
+% \renewcommand\arraystretch{0.8}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{ccccccc}
+\toprule
+\textbf{Model} & \textbf{PEFT Method} & \textbf{ Accumulation steps } & \textbf{Batch Size} & \textbf{GPU Memory Cost (GB)} & \textbf{\# Params (\%)}  & \textbf{Avg.} \\ \hline
+\multirow{2}{*}{LLaMA-7B}  & \ours~w/o modification &  \multirow{2}{*}{4} & \multirow{2}{*}{16} &  37.3 & 0.84 & 78.3 \\ 
+& \ours & & & 28.2 {\color{teal}(-24.4\%)} & 0.84 & 78.1  \\  \midrule
+\multirow{2}{*}{VL-BART}  & \ours~w/o modification &  \multirow{2}{*}{-} & \multirow{2}{*}{300} & 23.4 & 5.96 & 77.3 \\ 
+& \ours & & & 20.5 {\color{teal}(-12.4\%)} & 5.96 & 77.4  \\  \midrule
+
+% \multirow{3}{*}{LLaMA-13B}    & LoRA & \multirow{3}{*}{4} & 45.5  \\ 
+% & \ours~w/o modification &  &  65.8  \\ 
+% & \ours &  &  48.7 \\ \midrule
+
+\end{tabular}}
+\label{tab:training_cost}
+\vskip -0.1in
+\end{table}
+
+

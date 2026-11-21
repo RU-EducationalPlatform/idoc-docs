@@ -1,0 +1,25 @@
+\begin{table}[h]
+\centering
+\caption{Hyperparameter configurations of \ours~and LoRA for fine-tuning LLaVA-1.5-7B with visual instruction tuning datasets.}
+% \vspace{0.8em}
+\vskip 0.1in
+\small
+\begin{tabular}{ccc}
+\toprule
+\textbf{Hyperparameters} & \ours & LoRA \\ \midrule
+Rank r & \multicolumn{2}{c}{128} \\ 
+$\alpha$ & \multicolumn{2}{c}{256} \\ 
+Dropout & \multicolumn{2}{c}{0.05} \\ 
+Optimizer & \multicolumn{2}{c}{AdamW}  \\ 
+LR & \multicolumn{2}{c}{2e-4} \\
+LR Scheduler & \multicolumn{2}{c}{Cosine decay} \\
+Batch size & \multicolumn{2}{c}{16} \\
+Warmup ratio & \multicolumn{2}{c}{0.03} \\
+Epochs & \multicolumn{2}{c}{1} \\
+Where & \multicolumn{2}{c}{Q,K,V,O,Up,Down,Gate} \\
+\bottomrule
+\end{tabular}
+\label{tab:llava_hyperparamters}
+\vskip -0.1in
+\end{table}
+

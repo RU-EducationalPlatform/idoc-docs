@@ -1,0 +1,25 @@
+\begin{table}[h]
+\centering
+\caption{Hyperparameter configurations of \ours~for fine-tuning VL-Bart on image/video-text tasks.}
+% \vspace{0.8em}
+\vskip 0.1in
+\small
+\begin{tabular}{ccc}
+\toprule
+\textbf{Hyperparameters (\ours)} & image-text & video-text \\ \midrule
+Rank r & \multicolumn{2}{c}{128}  \\ 
+$\alpha$ & \multicolumn{2}{c}{128}  \\ 
+Dropout & \multicolumn{2}{c}{0.0} \\ 
+Optimizer & \multicolumn{2}{c}{AdamW}  \\ 
+LR & 1e-3 & 3e-4  \\
+LR Scheduler & \multicolumn{2}{c}{Linear} \\
+Batch size & 300 & 40 \\
+Warmup ratio & \multicolumn{2}{c}{0.1} \\
+Epochs & 20 & 7 \\
+Where & \multicolumn{2}{c}{Q,K} \\
+\bottomrule
+\end{tabular}
+\label{tab:vlbart_hyperparameters}
+\vskip -0.1in
+\end{table}
+

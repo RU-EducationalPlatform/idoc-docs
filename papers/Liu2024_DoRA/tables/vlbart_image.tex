@@ -1,0 +1,20 @@
+\begin{table}[ht]
+\centering
+\caption{The multi-task evaluation results on VQA, GQA, $\text{NVLR}^2$ and COCO Caption with the VL-BART backbone.}
+% \vspace{0.8em}
+\vskip 0.1in
+\setlength{\tabcolsep}{1.2mm}
+% \renewcommand\arraystretch{0.8}
+\resizebox{0.48\textwidth}{!}{
+\begin{tabular}{ccccccc}
+\toprule
+\textbf{Method} & \# \textbf{Params (\%)} & \textbf{$\text{VQA}^{\text{v2}}$} & \textbf{GQA}& $\textbf{NVLR}^2$& \textbf{COCO Cap} & \textbf{Avg.}\\ \midrule
+FT & 100 & 66.9 & 56.7 & 73.7 & 112.0 & 77.3 \\ \hline
+% Adapter & 4.18 & 65.8 & 54.2 & 73.2 & 114.6 & 76.9 \\
+LoRA & 5.93 & 65.2 & 53.6 & 71.9 & 115.3 & 76.5 \\ 
+\ours~(Ours) & 5.96 & 65.8 & 54.7 & 73.1 & 115.9 & \textbf{77.4} \\ 
+\bottomrule
+\end{tabular}}
+\label{tab:vlbart_image}
+\vskip -0.1in
+\end{table}

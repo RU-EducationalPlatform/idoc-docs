@@ -1,0 +1,241 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{qin2023chatgpt,alpaca}
+\citation{li2022blip,liu2023llava}
+\citation{houlsby2019series}
+\citation{hu2022lora}
+\citation{hu2022lora,kopiczko2023vera}
+\citation{salimans2016weight}
+\newlabel{fig:MADoRA}{{1}{1}{An overview of our proposed \ours , which decomposes the pre-trained weight into \textit {magnitude} and \textit {direction} components for fine-tuning, especially with LoRA to efficiently update the direction component. Note that $||\cdot ||_{c}$ denotes the vector-wise norm of a matrix across each column vector}{figure.1}{}}
+\newlabel{fig:MADoRA@cref}{{[figure][1][]1}{[1][1][]1}}
+\citation{houlsby2019series,he2022parallel,mahabadi2021parameterefficient,mahabadi2021compacter}
+\citation{houlsby2019series}
+\citation{he2022parallel}
+\citation{lester2021power,razdaibiedina2023residual,wang2023nonintrusive}
+\citation{hu2022lora}
+\citation{zhang2023adalora}
+\citation{hyeonwoo2023fedpara}
+\citation{qiu2023controlling,liu2023butterfly}
+\citation{renduchintala2023tied}
+\citation{yeh2023navigating}
+\citation{ponti2022combining}
+\citation{kopiczko2023vera}
+\citation{hu2022lora}
+\citation{he2015delving}
+\citation{kopiczko2023vera}
+\newlabel{eq:lora}{{1}{2}{}{equation.3.1}{}}
+\newlabel{eq:lora@cref}{{[equation][1][]1}{[1][2][]2}}
+\citation{hu2022lora}
+\citation{hu2022lora,kopiczko2023vera}
+\citation{salimans2016weight}
+\citation{sung2022vladapter}
+\citation{sung2022vladapter}
+\citation{salimans2016weight}
+\newlabel{eq:weight_decomposition}{{2}{3}{}{equation.3.2}{}}
+\newlabel{eq:weight_decomposition@cref}{{[equation][2][]2}{[1][3][]3}}
+\newlabel{eq:weight_decomposition_difference}{{3}{3}{}{equation.3.3}{}}
+\newlabel{eq:weight_decomposition_difference@cref}{{[equation][3][]3}{[1][3][]3}}
+\newlabel{eq:weight_decomposition_difference2}{{4}{3}{}{equation.3.4}{}}
+\newlabel{eq:weight_decomposition_difference2@cref}{{[equation][4][]4}{[1][3][]3}}
+\newlabel{sec:MADoRA_method}{{4.1}{3}{}{subsection.4.1}{}}
+\newlabel{sec:MADoRA_method@cref}{{[subsection][1][4]4.1}{[1][3][]3}}
+\citation{salimans2016weight}
+\newlabel{fig:q_proj_analysis}{{2}{4}{Magnitude and direction updates of (a) FT, (b) LoRA, and (c) \ours ~of the query matrices across different layers and intermediate steps. Different markers represent matrices of different training steps and different colors represent the matrices of each layer}{figure.2}{}}
+\newlabel{fig:q_proj_analysis@cref}{{[figure][2][]2}{[1][3][]4}}
+\newlabel{eq:MADoRA}{{5}{4}{}{equation.4.5}{}}
+\newlabel{eq:MADoRA@cref}{{[equation][5][]5}{[1][4][]4}}
+\newlabel{sec:gradient}{{4.2}{4}{}{subsection.4.2}{}}
+\newlabel{sec:gradient@cref}{{[subsection][2][4]4.2}{[1][4][]4}}
+\newlabel{eq:MADoRA_v_gradient}{{6}{4}{}{equation.4.6}{}}
+\newlabel{eq:MADoRA_v_gradient@cref}{{[equation][6][]6}{[1][4][]4}}
+\newlabel{eq:MADoRA_m_gradient}{{7}{4}{}{equation.4.7}{}}
+\newlabel{eq:MADoRA_m_gradient@cref}{{[equation][7][]7}{[1][4][]4}}
+\citation{kopiczko2023vera}
+\citation{hu2023llmadapters}
+\citation{hu2023llmadapters}
+\citation{hu2023llmadapters}
+\citation{hu2023llmadapters}
+\citation{li2021prefixtuning}
+\citation{houlsby2019series}
+\citation{he2022parallel}
+\citation{touvron2023llama}
+\citation{chatgptdoc,wei2023chainofthought}
+\citation{hu2023llmadapters}
+\newlabel{sec:llama_commonsense}{{5.1}{5}{}{subsection.5.1}{}}
+\newlabel{sec:llama_commonsense@cref}{{[subsection][1][5]5.1}{[1][5][]5}}
+\newlabel{tab:llama_commonsense}{{1}{6}{Accuracy comparison of LLaMA 7B/13B, LLaMA2 7B, and LLaMA3 8B with various PEFT methods on eight commonsense reasoning datasets. Results of all the baseline methods on LLaMA 7B/13B are taken from \cite {hu2023llmadapters}. Results of LoRA on LLaMA2 7B and LLaMA3 8B are obtained using the hyperparameters described in \cite {hu2023llmadapters}. $\text {\ours }^{\dagger }$: the adjusted version of \ours ~with the rank halved}{table.1}{}}
+\newlabel{tab:llama_commonsense@cref}{{[table][1][]1}{[1][5][]6}}
+\newlabel{fig:q_proj_delta_m_d}{{3}{6}{Magnitude (a) and direction (b) difference of LoRA/DoRA and the pre-trained weight of the query matrices across different layers}{figure.3}{}}
+\newlabel{fig:q_proj_delta_m_d@cref}{{[figure][3][]3}{[1][6][]6}}
+\citation{radford2021clip}
+\citation{lewis2019bart}
+\citation{goyal2017vaqv2}
+\citation{hudson2019gqa}
+\citation{suhr2019nlvr2}
+\citation{chen2015mscoco}
+\citation{li2021value}
+\citation{lei2019tvqa}
+\citation{li2020hero}
+\citation{lei2020tvr}
+\citation{zhou2017automatic}
+\citation{sung2022vladapter}
+\citation{sung2022vladapter}
+\citation{sung2022vladapter}
+\citation{liu2023llava}
+\citation{liu2023llava}
+\citation{liu2023llava}
+\citation{peng2023vicuna}
+\citation{radford2021clip}
+\citation{goyal2017vaqv2,hudson2019gqa,marino2019okvqa,schwenk2022aokvqa}
+\citation{mishra2019ocrvqa,sidorov2020textcaps}
+\citation{kazemzadeh-etal-2014-referitgame,krishna2016visual,mao2016generation}
+\citation{liu2023llava}
+\citation{liu2023llava}
+\citation{liu2023llava}
+\citation{goyal2017vaqv2}
+\citation{hudson2019gqa}
+\citation{gurari2018vizwiz}
+\citation{lu2022learn}
+\citation{singh2019vqa}
+\citation{li2023evaluating}
+\citation{liu2023mmbench}
+\citation{kopiczko2023vera}
+\citation{alpaca}
+\citation{zheng2023judging}
+\newlabel{tab:vlbart_image}{{2}{7}{The multi-task evaluation results on VQA, GQA, $\text {NVLR}^2$ and COCO Caption with the VL-BART backbone}{table.2}{}}
+\newlabel{tab:vlbart_image@cref}{{[table][2][]2}{[1][7][]7}}
+\newlabel{tab:vlbart_video}{{3}{7}{The multi-task evaluation results on TVQA, How2QA, TVC, and YC2C with the VL-BART backbone}{table.3}{}}
+\newlabel{tab:vlbart_video@cref}{{[table][3][]3}{[1][7][]7}}
+\newlabel{tab:llava}{{4}{7}{Visual instruction tuning evaluation results for LLaVA-1.5-7B on a wide range of seven vision-language tasks. We directly use checkpoints from \cite {liu2023llava} to reproduce their results}{table.4}{}}
+\newlabel{tab:llava@cref}{{[table][4][]4}{[1][7][]7}}
+\newlabel{sec:elora}{{5.4}{7}{}{subsection.5.4}{}}
+\newlabel{sec:elora@cref}{{[subsection][4][5]5.4}{[1][7][]7}}
+\citation{kopiczko2023vera}
+\newlabel{tab:elora}{{5}{8}{Average scores on MT-Bench assigned by GPT-4 to the answers generated by fine-tuned LLaMA-7B/LLaMA2-7B}{table.5}{}}
+\newlabel{tab:elora@cref}{{[table][5][]5}{[1][7][]8}}
+\newlabel{fig:num_datas}{{4}{8}{Performance of fine-tuned LLaMA2-7B on MT-Bench using different numbers of Alpaca training samples}{figure.4}{}}
+\newlabel{fig:num_datas@cref}{{[figure][4][]4}{[1][8][]8}}
+\newlabel{fig:dif_rank}{{5}{8}{Average accuracy of LoRA and \ours ~for varying ranks for LLaMA-7B on the commonsense reasoning tasks}{figure.5}{}}
+\newlabel{fig:dif_rank@cref}{{[figure][5][]5}{[1][8][]8}}
+\citation{hu2023llmadapters}
+\citation{mitra2024orcamath}
+\citation{mitra2024orcamath}
+\citation{NEURIPS2023_qlora}
+\citation{QDoRA}
+\citation{zhao2023pytorch}
+\citation{mitra2024orcamath}
+\citation{ruiz2023dreambooth}
+\citation{podell2023sdxl}
+\newlabel{tab:llama_commonsense_tunning_granularity}{{6}{9}{Accuracy comparison of LLaMA 7B/13B with two different tuning granularity of \ours . Columns \textbf {m} and \textbf {V} designate the modules with tunable magnitude and directional components, respectively. Each module is represented by its first letter as follows: (Q)uery, (K)ey, (V)alue, (O)utput, (G)ate, (U)p, (D)own}{table.6}{}}
+\newlabel{tab:llama_commonsense_tunning_granularity@cref}{{[table][6][]6}{[1][9][]9}}
+\newlabel{fig:qdora}{{6}{9}{Accuracy comparison of LLaMA2-7B/LLaMA3-8B with QDoRA, QLoRA and FT on Orca-Math~\cite {mitra2024orcamath}}{figure.6}{}}
+\newlabel{fig:qdora@cref}{{[figure][6][]6}{[1][9][]9}}
+\bibdata{example_paper}
+\bibcite{chen2015mscoco}{{1}{2015}{{Chen et~al.}}{{Chen, Fang, Lin, Vedantam, Gupta, Doll{\'a}r, and Zitnick}}}
+\bibcite{NEURIPS2023_qlora}{{2}{2023}{{Dettmers et~al.}}{{Dettmers, Pagnoni, Holtzman, and Zettlemoyer}}}
+\bibcite{goyal2017vaqv2}{{3}{2017}{{Goyal et~al.}}{{Goyal, Khot, Summers-Stay, Batra, and Parikh}}}
+\bibcite{gurari2018vizwiz}{{4}{2018}{{Gurari et~al.}}{{Gurari, Li, Stangl, Guo, Lin, Grauman, Luo, and Bigham}}}
+\bibcite{he2022parallel}{{5}{2021}{{He et~al.}}{{He, Zhou, Ma, Berg-Kirkpatrick, and Neubig}}}
+\bibcite{he2015delving}{{6}{2015}{{He et~al.}}{{He, Zhang, Ren, and Sun}}}
+\bibcite{houlsby2019series}{{7}{2019}{{Houlsby et~al.}}{{Houlsby, Giurgiu, Jastrzebski, Morrone, De~Laroussilhe, Gesmundo, Attariyan, and Gelly}}}
+\bibcite{hu2022lora}{{8}{2022}{{Hu et~al.}}{{Hu, yelong shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}}}
+\bibcite{hu2023llmadapters}{{9}{2023}{{Hu et~al.}}{{Hu, Wang, Lan, Xu, Lim, Bing, Xu, Poria, and Lee}}}
+\bibcite{hudson2019gqa}{{10}{2019}{{Hudson \& Manning}}{{Hudson and Manning}}}
+\bibcite{hyeonwoo2023fedpara}{{11}{2022}{{Hyeon-Woo et~al.}}{{Hyeon-Woo, Ye-Bin, and Oh}}}
+\bibcite{mahabadi2021parameterefficient}{{12}{2021}{{Karimi~Mahabadi et~al.}}{{Karimi~Mahabadi, Ruder, Dehghani, and Henderson}}}
+\bibcite{kazemzadeh-etal-2014-referitgame}{{13}{2014}{{Kazemzadeh et~al.}}{{Kazemzadeh, Ordonez, Matten, and Berg}}}
+\bibcite{QDoRA}{{14}{2024}{{Kerem~Turgutlu}}{{}}}
+\bibcite{kopiczko2023vera}{{15}{2024}{{Kopiczko et~al.}}{{Kopiczko, Blankevoort, and Asano}}}
+\bibcite{krishna2016visual}{{16}{2017}{{Krishna et~al.}}{{Krishna, Zhu, Groth, Johnson, Hata, Kravitz, Chen, Kalantidis, Li, Shamma, et~al.}}}
+\bibcite{lei2019tvqa}{{17}{2018}{{Lei et~al.}}{{Lei, Yu, Bansal, and Berg}}}
+\bibcite{lei2020tvr}{{18}{2020}{{Lei et~al.}}{{Lei, Yu, Berg, and Bansal}}}
+\bibcite{lester2021power}{{19}{2021}{{Lester et~al.}}{{Lester, Al-Rfou, and Constant}}}
+\bibcite{lewis2019bart}{{20}{2020}{{Lewis et~al.}}{{Lewis, Liu, Goyal, Ghazvininejad, Mohamed, Levy, Stoyanov, and Zettlemoyer}}}
+\bibcite{li2022blip}{{21}{2022}{{Li et~al.}}{{Li, Li, Xiong, and Hoi}}}
+\bibcite{li2020hero}{{22}{2020}{{Li et~al.}}{{Li, Chen, Cheng, Gan, Yu, and Liu}}}
+\bibcite{li2021value}{{23}{2021}{{Li et~al.}}{{Li, Lei, Gan, Yu, Chen, Pillai, Cheng, Zhou, Wang, Wang, et~al.}}}
+\bibcite{li2021prefixtuning}{{24}{2021}{{Li \& Liang}}{{Li and Liang}}}
+\bibcite{li2023evaluating}{{25}{2023}{{Li et~al.}}{{Li, Du, Zhou, Wang, Zhao, and Wen}}}
+\bibcite{liu2023llava}{{26}{2023{a}}{{Liu et~al.}}{{Liu, Li, Wu, and Lee}}}
+\bibcite{liu2023butterfly}{{27}{2023{b}}{{Liu et~al.}}{{Liu, Qiu, Feng, Xiu, Xue, Yu, Feng, Liu, Heo, Peng, et~al.}}}
+\bibcite{liu2023mmbench}{{28}{2023{c}}{{Liu et~al.}}{{Liu, Duan, Zhang, Li, Zhang, Zhao, Yuan, Wang, He, Liu, et~al.}}}
+\bibcite{lu2022learn}{{29}{2022}{{Lu et~al.}}{{Lu, Mishra, Xia, Qiu, Chang, Zhu, Tafjord, Clark, and Kalyan}}}
+\bibcite{mahabadi2021compacter}{{30}{2021}{{mahabadi et~al.}}{{mahabadi, Henderson, and Ruder}}}
+\bibcite{mao2016generation}{{31}{2016}{{Mao et~al.}}{{Mao, Huang, Toshev, Camburu, Yuille, and Murphy}}}
+\bibcite{marino2019okvqa}{{32}{2019}{{Marino et~al.}}{{Marino, Rastegari, Farhadi, and Mottaghi}}}
+\bibcite{mishra2019ocrvqa}{{33}{2019}{{Mishra et~al.}}{{Mishra, Shekhar, Singh, and Chakraborty}}}
+\bibcite{mitra2024orcamath}{{34}{2024}{{Mitra et~al.}}{{Mitra, Khanpour, Rosset, and Awadallah}}}
+\bibcite{chatgptdoc}{{35}{2023}{{OpenAI}}{{}}}
+\bibcite{peng2023vicuna}{{36}{2023}{{Peng et~al.}}{{Peng, Li, He, Galley, and Gao}}}
+\bibcite{podell2023sdxl}{{37}{2023}{{Podell et~al.}}{{Podell, English, Lacey, Blattmann, Dockhorn, M{\"u}ller, Penna, and Rombach}}}
+\bibcite{ponti2022combining}{{38}{2022}{{Ponti et~al.}}{{Ponti, Sordoni, Bengio, and Reddy}}}
+\bibcite{qin2023chatgpt}{{39}{2023}{{Qin et~al.}}{{Qin, Zhang, Zhang, Chen, Yasunaga, and Yang}}}
+\bibcite{qiu2023controlling}{{40}{2023}{{Qiu et~al.}}{{Qiu, Liu, Feng, Xue, Feng, Liu, Zhang, Weller, and Sch{\"o}lkopf}}}
+\bibcite{radford2021clip}{{41}{2021}{{Radford et~al.}}{{Radford, Kim, Hallacy, Ramesh, Goh, Agarwal, Sastry, Askell, Mishkin, Clark, et~al.}}}
+\bibcite{razdaibiedina2023residual}{{42}{2023}{{Razdaibiedina et~al.}}{{Razdaibiedina, Mao, Khabsa, Lewis, Hou, Ba, and Almahairi}}}
+\bibcite{renduchintala2023tied}{{43}{2023}{{Renduchintala et~al.}}{{Renduchintala, Konuk, and Kuchaiev}}}
+\bibcite{ruiz2023dreambooth}{{44}{2023}{{Ruiz et~al.}}{{Ruiz, Li, Jampani, Pritch, Rubinstein, and Aberman}}}
+\bibcite{salimans2016weight}{{45}{2016}{{Salimans \& Kingma}}{{Salimans and Kingma}}}
+\bibcite{schwenk2022aokvqa}{{46}{2022}{{Schwenk et~al.}}{{Schwenk, Khandelwal, Clark, Marino, and Mottaghi}}}
+\bibcite{sidorov2020textcaps}{{47}{2020}{{Sidorov et~al.}}{{Sidorov, Hu, Rohrbach, and Singh}}}
+\bibcite{singh2019vqa}{{48}{2019}{{Singh et~al.}}{{Singh, Natarajan, Shah, Jiang, Chen, Batra, Parikh, and Rohrbach}}}
+\bibcite{suhr2019nlvr2}{{49}{2019}{{Suhr et~al.}}{{Suhr, Zhou, Zhang, Zhang, Bai, and Artzi}}}
+\bibcite{sung2022vladapter}{{50}{2022}{{Sung et~al.}}{{Sung, Cho, and Bansal}}}
+\bibcite{alpaca}{{51}{2023}{{Taori et~al.}}{{Taori, Gulrajani, Zhang, Dubois, Li, Guestrin, Liang, and Hashimoto}}}
+\bibcite{touvron2023llama}{{52}{2023}{{Touvron et~al.}}{{Touvron, Lavril, Izacard, Martinet, Lachaux, Lacroix, Rozi{\`e}re, Goyal, Hambro, Azhar, et~al.}}}
+\bibcite{wang2023nonintrusive}{{53}{2023}{{Wang et~al.}}{{Wang, Wu, Dabral, Zhang, Brown, Lu, Liu, Liang, Pang, Bendersky, et~al.}}}
+\bibcite{wei2023chainofthought}{{54}{2022}{{Wei et~al.}}{{Wei, Wang, Schuurmans, Bosma, brian ichter, Xia, Chi, Le, and Zhou}}}
+\bibcite{yeh2023navigating}{{55}{2023}{{Yeh et~al.}}{{Yeh, Hsieh, Gao, Yang, Oh, and Gong}}}
+\bibcite{zhang2023adalora}{{56}{2023}{{Zhang et~al.}}{{Zhang, Chen, Bukharin, He, Cheng, Chen, and Zhao}}}
+\bibcite{zhao2023pytorch}{{57}{2023}{{Zhao et~al.}}{{Zhao, Gu, Varma, Luo, Huang, Xu, Wright, Shojanazeri, Ott, Shleifer, et~al.}}}
+\bibcite{zheng2023judging}{{58}{2023}{{Zheng et~al.}}{{Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li, Li, Xing, Zhang, Gonzalez, and Stoica}}}
+\bibcite{zhou2017automatic}{{59}{2018}{{Zhou et~al.}}{{Zhou, Xu, and Corso}}}
+\bibstyle{icml2024}
+\newlabel{fig:v_proj_analysis}{{7}{14}{Magnitude and Directional changes of FT (a), LoRA (b), and \ours ~(c) of the V weight matrices across different layers and intermediate steps}{figure.7}{}}
+\newlabel{fig:v_proj_analysis@cref}{{[figure][7][2147483647]7}{[1][14][]14}}
+\newlabel{tab:training_cost}{{7}{14}{GPU cost and accuracy of \ours ~with or without the modification on the commonsense reasoning tasks and image-text understanding tasks}{table.7}{}}
+\newlabel{tab:training_cost@cref}{{[table][7][2147483647]7}{[1][14][]14}}
+\newlabel{tab:llama_commonsense_hyperparameters}{{8}{15}{Hyperparameter configurations of \ours ~for LLaMA-7B/13B, LLaMA2-7B, and LLaMA3-8B on the commonsense reasoning tasks}{table.8}{}}
+\newlabel{tab:llama_commonsense_hyperparameters@cref}{{[table][8][2147483647]8}{[1][15][]15}}
+\newlabel{tab:vlbart_hyperparameters}{{9}{15}{Hyperparameter configurations of \ours ~for fine-tuning VL-Bart on image/video-text tasks}{table.9}{}}
+\newlabel{tab:vlbart_hyperparameters@cref}{{[table][9][2147483647]9}{[1][15][]15}}
+\newlabel{tab:llava_hyperparamters}{{10}{15}{Hyperparameter configurations of \ours ~and LoRA for fine-tuning LLaVA-1.5-7B with visual instruction tuning datasets}{table.10}{}}
+\newlabel{tab:llava_hyperparamters@cref}{{[table][10][2147483647]10}{[1][15][]15}}
+\newlabel{tab:elora_hyperparamters}{{11}{16}{Hyperparameter configurations of \ours ~and \ourss ~for fine-tuning LLaMA-7B and LLaMA2-7B with cleaned Alpaca dataset}{table.11}{}}
+\newlabel{tab:elora_hyperparamters@cref}{{[table][11][2147483647]11}{[1][15][]16}}
+\newlabel{fig:all_delta_d_m}{{8}{17}{Magnitude and direction differences in the weights of the query, key, and value matrices between LoRA/DoRA fine-tuned models and the pre-trained model across various layers of LLaMA2-7B for the commonsense reasoning tasks}{figure.8}{}}
+\newlabel{fig:all_delta_d_m@cref}{{[figure][8][2147483647]8}{[1][17][]17}}
+\newlabel{tab:llava_appendix}{{12}{18}{Visual instruction tuning evaluation result of \ours , LoRA, and FT for LLaVA-1.5-7B on a wide range of 7 vision-language tasks}{table.12}{}}
+\newlabel{tab:llava_appendix@cref}{{[table][12][2147483647]12}{[1][18][]18}}
+\newlabel{tab:elora_example1}{{13}{19}{Question 24 from MT-Bench alongside with response from LLaMA2-7B fine-tuned with \ourss ~and VeRA, and the evaluation provided by GPT-4}{table.13}{}}
+\newlabel{tab:elora_example1@cref}{{[table][13][2147483647]13}{[1][19][]19}}
+\newlabel{tab:elora_example2}{{14}{20}{Question 33 from MT-Bench alongside with response from LLaMA2-7B fine-tuned with \ourss ~and VeRA, and the evaluation provided by GPT-4}{table.14}{}}
+\newlabel{tab:elora_example2@cref}{{[table][14][2147483647]14}{[1][19][]20}}
+\citation{alpaca}
+\citation{alpaca}
+\newlabel{fig:num_datas_llama7b}{{9}{21}{Performance of LLaMA-7B fine-tuned with LoRA, \ours , VeRA, and \ourss ~on MT-Bench using different numbers of training samples from Alpaca dataset~\cite {alpaca}}{figure.9}{}}
+\newlabel{fig:num_datas_llama7b@cref}{{[figure][9][2147483647]9}{[1][21][]21}}
+\newlabel{tab:diff_rank}{{15}{22}{Accuracy comparison of LoRA and \ours ~with varying ranks for LLaMA-7B on the commonsense reasoning tasks}{table.15}{}}
+\newlabel{tab:diff_rank@cref}{{[table][15][2147483647]15}{[1][22][]22}}
+\citation{ruiz2023dreambooth}
+\newlabel{fig:sdxl_3d}{{10}{23}{Images generated with SDXL finetuned with LoRA and DoRA on the 3D Icon training sets}{figure.10}{}}
+\newlabel{fig:sdxl_3d@cref}{{[figure][10][2147483647]10}{[1][23][]23}}
+\newlabel{fig:sdxl_lego}{{11}{23}{Images generated with SDXL finetuned with LoRA and DoRA on the Lego training sets}{figure.11}{}}
+\newlabel{fig:sdxl_lego@cref}{{[figure][11][2147483647]11}{[1][23][]23}}
+\gdef \@abspage@last{23}

@@ -1,0 +1,19 @@
+Hyperparameter configurations of \ours and LoRA for fine-tuning LLaVA-1.5-7B with visual instruction tuning datasets.
+
+\vskip 0.1in
+@table(border)
+| @b{Hyperparameters} | \ours | LoRA |
+| Rank r | >2 128 |
+| @eqi(alpha) | >2 256 |
+| Dropout | >2 0.05 |
+| Optimizer | >2 AdamW |
+| LR | >2 2e-4 |
+| LR Scheduler | >2 Cosine decay |
+| Batch size | >2 16 |
+| Warmup ratio | >2 0.03 |
+| Epochs | >2 1 |
+| Where | >2 Q,K,V,O,Up,Down,Gate |
+@endtable
+
+\label{tab:llava_hyperparamters}
+\vskip -0.1in

@@ -1,0 +1,33 @@
+Hyperparameter configurations of \ours and \ourss for fine-tuning LLaMA-7B and LLaMA2-7B with cleaned Alpaca dataset.
+
+\vskip 0.1in
+@table(border)
+| @b{Hyperparameters (\ours)} | >1 LLaMA-7B | >1 LLaMA2-7B |
+| Rank r | >2 64 |
+| Dropout | >2 0.0 |
+| Optimizer | >2 AdamW |
+| LR | >2 4e-4 |
+| LR Scheduler | >2 Cosine |
+| Batch size | >2 4 |
+| Accumulation Steps | >2 4 |
+| Warmup ratio | >2 0.1 |
+| Epochs | >2 1 |
+| Where | >2 Q,K,V,O,Up,Down,Gate |
+@endtable
+
+@table(border)
+| @b{Hyperparameters (\ourss)} | >1 LLaMA-7B | >1 LLaMA2-7B |
+| Rank r | >2 1024 |
+| Dropout | >2 0.0 |
+| Optimizer | >2 AdamW |
+| LR | >2 4e-3 |
+| LR Scheduler | >2 Cosine |
+| Batch size | >2 4 |
+| Accumulation Steps | >2 4 |
+| Warmup ratio | >2 0.1 |
+| Epochs | >2 1 |
+| Where | >2 Q,K,V,O,Up,Down,Gate |
+@endtable
+
+\label{tab:elora_hyperparamters}
+\vskip -0.1in

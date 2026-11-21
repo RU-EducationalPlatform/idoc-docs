@@ -1,0 +1,19 @@
+Hyperparameter configurations of \ours for LLaMA-7B/13B, LLaMA2-7B, and LLaMA3-8B on the commonsense reasoning tasks.
+
+\vskip 0.1in
+@table(border)
+| @b{Hyperparameters (\ours)} | >2 LLaMA-7B | >2 LLaMA-13B | >2 LLaMA2-7B | >2 LLaMA3-8B |
+| Rank r | 16 | 32 | 16 | 32 | 16 | 32 | 16 | 32 |
+| @eqi(alpha) | 32 | 64 | 32 | 64 | 32 | 64 | 32 | 64 |
+| Dropout | >8 0.05 |
+| Optimizer | >8 AdamW |
+| LR | 2e-4 | 1e-4 | 3e-4 | 2e-4 | 2e-4 | 2e-4 | 1e-4 | 1e-4 |
+| LR Scheduler | >8 Linear |
+| Batch size | >8 16 |
+| Warmup Steps | >8 100 |
+| Epochs | >8 3 |
+| Where | >8 Q,K,V,Up,Down |
+@endtable
+
+\label{tab:llama_commonsense_hyperparameters}
+\vskip -0.1in

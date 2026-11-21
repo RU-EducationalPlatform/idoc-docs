@@ -1,0 +1,302 @@
+\begin{thebibliography}{59}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Chen et~al.(2015)Chen, Fang, Lin, Vedantam, Gupta, Doll{\'a}r, and Zitnick]{chen2015mscoco}
+Chen, X., Fang, H., Lin, T.-Y., Vedantam, R., Gupta, S., Doll{\'a}r, P., and Zitnick, C.~L.
+\newblock Microsoft coco captions: Data collection and evaluation server.
+\newblock \emph{arXiv preprint arXiv:1504.00325}, 2015.
+
+\bibitem[Dettmers et~al.(2023)Dettmers, Pagnoni, Holtzman, and Zettlemoyer]{NEURIPS2023_qlora}
+Dettmers, T., Pagnoni, A., Holtzman, A., and Zettlemoyer, L.
+\newblock Qlora: Efficient finetuning of quantized llms.
+\newblock In Oh, A., Neumann, T., Globerson, A., Saenko, K., Hardt, M., and Levine, S. (eds.), \emph{Advances in Neural Information Processing Systems}, volume~36, pp.\  10088--10115. Curran Associates, Inc., 2023.
+
+\bibitem[Goyal et~al.(2017)Goyal, Khot, Summers-Stay, Batra, and Parikh]{goyal2017vaqv2}
+Goyal, Y., Khot, T., Summers-Stay, D., Batra, D., and Parikh, D.
+\newblock Making the v in vqa matter: Elevating the role of image understanding in visual question answering.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and pattern recognition}, pp.\  6904--6913, 2017.
+
+\bibitem[Gurari et~al.(2018)Gurari, Li, Stangl, Guo, Lin, Grauman, Luo, and Bigham]{gurari2018vizwiz}
+Gurari, D., Li, Q., Stangl, A.~J., Guo, A., Lin, C., Grauman, K., Luo, J., and Bigham, J.~P.
+\newblock Vizwiz grand challenge: Answering visual questions from blind people.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and pattern recognition}, pp.\  3608--3617, 2018.
+
+\bibitem[He et~al.(2021)He, Zhou, Ma, Berg-Kirkpatrick, and Neubig]{he2022parallel}
+He, J., Zhou, C., Ma, X., Berg-Kirkpatrick, T., and Neubig, G.
+\newblock Towards a unified view of parameter-efficient transfer learning.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+
+\bibitem[He et~al.(2015)He, Zhang, Ren, and Sun]{he2015delving}
+He, K., Zhang, X., Ren, S., and Sun, J.
+\newblock Delving deep into rectifiers: Surpassing human-level performance on imagenet classification.
+\newblock In \emph{Proceedings of the IEEE International Conference on Computer Vision}, pp.\  1026--1034, 2015.
+
+\bibitem[Houlsby et~al.(2019)Houlsby, Giurgiu, Jastrzebski, Morrone, De~Laroussilhe, Gesmundo, Attariyan, and Gelly]{houlsby2019series}
+Houlsby, N., Giurgiu, A., Jastrzebski, S., Morrone, B., De~Laroussilhe, Q., Gesmundo, A., Attariyan, M., and Gelly, S.
+\newblock Parameter-efficient transfer learning for nlp.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  2790--2799, 2019.
+
+\bibitem[Hu et~al.(2022)Hu, yelong shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen]{hu2022lora}
+Hu, E.~J., yelong shen, Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., and Chen, W.
+\newblock Lo{RA}: Low-rank adaptation of large language models.
+\newblock In \emph{International Conference on Learning Representations}, 2022.
+
+\bibitem[Hu et~al.(2023)Hu, Wang, Lan, Xu, Lim, Bing, Xu, Poria, and Lee]{hu2023llmadapters}
+Hu, Z., Wang, L., Lan, Y., Xu, W., Lim, E.-P., Bing, L., Xu, X., Poria, S., and Lee, R.
+\newblock {LLM}-adapters: An adapter family for parameter-efficient fine-tuning of large language models.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, 2023.
+
+\bibitem[Hudson \& Manning(2019)Hudson and Manning]{hudson2019gqa}
+Hudson, D.~A. and Manning, C.~D.
+\newblock Gqa: A new dataset for real-world visual reasoning and compositional question answering.
+\newblock In \emph{Proceedings of the IEEE/CVF conference on computer vision and pattern recognition}, pp.\  6700--6709, 2019.
+
+\bibitem[Hyeon-Woo et~al.(2022)Hyeon-Woo, Ye-Bin, and Oh]{hyeonwoo2023fedpara}
+Hyeon-Woo, N., Ye-Bin, M., and Oh, T.-H.
+\newblock Fedpara: Low-rank hadamard product for communication-efficient federated learning.
+\newblock In \emph{International Conference on Learning Representations}, 2022.
+
+\bibitem[Karimi~Mahabadi et~al.(2021)Karimi~Mahabadi, Ruder, Dehghani, and Henderson]{mahabadi2021parameterefficient}
+Karimi~Mahabadi, R., Ruder, S., Dehghani, M., and Henderson, J.
+\newblock Parameter-efficient multi-task fine-tuning for transformers via shared hypernetworks.
+\newblock In \emph{Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)}, pp.\  565--576, 2021.
+
+\bibitem[Kazemzadeh et~al.(2014)Kazemzadeh, Ordonez, Matten, and Berg]{kazemzadeh-etal-2014-referitgame}
+Kazemzadeh, S., Ordonez, V., Matten, M., and Berg, T.
+\newblock {R}efer{I}t{G}ame: Referring to objects in photographs of natural scenes.
+\newblock In \emph{Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing ({EMNLP})}, pp.\  787--798, 2014.
+
+\bibitem[Kerem~Turgutlu(2024)]{QDoRA}
+Kerem~Turgutlu, Jonathan~Whitaker, J.~H.
+\newblock Efficient finetuning of llama 3 with fsdp qdora.
+\newblock \url{https://www.answer.ai/posts/2024-04-26-fsdp-qdora-llama3.html}, 2024.
+
+\bibitem[Kopiczko et~al.(2024)Kopiczko, Blankevoort, and Asano]{kopiczko2023vera}
+Kopiczko, D.~J., Blankevoort, T., and Asano, Y.~M.
+\newblock Vera: Vector-based random matrix adaptation.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+
+\bibitem[Krishna et~al.(2017)Krishna, Zhu, Groth, Johnson, Hata, Kravitz, Chen, Kalantidis, Li, Shamma, et~al.]{krishna2016visual}
+Krishna, R., Zhu, Y., Groth, O., Johnson, J., Hata, K., Kravitz, J., Chen, S., Kalantidis, Y., Li, L.-J., Shamma, D.~A., et~al.
+\newblock Visual genome: Connecting language and vision using crowdsourced dense image annotations.
+\newblock \emph{International journal of computer vision}, pp.\  32--73, 2017.
+
+\bibitem[Lei et~al.(2018)Lei, Yu, Bansal, and Berg]{lei2019tvqa}
+Lei, J., Yu, L., Bansal, M., and Berg, T.
+\newblock {TVQA}: Localized, compositional video question answering.
+\newblock In \emph{Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing}, pp.\  1369--1379, 2018.
+
+\bibitem[Lei et~al.(2020)Lei, Yu, Berg, and Bansal]{lei2020tvr}
+Lei, J., Yu, L., Berg, T.~L., and Bansal, M.
+\newblock Tvr: A large-scale dataset for video-subtitle moment retrieval.
+\newblock In \emph{European Conference on Computer Vision}, pp.\  447--463, 2020.
+
+\bibitem[Lester et~al.(2021)Lester, Al-Rfou, and Constant]{lester2021power}
+Lester, B., Al-Rfou, R., and Constant, N.
+\newblock The power of scale for parameter-efficient prompt tuning.
+\newblock In \emph{Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing}, pp.\  3045--3059, 2021.
+
+\bibitem[Lewis et~al.(2020)Lewis, Liu, Goyal, Ghazvininejad, Mohamed, Levy, Stoyanov, and Zettlemoyer]{lewis2019bart}
+Lewis, M., Liu, Y., Goyal, N., Ghazvininejad, M., Mohamed, A., Levy, O., Stoyanov, V., and Zettlemoyer, L.
+\newblock {BART}: Denoising sequence-to-sequence pre-training for natural language generation, translation, and comprehension.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics}, pp.\  7871--7880, 2020.
+
+\bibitem[Li et~al.(2022)Li, Li, Xiong, and Hoi]{li2022blip}
+Li, J., Li, D., Xiong, C., and Hoi, S.
+\newblock Blip: Bootstrapping language-image pre-training for unified vision-language understanding and generation.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  12888--12900, 2022.
+
+\bibitem[Li et~al.(2020)Li, Chen, Cheng, Gan, Yu, and Liu]{li2020hero}
+Li, L., Chen, Y.-C., Cheng, Y., Gan, Z., Yu, L., and Liu, J.
+\newblock {HERO}: Hierarchical encoder for {V}ideo+{L}anguage omni-representation pre-training.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, pp.\  2046--2065, 2020.
+
+\bibitem[Li et~al.(2021)Li, Lei, Gan, Yu, Chen, Pillai, Cheng, Zhou, Wang, Wang, et~al.]{li2021value}
+Li, L., Lei, J., Gan, Z., Yu, L., Chen, Y.-C., Pillai, R., Cheng, Y., Zhou, L., Wang, X.~E., Wang, W.~Y., et~al.
+\newblock Value: A multi-task benchmark for video-and-language understanding evaluation.
+\newblock In \emph{Thirty-fifth Conference on Neural Information Processing Systems Datasets and Benchmarks Track (Round 1)}, 2021.
+
+\bibitem[Li \& Liang(2021)Li and Liang]{li2021prefixtuning}
+Li, X.~L. and Liang, P.
+\newblock Prefix-tuning: Optimizing continuous prompts for generation.
+\newblock In Zong, C., Xia, F., Li, W., and Navigli, R. (eds.), \emph{Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)}, pp.\  4582--4597, 2021.
+
+\bibitem[Li et~al.(2023)Li, Du, Zhou, Wang, Zhao, and Wen]{li2023evaluating}
+Li, Y., Du, Y., Zhou, K., Wang, J., Zhao, X., and Wen, J.-R.
+\newblock Evaluating object hallucination in large vision-language models.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pp.\  292--305, 2023.
+
+\bibitem[Liu et~al.(2023{\natexlab{a}})Liu, Li, Wu, and Lee]{liu2023llava}
+Liu, H., Li, C., Wu, Q., and Lee, Y.~J.
+\newblock Visual instruction tuning.
+\newblock In \emph{Thirty-seventh Conference on Neural Information Processing Systems}, 2023{\natexlab{a}}.
+
+\bibitem[Liu et~al.(2023{\natexlab{b}})Liu, Qiu, Feng, Xiu, Xue, Yu, Feng, Liu, Heo, Peng, et~al.]{liu2023butterfly}
+Liu, W., Qiu, Z., Feng, Y., Xiu, Y., Xue, Y., Yu, L., Feng, H., Liu, Z., Heo, J., Peng, S., et~al.
+\newblock Parameter-efficient orthogonal finetuning via butterfly factorization.
+\newblock \emph{arXiv preprint arXiv:2311.06243}, 2023{\natexlab{b}}.
+
+\bibitem[Liu et~al.(2023{\natexlab{c}})Liu, Duan, Zhang, Li, Zhang, Zhao, Yuan, Wang, He, Liu, et~al.]{liu2023mmbench}
+Liu, Y., Duan, H., Zhang, Y., Li, B., Zhang, S., Zhao, W., Yuan, Y., Wang, J., He, C., Liu, Z., et~al.
+\newblock Mmbench: Is your multi-modal model an all-around player?
+\newblock \emph{arXiv preprint arXiv:2307.06281}, 2023{\natexlab{c}}.
+
+\bibitem[Lu et~al.(2022)Lu, Mishra, Xia, Qiu, Chang, Zhu, Tafjord, Clark, and Kalyan]{lu2022learn}
+Lu, P., Mishra, S., Xia, T., Qiu, L., Chang, K.-W., Zhu, S.-C., Tafjord, O., Clark, P., and Kalyan, A.
+\newblock Learn to explain: Multimodal reasoning via thought chains for science question answering.
+\newblock \emph{Advances in Neural Information Processing Systems}, pp.\  2507--2521, 2022.
+
+\bibitem[mahabadi et~al.(2021)mahabadi, Henderson, and Ruder]{mahabadi2021compacter}
+mahabadi, R.~K., Henderson, J., and Ruder, S.
+\newblock Compacter: Efficient low-rank hypercomplex adapter layers.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2021.
+
+\bibitem[Mao et~al.(2016)Mao, Huang, Toshev, Camburu, Yuille, and Murphy]{mao2016generation}
+Mao, J., Huang, J., Toshev, A., Camburu, O., Yuille, A.~L., and Murphy, K.
+\newblock Generation and comprehension of unambiguous object descriptions.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and pattern recognition}, pp.\  11--20, 2016.
+
+\bibitem[Marino et~al.(2019)Marino, Rastegari, Farhadi, and Mottaghi]{marino2019okvqa}
+Marino, K., Rastegari, M., Farhadi, A., and Mottaghi, R.
+\newblock Ok-vqa: A visual question answering benchmark requiring external knowledge.
+\newblock In \emph{Proceedings of the IEEE/cvf conference on computer vision and pattern recognition}, pp.\  3195--3204, 2019.
+
+\bibitem[Mishra et~al.(2019)Mishra, Shekhar, Singh, and Chakraborty]{mishra2019ocrvqa}
+Mishra, A., Shekhar, S., Singh, A.~K., and Chakraborty, A.
+\newblock Ocr-vqa: Visual question answering by reading text in images.
+\newblock In \emph{2019 International Conference on Document Analysis and Recognition (ICDAR)}, pp.\  947--952, 2019.
+
+\bibitem[Mitra et~al.(2024)Mitra, Khanpour, Rosset, and Awadallah]{mitra2024orcamath}
+Mitra, A., Khanpour, H., Rosset, C., and Awadallah, A.
+\newblock Orca-math: Unlocking the potential of slms in grade school math, 2024.
+
+\bibitem[OpenAI(2023)]{chatgptdoc}
+OpenAI.
+\newblock Welcome to the openai platform, 2023.
+\newblock URL \url{https://platform.openai.com/docs/introduction}.
+
+\bibitem[Peng et~al.(2023)Peng, Li, He, Galley, and Gao]{peng2023vicuna}
+Peng, B., Li, C., He, P., Galley, M., and Gao, J.
+\newblock Instruction tuning with gpt-4.
+\newblock \emph{arXiv preprint arXiv:2304.03277}, 2023.
+
+\bibitem[Podell et~al.(2023)Podell, English, Lacey, Blattmann, Dockhorn, M{\"u}ller, Penna, and Rombach]{podell2023sdxl}
+Podell, D., English, Z., Lacey, K., Blattmann, A., Dockhorn, T., M{\"u}ller, J., Penna, J., and Rombach, R.
+\newblock Sdxl: Improving latent diffusion models for high-resolution image synthesis.
+\newblock \emph{arXiv preprint arXiv:2307.01952}, 2023.
+
+\bibitem[Ponti et~al.(2022)Ponti, Sordoni, Bengio, and Reddy]{ponti2022combining}
+Ponti, E.~M., Sordoni, A., Bengio, Y., and Reddy, S.
+\newblock Combining modular skills in multitask learning.
+\newblock \emph{arXiv preprint arXiv:2202.13914}, 2022.
+
+\bibitem[Qin et~al.(2023)Qin, Zhang, Zhang, Chen, Yasunaga, and Yang]{qin2023chatgpt}
+Qin, C., Zhang, A., Zhang, Z., Chen, J., Yasunaga, M., and Yang, D.
+\newblock Is chatgpt a general-purpose natural language processing task solver?
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pp.\  1339--1384, 2023.
+
+\bibitem[Qiu et~al.(2023)Qiu, Liu, Feng, Xue, Feng, Liu, Zhang, Weller, and Sch{\"o}lkopf]{qiu2023controlling}
+Qiu, Z., Liu, W., Feng, H., Xue, Y., Feng, Y., Liu, Z., Zhang, D., Weller, A., and Sch{\"o}lkopf, B.
+\newblock Controlling text-to-image diffusion by orthogonal finetuning.
+\newblock In \emph{Thirty-seventh Conference on Neural Information Processing Systems}, 2023.
+
+\bibitem[Radford et~al.(2021)Radford, Kim, Hallacy, Ramesh, Goh, Agarwal, Sastry, Askell, Mishkin, Clark, et~al.]{radford2021clip}
+Radford, A., Kim, J.~W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., Sastry, G., Askell, A., Mishkin, P., Clark, J., et~al.
+\newblock Learning transferable visual models from natural language supervision.
+\newblock In \emph{International conference on machine learning}, pp.\  8748--8763, 2021.
+
+\bibitem[Razdaibiedina et~al.(2023)Razdaibiedina, Mao, Khabsa, Lewis, Hou, Ba, and Almahairi]{razdaibiedina2023residual}
+Razdaibiedina, A., Mao, Y., Khabsa, M., Lewis, M., Hou, R., Ba, J., and Almahairi, A.
+\newblock Residual prompt tuning: improving prompt tuning with residual reparameterization.
+\newblock In \emph{Findings of the Association for Computational Linguistics: ACL 2023}, pp.\  6740--6757, 2023.
+
+\bibitem[Renduchintala et~al.(2023)Renduchintala, Konuk, and Kuchaiev]{renduchintala2023tied}
+Renduchintala, A., Konuk, T., and Kuchaiev, O.
+\newblock Tied-lora: Enhacing parameter efficiency of lora with weight tying.
+\newblock \emph{arXiv preprint arXiv:2311.09578}, 2023.
+
+\bibitem[Ruiz et~al.(2023)Ruiz, Li, Jampani, Pritch, Rubinstein, and Aberman]{ruiz2023dreambooth}
+Ruiz, N., Li, Y., Jampani, V., Pritch, Y., Rubinstein, M., and Aberman, K.
+\newblock Dreambooth: Fine tuning text-to-image diffusion models for subject-driven generation.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  22500--22510, 2023.
+
+\bibitem[Salimans \& Kingma(2016)Salimans and Kingma]{salimans2016weight}
+Salimans, T. and Kingma, D.~P.
+\newblock Weight normalization: a simple reparameterization to accelerate training of deep neural networks.
+\newblock In \emph{Proceedings of the 30th International Conference on Neural Information Processing Systems}, pp.\  901--909, 2016.
+
+\bibitem[Schwenk et~al.(2022)Schwenk, Khandelwal, Clark, Marino, and Mottaghi]{schwenk2022aokvqa}
+Schwenk, D., Khandelwal, A., Clark, C., Marino, K., and Mottaghi, R.
+\newblock A-okvqa: A benchmark for visual question answering using world knowledge.
+\newblock In \emph{European Conference on Computer Vision}, pp.\  146--162, 2022.
+
+\bibitem[Sidorov et~al.(2020)Sidorov, Hu, Rohrbach, and Singh]{sidorov2020textcaps}
+Sidorov, O., Hu, R., Rohrbach, M., and Singh, A.
+\newblock Textcaps: a dataset for image captioning with reading comprehension.
+\newblock In \emph{Computer Vision--ECCV 2020: 16th European Conference, Glasgow, UK, August 23--28, 2020, Proceedings, Part II 16}, pp.\  742--758, 2020.
+
+\bibitem[Singh et~al.(2019)Singh, Natarajan, Shah, Jiang, Chen, Batra, Parikh, and Rohrbach]{singh2019vqa}
+Singh, A., Natarajan, V., Shah, M., Jiang, Y., Chen, X., Batra, D., Parikh, D., and Rohrbach, M.
+\newblock Towards vqa models that can read.
+\newblock In \emph{Proceedings of the IEEE/CVF conference on computer vision and pattern recognition}, pp.\  8317--8326, 2019.
+
+\bibitem[Suhr et~al.(2019)Suhr, Zhou, Zhang, Zhang, Bai, and Artzi]{suhr2019nlvr2}
+Suhr, A., Zhou, S., Zhang, A., Zhang, I., Bai, H., and Artzi, Y.
+\newblock A corpus for reasoning about natural language grounded in photographs.
+\newblock In \emph{Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics}, pp.\  6418--6428, 2019.
+
+\bibitem[Sung et~al.(2022)Sung, Cho, and Bansal]{sung2022vladapter}
+Sung, Y.-L., Cho, J., and Bansal, M.
+\newblock Vl-adapter: Parameter-efficient transfer learning for vision-and-language tasks.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  5227--5237, 2022.
+
+\bibitem[Taori et~al.(2023)Taori, Gulrajani, Zhang, Dubois, Li, Guestrin, Liang, and Hashimoto]{alpaca}
+Taori, R., Gulrajani, I., Zhang, T., Dubois, Y., Li, X., Guestrin, C., Liang, P., and Hashimoto, T.~B.
+\newblock Stanford alpaca: An instruction-following llama model, 2023.
+\newblock URL \url{https://github.com/tatsu-lab/stanford_alpaca}.
+
+\bibitem[Touvron et~al.(2023)Touvron, Lavril, Izacard, Martinet, Lachaux, Lacroix, Rozi{\`e}re, Goyal, Hambro, Azhar, et~al.]{touvron2023llama}
+Touvron, H., Lavril, T., Izacard, G., Martinet, X., Lachaux, M.-A., Lacroix, T., Rozi{\`e}re, B., Goyal, N., Hambro, E., Azhar, F., et~al.
+\newblock Llama: Open and efficient foundation language models.
+\newblock \emph{arXiv preprint arXiv:2302.13971}, 2023.
+
+\bibitem[Wang et~al.(2023)Wang, Wu, Dabral, Zhang, Brown, Lu, Liu, Liang, Pang, Bendersky, et~al.]{wang2023nonintrusive}
+Wang, Y., Wu, J., Dabral, T., Zhang, J., Brown, G., Lu, C.-T., Liu, F., Liang, Y., Pang, B., Bendersky, M., et~al.
+\newblock Non-intrusive adaptation: Input-centric parameter-efficient fine-tuning for versatile multimodal modeling.
+\newblock \emph{arXiv preprint arXiv:2310.12100}, 2023.
+
+\bibitem[Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, brian ichter, Xia, Chi, Le, and Zhou]{wei2023chainofthought}
+Wei, J., Wang, X., Schuurmans, D., Bosma, M., brian ichter, Xia, F., Chi, E.~H., Le, Q.~V., and Zhou, D.
+\newblock Chain of thought prompting elicits reasoning in large language models.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem[Yeh et~al.(2023)Yeh, Hsieh, Gao, Yang, Oh, and Gong]{yeh2023navigating}
+Yeh, S.-Y., Hsieh, Y.-G., Gao, Z., Yang, B.~B., Oh, G., and Gong, Y.
+\newblock Navigating text-to-image customization: From lycoris fine-tuning to model evaluation.
+\newblock \emph{arXiv preprint arXiv:2309.14859}, 2023.
+
+\bibitem[Zhang et~al.(2023)Zhang, Chen, Bukharin, He, Cheng, Chen, and Zhao]{zhang2023adalora}
+Zhang, Q., Chen, M., Bukharin, A., He, P., Cheng, Y., Chen, W., and Zhao, T.
+\newblock Adaptive budget allocation for parameter-efficient fine-tuning.
+\newblock In \emph{The Eleventh International Conference on Learning Representations}, 2023.
+
+\bibitem[Zhao et~al.(2023)Zhao, Gu, Varma, Luo, Huang, Xu, Wright, Shojanazeri, Ott, Shleifer, et~al.]{zhao2023pytorch}
+Zhao, Y., Gu, A., Varma, R., Luo, L., Huang, C.-C., Xu, M., Wright, L., Shojanazeri, H., Ott, M., Shleifer, S., et~al.
+\newblock Pytorch fsdp: experiences on scaling fully sharded data parallel.
+\newblock \emph{arXiv preprint arXiv:2304.11277}, 2023.
+
+\bibitem[Zheng et~al.(2023)Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li, Li, Xing, Zhang, Gonzalez, and Stoica]{zheng2023judging}
+Zheng, L., Chiang, W.-L., Sheng, Y., Zhuang, S., Wu, Z., Zhuang, Y., Lin, Z., Li, Z., Li, D., Xing, E., Zhang, H., Gonzalez, J.~E., and Stoica, I.
+\newblock Judging {LLM}-as-a-judge with {MT}-bench and chatbot arena.
+\newblock In \emph{Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track}, 2023.
+
+\bibitem[Zhou et~al.(2018)Zhou, Xu, and Corso]{zhou2017automatic}
+Zhou, L., Xu, C., and Corso, J.
+\newblock Towards automatic learning of procedures from web instructional videos.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial Intelligence}, 2018.
+
+\end{thebibliography}

@@ -1,0 +1,27 @@
+\begin{table}
+\caption{Accuracy comparison of LLaMA 7B/13B with two different tuning granularity of \ours. Columns \textbf{m} and \textbf{V} designate the modules with tunable magnitude and directional components, respectively. Each module is represented by its first letter as follows: (Q)uery, (K)ey, (V)alue, (O)utput, (G)ate, (U)p, (D)own.}
+% \vspace{0.8em}
+\vskip 0.1in
+\setlength{\tabcolsep}{0.12mm}
+\centering
+\tiny
+% \renewcommand\arraystretch{0.8}
+\resizebox{0.46\textwidth}{!}{
+\begin{tabular}{cccccc}
+\toprule
+\textbf{Model} & \textbf{PEFT Method} & \# \textbf{Params (\%)} & \textbf{m}  & \textbf{V} & \textbf{Avg.} \\ \hline
+\multirow{3}{*}{LLaMA-7B}    & LoRA & 0.83 & - & - & 74.7  \\ 
+&\ours~(Ours) & 0.84 & QKVUD& QKVUD & 78.1  \\ 
+& \ours~(Ours) & 0.39 & QKVOGUD & QKV & 77.5  \\  \midrule
+
+\multirow{3}{*}{LLaMA-13B}    & LoRA & 0.67 & - & - & 80.5 \\
+& \ours~(Ours) & 0.68 & QKVUD & QKVUD & 81.5  \\ 
+& \ours~(Ours) & 0.31 & QKVOGUD & QKV & 81.3  \\ \bottomrule
+\end{tabular}}
+% \vspace{-0.8em}
+% \vspace{-0.5em}
+\label{tab:llama_commonsense_tunning_granularity}
+\vskip -0.1in
+\end{table}
+
+

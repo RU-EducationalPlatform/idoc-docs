@@ -1,0 +1,21 @@
+\begin{table}[h]
+\caption{Ablation study on the modification of \ours~to reduce GPU cost. The experiments are conducted on LLaMA-7B for the commonsense reason tasks and VL-BART for the image-text understanding tasks. We report the average score here.}
+\vskip 0.1in
+% \setlength{\tabcolsep}{1.2mm}
+\centering
+% \renewcommand\arraystretch{0.8}
+\resizebox{0.7\textwidth}{!}{
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Model} & \textbf{PEFT Method} & \# \textbf{Params (\%)} & \textbf{Modification} & \textbf{Avg.} \\ \hline
+\multirow{2}{*}{LLaMA-7B}    & \multirow{2}{*}{\ours}& 0.84 & No &  78.3  \\ 
+&  & 0.84 & Yes & 78.1  \\ \midrule
+\multirow{2}{*}{VL-BART}    & \multirow{2}{*}{\ours} & 5.96  & No & 77.3  \\ 
+&  & 5.96 & Yes & 77.4  \\ 
+\bottomrule
+\end{tabular}}
+\label{tab:madora_with_or_without}
+\vskip -0.1in
+\end{table}
+
+

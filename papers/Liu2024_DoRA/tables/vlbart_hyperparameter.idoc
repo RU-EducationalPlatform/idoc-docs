@@ -1,0 +1,19 @@
+Hyperparameter configurations of \ours for fine-tuning VL-Bart on image/video-text tasks.
+
+\vskip 0.1in
+@table(border)
+| @b{Hyperparameters (\ours)} | image-text | video-text |
+| Rank r | >2 128 |
+| @eqi(alpha) | >2 128 |
+| Dropout | >2 0.0 |
+| Optimizer | >2 AdamW |
+| LR | 1e-3 | 3e-4 |
+| LR Scheduler | >2 Linear |
+| Batch size | 300 | 40 |
+| Warmup ratio | >2 0.1 |
+| Epochs | 20 | 7 |
+| Where | >2 Q,K |
+@endtable
+
+\label{tab:vlbart_hyperparameters}
+\vskip -0.1in
