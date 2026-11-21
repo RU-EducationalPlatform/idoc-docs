@@ -1,0 +1,48 @@
+@title(PDF editing in the document)
+@author(IDoc craft demos, November 2026)
+
+@abstract
+A pdf block with the edit flag marks up and rearranges a PDF inside the document. The pages are drawn by IDoc's own PDF renderer, and the block's lines are the edits: each names a page by its number in the original, and positions are percentages from the top left of the page. Nothing changes in the original file until Export PDF writes a new one. Both PDFs in 05-pdf.assets were generated for this page: a three-page lab handout typeset with Typst, and a one-page fillable data sheet built by a small script in the IDoc repository.
+@end
+
+@section(Marking up a handout)
+
+A teacher's pass over the handout: a highlight on the purpose and its formula, a comment with a reply under it, a note typed onto the page, and the answer key on the last page redacted before the file goes to students.
+
+@pdf(file=05-pdf.assets/lab4-handout.pdf, edit)
+highlight 1 10%,17%,80%,6%
+note 1 at 88%,18% "Students mix up R1 and R2 here every year" id=n1
+note 1 at 92%,18% "Added a labelled diagram to the slides" reply=n1 by="TA"
+text 1 at 60%,4% "DRAFT, do not post" size=12
+rect 2 8%,33%,84%,14%
+redact 3 8%,30%,84%,8%
+export lab4-for-students.pdf
+@end
+
+The card draws the pages with their thumbnails, and its side panel lists the notes with their replies, threaded the way Acrobat threads them. The tools write the same lines as you click and drag. The redaction is real: on export, the page becomes a picture of itself with the box burned in, so the text under it is gone from the file rather than hidden behind a black rectangle.
+
+@section(Rearranging pages)
+
+pages keeps and orders pages, rotate turns one, and insert brings in pages from another PDF. Here the questions come first and the second page is turned to landscape.
+
+@pdf(file=05-pdf.assets/lab4-handout.pdf, edit)
+pages 3,1,2
+rotate 2 90
+@end
+
+@section(Filling a form)
+
+A PDF with form fields lists them in the side panel. Type into one and the card writes a fill line; the value is drawn in the field's own font when the file is exported. protect allow=print encrypts the result with AES-256; the password is asked for at export and never written into the document.
+
+@pdf(file=05-pdf.assets/lab4-datasheet.pdf, edit)
+fill student_name="Ada Lovelace"
+@end
+
+@section(A PDF as a question)
+
+The block is the question, marked on the server from the lines. The brief: put the questions page first, highlight at least two things, leave a note, fill in your name, and export.
+
+@pdf(file=05-pdf.assets/lab4-handout.pdf, edit, id=markup-brief, pts=10, expect="order=3 1 2, highlights>=2, notes>=1, exports=pdf")
+@end
+
+Other terms are pages=, rotated, filled(name), redactions and protected.

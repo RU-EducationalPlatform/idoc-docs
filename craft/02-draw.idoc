@@ -1,0 +1,69 @@
+@title(The drawing studio: paths, gradients, blends, artboards and CAD files)
+@author(IDoc craft demos, November 2026)
+
+@abstract
+The draw block is the vector studio. The text of the block is the drawing, one element per line, and every drag in the card rewrites a line. This page covers the parts built for the craft studios: Bezier paths with gradient fills, Pathfinder, blends between shapes, artboards, and opening and saving SVG, DXF and DWG files. Every block is live.
+@end
+
+@section(Paths and gradient fills)
+
+A path is SVG path data in quotes. Any shape takes a stroke colour, a width (sw), a dash pattern, a cap and a join. A fill can be a colour, linear(from, to, angle) or radial(from, to).
+
+@draw(height=260)
+page 520x260
+rect sky at 0,0 size 520,260 fill linear(#1d3557,#a8dadc,90) stroke none
+ellipse sun at 380,40 size 90,90 fill radial(#fff3b0,#f4a261) stroke none
+path ridge d "M 0 200 C 80 120 160 120 230 180 S 380 110 520 170 L 520 260 L 0 260 Z" fill #2a9d8f stroke #264653 sw 2 join round
+path trail d "M 40 250 C 140 210 200 240 300 215" stroke #f1faee sw 3 dash 8,6 cap round fill none
+text t1 at 20,30 "Paths, gradients, a dashed stroke" fs 16 fill #f1faee
+@end
+
+Select the ridge with Direct selection and its anchors and handles appear: drag them to reshape the curve, double-click an anchor to switch between smooth and corner, Alt-click a segment to add a node. The Pen tool draws a new path: click for a corner, drag for a smooth curve, and click the first anchor to close it.
+
+@section(Pathfinder and the shape builder)
+
+Select two or more shapes and choose Unite, Minus front, Intersect or Exclude from the Pathfinder menu. The shapes are replaced by the one path they make, in a single undoable edit. Try it on the three circles below: select all three, then Unite, and the outline of the group becomes one path line in the text.
+
+@draw(height=230)
+page 520x230
+ellipse a at 120,40 size 140,140 fill #e63946 opacity 0.8
+ellipse b at 190,40 size 140,140 fill #457b9d opacity 0.8
+ellipse c at 155,100 size 140,120 fill #f4a261 opacity 0.8
+text t1 at 360,110 "select all, then Unite" fs 14
+@end
+
+The Shape builder does the same by hand: every region of the selection is a piece, a drag across pieces merges them, and an Alt-drag deletes them.
+
+@section(Blends and artboards)
+
+A blend draws the steps between two shapes and follows them when either moves. Like shapes interpolate their geometry; unlike closed shapes morph through their outlines; colour, width and opacity interpolate too. An artboard names a region of the page, and Export artboards writes each one as its own cropped SVG, so one drawing can hold a cover and a back page.
+
+@draw(height=260)
+page 560x260
+artboard Front at 0,0 size 280,260
+artboard Back at 280,0 size 280,260
+rect r1 at 30,40 size 50,50 rx 4 fill #e63946 stroke none
+blend b1 from r1 to e1 steps 6
+ellipse e1 at 190,150 size 70,70 fill #457b9d stroke none
+rect r2 at 310,60 size 220,20 fill #1d3557 stroke none
+blend b2 from r2 to r3 steps 4
+rect r3 at 310,200 size 220,20 fill #a8dadc stroke none
+@end
+
+Drag the blue circle and the six shapes between it and the red square are redrawn as you move.
+
+@section(CAD and SVG files)
+
+The card's Open buttons read an SVG from Illustrator, Inkscape or Figma; a DXF (R12 to 2018) or a DWG (R2000, R2004, R2010, R2013 or R2018, through IDoc's own reader); and a PDF page, an Illustrator file or an EPS. Arcs, ellipses and splines stay curves, blocks are expanded, layers are kept, and anything the file holds that is not drawn, such as a 3D solid, is counted and named in the card instead of dropped. Export writes SVG, PNG and DXF; the DXF is AutoCAD R12, which every CAD program reads, with one DXF layer per drawing layer.
+
+@section(A drawing as a question)
+
+The block is the question. This one asks for at least one blend and one artboard. The card's feedback shows what it sees now; the mark comes from the server, from the text the student hands in.
+
+@draw(id=blend-brief, pts=4, expect="blends=1, artboards=1", height=220)
+page 420x220
+rect a at 30,30 size 60,60 fill #2a9d8f
+ellipse b at 300,110 size 80,80 fill #e9c46a
+@end
+
+One answer: add the line blend b1 from a to b steps 5, then artboard Card at 0,0 size 420,220.

@@ -1,0 +1,123 @@
+@title(Office files: Excel workbooks, Word documents and PowerPoint decks)
+@author(IDoc craft demos, November 2026)
+
+@abstract
+IDoc reads and writes the three Office formats people send each other, and keeps the work as text in the document. A workbook becomes spreadsheet blocks and the charts that read them; a document with equations becomes a Word file whose equations are Word's own; a PowerPoint file becomes a deck. None of these is a new block. The spreadsheet, the equation and the slide are the same blocks used everywhere else, and the Office file is an import or an export. The files used here are in 06-office.assets beside this file: lab4-readings.xlsx was written with openpyxl, and lab4-briefing.pptx was assembled by a small script in the shape PowerPoint writes.
+@end
+
+@section(An Excel workbook, imported)
+
+File › Import… (or Import a document… in the command palette, ⌘I) and pick lab4-readings.xlsx. Each sheet of the workbook becomes a spreadsheet block named after the sheet, and each chart on a sheet becomes a graph block under it that reads the sheet live. The block and the graph below are exactly what Import wrote for the one sheet in this workbook.
+
+@spreadsheet(name=Readings, widths=103)
+Lab 4: Ohm's law readings
+Resistor	Volts	Milliamps	Ohms
+R1	5	4.6	=ROUND(B3/C3*1000,0)
+R2	5	2.2	=ROUND(B4/C4*1000,0)
+R3	5	1	=ROUND(B5/C5*1000,0)
+R4	5	0.48	=ROUND(B6/C6*1000,0)
+@styles
+A1 bold
+A2:D2 bold fill=#eef2ff
+A1:D1 merge
+@end
+@end
+
+@graph(type=bar, source=sheet:Readings!A2:C6, x=Resistor, y=Milliamps, title=Current per resistor, h=280)
+
+The rows of the block are the rows of the sheet, with a tab between cells, and a formula is kept as a formula, so the Ohms column is computed here rather than copied from Excel's last result. The styles sub-block holds what the workbook said about the cells: bold, a fill, and the merged title across A1:D1. widths= is the column width in pixels, converted from Excel's character unit. Change a reading in the Milliamps column and the Ohms column and the bar chart follow.
+
+@section(Back to Excel)
+
+File › Export › Excel workbook (.xlsx) writes every spreadsheet block in the document into one workbook: one sheet per block, under its name=, with its widths, merges, borders and number formats, and every graph that reads a sheet as a native Excel chart on that sheet. Bar, line, pie and scatter charts are written. Exporting this page gives a workbook with three sheets, Readings, Marks and the question at the end, and two charts. For one sheet alone, the XLSX button on the card's toolbar downloads that block as a workbook, and Open XLSX writes a workbook's first sheet into the block.
+
+@spreadsheet(name=Marks, widths=90,60,60,60)
+Lab marks	
+Student	Lab 3	Lab 4	Mean
+Ada	9	8	=AVERAGE(B3:C3)
+Ben	6	4	=AVERAGE(B4:C4)
+Cy	8	10	=AVERAGE(B5:C5)
+@styles
+A1:D1 merge bold border=medium
+A2:D2 bold fill=#eef2ff color=#1d2939 border=thin bordercolor=#336699
+B3:D5 border=thin
+D3:D5 when=<6 color=#b42318
+@end
+@end
+
+@graph(type=line, source=sheet:Marks!A2:C5, x=Student, y=Lab 3;Lab 4, title=Marks by lab, h=260)
+
+border= is thin, medium, thick or none, and bordercolor= colours it; merge makes a range one cell, and a merge that overlaps another is dropped, as Excel refuses it. A when= rule colours a cell by its value: here a mean under 6 is red. In the graph, y= names one column or several, separated by semicolons. The PDF of this page prints the same grid with the same merges and borders.
+
+@section(A Word document, with its equations)
+
+File › Export › Word (.docx) writes the document for Word, Google Docs, Pages and LibreOffice. The title is Word's Title style and each section a Heading 1, so Word's navigation pane and a table of contents work; lists are real numbered and bulleted lists, tables are tables, and pictures beside the document are embedded. An equation is written as Office Math, so it opens in Word's equation editor as an equation rather than as a picture of one. Export this page and the paragraph and the two equations below arrive as text and two Word equations.
+
+A resistor obeys Ohm's law, so each reading of volts and amps gives a resistance. Across n readings the mean resistance is
+
+@eqn
+bar{R} = frac{1}{n} sum_{k=1}^n frac{V_k}{I_k}
+@end
+
+and for two resistors in parallel
+
+@eqn
+R_p = frac{R_1 R_2}{R_1 + R_2}
+@end
+
+Each equation block is one Word equation on its own line. A fraction keeps its numerator and denominator, a sum keeps its limits above and below, and a symbol IDoc has no Office form for is written by name, never dropped.
+
+@section(A PowerPoint file, imported as a deck)
+
+File › Import… with lab4-briefing.pptx turns the slides into a deck. The slide titles become slide headings, a title slide keeps its title and subtitle, bullets nest by their level, bold and links are kept, tables become tables, speaker notes become notes blocks, and each picture is saved beside the document and placed at its width on the slide. A chart cannot be carried over, so Import names it in a review line at the top of the deck rather than dropping it. The slide order is the presentation's, whatever the files inside it are called.
+
+A document with a slide in it is a presentation, so the deck is its own file: @link(06-office.assets/lab4-briefing.idoc, the imported briefing). This is what Import wrote for the three slides:
+
+@code(text)
+@@deck(ratio=16:9)
+
+@@slide(layout=title)
+@@title(Lab 4: Ohm's law)
+Week 6 briefing
+
+@@slide(What you will measure)
+@@ul
+- Voltage across each resistor
+- Current through it, in milliamps
+@@ul
+- Use the 20 mA range
+@@end
+- @@b{Safety:} switch off before rewiring
+@@end
+
+@@table(sep=|)
+Resistor | Nominal
+R1 | 1 k
+R2 | 2.2 k
+@@endtable
+
+@@notes
+Show the meter before they start.
+@@end
+
+@@slide(The bench)
+@@img(file=image1.png, w=40%, alt=the lab logo)
+@end
+
+The aspect ratio comes from the slide size. File › Export › PowerPoint (.pptx) writes the deck back out as editable slides with their titles and bullets, and PowerPoint with narration… also records each slide's spoken text as audio on that slide.
+
+@section(A sheet as a question)
+
+The block is the question. An id, a pts and an expect admit it to the gradebook, and the server recomputes the sheet from the text the student hands in and checks each named cell. The brief: fill in the Ohms column with formulas, from the volts and the milliamps.
+
+@spreadsheet(id=ohms-brief, pts=6, expect="D2=1000, D3=2000, D4=5000")
+Resistor	Volts	Milliamps	Ohms
+R1	5	5	
+R2	5	2.5	
+R3	5	1	
+@styles
+A1:D1 bold fill=#eef2ff color=#1d2939
+@end
+@end
+
+One answer that earns all six points is =B2/C2*1000 in D2, filled down to D4. Each cell in expect is one check worth an equal share; a cell that shows an error counts as empty. The checks the card shows while you work are feedback only, and the mark is computed on the server.

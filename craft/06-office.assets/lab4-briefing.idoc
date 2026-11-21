@@ -1,0 +1,28 @@
+@deck(ratio=16:9)
+
+@slide(layout=title)
+@title(Lab 4: Ohm's law)
+Week 6 briefing
+
+@slide(What you will measure)
+@ul
+- Voltage across each resistor
+- Current through it, in milliamps
+@ul
+- Use the 20 mA range
+@end
+- @b{Safety:} switch off before rewiring
+@end
+
+@table(sep=|)
+Resistor | Nominal
+R1 | 1 k
+R2 | 2.2 k
+@endtable
+
+@notes
+Show the meter before they start.
+@end
+
+@slide(The bench)
+@img(file=image1.png, w=40%, alt=the lab logo)

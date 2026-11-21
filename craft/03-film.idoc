@@ -1,0 +1,57 @@
+@title(The film studio: a timeline you can read)
+@author(IDoc craft demos, November 2026)
+
+@abstract
+The film block is a video editor in the document. The block's text is the timeline: a size and frame rate, then tracks, each followed by its items. Drag in the card and the lines change; edit a line and the timeline changes. The two clips in 03-film.assets are ffmpeg test sources (a test pattern and a Mandelbrot zoom), and the music bed is a synthesised chord pad, all generated for this page.
+@end
+
+@section(A first cut)
+
+Two clips on one video track with a dissolve between them, a title over the start, captions, and the music underneath with ducking.
+
+@film
+size 1280x720 fps=30
+track V1
+clip 03-film.assets/pattern.mp4 0..8 at=0 fadein=0.5
+clip 03-film.assets/fractal.mp4 0..8 at=7 transition=dissolve:1
+track T1
+title "Week 3: Signals" at=0 dur=3 size=64 color=#ffffff y=80%
+track C1
+caption "A test pattern from ffmpeg." at=1 dur=3
+caption "The Mandelbrot set, zooming in." at=9 dur=4
+track A1
+audio 03-film.assets/music.wav 0..10 at=0 vol=0.5 duck=V1 fadeout=1
+export week3.mp4
+@end
+
+Each clip line says which part of the file it uses (0..8 is the first eight seconds) and where it starts on the timeline (at=). The first track is underneath, so the title sits over the video. duck=V1 lowers the music while the video track has sound.
+
+In the card, drag a clip to move it and drag its edges to trim. The modifier keys give the four trims an editor expects: Shift on an edge ripples (everything after it follows), Alt on an edge two clips share rolls the cut, Alt on a clip's body slips its source under it, and Shift on the body slides it between its neighbours. I and O mark the source's in and out and X clears them, so Add media is a three-point edit. S splits at the playhead, and Delete removes a clip (Shift closes the gap).
+
+@section(Colour, position and keyframes)
+
+Any visual item takes colour settings (bright, contrast, sat, hue, blur) and position settings (x, y, scale, rot, opacity). Each one can be a single number or keyframes written value@time. Here the fractal pushes in slowly from 1.0 to 1.4 over six seconds, and the test pattern is desaturated.
+
+@film
+size 1280x720 fps=30
+track V1
+clip 03-film.assets/pattern.mp4 0..4 at=0 sat=0.2 contrast=1.2
+clip 03-film.assets/fractal.mp4 0..6 at=4 scale=1@0,1.4@6 transition=wipe:0.8
+track T1
+title "Push in" at=4 dur=2 size=48 color=#ffffff bg=#00000088 y=15%
+marker 4 "cut to the fractal"
+@end
+
+The Scopes button shows the current frame's histogram, luma waveform and vectorscope (BT.709). Add caption reads an SRT or WebVTT file onto a caption track; captions.srt in the sidecar is one to try. Export as writes the captions back out as SRT or WebVTT, or the whole timeline as OpenTimelineIO, a CMX 3600 EDL or Final Cut Pro XML, and Open timeline reads any of the three. Make video encodes an MP4 on this computer, with captions burned in and the soundtrack mixed by the same kernel that grades it.
+
+@section(A timeline as a question)
+
+The block is the question, marked on the server from the text. This brief asks for at least three clips, one transition, one title and one caption, with a total length of 20 seconds give or take 3.
+
+@film(id=edit-brief, pts=10, expect="clips>=3, transitions>=1, titles>=1, captions>=1, duration=20±3")
+size 1280x720 fps=30
+track V1
+clip 03-film.assets/pattern.mp4 0..8 at=0
+@end
+
+The other terms a teacher can write are fades, keyframes, graded (colour settings used), ducked and exports=mp4.

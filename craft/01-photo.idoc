@@ -1,0 +1,104 @@
+@title(The photo studio: layers, paint, selections and Photoshop files)
+@author(IDoc craft demos, November 2026)
+
+@abstract
+This page is a showcase and a manual for the photo block. Every block on it is the live studio. The text of a block is the picture: one line per layer, bottom first, then the paint in the order it happened. Click a tool and draw on a canvas, and the studio writes the line for you; edit the line, and the picture changes. The pictures used here are in 01-photo.assets beside this file, and all of them were generated for this page.
+@end
+
+@section(A first picture)
+
+A poster is a canvas, a background and a title. The first line sets the size in pixels. The second is a gradient fill: two colours joined by an arrow, and the angle it runs at. The third is a text layer, set in a real font with kerning; the position is a percentage of the canvas from the top left.
+
+@photo
+canvas 1200x800
+layer Background fill #1d3557->#e63946 angle=135
+layer Title text "SPRING OPEN HOUSE" font=HerosBold 96 color=#f1faee at 7%,45%
+layer Date text "Engineering Hall, April 18" font=Heros 44 color=#f1faee at 7%,60%
+@end
+
+The panel on the right lists the layers top first, as every layer panel does. Click a layer to select it, and its properties appear under the list: blend mode, opacity, colour, and for text the words, face and size. The eye hides a layer, which writes the word hidden on its line. The arrows reorder layers, and the bin deletes the selected one.
+
+The faces are the TeX Gyre fonts the PDF path already ships: Heros and HerosBold (a Helvetica), Termes and TermesBold (a Times), Pagella (a Palatino) and Cursor (a Courier). The screen and the PDF set the same type.
+
+@section(Paint, blend modes and masks)
+
+Paint is text too. A stroke names its layer, colour, size and points; an erase takes paint away; a rect fills a rectangle. Each one is applied in order, so the text is also the history, and the undo button removes the last one.
+
+@photo
+canvas 900x500
+layer Paper fill #fdfaf3
+layer Ink
+layer Wash fill #2a9d8f blend=multiply opacity=0.6 mask=poly:470,40;860,80;820,460;520,420
+layer Spot fill #f4a261 blend=multiply opacity=0.8 mask=rect:60,320,300,460
+stroke Ink color=#1b1b1b size=18 points=80,120;180,60;300,140;420,80
+stroke Ink color=#c8102e size=10 points=80,220;240,260;400,200;520,260;640,210
+erase Ink size=30 points=240,95
+rect Ink 600,90,760,180 color=#264653
+@end
+
+The toolbar above the canvas is Move, Brush, Eraser, Rectangle, Text, Marquee, Lasso, Wand and Subject. Brush and Eraser take the size and colour beside them. The Marquee writes mask=rect: on the selected layer, the Lasso writes mask=poly: with the points you dragged through, and a click with the Marquee clears the mask. A pen tablet's pressure is kept per point, written as a third number on each point.
+
+Blend modes are normal, multiply, screen, overlay, darken, lighten and difference. The kernel composites in linear light, the way Photoshop does with its gamma 1.0 option and the way a GPU compositor does, so a multiply over a gradient looks like ink on paper rather than a muddy darkening.
+
+@section(Photoshop's adjustments, on a real picture)
+
+An import layer takes its pixels from a file beside the document. Over it, adjustment layers change what lies below them without touching its pixels. Here each adjustment has a rectangle mask, so the picture is cut into strips and each strip shows one adjustment against the untouched original on the left.
+
+@photo
+canvas 640x480
+layer Photo import 01-photo.assets/portrait.png
+layer Curves adjust curves rgb=(0,0)(70,40)(180,220)(255,255) mask=rect:128,0,256,480
+layer Warm adjust photofilter color=#ec8a00 density=0.45 mask=rect:256,0,384,480
+layer Mono adjust bw r=0.4 g=0.4 b=0.2 mask=rect:384,0,512,480
+layer Poster adjust posterize levels=4 mask=rect:512,0,640,480
+@end
+
+There are fifteen adjustment kinds: brightness, contrast, levels, curves, exposure, vibrance, huesat, colorbalance, bw, photofilter, mixer, invert, posterize, threshold and gradientmap. The drop-down beside the layer buttons adds one, and its fields appear in the properties panel. A slider repaints the picture while you drag it and writes the line when you let go.
+
+@section(Smart objects, layer styles and filters)
+
+The same portrait again. Over it, a logo placed as a smart object: drawn from its own file through its scale, turn and position every time, so it is never resampled twice, however often you change them. The logo carries a drop shadow and the caption an outline. The Frame layer is a lasso selection (mask=poly:) with a soft overlay blend, and the photo itself has a light noise filter, as film grain.
+
+@photo
+canvas 640x480
+layer Photo import 01-photo.assets/portrait.png filter=noise:0.05
+layer Frame fill #ffb703->#219ebc angle=90 blend=overlay opacity=0.8 mask=poly:0,0;640,0;640,480;470,480;470,40;170,40;170,480;0,480
+layer Badge smart 01-photo.assets/logo.png scale=0.45 rotate=-12 at=550,85 shadow=6,8,10,#000000,0.45
+layer Caption text "Smart object, shadow and outline" font=HerosBold 28 color=#ffffff at 5%,94% outline=2,#023047
+@end
+
+The styles are shadow=dx,dy,blur,colour,opacity, outline=width,colour, glow=size,colour,opacity and overlay=colour,opacity. The filters are blur, sharpen, noise and motion, joined by semicolons in filter=. Both have buttons in the properties panel of the selected layer.
+
+@section(Photoshop files, both ways)
+
+Open PSD, KRA, ORA or PNG brings a layered file in as layers. Each layer of the file becomes an import line that names it by its index, file.psd#n, and its mask comes with it as file.psd#n@mask, so the pixels stay in the file beside the document and the text stays short. This block is exactly what Open wrote for landscape.psd, a four-layer Photoshop file in the sidecar.
+
+@photo
+canvas 600x400
+layer Sky import 01-photo.assets/landscape.psd#0
+layer Sun import 01-photo.assets/landscape.psd#1 mask=01-photo.assets/landscape.psd#1@mask
+layer Hills import 01-photo.assets/landscape.psd#2 mask=01-photo.assets/landscape.psd#2@mask
+layer Shade import 01-photo.assets/landscape.psd#3 blend=multiply opacity=0.45 mask=01-photo.assets/landscape.psd#3@mask
+@end
+
+Export PSD writes the picture back out with every layer as itself: pixel layers with their names, blend modes, opacity, visibility and masks, and adjustments as native adjustment layers that stay live in Photoshop. Export also writes KRA for Krita, ORA for GIMP and MyPaint, PNG, and a floating-point TIFF from a 32-bit canvas. Put 16bit after the size on the canvas line and the PSD and PNG are written at 16 bits per channel; a 16-bit file opens at its own precision. The export line names what was written, and a question can ask for it.
+
+@section(A picture as a question)
+
+The block is the question. An id, a pts and an expect admit it to the gradebook, and the server marks it from the text the student hands in, not from a screenshot. The brief here: put a shaded band across the bottom of the poster with a multiply layer at half opacity or less, mask it, add a curves adjustment, and export a PSD.
+
+@photo(id=poster-brief, pts=10, expect="layers>=4, masks>=1, adjustment=curves, blend(Shade)=multiply, opacity(Shade)<=0.5, exports=psd")
+canvas 1200x800
+layer Background fill #f4d35e->#c8553d angle=160
+layer Title text "DESIGN WEEK" font=HerosBold 120 color=#22333b at 8%,40%
+@end
+
+One answer that earns all ten points adds three lines and an export:
+
+@code(text)
+layer Shade fill #22333b blend=multiply opacity=0.4 mask=rect:0,600,1200,800
+layer Lift adjust curves rgb=(0,10)(128,150)(255,250)
+export poster.psd
+@end
+
+Under the layer panel the card lists each term of expect and whether the picture meets it now. That list is feedback only. The mark is computed on the server from the lines in the source, and an expect term the kernel does not know is reported to the teacher as an authoring error rather than silently scored zero. The terms a teacher can write are layers, masks, adjustment, size, bits, space, exports, blend(L), opacity(L), hidden(L), strokes, painted(L), filters, filter, styles, smart and groups.

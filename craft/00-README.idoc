@@ -1,0 +1,26 @@
+@title(The craft studios: a guided set of demos)
+@author(IDoc craft demos, November 2026)
+
+@abstract
+Seven documents, one per studio. Each is both a showcase and a manual: the blocks are the real, live studios, and the prose between them says what each line and each button does. Every studio follows one idea: the block's text is the work. A picture, a drawing, a film, a mix, a marked-up PDF or a CT view is a few readable lines in the document, so it can be diffed, handed in, and marked on the server. Each document ends with a block that works as a graded question.
+@end
+
+@section(The documents)
+
+@ul
+- @link(01-photo.idoc, The photo studio). Layers, gradients and text in real fonts; brush, eraser and lasso; Photoshop's adjustments on a picture; smart objects, layer styles and filters; a Photoshop file opened as layers; a poster brief marked from the text.
+- @link(02-draw.idoc, The drawing studio). Bezier paths with gradient fills, Pathfinder and the shape builder, blends that follow their ends, artboards, and the SVG, DXF, DWG, PDF and EPS readers; a drawing marked by what it contains.
+- @link(07-dicom.idoc, The imaging studio). A synthetic chest CT in two windows; a DICOM series with fake patient data de-identified in the browser before anything is kept; a nodule-finding question marked by distance in millimetres.
+- @link(03-film.idoc, The film studio). A timeline with a dissolve, a title, captions and ducked music; colour settings and keyframed motion; scopes and interchange formats; an editing brief.
+- @link(04-audio.idoc, The audio editor). Voice over music with a high-pass, a compressor, automation and loudness normalisation; an effects chain; a mix marked by its measured loudness.
+- @link(05-pdf.idoc, PDF editing). Highlights, threaded comments, typed text and a real redaction on a handout; pages reordered and rotated; a form filled in; a markup brief.
+- @link(06-office.idoc, Office files). An Excel workbook imported as a spreadsheet and its chart, and written back as one workbook; a page with equations exported to Word as Office Math; a PowerPoint file imported as a deck; a sheet marked by its computed cells.
+@end
+
+@section(What is in the folders)
+
+Every file in the .assets folders was generated for these pages: the portrait, logo and Photoshop file by small scripts and by IDoc's own PSD writer, the video clips by ffmpeg's test sources, the audio by a synthesiser script, the handout by Typst, the form by a script in the IDoc repository, the workbook by openpyxl, the PowerPoint file by a small script, and the CT study by the imaging engine's own phantom writer. No downloaded media and no patient data are used anywhere.
+
+@section(Opening them)
+
+Open this folder as a workspace in IDoc (a folder on your computer, or upload it to the server workspace) and click a link above. A studio edits the text of its own block, so try things freely; undo in the editor puts a block back in one step. The question blocks show feedback as you work, and say so: the mark itself is computed on the server from the lines handed in.

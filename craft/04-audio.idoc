@@ -1,0 +1,52 @@
+@title(The audio editor: a mix written as text)
+@author(IDoc craft demos, November 2026)
+
+@abstract
+The audioeditor block is a multitrack audio editor in the document. The block is the session: tracks, the clips on them, each track's effects in chain order, automation, and the master bus. The kernel mixes it, the card plays the same mix, and the grader measures it. The two files in 04-audio.assets are synthesised for this page: a buzzy voice-like signal with a low rumble in it, and a soft chord pad.
+@end
+
+@section(Voice over music)
+
+The voice track gets a high-pass filter to take out the rumble and a compressor to even it out. The music sits at 40 percent and dips under the voice by automation, and its low-pass filter closes while the voice is speaking. The master bus limits the peaks and normalises the whole mix to -16 LUFS, the loudness most podcast platforms ask for.
+
+@audioeditor
+track Voice
+clip 04-audio.assets/voice.wav 0..10 at=0 fadein=0.2 fadeout=0.5
+fx highpass f=90
+fx comp threshold=-20 ratio=3 attack=10 release=120
+track Music vol=0.4
+clip 04-audio.assets/music.wav 0..10 at=0
+fx lowpass f=8000
+auto vol 0:0.4 2:0.15 8:0.15 10:0.4
+auto lowpass.f 0:8000 2:1500 8:1500 10:8000
+master limit=-1 loudness=-16
+export mix.wav
+@end
+
+A track line takes vol, pan, mute and solo. A clip says which part of the file it uses (0..10), where it starts (at=), and optionally gain, fades and speed. The effects are eq (low, mid, high), highpass, lowpass, comp, gate, delay, reverb and gain, applied in the order written. Automation names a parameter and a list of time:value points: vol and pan for the track, or any effect's parameter, by its kind (lowpass.f) or its place in the chain (fx2.f).
+
+@section(Effects on one voice)
+
+The same voice, with an equaliser, a slapback delay and a small room.
+
+@audioeditor
+track Voice pan=-0.2
+clip 04-audio.assets/voice.wav 2..8 at=0
+fx eq low=-3 mid=2 high=4
+fx delay time=0.12 feedback=0.2 mix=0.25
+fx reverb mix=0.2 size=0.4
+master loudness=-16
+@end
+
+Loudness is measured by ITU-R BS.1770-4, the broadcast standard, and the measurement was checked against an independent implementation (pyloudnorm).
+
+@section(A mix as a question)
+
+The brief: compress the voice, automate the music's volume, pan the voice a little left, and hand in a mix at -16 LUFS within one unit. lufs= renders the student's own mix from their files on the server and measures it.
+
+@audioeditor(id=mix-brief, pts=10, expect="fx(Voice)=comp, auto(Music)=vol, pan(Voice)<0, lufs=-16±1")
+track Voice
+clip 04-audio.assets/voice.wav 0..10 at=0
+track Music vol=0.4
+clip 04-audio.assets/music.wav 0..10 at=0
+@end

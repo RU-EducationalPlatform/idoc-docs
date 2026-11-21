@@ -1,0 +1,84 @@
+@style(IDocDemo)
+@title(The music studio)
+@subtitle(A score you can play, mix and drum along to, all in one block)
+
+A @@music block is a score, and it is also a small studio. Write the notes as text and you get the staff. Open the same block in its Studio view and each instrument gets its own mixer lane. Open it in its Beats view and you get a drum machine on the same clock. Nothing is copied between them, because the score stays the single source.
+
+Press Play on any block on this page. The first play downloads the recorded instruments. On the desktop app they come from the music add-on, so they work with no network.
+
+@section(The same piece, three ways of looking at it)
+
+Here is a short piece for violin, cello and piano. The block's toolbar has three buttons: Score, Studio and Beats. Try each one.
+
+@music(tempo=92, key=Am, meter=4/4, theme=studio)
+violin: mp A4:h C5:q E5:q | D5:h C5:q B4:q | C5:h E5:q A5:q | G#5:h A5:h
+cello: p A2:w | F2:w | C3:w | E2:w
+piano: p [A3 C4 E4]:w | [F3 A3 C4]:w | [C4 E4 G4]:w | [E3 G#3 B3]:w
+lane violin -4dB pan=-25 fx=eq:2,hall:30
+lane cello -6dB pan=25 fx=comp:3,hall:30
+lane piano -9dB pan=0 fx=hall:22
+@end
+
+@b{Score.} The staff for each instrument, with its dynamics and its key and time signature. This is also what prints in the PDF, so a page of music and its sound never disagree.
+
+@b{Studio.} One lane per instrument. Each lane has a level, a pan, mute and solo, and a chain of effects in the order you add them: an equaliser, a compressor, the score's hall reverb and an echo. A live meter moves while it plays. Along the top is a transport with back, play, record, loop, a clock in bars and beats, the tempo, the meter, the key and a click.
+
+@b{Beats.} Three built-in drum kits made from synthesis, so there are no samples to download. Each row is a drum and each step is a hit, and you drag a step to change how hard it hits. You can keep several patterns and say which one plays in each bar.
+
+@section(Every change is a line of text)
+
+When you move a fader in the Studio view, the block's text changes. The lines under the notes are the mixer, and you can write them by hand too.
+
+@ul
+lane violin -4dB pan=-25 fx=eq:2,hall:30 sets one instrument: its level, its pan (left is negative), and its effects in order, each with its one number.
+kit brush 16 swing=54 picks a drum kit, sixteen steps to a bar, and how much the off-beats are pushed late.
+beat A kick 9.......9....... is one row of a pattern called A. A digit is a hit and how hard it is. A dot is silence.
+arrange A A B says which pattern each bar plays. A dash means none.
+@end
+
+The drawing, the PDF and the grader read only the notes and skip those lines. So a student can mix a piece without changing what the exercise checks. Every edit can be undone, and the view you were in comes back after the preview redraws.
+
+@section(A beat to go with it)
+
+The same kind of block with drums only. Open the Beats view and drag the steps.
+
+@music(tempo=100, meter=4/4, theme=studio)
+piano: mf [C4 E4 G4]:h [F3 A3 C4]:h | [G3 B3 D4]:h [C4 E4 G4]:h
+lane piano -8dB fx=hall:20
+lane beat -6dB
+kit brush 16 swing=54
+beat A kick 9.......6.....9.
+beat A snare ....7.......7...
+beat A hihat 3.3.3.3.3.3.3.3.
+beat B kick 9.......6.....9.
+beat B snare ....7.......7.7.
+beat B hihat 3.3.3.3.3.3.5.5.
+arrange A B
+@end
+
+Pattern A plays in the first bar and pattern B in the second, which adds a small fill at the end of the bar. Each hit follows the piece's tempo, so a tempo change moves the drums with it.
+
+@section(Recording yourself)
+
+In the Studio view, press the record button. The browser asks once for the microphone. After a count-in with a click, it records while the notes play under you. A held level meter tells you whether the take was too quiet, good or clipping, and the delay the browser reports is taken off so the take lines up.
+
+Clean my voice turns on a gate set just above the room's own level, then an equaliser, a compressor and the hall. Every take is kept and saved next to the document, and one is marked as the one in use. Export WAV mixes everything down to a single file.
+
+Recording needs a microphone and your permission, so this page cannot show it without you. Open the Studio view in the block above and try it.
+
+@section(Other looks)
+
+The look of the block follows its @b{theme}. @b{studio} is the dark graphite look used above, and @b{showcase} adds a glow for demonstrations.
+
+@music(tempo=76, key=D, theme=showcase)
+violin: p D5:h F#5:q A5:q | G5:h F#5:h | E5:q F#5:q G5:q E5:q | D5:w
+cello: p D3:w | G2:w | A2:w | D3:w
+@end
+
+@section(Where to go next)
+
+@ul
+@link(../studios/music-and-audio.idoc, Music, the orchestra, the studio and the audio editor: every argument, one line each)
+@link(../craft/04-audio.idoc, The audio editor: a voice over music with effects, automation and loudness)
+@link(../00-start-here.idoc, Back to the start)
+@end

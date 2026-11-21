@@ -186,6 +186,29 @@ Logic, circuits, CAD, music, drawing and the other interactive studios.
 @link(studios/12-every-argument.idoc, Studios, Every argument)
 @end
 
+@section(The music studio)
+
+A score you can play, mix with a lane for each instrument, and drum along to, in one block.
+
+@ul
+@link(music/01-the-music-studio.idoc, The music studio: Score, Studio and Beats)
+@end
+
+@section(The craft studios)
+
+Photos, drawing, film, audio, PDFs, Office files and medical images, each a real editor inside the document.
+
+@ul
+@link(craft/00-README.idoc, The craft studios: a guided set of demos)
+@link(craft/01-photo.idoc, The photo studio)
+@link(craft/02-draw.idoc, The drawing studio)
+@link(craft/03-film.idoc, The film studio)
+@link(craft/04-audio.idoc, The audio editor)
+@link(craft/05-pdf.idoc, PDF editing)
+@link(craft/06-office.idoc, Office files)
+@link(craft/07-dicom.idoc, The imaging studio)
+@end
+
 @section(Charts and data)
 
 Every chart type, data files and maps.
