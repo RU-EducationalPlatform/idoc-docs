@@ -1,0 +1,4 @@
+@deck(theme=midnight, ratio=16:9)
+
+@slide(layout=full, bg=#0b0f14)
+@graph(type=bubble, source=20-hans-rosling.assets/gapminder.bct, x=gdpPercap, y=lifeExp, size=pop, color=continent, time=year, label=country, glow=on, trails=6, xlabel=Income per person, ylabel=Life expectancy, title=Health and wealth of nations)

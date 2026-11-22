@@ -109,6 +109,7 @@ Presentations, builds, transitions and every deck theme.
 
 @ul
 @link(slides/19-slides.idoc, Slides in IDoc)
+@link(slides/20-hans-rosling.idoc, A full-screen Hans Rosling chart)
 @link(slides/themes/dark.idoc, Deck theme, dark)
 @link(slides/themes/ember.idoc, Deck theme, ember)
 @link(slides/themes/forest.idoc, Deck theme, forest)
