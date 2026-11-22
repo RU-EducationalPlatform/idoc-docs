@@ -23,7 +23,7 @@ A1:D1 merge
 @end
 @end
 
-@graph(type=bar, source=sheet:Readings!A2:C6, x=Resistor, y=Milliamps, title=Current per resistor, h=280)
+@graph(type=bar, source=sheet:Readings!A2:C6, x=Resistor, y=Milliamps, title=Current per resistor, height=280)
 
 The rows of the block are the rows of the sheet, with a tab between cells, and a formula is kept as a formula, so the Ohms column is computed here rather than copied from Excel's last result. The styles sub-block holds what the workbook said about the cells: bold, a fill, and the merged title across A1:D1. widths= is the column width in pixels, converted from Excel's character unit. Change a reading in the Milliamps column and the Ohms column and the bar chart follow.
 
@@ -45,7 +45,7 @@ D3:D5 when=<6 color=#b42318
 @end
 @end
 
-@graph(type=line, source=sheet:Marks!A2:C5, x=Student, y=Lab 3;Lab 4, title=Marks by lab, h=260)
+@graph(type=line, source=sheet:Marks!A2:C5, x=Student, y=Lab 3;Lab 4, title=Marks by lab, height=260)
 
 border= is thin, medium, thick or none, and bordercolor= colours it; merge makes a range one cell, and a merge that overlaps another is dropped, as Excel refuses it. A when= rule colours a cell by its value: here a mean under 6 is red. In the graph, y= names one column or several, separated by semicolons. The PDF of this page prints the same grid with the same merges and borders.
 
